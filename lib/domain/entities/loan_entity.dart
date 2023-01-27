@@ -1,10 +1,10 @@
 import 'dart:ffi';
 
-import './stock_item_model.dart';
+import 'stock_item_entity.dart';
 
-class LoanStockItemModel extends StockItemModel {
+class LoanStockItemEntity extends StockItemEntity {
   final Int quantity;
-  const LoanStockItemModel({
+  const LoanStockItemEntity({
     required this.quantity,
     required super.description,
     required super.imageUrl,
@@ -14,15 +14,15 @@ class LoanStockItemModel extends StockItemModel {
   });
 }
 
-class LoanModel {
+class LoanEntity {
   final String customerId;
   final String customerName;
   final String cc;
   final String chamadoNumber;
   final String returnDate;
   final String notes;
-  final List<LoanStockItemModel> items;
-  const LoanModel({
+  final List<LoanStockItemEntity> items;
+  const LoanEntity({
     required this.customerId,
     required this.customerName,
     required this.cc,

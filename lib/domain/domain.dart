@@ -1,2 +1,2 @@
 export 'usecases/usecases.dart';
-export './models/models.dart';
+export 'entities/entitites.dart';

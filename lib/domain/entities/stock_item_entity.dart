@@ -1,10 +1,10 @@
-class StockItemModel {
+class StockItemEntity {
   final String description;
   final String model;
   final String notes;
   final String imageUrl;
   final String receiptUrl;
-  const StockItemModel({
+  const StockItemEntity({
     required this.description,
     required this.model,
     required this.notes,
