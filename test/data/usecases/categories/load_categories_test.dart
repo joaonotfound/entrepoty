@@ -2,8 +2,14 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-abstract class HttpResponse<T extends Map> {
-  T get body;
+enum HttpError {
+  badRequest,
+}
+
+class HttpResponse<T extends Map> {
+  final int statuscode;
+  final T? body;
+  const HttpResponse({required this.statuscode, this.body});
 }
 
 abstract class HttpClient {
@@ -17,8 +23,11 @@ class LoadCategories {
     required this.url,
     required this.httpClient,
   });
-  Future<void> load() async {
-    httpClient.get(url);
+  Future load() async {
+    var response = await httpClient.get(url);
+    if (response?.statuscode == 400) {
+      throw HttpError.badRequest;
+    }
   }
 }
 
@@ -37,5 +46,13 @@ void main() {
     await sut.load();
 
     verify(httpClient.get(url)).called(1);
+  });
+  test("should throw badRequest if status code is equal to 400", () async {
+    when(httpClient.get(url)).thenAnswer((_) async {
+      return const HttpResponse(statuscode: 400);
+    });
+    final future = sut.load();
+
+    expect(future, throwsA(HttpError.badRequest));
   });
 }
