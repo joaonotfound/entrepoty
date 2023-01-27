@@ -6,6 +6,8 @@ enum HttpError {
   badRequest,
 }
 
+enum DomainError { unexpected }
+
 class HttpResponse<T extends Map> {
   final int statuscode;
   final T? body;
@@ -23,10 +25,12 @@ class LoadCategories {
     required this.url,
     required this.httpClient,
   });
-  Future load() async {
-    var response = await httpClient.get(url);
-    if (response?.statuscode == 400) {
-      throw HttpError.badRequest;
+  Future<List> load() async {
+    try {
+      await httpClient.get(url);
+      return ["a"];
+    } on HttpError catch (_) {
+      return [];
     }
   }
 }
@@ -47,12 +51,12 @@ void main() {
 
     verify(httpClient.get(url)).called(1);
   });
-  test("should throw badRequest if status code is equal to 400", () async {
+  test("should return empty list if httpClient throws", () async {
     when(httpClient.get(url)).thenAnswer((_) async {
-      return const HttpResponse(statuscode: 400);
+      throw HttpError.badRequest;
     });
-    final future = sut.load();
+    final future = await sut.load();
 
-    expect(future, throwsA(HttpError.badRequest));
+    expect(future, []);
   });
 }
