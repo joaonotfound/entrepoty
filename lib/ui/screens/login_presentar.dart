@@ -4,4 +4,5 @@ abstract class LoginPresenter {
   Stream<bool> get isFormValidStream;
   void validateId(String id);
   void validatePassword(String password);
+  void authenticate();
 }

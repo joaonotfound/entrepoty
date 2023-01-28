@@ -22,6 +22,9 @@ class StreamLoginPresenter extends LoginPresenter {
 
   @override
   void validatePassword(String password) {}
+
+  @override
+  void authenticate() {}
 }
 
 LoginPresenter makeLoginPresenter() {

@@ -57,7 +57,9 @@ class LoginScreen extends StatelessWidget {
                         stream: presenter.isFormValidStream,
                         builder: (context, snapshot) {
                           return ElevatedButton(
-                            onPressed: snapshot.data == true ? () => {} : null,
+                            onPressed: snapshot.data == true
+                                ? presenter.authenticate
+                                : null,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Theme.of(context).primaryColor,
                               minimumSize: const Size(double.infinity, 50),
