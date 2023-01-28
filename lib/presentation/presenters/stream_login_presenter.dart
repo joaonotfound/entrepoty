@@ -67,8 +67,14 @@ class StreamLoginPresenter implements LoginPresenter {
   @override
   void authenticate() {
     _isLoadingController.add(true);
-    authentication.authenticate(
-        id: _loginState.id, password: _loginState.password);
+    try {
+      authentication.authenticate(
+          id: _loginState.id, password: _loginState.password);
+    } on DomainError catch (error) {
+      _loginState.mainErrorState = error.description;
+      _controller.add(_loginState);
+    }
+
     _isLoadingController.add(false);
   }
 

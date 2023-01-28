@@ -84,6 +84,20 @@ void main() {
     sut.validatePassword(password);
 
     expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+
+    sut.authenticate();
+  });
+
+  test(
+      "should emit correct main error if authenctation throws invalidCredentials",
+      () {
+    authentication.mockAuthenticateError(DomainError.invalidCredentials);
+    sut.validateId(id);
+    sut.validatePassword(password);
+
+    sut.mainErrorStream.listen(
+        expectAsync1((error) => expect(error, "Credenciais Inválidas.")));
+
     sut.authenticate();
   });
 }
