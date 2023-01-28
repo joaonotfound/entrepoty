@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  final LoginPresenter presenter;
+  const LoginScreen({
+    super.key,
+    required this.presenter,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +46,12 @@ class LoginScreen extends StatelessWidget {
               child: Form(
                 child: Column(
                   children: [
-                    const UserIdFormField(),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 16, bottom: 30),
-                      child: UserPasswordField(),
+                    UserIdFormField(loginPresenter: presenter),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 30),
+                      child: UserPasswordField(
+                        loginPresenter: presenter,
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {},

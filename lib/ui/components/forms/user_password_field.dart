@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:service_desk_2/ui/screens/screens.dart';
 
 class UserPasswordField extends StatelessWidget {
-  const UserPasswordField({
-    Key? key,
-  }) : super(key: key);
+  final LoginPresenter loginPresenter;
+  const UserPasswordField({Key? key, required this.loginPresenter})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: loginPresenter.validatePassword,
       decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
