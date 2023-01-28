@@ -53,16 +53,20 @@ class LoginScreen extends StatelessWidget {
                         loginPresenter: presenter,
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        minimumSize: const Size(double.infinity, 50),
-                        textStyle: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      child: const Text("Entrar"),
-                    )
+                    StreamBuilder<bool>(
+                        stream: presenter.isFormValidStream,
+                        builder: (context, snapshot) {
+                          return ElevatedButton(
+                            onPressed: snapshot.data == true ? () => {} : null,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              minimumSize: const Size(double.infinity, 50),
+                              textStyle: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            child: const Text("Entrar"),
+                          );
+                        })
                   ],
                 ),
               ),
