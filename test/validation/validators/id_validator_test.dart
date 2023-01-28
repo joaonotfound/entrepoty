@@ -13,7 +13,10 @@ void main() {
   test("should return null if value is empty", () {
     expect(sut.validate(''), null);
   });
-  test("should return invalid id if value is invalid", () {
+  test("should return invalid  if value is invalid", () {
     expect(sut.validate("invalid_id"), "matrícula inválida");
+  });
+  test("should return null if value doesnt have 10 caracteres", () {
+    expect(sut.validate("ma-00000-0"), "matrícula inválida");
   });
 }

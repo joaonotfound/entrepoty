@@ -5,6 +5,8 @@ class IdValidator implements Validator {
   const IdValidator({required this.field});
   @override
   String? validate(String? value) {
-    return value == null || value.isEmpty ? null : "matrícula inválida";
+    return value == null || value.isEmpty
+        ? null
+        : (value.length == 10 ? "matrícula inválida" : null);
   }
 }
