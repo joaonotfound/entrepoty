@@ -1,12 +1,28 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 // ignore: depend_on_referenced_packages
-import 'package:mocktail/mocktail.dart';
 
-class MockLoginPresenter extends Mock implements LoginPresenter {}
+class StreamLoginPresenter extends LoginPresenter {
+  final _idErrorController = StreamController<String>();
+  final _passwordErrorController = StreamController<String>();
+
+  @override
+  Stream<String> get idErrorStream => _idErrorController.stream;
+
+  @override
+  Stream<String> get passwordErrorStream => _passwordErrorController.stream;
+
+  @override
+  void validateId(String id) {}
+
+  @override
+  void validatePassword(String password) {}
+}
 
 LoginPresenter makeLoginPresenter() {
-  return MockLoginPresenter();
+  return StreamLoginPresenter();
 }
 
 class App extends StatelessWidget {

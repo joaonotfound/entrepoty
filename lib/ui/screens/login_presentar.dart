@@ -1,6 +1,6 @@
 abstract class LoginPresenter {
-  Stream get idErrorStream;
-  Stream get passwordErrorStream;
+  Stream<String> get idErrorStream;
+  Stream<String> get passwordErrorStream;
 
   void validateId(String id);
   void validatePassword(String password);

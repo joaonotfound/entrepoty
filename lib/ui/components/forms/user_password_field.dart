@@ -8,21 +8,27 @@ class UserPasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: loginPresenter.validatePassword,
-      decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          labelText: "Senha",
-          prefixIcon: Icon(
-            Icons.lock,
-            color: Theme.of(context).primaryColor,
-          ),
-          border: const OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).primaryColor),
-          )),
-      obscureText: true,
-    );
+    return StreamBuilder<String>(
+        stream: loginPresenter.passwordErrorStream,
+        builder: (context, snapshot) {
+          return TextFormField(
+            onChanged: loginPresenter.validatePassword,
+            decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                labelText: "Senha",
+                errorText:
+                    snapshot.data?.isEmpty == true ? null : snapshot.data,
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Theme.of(context).primaryColor,
+                ),
+                border: const OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                )),
+            obscureText: true,
+          );
+        });
   }
 }
