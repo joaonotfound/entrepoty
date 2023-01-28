@@ -15,5 +15,5 @@ class MockHttpClient extends Mock implements HttpClient {
   void mockPost(HttpResponse response) =>
       // ignore: prefer_const_constructors
       _mockPostCall().thenAnswer((_) async => response);
-  void mockPostError(HttpError error) => _mockGetCall().thenThrow(error);
+  void mockPostError(HttpError error) => _mockPostCall().thenThrow(error);
 }
