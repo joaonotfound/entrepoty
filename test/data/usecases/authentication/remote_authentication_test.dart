@@ -36,4 +36,14 @@ void main() {
     var future = sut.authenticate(id: id, password: password);
     expect(future, throwsA(DomainError.invalidCredentials));
   });
+  test("Should throw invalidCredentials if httpclient throws", () async {
+    httpClient.mockPostError(HttpError.badRequest);
+    var future = sut.authenticate(id: id, password: password);
+    expect(future, throwsA(DomainError.invalidCredentials));
+  });
+  test("Should throw unexpected if httpclient throws", () async {
+    httpClient.mockPostError(HttpError.unexpected);
+    var future = sut.authenticate(id: id, password: password);
+    expect(future, throwsA(DomainError.unexpected));
+  });
 }
