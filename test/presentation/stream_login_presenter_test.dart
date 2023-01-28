@@ -100,4 +100,14 @@ void main() {
 
     sut.authenticate();
   });
+  test("should emit correct main error if authenctation throws unexpected", () {
+    authentication.mockAuthenticateError(DomainError.unexpected);
+    sut.validateId(id);
+    sut.validatePassword(password);
+
+    sut.mainErrorStream.listen(expectAsync1((error) =>
+        expect(error, "Algo deu errado, tente novamente em breve.")));
+
+    sut.authenticate();
+  });
 }
