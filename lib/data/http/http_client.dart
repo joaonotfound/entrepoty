@@ -9,6 +9,9 @@ class HttpResponse<T> {
 
 enum HttpError {
   badRequest,
+  unauthorized,
+  serverError,
+  unexpected,
 }
 
 abstract class HttpClient {
