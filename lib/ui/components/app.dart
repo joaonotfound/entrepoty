@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:service_desk_2/presentation/presenters/stream_login_presenter.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:service_desk_2/validation/validator.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockValidator extends Mock implements Validation {}
 
 LoginPresenter makeLoginPresenter() {
-  return StreamLoginPresenter();
+  return StreamLoginPresenter(validator: MockValidator());
 }
 
 class App extends StatelessWidget {
