@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:service_desk_2/presentation/presenters/stream_login_presenter.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
-import '../mocks/validation_mock.dart';
+import '../data/mocks/validation_mock.dart';
 
 void main() {
   late LoginPresenter loginPresenter;
