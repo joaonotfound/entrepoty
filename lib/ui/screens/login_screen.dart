@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   final LoginPresenter presenter;
   const LoginScreen({
     super.key,
     required this.presenter,
   });
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void dispose() {
+    super.dispose();
+    widget.presenter.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +36,7 @@ class LoginScreen extends StatelessWidget {
         elevation: 1,
       ),
       body: Builder(builder: (context) {
-        presenter.isLoadingStream.listen((isLoading) {
+        widget.presenter.isLoadingStream.listen((isLoading) {
           if (isLoading) {
             showDialog(
                 context: context,
@@ -52,7 +63,7 @@ class LoginScreen extends StatelessWidget {
           }
         });
 
-        presenter.mainErrorStream.listen((error) {
+        widget.presenter.mainErrorStream.listen((error) {
           // ignore: unnecessary_null_comparison
           if (error != null) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -88,19 +99,19 @@ class LoginScreen extends StatelessWidget {
                 child: Form(
                   child: Column(
                     children: [
-                      UserIdFormField(loginPresenter: presenter),
+                      UserIdFormField(loginPresenter: widget.presenter),
                       Padding(
                         padding: const EdgeInsets.only(top: 16, bottom: 30),
                         child: UserPasswordField(
-                          loginPresenter: presenter,
+                          loginPresenter: widget.presenter,
                         ),
                       ),
                       StreamBuilder<bool>(
-                          stream: presenter.isFormValidStream,
+                          stream: widget.presenter.isFormValidStream,
                           builder: (context, snapshot) {
                             return ElevatedButton(
                               onPressed: snapshot.data == true
-                                  ? presenter.authenticate
+                                  ? widget.presenter.authenticate
                                   : null,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context).primaryColor,
