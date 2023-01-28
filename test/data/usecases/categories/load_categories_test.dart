@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:service_desk_2/data/data.dart';
+import 'package:service_desk_2/domain/domain.dart';
 
 import '../../mocks/http_client.dart';
 
@@ -29,5 +30,19 @@ void main() {
     final future = await sut.load();
 
     expect(future, []);
+  });
+
+  test("should return categories on sucess", () async {
+    httpClient.mockGet(const HttpResponse(
+      statuscode: 200,
+      body: {
+        "categories": [
+          {"name": "first-category", "models": []}
+        ]
+      },
+    ));
+
+    var response = await sut.load();
+    expect(response, isInstanceOf<List<CategoryEntity>>());
   });
 }

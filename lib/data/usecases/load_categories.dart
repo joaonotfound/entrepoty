@@ -1,10 +1,6 @@
 import 'package:service_desk_2/domain/domain.dart';
 import '../http/http.dart';
 
-abstract class RequestResponse {
-  List<CategoryEntity> get categories;
-}
-
 class LoadCategories implements LoadCategoriesUsecase {
   final String url;
   final HttpClient httpClient;
@@ -17,16 +13,14 @@ class LoadCategories implements LoadCategoriesUsecase {
   Future<List<CategoryEntity>> load() async {
     try {
       var response = await httpClient.get(url: url);
-      if (response.body?.categories == null) return [];
+      if (response.body?["categories"] == null) return [];
 
-      return response.body?.categories.map(
-        (category) => CategoryEntity(
-          name: category["name"],
-          models: category["models"].map(
-            (model) => StockItemModelEntity(name: model.name),
-          ) as List<StockItemModelEntity>,
-        ),
-      );
+      List<CategoryEntity> categories =
+          (response.body?["categories"].cast() as List)
+              .map((category) => CategoryEntity.fromJson(category))
+              .toList();
+
+      return categories;
     } on HttpError catch (_) {
       return [];
     }
