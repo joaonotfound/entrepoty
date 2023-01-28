@@ -7,36 +7,46 @@ import 'package:service_desk_2/ui/screens/screens.dart';
 import '../data/mocks/validation_mock.dart';
 
 void main() {
-  late LoginPresenter loginPresenter;
+  late LoginPresenter sut;
   late MockValidation validator;
   String id = faker.guid.guid();
   String password = faker.internet.password();
   setUp(() {
     validator = MockValidation();
-    loginPresenter = StreamLoginPresenter(validator: validator);
+    sut = StreamLoginPresenter(validator: validator);
   });
   test("should call validate with correct values when validating id", () {
-    loginPresenter.validateId(id);
+    sut.validateId(id);
     verify(() => validator.validate(field: "id", value: id)).called(1);
   });
   test("should call validate with correct values when validating password", () {
-    loginPresenter.validatePassword(password);
+    sut.validatePassword(password);
     verify(() => validator.validate(field: "password", value: password))
         .called(1);
   });
   test("should emit error if id validation fails", () {
     validator.mockValidate("error");
 
-    expectLater(loginPresenter.idErrorStream, emits("error"));
+    expectLater(sut.idErrorStream, emits("error"));
 
-    loginPresenter.validateId(id);
+    sut.validateId(id);
   });
 
   test("should emit error if password validation fails", () {
     validator.mockValidate("error");
 
-    expectLater(loginPresenter.passwordErrorStream, emits("error"));
+    expectLater(sut.passwordErrorStream, emits("error"));
 
-    loginPresenter.validatePassword(password);
+    sut.validatePassword(password);
+  });
+
+  test("idErrorStream should not emit duplicated values", () {
+    validator.mockValidate("error");
+
+    sut.passwordErrorStream
+        .listen(expectAsync1((error) => expect(error, "error")));
+
+    sut.validatePassword(password);
+    sut.validatePassword(password);
   });
 }

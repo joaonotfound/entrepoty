@@ -25,20 +25,21 @@ class StreamLoginPresenter implements LoginPresenter {
 
   @override
   Stream<String?> get idErrorStream =>
-      _controller.stream.map((state) => state.emailState);
+      _controller.stream.map((state) => state.emailState).distinct();
 
   @override
   Stream<String?> get passwordErrorStream =>
-      _controller.stream.map((state) => state.passwordState);
+      _controller.stream.map((state) => state.passwordState).distinct();
 
   @override
   Stream<bool> get isFormValidStream => _isFormValidController.stream;
 
   @override
   Stream<bool> get isLoadingStream => _isLoadingController.stream;
+
   @override
   Stream<String?> get mainErrorStream =>
-      _controller.stream.map((state) => state.mainErrorState);
+      _controller.stream.map((state) => state.mainErrorState).distinct();
 
   @override
   void validateId(String id) {
