@@ -8,6 +8,8 @@ class LoginState {
   String? emailState;
   String? passwordState;
   String? mainErrorState;
+  bool get isFormValid =>
+      emailState == null && passwordState == null && mainErrorState == null;
 }
 
 class StreamLoginPresenter implements LoginPresenter {
@@ -18,9 +20,8 @@ class StreamLoginPresenter implements LoginPresenter {
   });
 
   final _loginState = LoginState();
-  final _controller = StreamController<LoginState>();
+  final _controller = StreamController<LoginState>.broadcast();
 
-  final _isFormValidController = StreamController<bool>.broadcast();
   final _isLoadingController = StreamController<bool>.broadcast();
 
   @override
@@ -32,7 +33,8 @@ class StreamLoginPresenter implements LoginPresenter {
       _controller.stream.map((state) => state.passwordState).distinct();
 
   @override
-  Stream<bool> get isFormValidStream => _isFormValidController.stream;
+  Stream<bool> get isFormValidStream =>
+      _controller.stream.map((state) => state.isFormValid).distinct();
 
   @override
   Stream<bool> get isLoadingStream => _isLoadingController.stream;

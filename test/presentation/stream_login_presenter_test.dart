@@ -45,6 +45,8 @@ void main() {
 
     sut.passwordErrorStream
         .listen(expectAsync1((error) => expect(error, "error")));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePassword(password);
     sut.validatePassword(password);
@@ -53,6 +55,8 @@ void main() {
     validator.mockValidate("error");
 
     sut.idErrorStream.listen(expectAsync1((error) => expect(error, "error")));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateId(id);
     sut.validateId(id);
