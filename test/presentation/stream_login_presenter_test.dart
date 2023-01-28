@@ -1,19 +1,27 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presenters/stream_login_presenter.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
-import '../data/mocks/validation_mock.dart';
+import '../data/mocks/mocks.dart';
 
 void main() {
   late LoginPresenter sut;
   late MockValidation validator;
+  late MockAuthentication authentication;
   String id = faker.guid.guid();
   String password = faker.internet.password();
   setUp(() {
     validator = MockValidation();
-    sut = StreamLoginPresenter(validator: validator);
+    authentication = MockAuthentication();
+    authentication.mockAuthenticate(
+        const Account(id: "", name: "", profilePictureUrl: ""));
+    sut = StreamLoginPresenter(
+      validator: validator,
+      authentication: authentication,
+    );
   });
   test("should call validate with correct values when validating id", () {
     sut.validateId(id);
@@ -60,5 +68,15 @@ void main() {
 
     sut.validateId(id);
     sut.validateId(id);
+  });
+  test('should call authentication with correct values', () {
+    sut.validateId(id);
+    sut.validatePassword(password);
+
+    sut.authenticate();
+
+    verify(
+      () => authentication.authenticate(id: id, password: password),
+    ).called(1);
   });
 }

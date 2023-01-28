@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockValidator extends Mock implements Validation {}
 
+class MockAuthentication extends Mock implements AuthenticationUsecase {}
+
 LoginPresenter makeLoginPresenter() {
-  return StreamLoginPresenter(validator: MockValidator());
+  return StreamLoginPresenter(
+      validator: MockValidator(), authentication: MockAuthentication());
 }
 
 class App extends StatelessWidget {
