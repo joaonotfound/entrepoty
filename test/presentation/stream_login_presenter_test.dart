@@ -13,7 +13,6 @@ void main() {
   String password = faker.internet.password();
   setUp(() {
     validator = MockValidation();
-    validator.mockValidate("response");
     loginPresenter = StreamLoginPresenter(validator: validator);
   });
   test("should call validate with correct values when validating id", () {
@@ -24,5 +23,12 @@ void main() {
     loginPresenter.validatePassword(password);
     verify(() => validator.validate(field: "password", value: password))
         .called(1);
+  });
+  test("should emit error if id validation fails", () {
+    validator.mockValidate("error");
+
+    expectLater(loginPresenter.idErrorStream, emits("error"));
+
+    loginPresenter.validateId(password);
   });
 }
