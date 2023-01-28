@@ -12,21 +12,24 @@ void main() {
   late MockHttpClient httpClient;
   String id = faker.guid.guid();
   String password = faker.internet.password();
-  Account validAccount = Account(
-      id: faker.guid.guid(),
-      name: faker.internet.userName(),
-      profilePictureUrl: faker.internet.httpUrl());
+
+  void mockPost() => httpClient.mockPost(HttpResponse(
+        statuscode: 200,
+        body: {
+          "account": {
+            "id": faker.guid.guid(),
+            "name": faker.internet.userName(),
+            "profile_url": faker.internet.httpUrl()
+          }
+        },
+      ));
+
   setUp(() {
     httpClient = MockHttpClient();
-    httpClient.mockPost(HttpResponse(statuscode: 200, body: {
-      "account": {
-        "id": validAccount.id,
-        "name": validAccount.name,
-        "profile_url": validAccount.profilePictureUrl,
-      }
-    }));
+    mockPost();
     sut = RemoteAuthentication(url: url, httpClient: httpClient);
   });
+
   test("Should call httpclient with correct values", () async {
     await sut.authenticate(id: id, password: password);
     verify(() => httpClient.post(url: url, body: {
