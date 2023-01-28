@@ -40,7 +40,7 @@ void main() {
     sut.validatePassword(password);
   });
 
-  test("idErrorStream should not emit duplicated values", () {
+  test("passwordErrorStream should not emit duplicated values", () {
     validator.mockValidate("error");
 
     sut.passwordErrorStream
@@ -48,5 +48,13 @@ void main() {
 
     sut.validatePassword(password);
     sut.validatePassword(password);
+  });
+  test("idErrorStream should not emit duplicated values", () {
+    validator.mockValidate("error");
+
+    sut.idErrorStream.listen(expectAsync1((error) => expect(error, "error")));
+
+    sut.validateId(id);
+    sut.validateId(id);
   });
 }
