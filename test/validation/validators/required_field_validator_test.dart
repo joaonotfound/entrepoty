@@ -13,4 +13,7 @@ void main() {
   test("should return error if value is empty", () {
     expect(sut.validate(""), "Campo obrigatório");
   });
+  test("should return null if valid value", () {
+    expect(sut.validate("any_value"), null);
+  });
 }
