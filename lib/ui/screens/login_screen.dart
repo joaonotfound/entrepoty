@@ -38,28 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Builder(builder: (context) {
         widget.presenter.isLoadingStream.listen((isLoading) {
           if (isLoading) {
-            showDialog(
-                context: context,
-                builder: (context) => SimpleDialog(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            CircularProgressIndicator(),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Se autenticando",
-                              textAlign: TextAlign.center,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                barrierDismissible: false);
-          } else if (Navigator.canPop(context)) {
-            Navigator.of(context).pop();
+            showLoading(context);
+          } else {
+            hideLoading(context);
           }
         });
 
