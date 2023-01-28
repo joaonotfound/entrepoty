@@ -79,4 +79,11 @@ void main() {
       () => authentication.authenticate(id: id, password: password),
     ).called(1);
   });
+  test('should emit is loading stream', () {
+    sut.validateId(id);
+    sut.validatePassword(password);
+
+    expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+    sut.authenticate();
+  });
 }

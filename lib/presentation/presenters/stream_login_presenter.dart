@@ -66,8 +66,10 @@ class StreamLoginPresenter implements LoginPresenter {
 
   @override
   void authenticate() {
+    _isLoadingController.add(true);
     authentication.authenticate(
         id: _loginState.id, password: _loginState.password);
+    _isLoadingController.add(false);
   }
 
   @override
