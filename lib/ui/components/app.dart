@@ -9,6 +9,7 @@ class StreamLoginPresenter extends LoginPresenter {
   final _passwordErrorController = StreamController<String>.broadcast();
   final _isFormValidController = StreamController<bool>.broadcast();
   final _isLoadingController = StreamController<bool>.broadcast();
+  final _mainErrorController = StreamController<String>.broadcast();
   @override
   Stream<String> get idErrorStream => _idErrorController.stream;
 
@@ -20,6 +21,8 @@ class StreamLoginPresenter extends LoginPresenter {
 
   @override
   Stream<bool> get isLoadingStream => _isLoadingController.stream;
+  @override
+  Stream<String> get mainErrorStream => _mainErrorController.stream;
 
   @override
   void validateId(String id) {}
