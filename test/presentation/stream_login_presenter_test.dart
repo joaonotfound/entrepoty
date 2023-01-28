@@ -29,6 +29,14 @@ void main() {
 
     expectLater(loginPresenter.idErrorStream, emits("error"));
 
-    loginPresenter.validateId(password);
+    loginPresenter.validateId(id);
+  });
+
+  test("should emit error if password validation fails", () {
+    validator.mockValidate("error");
+
+    expectLater(loginPresenter.passwordErrorStream, emits("error"));
+
+    loginPresenter.validatePassword(password);
   });
 }
