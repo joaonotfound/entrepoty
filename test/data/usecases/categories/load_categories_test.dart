@@ -6,8 +6,6 @@ import 'package:service_desk_2/domain/domain.dart';
 
 import '../../mocks/http_client.dart';
 
-enum DomainError { unexpected }
-
 void main() {
   late LoadCategories sut;
   late MockHttpClient httpClient;
