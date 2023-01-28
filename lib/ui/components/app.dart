@@ -34,6 +34,9 @@ class StreamLoginPresenter extends LoginPresenter {
   void authenticate() {
     _isLoadingController.add(true);
   }
+
+  @override
+  void dispose() {}
 }
 
 LoginPresenter makeLoginPresenter() {
