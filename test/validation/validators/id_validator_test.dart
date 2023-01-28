@@ -13,4 +13,7 @@ void main() {
   test("should return null if value is empty", () {
     expect(sut.validate(''), null);
   });
+  test("should return invalid id if value is invalid", () {
+    expect(sut.validate("invalid_id"), "matrícula inválida");
+  });
 }
