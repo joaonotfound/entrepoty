@@ -8,6 +8,9 @@ void main() {
     sut = const RequiredFieldValidator(field: 'any_field');
   });
   test("should return error if value is null", () {
-    expect(sut.validate(null), "Campo obrigatório.");
+    expect(sut.validate(null), "Campo obrigatório");
+  });
+  test("should return error if value is empty", () {
+    expect(sut.validate(""), "Campo obrigatório");
   });
 }

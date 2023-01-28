@@ -1,4 +1,4 @@
 abstract class Validator {
   String get field;
-  String validate(String? value);
+  String? validate(String? value);
 }

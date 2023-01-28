@@ -7,7 +7,7 @@ class RequiredFieldValidator implements Validator {
   });
 
   @override
-  String validate(String? value) {
-    return "Campo obrigatório.";
+  String? validate(String? value) {
+    return value == null || value.isEmpty == true ? "Campo obrigatório" : null;
   }
 }
