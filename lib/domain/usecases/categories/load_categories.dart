@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
+import 'package:service_desk_2/domain/domain.dart';
 
 abstract class LoadCategoriesUsecase {
-  Future<List<Category>> load();
+  Future<List<CategoryEntity>> load();
 }

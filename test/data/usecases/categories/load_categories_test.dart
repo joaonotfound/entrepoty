@@ -1,60 +1,31 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:service_desk_2/data/data.dart';
 
-enum HttpError {
-  badRequest,
-}
+import '../../mocks/http_client.dart';
 
 enum DomainError { unexpected }
 
-class HttpResponse<T extends Map> {
-  final int statuscode;
-  final T? body;
-  const HttpResponse({required this.statuscode, this.body});
-}
-
-abstract class HttpClient {
-  Future<HttpResponse>? get(String url);
-}
-
-class LoadCategories {
-  final String url;
-  final HttpClient httpClient;
-  const LoadCategories({
-    required this.url,
-    required this.httpClient,
-  });
-  Future<List> load() async {
-    try {
-      await httpClient.get(url);
-      return ["a"];
-    } on HttpError catch (_) {
-      return [];
-    }
-  }
-}
-
-class MockHttpClient extends Mock implements HttpClient {}
-
 void main() {
   late LoadCategories sut;
-  late HttpClient httpClient;
+  late MockHttpClient httpClient;
   String url = faker.internet.httpUrl();
 
   setUp(() {
     httpClient = MockHttpClient();
+    httpClient.mockGet(const HttpResponse(statuscode: 200));
     sut = LoadCategories(url: url, httpClient: httpClient);
   });
+
   test("should call httpClient with correct url", () async {
     await sut.load();
-
-    verify(httpClient.get(url)).called(1);
+    verify(() => httpClient.get(url: url)).called(1);
   });
+
   test("should return empty list if httpClient throws", () async {
-    when(httpClient.get(url)).thenAnswer((_) async {
-      throw HttpError.badRequest;
-    });
+    httpClient.mockGetError(HttpError.badRequest);
+
     final future = await sut.load();
 
     expect(future, []);
