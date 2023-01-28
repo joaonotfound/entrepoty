@@ -79,5 +79,8 @@ class StreamLoginPresenter implements LoginPresenter {
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    _controller.close();
+    _isLoadingController.close();
+  }
 }
