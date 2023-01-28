@@ -12,13 +12,17 @@ void main() {
   late MockHttpClient httpClient;
   String id = faker.guid.guid();
   String password = faker.internet.password();
+  Account validAccount = Account(
+      id: faker.guid.guid(),
+      name: faker.internet.userName(),
+      profilePictureUrl: faker.internet.httpUrl());
   setUp(() {
     httpClient = MockHttpClient();
     httpClient.mockPost(HttpResponse(statuscode: 200, body: {
       "account": {
-        "id": faker.guid.guid(),
-        "name": faker.internet.userName(),
-        "profile_url": faker.internet.httpUrl(),
+        "id": validAccount.id,
+        "name": validAccount.name,
+        "profile_url": validAccount.profilePictureUrl,
       }
     }));
     sut = RemoteAuthentication(url: url, httpClient: httpClient);
@@ -45,5 +49,9 @@ void main() {
     httpClient.mockPostError(HttpError.unexpected);
     var future = sut.authenticate(id: id, password: password);
     expect(future, throwsA(DomainError.unexpected));
+  });
+  test("Should return account on success", () async {
+    var response = await sut.authenticate(id: id, password: password);
+    expect(response, isInstanceOf<Account>());
   });
 }
