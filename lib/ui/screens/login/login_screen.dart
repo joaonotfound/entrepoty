@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: getLoginAppbarComponent(),
       body: Builder(builder: (context) {
         widget.presenter.isLoadingStream.listen((isLoading) {
-          if (isLoading) {
+          if (isLoading == true) {
             showLoading(context);
           } else {
             hideLoading(context);
@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
         });
 
         widget.presenter.mainErrorStream
-            .listen((error) => showErrorMessage(context, error));
+            ?.listen((error) => showErrorMessage(context, error));
 
         return Padding(
           padding: const EdgeInsets.symmetric(

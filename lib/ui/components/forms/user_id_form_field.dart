@@ -8,7 +8,7 @@ class UserIdFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<String>(
+    return StreamBuilder<String?>(
         stream: loginPresenter.idErrorStream,
         builder: (context, snapshot) {
           return TextFormField(
