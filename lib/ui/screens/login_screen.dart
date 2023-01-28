@@ -24,58 +24,86 @@ class LoginScreen extends StatelessWidget {
         toolbarHeight: 80,
         elevation: 1,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 30,
-          vertical: 10,
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 40,
-              child: Center(
-                child: Icon(
-                  Icons.account_circle_sharp,
-                  size: MediaQuery.of(context).size.height * 0.15,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 60,
-              child: Form(
-                child: Column(
-                  children: [
-                    UserIdFormField(loginPresenter: presenter),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16, bottom: 30),
-                      child: UserPasswordField(
-                        loginPresenter: presenter,
-                      ),
-                    ),
-                    StreamBuilder<bool>(
-                        stream: presenter.isFormValidStream,
-                        builder: (context, snapshot) {
-                          return ElevatedButton(
-                            onPressed: snapshot.data == true
-                                ? presenter.authenticate
-                                : null,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Theme.of(context).primaryColor,
-                              minimumSize: const Size(double.infinity, 50),
-                              textStyle: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
+      body: Builder(builder: (context) {
+        presenter.isLoadingStream.listen((isLoading) {
+          if (isLoading) {
+            showDialog(
+                context: context,
+                builder: (context) => SimpleDialog(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            CircularProgressIndicator(),
+                            SizedBox(
+                              height: 10,
                             ),
-                            child: const Text("Entrar"),
-                          );
-                        })
-                  ],
+                            Text(
+                              "Se autenticando",
+                              textAlign: TextAlign.center,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                barrierDismissible: false);
+          } else if (Navigator.canPop(context)) {
+            Navigator.of(context).pop();
+          }
+        });
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
+            vertical: 10,
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 40,
+                child: Center(
+                  child: Icon(
+                    Icons.account_circle_sharp,
+                    size: MediaQuery.of(context).size.height * 0.15,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ),
-            )
-          ],
-        ),
-      ),
+              Expanded(
+                flex: 60,
+                child: Form(
+                  child: Column(
+                    children: [
+                      UserIdFormField(loginPresenter: presenter),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16, bottom: 30),
+                        child: UserPasswordField(
+                          loginPresenter: presenter,
+                        ),
+                      ),
+                      StreamBuilder<bool>(
+                          stream: presenter.isFormValidStream,
+                          builder: (context, snapshot) {
+                            return ElevatedButton(
+                              onPressed: snapshot.data == true
+                                  ? presenter.authenticate
+                                  : null,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Theme.of(context).primaryColor,
+                                minimumSize: const Size(double.infinity, 50),
+                                textStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                              child: const Text("Entrar"),
+                            );
+                          })
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      }),
     );
   }
 }

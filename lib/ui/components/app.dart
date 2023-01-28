@@ -5,10 +5,10 @@ import 'package:service_desk_2/ui/screens/screens.dart';
 // ignore: depend_on_referenced_packages
 
 class StreamLoginPresenter extends LoginPresenter {
-  final _idErrorController = StreamController<String>();
-  final _passwordErrorController = StreamController<String>();
-  final _isFormValidController = StreamController<bool>();
-  final _isLoadingController = StreamController<bool>();
+  final _idErrorController = StreamController<String>.broadcast();
+  final _passwordErrorController = StreamController<String>.broadcast();
+  final _isFormValidController = StreamController<bool>.broadcast();
+  final _isLoadingController = StreamController<bool>.broadcast();
   @override
   Stream<String> get idErrorStream => _idErrorController.stream;
 
@@ -28,7 +28,9 @@ class StreamLoginPresenter extends LoginPresenter {
   void validatePassword(String password) {}
 
   @override
-  void authenticate() {}
+  void authenticate() {
+    _isLoadingController.add(true);
+  }
 }
 
 LoginPresenter makeLoginPresenter() {
