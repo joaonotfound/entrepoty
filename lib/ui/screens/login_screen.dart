@@ -51,6 +51,21 @@ class LoginScreen extends StatelessWidget {
             Navigator.of(context).pop();
           }
         });
+
+        presenter.mainErrorStream.listen((error) {
+          // ignore: unnecessary_null_comparison
+          if (error != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.red[900],
+                content: Text(
+                  error,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
+          }
+        });
         return Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 30,
