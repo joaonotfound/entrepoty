@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
+import './components/login_appbar_component.dart';
+import './components/login_submit_button.dart';
+
 class LoginScreen extends StatefulWidget {
   final LoginPresenter presenter;
   const LoginScreen({
@@ -23,18 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFE8EBF3),
-      appBar: AppBar(
-        flexibleSpace: const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Image(
-            image: AssetImage("lib/ui/assets/logo_light.png"),
-            fit: BoxFit.contain,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        toolbarHeight: 80,
-        elevation: 1,
-      ),
+      appBar: getLoginAppbarComponent(),
       body: Builder(builder: (context) {
         widget.presenter.isLoadingStream.listen((isLoading) {
           if (isLoading) {
@@ -46,6 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         widget.presenter.mainErrorStream
             .listen((error) => showErrorMessage(context, error));
+
         return Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 30,
@@ -75,22 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           loginPresenter: widget.presenter,
                         ),
                       ),
-                      StreamBuilder<bool>(
-                          stream: widget.presenter.isFormValidStream,
-                          builder: (context, snapshot) {
-                            return ElevatedButton(
-                              onPressed: snapshot.data == true
-                                  ? widget.presenter.authenticate
-                                  : null,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context).primaryColor,
-                                minimumSize: const Size(double.infinity, 50),
-                                textStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              child: const Text("Entrar"),
-                            );
-                          })
+                      getLoginSubmitButton(widget.presenter)
                     ],
                   ),
                 ),
