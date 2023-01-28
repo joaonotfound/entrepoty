@@ -7,12 +7,15 @@ import 'package:service_desk_2/ui/screens/screens.dart';
 class StreamLoginPresenter extends LoginPresenter {
   final _idErrorController = StreamController<String>();
   final _passwordErrorController = StreamController<String>();
-
+  final _isFormValidController = StreamController<bool>();
   @override
   Stream<String> get idErrorStream => _idErrorController.stream;
 
   @override
   Stream<String> get passwordErrorStream => _passwordErrorController.stream;
+
+  @override
+  Stream<bool> get isFormValidStream => _isFormValidController.stream;
 
   @override
   void validateId(String id) {}
