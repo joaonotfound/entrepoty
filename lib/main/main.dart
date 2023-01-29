@@ -4,7 +4,7 @@ import 'package:service_desk_2/main/factories/factories.dart';
 
 import 'package:service_desk_2/ui/components/app_theme.dart';
 
-void main() {
+void startApp() {
   runApp(const App());
 }
 
