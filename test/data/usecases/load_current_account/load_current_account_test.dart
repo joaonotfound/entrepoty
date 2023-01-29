@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:service_desk_2/data/usecases/usecases.dart';
+import 'package:service_desk_2/domain/entities/authentication/authentication.dart';
 import 'package:service_desk_2/domain/errors/domain_errors.dart';
 
 import '../../../mocks/mocks.dart';
@@ -11,7 +12,7 @@ void main() {
 
   setUp(() {
     loadSecureCacheStorage = MockLoadSecureCacheStorage();
-    loadSecureCacheStorage.mockLoadSecure('');
+    loadSecureCacheStorage.mockLoadSecure('any-token');
     sut =
         LocalLoadCurrentAccount(loadSecureCacheStorage: loadSecureCacheStorage);
   });
@@ -24,6 +25,10 @@ void main() {
       loadSecureCacheStorage.mockLoadError(Exception());
       var future = sut.load();
       expect(future, throwsA(DomainError.unexpected));
+    });
+    test("should return tokenAccount on sucess", () async {
+      var account = await sut.load();
+      expect(account, isInstanceOf<TokenAccount>());
     });
   });
 }

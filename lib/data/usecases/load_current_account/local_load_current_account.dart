@@ -9,9 +9,10 @@ class LocalLoadCurrentAccount implements LoadCurrentAccountUsecase {
   });
 
   @override
-  Future<Account?> load() async {
+  Future<TokenAccount?> load() async {
     try {
       var token = await loadSecureCacheStorage.loadSecure(key: "token");
+      return TokenAccount(token: token);
     } catch (_) {
       throw DomainError.unexpected;
     }
