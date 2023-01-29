@@ -8,6 +8,10 @@ class LocalSaveCurrentAccount implements SaveCurrentAccountUsecase {
   });
   @override
   Future<void> saveAccount({required Account account}) async {
-    saveSecureCacheStorage.saveSecure(key: "token", value: account.token);
+    try {
+      saveSecureCacheStorage.saveSecure(key: "token", value: account.token);
+    } catch (_) {
+      throw DomainError.unexpected;
+    }
   }
 }

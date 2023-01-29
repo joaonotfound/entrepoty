@@ -7,4 +7,5 @@ class MockSaveSecureCacheStorage extends Mock
       () => saveSecure(key: any(named: "key"), value: any(named: "value")));
   void mockSaveSecure(dynamic data) =>
       _mockSaveSecureCall().thenAnswer((invocation) async => data);
+  void mockSaveError(dynamic except) => _mockSaveSecureCall().thenThrow(except);
 }

@@ -28,7 +28,15 @@ void main() {
 
   test("should call saveSecureCacheStorage with correct values", () {
     sut.saveAccount(account: account);
+
     verify(() => saveSecureCacheStorage.saveSecure(
         key: "token", value: account.token)).called(1);
+  });
+  test("should throw unexpected error if saveSecureCacheStorage throws", () {
+    saveSecureCacheStorage.mockSaveError(Exception());
+
+    var future = sut.saveAccount(account: account);
+
+    expectLater(future, throwsA(DomainError.unexpected));
   });
 }
