@@ -1,4 +1,4 @@
-import 'package:service_desk_2/validation/validator.dart';
+import 'package:service_desk_2/validation/validators/validator.dart';
 
 class IdValidator implements Validator {
   @override

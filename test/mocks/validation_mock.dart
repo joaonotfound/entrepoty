@@ -1,6 +1,5 @@
 import 'package:mocktail/mocktail.dart';
 import 'package:service_desk_2/presentation/protocols/validation.dart';
-import 'package:service_desk_2/validation/validator.dart';
 
 class MockValidation extends Mock implements Validation {
   When _mockValidateCall() => when(

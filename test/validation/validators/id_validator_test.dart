@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:service_desk_2/validation/validator.dart';
-import 'package:service_desk_2/validation/validators/validators.dart';
+import 'package:service_desk_2/validation/validation.dart';
 
 void main() {
   late Validator sut;
