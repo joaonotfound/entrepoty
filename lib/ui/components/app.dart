@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
+import 'package:service_desk_2/ui/components/app_theme.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -16,7 +17,6 @@ LoginPresenter makeLoginPresenter() {
 }
 
 class App extends StatelessWidget {
-  final primaryColor = const Color(0xFF414BB2);
   const App({super.key});
 
   @override
@@ -24,16 +24,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: "SD",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        textTheme: TextTheme(
-          headline1: TextStyle(
-            color: primaryColor,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      theme: makeAppTheme(),
       home: SafeArea(
         child: LoginScreen(
           presenter: makeLoginPresenter(),
