@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:service_desk_2/data/data.dart';
 import 'package:service_desk_2/domain/domain.dart';
 
-import '../../mocks/http_client.dart';
+import '../../../mocks/http_client.dart';
 
 void main() {
   late RemoteAuthentication sut;

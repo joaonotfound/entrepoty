@@ -5,7 +5,7 @@ import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presenters/stream_login_presenter.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
-import '../data/mocks/mocks.dart';
+import '../mocks/mocks.dart';
 
 void main() {
   late LoginPresenter sut;

@@ -4,7 +4,9 @@ import 'package:service_desk_2/presentation/presentation.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockValidator extends Mock implements Validation {}
+class MockValidator extends Mock implements Validation {
+  get field => null;
+}
 
 class MockAuthentication extends Mock implements AuthenticationUsecase {}
 
