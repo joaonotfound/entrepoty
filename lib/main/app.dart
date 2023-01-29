@@ -20,6 +20,8 @@ class App extends StatelessWidget {
       initialRoute: "/login",
       getPages: [
         GetPage(name: "/login", page: makeLoginScreen),
+        GetPage(
+            name: "/stock", page: () => Scaffold(body: Text("Stock screen!")))
       ],
     );
   }

@@ -105,6 +105,15 @@ void main() {
 
       sut.authenticate();
     });
+    test('should emit navigateToStream to stocks screen', () {
+      sut.validateId(id);
+      sut.validatePassword(password);
+
+      sut.navigateToStream
+          .listen(expectAsync1((page) => expect(page, "/stocks")));
+
+      sut.authenticate();
+    });
 
     test(
         "should emit correct main error if authenctation throws invalidCredentials",
