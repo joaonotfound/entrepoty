@@ -25,18 +25,19 @@ void main() {
       saveSecureCacheStorage: saveSecureCacheStorage,
     );
   });
+  group("LocalSaveCurrentAccount", () {
+    test("should call saveSecureCacheStorage with correct values", () {
+      sut.saveAccount(account: account);
 
-  test("should call saveSecureCacheStorage with correct values", () {
-    sut.saveAccount(account: account);
+      verify(() => saveSecureCacheStorage.saveSecure(
+          key: "token", value: account.token)).called(1);
+    });
+    test("should throw unexpected error if saveSecureCacheStorage throws", () {
+      saveSecureCacheStorage.mockSaveError(Exception());
 
-    verify(() => saveSecureCacheStorage.saveSecure(
-        key: "token", value: account.token)).called(1);
-  });
-  test("should throw unexpected error if saveSecureCacheStorage throws", () {
-    saveSecureCacheStorage.mockSaveError(Exception());
+      var future = sut.saveAccount(account: account);
 
-    var future = sut.saveAccount(account: account);
-
-    expectLater(future, throwsA(DomainError.unexpected));
+      expectLater(future, throwsA(DomainError.unexpected));
+    });
   });
 }

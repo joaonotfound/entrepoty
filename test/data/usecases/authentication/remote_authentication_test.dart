@@ -31,32 +31,33 @@ void main() {
     mockPost();
     sut = RemoteAuthentication(url: url, httpClient: httpClient);
   });
-
-  test("Should call httpclient with correct values", () async {
-    await sut.authenticate(id: id, password: password);
-    verify(() => httpClient.post(url: url, body: {
-          "id": id,
-          "password": password,
-        })).called(1);
-  });
-  test("Should throw invalidCredentials if httpclient throws badrequest",
-      () async {
-    httpClient.mockPostError(HttpError.badRequest);
-    var future = sut.authenticate(id: id, password: password);
-    expect(future, throwsA(DomainError.invalidCredentials));
-  });
-  test("Should throw invalidCredentials if httpclient throws", () async {
-    httpClient.mockPostError(HttpError.badRequest);
-    var future = sut.authenticate(id: id, password: password);
-    expect(future, throwsA(DomainError.invalidCredentials));
-  });
-  test("Should throw unexpected if httpclient throws", () async {
-    httpClient.mockPostError(HttpError.unexpected);
-    var future = sut.authenticate(id: id, password: password);
-    expect(future, throwsA(DomainError.unexpected));
-  });
-  test("Should return account on success", () async {
-    var response = await sut.authenticate(id: id, password: password);
-    expect(response, isInstanceOf<Account>());
+  group("RemoteAuthentication", () {
+    test("Should call httpclient with correct values", () async {
+      await sut.authenticate(id: id, password: password);
+      verify(() => httpClient.post(url: url, body: {
+            "id": id,
+            "password": password,
+          })).called(1);
+    });
+    test("Should throw invalidCredentials if httpclient throws badrequest",
+        () async {
+      httpClient.mockPostError(HttpError.badRequest);
+      var future = sut.authenticate(id: id, password: password);
+      expect(future, throwsA(DomainError.invalidCredentials));
+    });
+    test("Should throw invalidCredentials if httpclient throws", () async {
+      httpClient.mockPostError(HttpError.badRequest);
+      var future = sut.authenticate(id: id, password: password);
+      expect(future, throwsA(DomainError.invalidCredentials));
+    });
+    test("Should throw unexpected if httpclient throws", () async {
+      httpClient.mockPostError(HttpError.unexpected);
+      var future = sut.authenticate(id: id, password: password);
+      expect(future, throwsA(DomainError.unexpected));
+    });
+    test("Should return account on success", () async {
+      var response = await sut.authenticate(id: id, password: password);
+      expect(response, isInstanceOf<Account>());
+    });
   });
 }

@@ -17,31 +17,32 @@ void main() {
     httpClient.mockGet(const HttpResponse(statuscode: 200));
     sut = LoadCategories(url: url, httpClient: httpClient);
   });
+  group("LoadCategories", () {
+    test("should call httpClient with correct url", () async {
+      await sut.load();
+      verify(() => httpClient.get(url: url)).called(1);
+    });
 
-  test("should call httpClient with correct url", () async {
-    await sut.load();
-    verify(() => httpClient.get(url: url)).called(1);
-  });
+    test("should return empty list if httpClient throws", () async {
+      httpClient.mockGetError(HttpError.badRequest);
 
-  test("should return empty list if httpClient throws", () async {
-    httpClient.mockGetError(HttpError.badRequest);
+      final future = await sut.load();
 
-    final future = await sut.load();
+      expect(future, []);
+    });
 
-    expect(future, []);
-  });
+    test("should return categories on sucess", () async {
+      httpClient.mockGet(const HttpResponse(
+        statuscode: 200,
+        body: {
+          "categories": [
+            {"name": "first-category", "models": []}
+          ]
+        },
+      ));
 
-  test("should return categories on sucess", () async {
-    httpClient.mockGet(const HttpResponse(
-      statuscode: 200,
-      body: {
-        "categories": [
-          {"name": "first-category", "models": []}
-        ]
-      },
-    ));
-
-    var response = await sut.load();
-    expect(response, isInstanceOf<List<CategoryEntity>>());
+      var response = await sut.load();
+      expect(response, isInstanceOf<List<CategoryEntity>>());
+    });
   });
 }

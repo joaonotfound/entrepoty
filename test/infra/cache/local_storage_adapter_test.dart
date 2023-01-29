@@ -13,17 +13,20 @@ void main() {
     secureStorage.mockWrite(null);
     sut = LocalStorageAdapter(secureStorage: secureStorage);
   });
-  test("should call save secure with correct values", () async {
-    await sut.saveSecure(key: "any-key", value: "any-value");
+  group("LocalStorageAdapter", () {
+    test("should call save secure with correct values", () async {
+      await sut.saveSecure(key: "any-key", value: "any-value");
 
-    verify(() => secureStorage.write(key: "any-key", value: "any-value"))
-        .called(1);
-  });
-  test("should throw DomainError.unexpected if secureStorage throws", () async {
-    secureStorage.mockWriteError(Exception());
+      verify(() => secureStorage.write(key: "any-key", value: "any-value"))
+          .called(1);
+    });
+    test("should throw DomainError.unexpected if secureStorage throws",
+        () async {
+      secureStorage.mockWriteError(Exception());
 
-    var future = sut.saveSecure(key: "any-key", value: "any-value");
+      var future = sut.saveSecure(key: "any-key", value: "any-value");
 
-    expect(future, throwsA(DomainError.unexpected));
+      expect(future, throwsA(DomainError.unexpected));
+    });
   });
 }
