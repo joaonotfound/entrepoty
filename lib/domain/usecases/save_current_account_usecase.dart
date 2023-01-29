@@ -1,4 +1,4 @@
-import '../../../domain/domain.dart';
+import '../domain.dart';
 
 abstract class SaveCurrentAccountUsecase {
   Future<void> saveAccount({
