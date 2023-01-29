@@ -1,5 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import 'package:service_desk_2/data/data.dart';
+import 'package:service_desk_2/domain/domain.dart';
 
 class LocalStorageAdapter implements SaveSecureCacheStorage {
   final FlutterSecureStorage secureStorage;
@@ -10,6 +12,10 @@ class LocalStorageAdapter implements SaveSecureCacheStorage {
 
   @override
   Future<void> saveSecure({required String key, required String value}) async {
-    secureStorage.write(key: key, value: value);
+    try {
+      secureStorage.write(key: key, value: value);
+    } catch (_) {
+      throw DomainError.unexpected;
+    }
   }
 }

@@ -1,6 +1,6 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/infra/infra.dart';
 
 import '../../mocks/mocks.dart';
@@ -15,7 +15,15 @@ void main() {
   });
   test("should call save secure with correct values", () async {
     await sut.saveSecure(key: "any-key", value: "any-value");
+
     verify(() => secureStorage.write(key: "any-key", value: "any-value"))
         .called(1);
+  });
+  test("should throw DomainError.unexpected if secureStorage throws", () async {
+    secureStorage.mockWriteError(Exception());
+
+    var future = sut.saveSecure(key: "any-key", value: "any-value");
+
+    expect(future, throwsA(DomainError.unexpected));
   });
 }
