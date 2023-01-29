@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/main/factories/factories.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import '../../factories.dart';
+import '../../../../ui/ui.dart';
 
 Widget makeLoginScreen() {
   var loginPresenter = makeGetxLoginPresenter();

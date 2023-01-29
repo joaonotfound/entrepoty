@@ -1,9 +1,10 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
 import 'package:service_desk_2/domain/domain.dart';
-import 'package:service_desk_2/presentation/presenters/stream_login_presenter.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:service_desk_2/presentation/presentation.dart';
+import 'package:service_desk_2/ui/ui.dart';
 
 import '../mocks/mocks.dart';
 

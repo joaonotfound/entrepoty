@@ -1,4 +1,4 @@
-import 'package:service_desk_2/validation/validators/validator.dart';
+import '../../validation/validation.dart';
 
 class RequiredFieldValidator implements Validator {
   @override

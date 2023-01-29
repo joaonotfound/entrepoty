@@ -1,5 +1,5 @@
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/validation/validation.dart';
+import '../../presentation/presentation.dart';
+import '../../validation/validation.dart';
 
 class ValidationComposite extends Validation {
   final List<Validator> validators;

@@ -1,5 +1,5 @@
-import 'package:service_desk_2/data/data.dart';
-import 'package:service_desk_2/domain/domain.dart';
+import '../../data.dart';
+import '../../../domain/domain.dart';
 
 class RemoteAuthentication implements AuthenticationUsecase {
   final String url;

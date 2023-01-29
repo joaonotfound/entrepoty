@@ -1,6 +1,6 @@
-import 'package:service_desk_2/main/factories/factories.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/ui.dart';
+import '../../../../main/main.dart';
+import '../../../../presentation/presentation.dart';
+import '../../../../ui/ui.dart';
 
 LoginPresenter makeStreamLoginPresenter() {
   return StreamLoginPresenter(

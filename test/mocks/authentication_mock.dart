@@ -1,4 +1,5 @@
 import 'package:mocktail/mocktail.dart';
+
 import 'package:service_desk_2/domain/domain.dart';
 
 class MockAuthentication extends Mock implements AuthenticationUsecase {

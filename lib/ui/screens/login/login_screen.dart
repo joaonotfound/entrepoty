@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/ui/ui.dart';
-
-import './components/components.dart';
+import '../../../ui/ui.dart';
 
 class LoginScreen extends StatefulWidget {
   final LoginPresenter presenter;
