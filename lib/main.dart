@@ -1,4 +1,4 @@
-import './main/main.dart';
+import 'main/main.dart';
 
 void main() {
   startApp();

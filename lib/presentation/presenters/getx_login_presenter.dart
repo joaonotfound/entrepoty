@@ -1,11 +1,11 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:async';
-
 import 'package:get/get.dart';
-import 'package:service_desk_2/domain/domain.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+
+import '../../domain/domain.dart';
+import '../../presentation/presentation.dart';
+import '../../ui/ui.dart';
 
 class GetxLoginPresenter extends GetxController implements LoginPresenter {
   final Validation validator;

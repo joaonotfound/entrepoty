@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
-import './components/login_appbar_component.dart';
-import './components/login_submit_button.dart';
+import './components/components.dart';
 
 class LoginScreen extends StatefulWidget {
   final LoginPresenter presenter;

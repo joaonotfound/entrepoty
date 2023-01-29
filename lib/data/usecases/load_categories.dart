@@ -1,4 +1,4 @@
-import 'package:service_desk_2/domain/domain.dart';
+import '../../domain/domain.dart';
 import '../http/http.dart';
 
 class LoadCategories implements LoadCategoriesUsecase {

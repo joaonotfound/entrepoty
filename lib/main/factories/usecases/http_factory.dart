@@ -1,8 +1,6 @@
-import 'dart:io';
-
-import 'package:flutter/rendering.dart';
-import 'package:service_desk_2/data/http/http_client.dart';
 import 'package:mocktail/mocktail.dart';
+
+import '../../../data/data.dart';
 
 //todo: implements httpclient
 class MockHttpClient extends Mock implements HttpClient {}

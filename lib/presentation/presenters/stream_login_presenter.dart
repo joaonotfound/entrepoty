@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:service_desk_2/domain/domain.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import '../../domain/domain.dart';
+import '../../presentation/presentation.dart';
+import '../../ui/ui.dart';
 
 class LoginState {
   String? idState;

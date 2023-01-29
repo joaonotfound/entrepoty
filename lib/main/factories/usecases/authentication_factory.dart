@@ -1,8 +1,8 @@
-import 'package:service_desk_2/data/usecases/usecases.dart';
-import 'package:service_desk_2/domain/domain.dart';
-import 'package:service_desk_2/main/factories/factories.dart';
-
 import 'package:faker/faker.dart';
+
+import '../../../data/data.dart';
+import '../../../domain/domain.dart';
+import '../../main.dart';
 
 AuthenticationUsecase makeRemoteAuthentication() {
   return RemoteAuthentication(

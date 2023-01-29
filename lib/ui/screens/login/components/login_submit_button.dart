@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import '../../../../ui/ui.dart';
 
 StreamBuilder<bool> getLoginSubmitButton(LoginPresenter presenter) {
   return StreamBuilder<bool>(

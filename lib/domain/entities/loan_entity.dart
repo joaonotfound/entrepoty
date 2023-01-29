@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'stock_item_entity.dart';
 
 class LoanStockItemEntity extends StockItemEntity {
-  final Int quantity;
+  final int quantity;
   const LoanStockItemEntity({
     required this.quantity,
     required super.description,
