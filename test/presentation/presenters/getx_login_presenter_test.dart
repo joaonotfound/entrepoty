@@ -6,22 +6,35 @@ import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
-import '../mocks/mocks.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   late LoginPresenter sut;
   late MockValidation validator;
   late MockAuthentication authentication;
+  late MockLocalSaveCurrentAccount saveCurrentAccount;
+
+  Account validAccount =
+      Account(token: "", id: "", name: "", profilePictureUrl: "");
   String id = faker.guid.guid();
   String password = faker.internet.password();
+
   setUp(() {
+    registerFallbackValue(validAccount);
+
+    validator = MockValidation();
+
+    saveCurrentAccount = MockLocalSaveCurrentAccount();
+    saveCurrentAccount.mockSave(null);
+
     validator = MockValidation();
     authentication = MockAuthentication();
-    authentication.mockAuthenticate(
-        const Account(token: "", id: "", name: "", profilePictureUrl: ""));
-    sut = StreamLoginPresenter(
+    authentication.mockAuthenticate(validAccount);
+
+    sut = GetxLoginPresenter(
       validator: validator,
       authentication: authentication,
+      saveCurrentAccount: saveCurrentAccount,
     );
   });
   test("should call validate with correct values when validating id", () {
@@ -80,6 +93,7 @@ void main() {
       () => authentication.authenticate(id: id, password: password),
     ).called(1);
   });
+
   test('should emit is loading stream', () {
     sut.validateId(id);
     sut.validatePassword(password);
@@ -101,13 +115,25 @@ void main() {
 
     sut.authenticate();
   });
-  test("should emit correct main error if authenctation throws unexpected", () {
+  test("should emit correct main error if authentication throws unexpected",
+      () {
     authentication.mockAuthenticateError(DomainError.unexpected);
     sut.validateId(id);
     sut.validatePassword(password);
 
     sut.mainErrorStream.listen(expectAsync1((error) =>
         expect(error, "Algo deu errado, tente novamente em breve.")));
+
+    sut.authenticate();
+  });
+  test("should emit correct main error if saveCurrentAccount throws unexpected",
+      () {
+    saveCurrentAccount.mockSaveError(Exception());
+    sut.validateId(id);
+    sut.validatePassword(password);
+
+    sut.mainErrorStream.listen(expectAsync1(
+        (error) => expect(error, "Um error Inesperado aconteceu.")));
 
     sut.authenticate();
   });

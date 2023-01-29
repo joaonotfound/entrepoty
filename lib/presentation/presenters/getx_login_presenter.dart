@@ -10,10 +10,11 @@ import '../../ui/ui.dart';
 class GetxLoginPresenter extends GetxController implements LoginPresenter {
   final Validation validator;
   final AuthenticationUsecase authentication;
-
+  final SaveCurrentAccountUsecase saveCurrentAccount;
   GetxLoginPresenter({
     required this.validator,
     required this.authentication,
+    required this.saveCurrentAccount,
   });
 
   final _idError = RxString('');
@@ -66,13 +67,14 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   Future<void> authenticate() async {
     _isLoading.value = true;
     try {
-      await authentication.authenticate(id: _id, password: _password);
+      final account =
+          await authentication.authenticate(id: _id, password: _password);
+      await saveCurrentAccount.saveAccount(account: account);
     } on DomainError catch (error) {
       _mainError.value = error.description;
+    } catch (error) {
+      _mainError.value = "Um error Inesperado aconteceu.";
     }
     _isLoading.value = false;
   }
-
-  @override
-  void dispose() {}
 }
