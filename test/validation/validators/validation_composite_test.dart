@@ -41,8 +41,15 @@ void main() {
   test("should call all validators", () {
     when(() => validator1.field).thenReturn("any_field");
     when(() => validator2.field).thenReturn("any_field");
-    var response = sut.validate(field: "any_field", value: "value");
+    sut.validate(field: "any_field", value: "value");
     verify(() => validator1.validate("value")).called(1);
+    verify(() => validator2.validate("value")).called(1);
+  });
+  test("should only call the corrects validators", () {
+    when(() => validator1.field).thenReturn("ignore_this_validator");
+    when(() => validator2.field).thenReturn("any_field");
+    sut.validate(field: "any_field", value: "value");
+    verifyNever(() => validator1.validate("value"));
     verify(() => validator2.validate("value")).called(1);
   });
   test("should return the first error", () {
