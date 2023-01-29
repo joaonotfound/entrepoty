@@ -12,8 +12,7 @@ class LoginState {
   String password = '';
 
   String? mainErrorState;
-  bool get isFormValid =>
-      idState == null && passwordState == null && mainErrorState == null;
+  bool get isFormValid => idState == null && passwordState == null;
 }
 
 class StreamLoginPresenter implements LoginPresenter {
@@ -46,7 +45,7 @@ class StreamLoginPresenter implements LoginPresenter {
 
   @override
   Stream<String?> get mainErrorStream =>
-      _controller.stream.map((state) => state.mainErrorState).distinct();
+      _controller.stream.map((state) => state.mainErrorState);
 
   @override
   void validateId(String id) {
@@ -64,16 +63,15 @@ class StreamLoginPresenter implements LoginPresenter {
   }
 
   @override
-  void authenticate() {
+  Future<void> authenticate() async {
     _isLoadingController.add(true);
     try {
-      authentication.authenticate(
+      await authentication.authenticate(
           id: _loginState.id, password: _loginState.password);
     } on DomainError catch (error) {
       _loginState.mainErrorState = error.description;
       _controller.add(_loginState);
     }
-
     _isLoadingController.add(false);
   }
 
