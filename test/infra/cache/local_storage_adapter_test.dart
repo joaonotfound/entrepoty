@@ -11,6 +11,7 @@ void main() {
   setUp(() {
     secureStorage = MockFlutterSecureStorage();
     secureStorage.mockWrite(null);
+    secureStorage.mockRead(null);
     sut = LocalStorageAdapter(secureStorage: secureStorage);
   });
   group("LocalStorageAdapter", () {
@@ -19,6 +20,11 @@ void main() {
 
       verify(() => secureStorage.write(key: "any-key", value: "any-value"))
           .called(1);
+    });
+    test("should call load with correct values", () async {
+      await sut.loadSecure(key: "any-key");
+
+      verify(() => secureStorage.read(key: "any-key")).called(1);
     });
     test("should throw DomainError.unexpected if secureStorage throws",
         () async {

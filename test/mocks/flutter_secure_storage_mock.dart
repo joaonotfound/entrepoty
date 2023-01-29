@@ -7,4 +7,9 @@ class MockFlutterSecureStorage extends Mock implements FlutterSecureStorage {
   void mockWrite(dynamic data) =>
       _mockWriteCall().thenAnswer((invocation) async => data);
   void mockWriteError(dynamic error) => _mockWriteCall().thenThrow(error);
+
+  When _mockReadCall() => when(() => read(key: any(named: "key")));
+  void mockRead(String? data) =>
+      _mockReadCall().thenAnswer((invocation) async => data);
+  void mockReadError(dynamic error) => _mockReadCall().thenThrow(error);
 }
