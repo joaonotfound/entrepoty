@@ -1,3 +1,3 @@
 abstract class LoadSecureCacheStorage {
-  Future<String> loadSecure({required String key});
+  Future<String?> loadSecure({required String key});
 }
