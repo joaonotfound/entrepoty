@@ -1,3 +1,3 @@
 export './usecases/usecases.dart';
-export './entities/entitites.dart';
+export 'entities/entities.dart';
 export './errors/errors.dart';
