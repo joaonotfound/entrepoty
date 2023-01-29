@@ -2,7 +2,7 @@ import '../../presentation/presentation.dart';
 import '../../validation/validation.dart';
 
 class ValidationComposite extends Validation {
-  final List<Validator> validators;
+  final List<FormFieldValidator> validators;
   ValidationComposite({
     required this.validators,
   });

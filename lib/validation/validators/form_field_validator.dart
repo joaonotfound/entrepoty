@@ -1,4 +1,4 @@
-abstract class Validator {
+abstract class FormFieldValidator {
   String get field;
   String? validate(String? value);
 }

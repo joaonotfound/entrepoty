@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:service_desk_2/validation/validation.dart';
 
 void main() {
-  late Validator sut;
+  late FormFieldValidator sut;
   setUp(() {
     sut = const IdValidator(field: "any_field");
   });
