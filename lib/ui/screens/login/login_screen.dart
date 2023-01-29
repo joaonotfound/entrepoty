@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
           });
 
           widget.presenter.mainErrorStream
-              ?.listen((error) => showErrorMessage(context, error));
+              .listen((error) => showErrorMessage(context, error));
 
           return Padding(
             padding: const EdgeInsets.symmetric(
