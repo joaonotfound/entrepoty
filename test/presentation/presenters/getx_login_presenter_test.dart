@@ -110,7 +110,7 @@ void main() {
       sut.validatePassword(password);
 
       sut.navigateToStream
-          .listen(expectAsync1((page) => expect(page, "/stocks")));
+          .listen(expectAsync1((page) => expect(page, "/stock")));
 
       sut.authenticate();
     });

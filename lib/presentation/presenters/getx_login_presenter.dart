@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:async';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '../../domain/domain.dart';
@@ -74,11 +75,12 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
       final account =
           await authentication.authenticate(id: _id, password: _password);
       await saveCurrentAccount.saveAccount(account: account);
-      _navigateTo.value = "/stocks";
+      _navigateTo.value = "/stock";
     } on DomainError catch (error) {
       _mainError.value = error.description;
     } catch (error) {
       _mainError.value = "Um error Inesperado aconteceu.";
+      debugPrint("error: " + error.toString());
     }
     _isLoading.value = false;
   }

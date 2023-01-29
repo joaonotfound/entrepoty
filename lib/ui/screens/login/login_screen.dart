@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../ui/ui.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -31,6 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
               showLoading(context);
             } else {
               hideLoading(context);
+            }
+          });
+
+          widget.presenter.navigateToStream.listen((page) {
+            if (page?.isNotEmpty == true) {
+              Get.offAllNamed(page!);
             }
           });
 
