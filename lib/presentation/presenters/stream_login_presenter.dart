@@ -45,7 +45,7 @@ class StreamLoginPresenter implements LoginPresenter {
 
   @override
   Stream<String?> get mainErrorStream =>
-      _controller.stream.map((state) => state.mainErrorState);
+      _controller.stream.map((state) => state.mainErrorState).distinct();
 
   @override
   void validateId(String id) {
