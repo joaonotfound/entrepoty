@@ -13,7 +13,11 @@ class ValidationComposite extends Validation {
   @override
   String? validate({required String field, required String value}) {
     for (var validator in validators) {
-      validator.validate(value);
+      if (validator.field != field) continue;
+      String? error = validator.validate(value);
+      if (error != null && error.isNotEmpty) {
+        return error;
+      }
     }
     return null;
   }
@@ -26,8 +30,7 @@ void main() {
   setUp(() {
     validator1 = MockValidator();
     validator2 = MockValidator();
-    sut = ValidationComposite(
-        validators: [validator1, validator2] as List<Validator>);
+    sut = ValidationComposite(validators: [validator1, validator2]);
   });
   test("should return null if vall validators returns null or empty", () {
     when(() => validator1.field).thenReturn("any_field");
@@ -41,5 +44,15 @@ void main() {
     var response = sut.validate(field: "any_field", value: "value");
     verify(() => validator1.validate("value")).called(1);
     verify(() => validator2.validate("value")).called(1);
+  });
+  test("should return the first error", () {
+    when(() => validator1.field).thenReturn("ignore_this_field");
+    when(() => validator2.field).thenReturn("any_field");
+    validator1.mockValidate("ignore_this_error");
+    validator2.mockValidate("error");
+
+    var response = sut.validate(field: "any_field", value: "value");
+
+    expect(response, 'error');
   });
 }
