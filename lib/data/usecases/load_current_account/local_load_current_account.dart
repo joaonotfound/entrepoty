@@ -10,6 +10,10 @@ class LocalLoadCurrentAccount implements LoadCurrentAccountUsecase {
 
   @override
   Future<Account?> load() async {
-    var token = await loadSecureCacheStorage.loadSecure(key: "token");
+    try {
+      var token = await loadSecureCacheStorage.loadSecure(key: "token");
+    } catch (_) {
+      throw DomainError.unexpected;
+    }
   }
 }

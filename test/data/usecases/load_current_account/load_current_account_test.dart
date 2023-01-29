@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:service_desk_2/data/usecases/usecases.dart';
+import 'package:service_desk_2/domain/errors/domain_errors.dart';
 
 import '../../../mocks/mocks.dart';
 
@@ -18,6 +19,11 @@ void main() {
     test("should call loadSecureCache with correct values", () async {
       await sut.load();
       verify(() => loadSecureCacheStorage.loadSecure(key: "token")).called(1);
+    });
+    test("should throw Unexpected if secureCacheStorage throws", () async {
+      loadSecureCacheStorage.mockLoadError(Exception());
+      var future = sut.load();
+      expect(future, throwsA(DomainError.unexpected));
     });
   });
 }
