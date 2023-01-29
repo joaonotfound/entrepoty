@@ -23,7 +23,7 @@ class LocalStorageAdapter
   @override
   Future<String?> loadSecure({required String key}) async {
     try {
-      secureStorage.read(key: key);
+      return await secureStorage.read(key: key);
     } catch (_) {
       throw DomainError.unexpected;
     }

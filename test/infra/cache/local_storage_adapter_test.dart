@@ -42,5 +42,13 @@ void main() {
 
       expect(future, throwsA(DomainError.unexpected));
     });
+
+    test("should returns what secureStorage returns", () async {
+      secureStorage.mockRead('any-response');
+
+      var future = await sut.loadSecure(key: "any-key");
+
+      expect(future, 'any-response');
+    });
   });
 }
