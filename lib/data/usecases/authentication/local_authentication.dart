@@ -10,6 +10,7 @@ class LocalAuthentication implements AuthenticationUsecase {
     await Future.delayed(const Duration(seconds: 2));
     if (id == "ja-12345-6" && password == "123456") {
       return Account(
+        token: "random-token",
         id: id,
         name: "João",
         profilePictureUrl: "https://google.com",

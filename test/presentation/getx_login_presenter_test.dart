@@ -18,7 +18,7 @@ void main() {
     validator = MockValidation();
     authentication = MockAuthentication();
     authentication.mockAuthenticate(
-        const Account(id: "", name: "", profilePictureUrl: ""));
+        const Account(token: "", id: "", name: "", profilePictureUrl: ""));
     sut = GetxLoginPresenter(
       validator: validator,
       authentication: authentication,

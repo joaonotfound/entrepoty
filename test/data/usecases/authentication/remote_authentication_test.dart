@@ -18,6 +18,7 @@ void main() {
         statuscode: 200,
         body: {
           "account": {
+            "token": faker.guid.guid(),
             "id": faker.guid.guid(),
             "name": faker.internet.userName(),
             "profile_url": faker.internet.httpUrl()

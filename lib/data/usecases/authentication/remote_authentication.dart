@@ -21,6 +21,7 @@ class RemoteAuthentication implements AuthenticationUsecase {
       Map account = response.body?["account"];
 
       return Account(
+        token: account["token"],
         id: account["id"],
         name: account["name"],
         profilePictureUrl: account["profile_url"],
