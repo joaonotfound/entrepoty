@@ -12,8 +12,7 @@ class ValidationComposite extends Validation {
   });
   @override
   String? validate({required String field, required String value}) {
-    for (var validator in validators) {
-      if (validator.field != field) continue;
+    for (var validator in validators.where((v) => v.field == field)) {
       String? error = validator.validate(value);
       if (error != null && error.isNotEmpty) {
         return error;
