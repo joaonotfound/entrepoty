@@ -25,10 +25,8 @@ class App extends StatelessWidget {
       title: "SD",
       debugShowCheckedModeBanner: false,
       theme: makeAppTheme(),
-      home: SafeArea(
-        child: LoginScreen(
-          presenter: makeLoginPresenter(),
-        ),
+      home: LoginScreen(
+        presenter: makeLoginPresenter(),
       ),
     );
   }
