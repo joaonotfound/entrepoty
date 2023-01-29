@@ -29,6 +29,12 @@ void main() {
     sut = ValidationComposite(
         validators: [validator1, validator2] as List<Validator>);
   });
+  test("should return null if vall validators returns null or empty", () {
+    when(() => validator1.field).thenReturn("any_field");
+    when(() => validator2.field).thenReturn("any_field");
+    var response = sut.validate(field: "any_field", value: "value");
+    expect(response, null);
+  });
   test("should call all validators", () {
     when(() => validator1.field).thenReturn("any_field");
     when(() => validator2.field).thenReturn("any_field");
