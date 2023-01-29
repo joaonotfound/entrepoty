@@ -34,5 +34,13 @@ void main() {
 
       expect(future, throwsA(DomainError.unexpected));
     });
+    test("should throw DomainError.unexpected if secureStorage read throws",
+        () async {
+      secureStorage.mockReadError(Exception());
+
+      var future = sut.loadSecure(key: "any-key");
+
+      expect(future, throwsA(DomainError.unexpected));
+    });
   });
 }
