@@ -9,19 +9,12 @@ class MockHttpClient extends Mock implements HttpClient {}
 
 HttpClient makeHttpAdapter() {
   var mockHttpClient = MockHttpClient();
-  var account = {
-    "account": {
-      "id": "some-id",
-      "name": "some-name",
-      "profile_url": "some_profile_url"
-    }
-  };
   when(() =>
           mockHttpClient.post(url: any(named: "url"), body: any(named: "body")))
       .thenAnswer(
     (_) async {
       await Future.delayed(const Duration(seconds: 2), () {});
-      throw HttpError.badRequest;
+      throw HttpError.serverError;
     },
   );
   return mockHttpClient;
