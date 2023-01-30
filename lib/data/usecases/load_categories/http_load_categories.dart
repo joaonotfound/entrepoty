@@ -1,5 +1,5 @@
-import '../../domain/domain.dart';
-import '../http/http.dart';
+import '../../../domain/domain.dart';
+import '../../http/http.dart';
 
 class LoadCategories implements LoadCategoriesUsecase {
   final String url;
