@@ -2,7 +2,11 @@ import 'package:service_desk_2/domain/entities/stock_item_entity.dart';
 import 'package:service_desk_2/domain/usecases/usecases.dart';
 
 class MockedLoadStockItems implements LoadStockItemsUsecase {
-  final _items = [];
+  final List<String> _items = [
+    "Teclado H5SLM",
+    "Mouse 2345234",
+    "Headset a2f1e"
+  ];
   @override
   Future<List<StockItemEntity>> loadAllItems() async {
     return _items
