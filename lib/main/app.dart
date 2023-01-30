@@ -22,7 +22,12 @@ class App extends StatelessWidget {
       getPages: [
         GetPage(name: '/splash', page: makeSplashScreen),
         GetPage(name: "/login", page: makeLoginScreen),
-        GetPage(name: "/stock", page: makeStockScreen)
+        GetPage(name: "/stock", page: makeStockScreen),
+        GetPage(
+          name: "/stock/create_lot/",
+          page: makeRegisterLotScreen,
+          transition: Transition.native,
+        )
       ],
     );
   }

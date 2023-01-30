@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:service_desk_2/ui/ui.dart';
 import './components/components.dart';
 
@@ -35,7 +36,7 @@ class _StockScreenState extends State<StockScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Get.toNamed("/stock/create_lot/"),
         child: Icon(Icons.add),
       ),
     );
