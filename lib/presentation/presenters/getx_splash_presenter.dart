@@ -10,6 +10,7 @@ class GetxSplashPresenter extends SplashPresenter {
 
   @override
   Future<void> checkAccount() async {
+    await Future.delayed(Duration(seconds: 2));
     try {
       var account = await loadAccount.load();
       _navigateTo.value = account != null ? "/stock" : "/login";

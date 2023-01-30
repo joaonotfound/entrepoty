@@ -17,8 +17,9 @@ class App extends StatelessWidget {
       title: "SD",
       debugShowCheckedModeBanner: false,
       theme: makeAppTheme(),
-      initialRoute: "/login",
+      initialRoute: "/splash",
       getPages: [
+        GetPage(name: '/splash', page: makeSplashScreen),
         GetPage(name: "/login", page: makeLoginScreen),
         GetPage(
             name: "/stock", page: () => Scaffold(body: Text("Stock screen!")))

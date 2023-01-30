@@ -19,14 +19,7 @@ class SplashScreen extends StatelessWidget {
             Get.offAllNamed(page!);
           }
         });
-        return Center(
-          child: Column(
-            children: [
-              CircularProgressIndicator(),
-              Text("Carregando..."),
-            ],
-          ),
-        );
+        return Center(child: CircularProgressIndicator());
       }),
     );
   }
