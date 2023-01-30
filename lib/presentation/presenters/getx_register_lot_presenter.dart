@@ -28,6 +28,8 @@ class GetxRegisterLotPresenter extends GetxController
   void validateModel(String value) {
     if (value.length == 0) {
       modelError.value = "Este campo é obrigatório.";
+    } else {
+      modelError.value = "";
     }
   }
 

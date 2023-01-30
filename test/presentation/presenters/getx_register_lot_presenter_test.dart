@@ -12,5 +12,9 @@ void main() {
           expectAsync1((value) => expect(value, "Este campo é obrigatório.")));
       sut.validateModel("");
     });
+    test("should emit no error when validating model", () {
+      sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));
+      sut.validateModel("valid-model");
+    });
   });
 }
