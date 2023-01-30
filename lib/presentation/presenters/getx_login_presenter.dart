@@ -3,12 +3,15 @@
 import 'dart:async';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:service_desk_2/presentation/mixins/mixins.dart';
 
 import '../../domain/domain.dart';
 import '../../presentation/presentation.dart';
 import '../../ui/ui.dart';
 
-class GetxLoginPresenter extends GetxController implements LoginPresenter {
+class GetxLoginPresenter extends GetxController
+    with LoadingManager
+    implements LoginPresenter {
   final Validation validator;
   final AuthenticationUsecase authentication;
   final SaveCurrentAccountUsecase saveCurrentAccount;
@@ -22,7 +25,6 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   final _passwordError = RxString('');
   final _mainError = RxString('');
   final _navigateTo = RxString('');
-  final _isLoading = false.obs;
   final _isFormValid = false.obs;
 
   String _id = '';
@@ -36,9 +38,6 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
 
   @override
   Stream<bool> get isFormValidStream => _isFormValid.stream;
-
-  @override
-  Stream<bool> get isLoadingStream => _isLoading.stream;
 
   @override
   Stream<String?> get mainErrorStream => _mainError.stream;
@@ -70,7 +69,7 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
 
   @override
   Future<void> authenticate() async {
-    _isLoading.value = true;
+    isLoading = true;
     try {
       final account =
           await authentication.authenticate(id: _id, password: _password);
@@ -82,6 +81,6 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
       _mainError.value = "Um error Inesperado aconteceu.";
       debugPrint("error: " + error.toString());
     }
-    _isLoading.value = false;
+    isLoading = false;
   }
 }
