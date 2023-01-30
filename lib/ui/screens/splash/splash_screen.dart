@@ -5,6 +5,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            CircularProgressIndicator(),
+            Text("Carregando..."),
+          ],
+        ),
+      ),
+    );
   }
 }
