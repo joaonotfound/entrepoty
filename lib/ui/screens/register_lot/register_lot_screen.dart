@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:service_desk_2/ui/screens/screens.dart';
 
-class RegisterLot extends StatefulWidget {
-  const RegisterLot({super.key});
+class RegisterLotScreen extends StatefulWidget {
+  final RegisterLotPresenter presenter;
+
+  const RegisterLotScreen({
+    super.key,
+    required this.presenter,
+  });
 
   @override
-  State<RegisterLot> createState() => _RegisterLotState();
+  State<RegisterLotScreen> createState() => _RegisterLotScreenState();
 }
 
-class _RegisterLotState extends State<RegisterLot> {
+class _RegisterLotScreenState extends State<RegisterLotScreen> {
   @override
   Widget build(BuildContext context) {
     return Container();
