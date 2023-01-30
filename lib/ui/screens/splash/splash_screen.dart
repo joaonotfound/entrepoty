@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    presenter.loadCurrentAccount();
+    presenter.checkAccount();
     return Scaffold(
       body: Builder(builder: (context) {
         presenter.navigateToStream.listen((page) {

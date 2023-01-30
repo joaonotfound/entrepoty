@@ -2,5 +2,5 @@ import 'package:service_desk_2/domain/entities/authentication/authentication.dar
 
 abstract class SplashPresenter {
   Stream<String?> get navigateToStream;
-  Future<void> loadCurrentAccount();
+  Future<void> checkAccount();
 }

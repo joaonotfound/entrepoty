@@ -19,7 +19,7 @@ void main() {
   });
 
   test("should call loadCurrentAccount", () async {
-    await sut.loadCurrentAccount();
+    await sut.checkAccount();
 
     verify(() => loadCurrentAccount.load()).called(1);
   });
@@ -28,7 +28,7 @@ void main() {
       () async {
     sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/stock')));
 
-    await sut.loadCurrentAccount();
+    await sut.checkAccount();
   });
   test("should correct emit navigateTo if loadCurrentAccount returns null",
       () async {
@@ -36,13 +36,13 @@ void main() {
 
     sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
 
-    await sut.loadCurrentAccount();
+    await sut.checkAccount();
   });
   test("should redirect to login page if loadCurrentAccount throws", () async {
     loadCurrentAccount.mockLoadError(Exception());
 
     sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
 
-    await sut.loadCurrentAccount();
+    await sut.checkAccount();
   });
 }
