@@ -35,12 +35,18 @@ void main() {
 
       sut.validateForm();
     });
-    test("should emit invalid  on invalid fields", () {
+    test("should emit invalid on invalid fields", () {
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, false)));
 
       sut.validateModel("invalid-model");
       sut.validateQtd(-1);
+
+      sut.validateForm();
+    });
+    test("should emit invalid if model is an empty string", () {
+      sut.isFormValidStream
+          .listen(expectAsync1((value) => expect(value, false)));
 
       sut.validateForm();
     });

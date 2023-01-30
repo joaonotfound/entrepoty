@@ -14,6 +14,9 @@ class GetxRegisterLotPresenter extends GetxController
   final qtdError = RxString('');
   final modelError = RxString('');
 
+  int _qtd = 0;
+  String _model = '';
+
   @override
   Stream<String?> get modelErrorStream => modelError.stream;
 
@@ -25,17 +28,20 @@ class GetxRegisterLotPresenter extends GetxController
 
   @override
   void validateForm() {
-    isFormValid = qtdError.value == "" && modelError.value == "";
+    isFormValid =
+        qtdError.value == "" && _model.length != 0 && modelError.value == "";
   }
 
   @override
   void validateModel(String value) {
     modelError.value = value.length == 0 ? "Este campo é obrigatório." : "";
+    _model = value;
   }
 
   @override
   void validateQtd(int value) {
     qtdError.value = value <= 0 ? "Número inválido." : "";
+    _qtd = value;
   }
 
   Future<void> dispose() async {}
