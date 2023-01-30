@@ -30,4 +30,12 @@ void main() {
 
     await sut.loadCurrentAccount();
   });
+  test("should correct emit navigateTo if loadCurrentAccount returns null",
+      () async {
+    loadCurrentAccount.mockLoad(null);
+
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
+
+    await sut.loadCurrentAccount();
+  });
 }
