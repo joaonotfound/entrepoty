@@ -6,3 +6,4 @@ export './save_secure_cache_storage_mock.dart';
 export './flutter_secure_storage_mock.dart';
 export './local_save_current_account_mock.dart';
 export './load_secure_cache_storage.dart';
+export './load_current_account_mock.dart';

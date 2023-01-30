@@ -1,3 +1,6 @@
+import 'package:service_desk_2/domain/entities/authentication/authentication.dart';
+
 abstract class SplashPresenter {
-  Future<bool> loadCurrentAccount();
+  Stream<String?> get navigateToStream;
+  Future<void> loadCurrentAccount();
 }

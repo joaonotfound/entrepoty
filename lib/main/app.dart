@@ -19,7 +19,6 @@ class App extends StatelessWidget {
       theme: makeAppTheme(),
       initialRoute: "/login",
       getPages: [
-        GetPage(name: '/', page: () => SplashScreen()),
         GetPage(name: "/login", page: makeLoginScreen),
         GetPage(
             name: "/stock", page: () => Scaffold(body: Text("Stock screen!")))
