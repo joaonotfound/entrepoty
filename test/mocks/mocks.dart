@@ -8,3 +8,4 @@ export './local_save_current_account_mock.dart';
 export './load_secure_cache_storage.dart';
 export './load_current_account_mock.dart';
 export './load_categories_mock.dart';
+export './load_stock_items.dart';

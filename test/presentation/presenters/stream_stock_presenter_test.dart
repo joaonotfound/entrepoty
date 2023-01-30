@@ -7,10 +7,16 @@ import '../../mocks/mocks.dart';
 void main() {
   late StreamStockPresenter sut;
   late MockLoadCategories loadCategories;
+  late MockLoadStockItems loadStockItems;
   setUp(() {
     loadCategories = MockLoadCategories();
     loadCategories.mockLoad([]);
-    sut = StreamStockPresenter(loadCategories: loadCategories);
+    loadStockItems = MockLoadStockItems();
+    loadStockItems.mockLoadAllItems([]);
+    sut = StreamStockPresenter(
+      loadCategories: loadCategories,
+      loadItems: loadStockItems,
+    );
   });
   group("GetxStockPresenter", () {
     test("should call load categories", () {
