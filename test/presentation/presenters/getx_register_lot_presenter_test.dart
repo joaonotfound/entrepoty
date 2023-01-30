@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:service_desk_2/domain/entities/entities.dart';
 import 'package:service_desk_2/presentation/presenters/getx_register_lot_presenter.dart';
 
 void main() {
@@ -57,6 +58,15 @@ void main() {
       sut.validateModel("valid-model");
 
       sut.validateForm();
+    });
+    test("should emit create stock item", () {
+      sut.itemsStreams.listen(expectAsync1(
+          (value) => expect(value[0], isInstanceOf<CreateStockItemEntity>())));
+
+      sut.validateModel("any-model");
+      sut.validateQtd(1);
+
+      sut.saveItem();
     });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));

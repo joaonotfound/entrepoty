@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:service_desk_2/domain/entities/create_stock_item_entity.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
@@ -13,9 +14,11 @@ class GetxRegisterLotPresenter extends GetxController
     implements RegisterLotPresenter {
   final qtdError = RxString('');
   final modelError = RxString('');
+  final items = Rx<List<CreateStockItemEntity>>([]);
 
   int _qtd = 0;
   String _model = '';
+  List<CreateStockItemEntity> _items = [];
 
   @override
   Stream<String?> get modelErrorStream => modelError.stream;
@@ -24,7 +27,14 @@ class GetxRegisterLotPresenter extends GetxController
   Stream<String?> get qtdErrorStream => qtdError.stream;
 
   @override
-  Future<void> register() async {}
+  Stream<List<CreateStockItemEntity>> get itemsStreams => items.stream;
+
+  @override
+  Future<void> saveItem() async {
+    _items.add(CreateStockItemEntity(
+        description: "", quantity: _qtd, modelo: _model, notes: ""));
+    items.subject.add(_items);
+  }
 
   @override
   void validateForm() {
@@ -46,5 +56,10 @@ class GetxRegisterLotPresenter extends GetxController
     _qtd = value;
   }
 
-  Future<void> dispose() async {}
+  Future<void> dispose() async {
+    super.dispose();
+  }
+
+  @override
+  Future<void> saveAll() async {}
 }
