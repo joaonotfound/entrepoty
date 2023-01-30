@@ -61,5 +61,7 @@ class GetxRegisterLotPresenter extends GetxController
   }
 
   @override
-  Future<void> saveAll() async {}
+  Future<void> saveAll() async {
+    navigateTo = "/stocks";
+  }
 }

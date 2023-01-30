@@ -68,6 +68,12 @@ void main() {
 
       sut.saveItem();
     });
+    test("should redirect to stocks page", () {
+      sut.navigateToStream
+          .listen(expectAsync1((value) => expect(value, "/stocks")));
+
+      sut.saveAll();
+    });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));
       sut.validateModel("valid-model");
