@@ -16,12 +16,8 @@ Drawer makeDrawer(BuildContext context) {
     child: SafeArea(
       child: ListView(
         children: [
-          DrawerHeader(
-            child: Text("Header!"),
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+          SizedBox(
+            height: 25,
           ),
           ...options.map(
             (e) => DrawerItemWidget(
