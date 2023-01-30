@@ -3,14 +3,17 @@
 import 'dart:async';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:service_desk_2/presentation/mixins/mixins.dart';
 
 import '../../domain/domain.dart';
 import '../../presentation/presentation.dart';
 import '../../ui/ui.dart';
 
 class GetxLoginPresenter extends GetxController
-    with LoadingManager
+    with
+        GetxLoadingManager,
+        GetxFormManager,
+        GetxUiErrorManager,
+        GetxNavigatorManager
     implements LoginPresenter {
   final Validation validator;
   final AuthenticationUsecase authentication;
@@ -23,9 +26,6 @@ class GetxLoginPresenter extends GetxController
 
   final _idError = RxString('');
   final _passwordError = RxString('');
-  final _mainError = RxString('');
-  final _navigateTo = RxString('');
-  final _isFormValid = false.obs;
 
   String _id = '';
   String _password = '';
@@ -36,17 +36,8 @@ class GetxLoginPresenter extends GetxController
   @override
   Stream<String?> get passwordErrorStream => _passwordError.stream;
 
-  @override
-  Stream<bool> get isFormValidStream => _isFormValid.stream;
-
-  @override
-  Stream<String?> get mainErrorStream => _mainError.stream;
-
-  @override
-  Stream<String?> get navigateToStream => _navigateTo.stream;
-
   void _validateForm() {
-    _isFormValid.value = _idError.value == '' &&
+    isFormValid = _idError.value == '' &&
         _id != '' &&
         _passwordError.value == '' &&
         _password != '';
@@ -74,11 +65,11 @@ class GetxLoginPresenter extends GetxController
       final account =
           await authentication.authenticate(id: _id, password: _password);
       await saveCurrentAccount.saveAccount(account: account);
-      _navigateTo.value = "/stock";
+      navigateTo = "/stock";
     } on DomainError catch (error) {
-      _mainError.value = error.description;
+      mainError = error.description;
     } catch (error) {
-      _mainError.value = "Um error Inesperado aconteceu.";
+      mainError = "Um error Inesperado aconteceu.";
       debugPrint("error: " + error.toString());
     }
     isLoading = false;
