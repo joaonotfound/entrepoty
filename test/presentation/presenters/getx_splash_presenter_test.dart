@@ -38,4 +38,11 @@ void main() {
 
     await sut.loadCurrentAccount();
   });
+  test("should redirect to login page if loadCurrentAccount throws", () async {
+    loadCurrentAccount.mockLoadError(Exception());
+
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
+
+    await sut.loadCurrentAccount();
+  });
 }
