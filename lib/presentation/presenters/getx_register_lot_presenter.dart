@@ -26,15 +26,13 @@ class GetxRegisterLotPresenter extends GetxController
 
   @override
   void validateModel(String value) {
-    if (value.length == 0) {
-      modelError.value = "Este campo é obrigatório.";
-    } else {
-      modelError.value = "";
-    }
+    modelError.value = value.length == 0 ? "Este campo é obrigatório." : "";
   }
 
   @override
-  void validateQtd(int value) {}
+  void validateQtd(int value) {
+    qtdError.value = value <= 0 ? "Número inválido." : "";
+  }
 
   Future<void> dispose() async {}
 }
