@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
@@ -22,7 +24,9 @@ class GetxRegisterLotPresenter extends GetxController
   Future<void> register() async {}
 
   @override
-  void validateForm() {}
+  void validateForm() {
+    isFormValid = qtdError.value == "" && modelError.value == "";
+  }
 
   @override
   void validateModel(String value) {
