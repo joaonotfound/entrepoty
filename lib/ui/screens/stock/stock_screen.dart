@@ -17,6 +17,7 @@ class StockScreen extends StatefulWidget {
 class _StockScreenState extends State<StockScreen> {
   @override
   Widget build(BuildContext context) {
+    widget.presenter.loadScreen();
     return Scaffold(
       appBar: getAppbar(context, "Estoque"),
       body: SafeArea(
@@ -24,6 +25,7 @@ class _StockScreenState extends State<StockScreen> {
           margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           child: Column(children: [
             const StockSearchInput(),
+            StockListFilterChips(presenter: widget.presenter),
             // ignore: sized_box_for_whitespace
             Text("Não há items no stock!")
           ]),
