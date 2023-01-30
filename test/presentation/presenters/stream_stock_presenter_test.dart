@@ -23,5 +23,11 @@ void main() {
           .listen(expectAsync1((categories) => expect(categories, [])));
       sut.loadScreen();
     });
+    test("should not emit duplicated values", () {
+      sut.categoriesStream
+          .listen(expectAsync1((categories) => expect(categories, [])));
+      sut.loadScreen();
+      sut.loadScreen();
+    });
   });
 }

@@ -5,4 +5,5 @@ abstract class StockPresenter {
   Stream<List<CategoryEntity>> get categoriesStream;
   Stream<List<StockItemEntity>> get itemsStream;
   Future<void> loadScreen();
+  void dispose();
 }

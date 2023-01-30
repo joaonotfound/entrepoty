@@ -17,7 +17,7 @@ class StreamStockPresenter implements StockPresenter {
 
   @override
   Stream<List<CategoryEntity>> get categoriesStream =>
-      categoriesController.stream;
+      categoriesController.stream.distinct();
 
   @override
   Stream<List<StockItemEntity>> get itemsStream => throw UnimplementedError();
@@ -26,5 +26,10 @@ class StreamStockPresenter implements StockPresenter {
   Future<void> loadScreen() async {
     var categories = await loadCategories.load();
     categoriesController.add(categories);
+  }
+
+  @override
+  void dispose() {
+    categoriesController.close();
   }
 }
