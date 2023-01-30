@@ -21,8 +21,7 @@ class App extends StatelessWidget {
       getPages: [
         GetPage(name: '/splash', page: makeSplashScreen),
         GetPage(name: "/login", page: makeLoginScreen),
-        GetPage(
-            name: "/stock", page: () => Scaffold(body: Text("Stock screen!")))
+        GetPage(name: "/stock", page: () => StockScreen())
       ],
     );
   }
