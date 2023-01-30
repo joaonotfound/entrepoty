@@ -28,8 +28,10 @@ class GetxRegisterLotPresenter extends GetxController
 
   @override
   void validateForm() {
-    isFormValid =
-        qtdError.value == "" && _model.length != 0 && modelError.value == "";
+    isFormValid = qtdError.value == "" &&
+        _model.length != 0 &&
+        modelError.value == "" &&
+        _qtd != 0;
   }
 
   @override

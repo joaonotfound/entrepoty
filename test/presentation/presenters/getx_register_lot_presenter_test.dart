@@ -50,6 +50,14 @@ void main() {
 
       sut.validateForm();
     });
+    test("should emit invalid if qtd is zero", () {
+      sut.isFormValidStream
+          .listen(expectAsync1((value) => expect(value, false)));
+
+      sut.validateModel("valid-model");
+
+      sut.validateForm();
+    });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));
       sut.validateModel("valid-model");
