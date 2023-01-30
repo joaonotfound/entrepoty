@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:service_desk_2/data/usecases/usecases.dart';
 import 'package:service_desk_2/domain/entities/entities.dart';
 import 'package:service_desk_2/domain/usecases/usecases.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
