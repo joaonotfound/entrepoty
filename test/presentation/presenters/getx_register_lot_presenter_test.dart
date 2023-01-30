@@ -22,6 +22,10 @@ void main() {
           .listen(expectAsync1((value) => expect(value, "Número inválido.")));
       sut.validateQtd(-1);
     });
+    test("should emit no error when validating quantity", () {
+      sut.qtdErrorStream.listen(expectAsync1((value) => expect(value, "")));
+      sut.validateQtd(345);
+    });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));
       sut.validateModel("valid-model");
