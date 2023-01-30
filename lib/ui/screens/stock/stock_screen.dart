@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/ui/components/appbar.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:service_desk_2/ui/ui.dart';
 import './components/components.dart';
 
 class StockScreen extends StatefulWidget {
@@ -21,6 +20,7 @@ class _StockScreenState extends State<StockScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: getAppbar(context, "Estoque"),
+      drawer: makeDrawer(context),
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
