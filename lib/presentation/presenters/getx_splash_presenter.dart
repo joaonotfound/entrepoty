@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:service_desk_2/domain/usecases/usecases.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
-class GetxSplashPresenter extends SplashPresenter {
+class GetxSplashPresenter extends GetxController implements SplashPresenter {
   final _navigateTo = RxString("");
   final LoadCurrentAccountUsecase loadAccount;
 
