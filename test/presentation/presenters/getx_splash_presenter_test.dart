@@ -1,7 +1,8 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:service_desk_2/domain/entities/authentication/authentication.dart';
+
+import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
 
 import '../../mocks/mocks.dart';
@@ -21,5 +22,12 @@ void main() {
     await sut.loadCurrentAccount();
 
     verify(() => loadCurrentAccount.load()).called(1);
+  });
+  test(
+      "should correct emit navigateTo if loadCurrentAccount returns an account",
+      () async {
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/stock')));
+
+    await sut.loadCurrentAccount();
   });
 }

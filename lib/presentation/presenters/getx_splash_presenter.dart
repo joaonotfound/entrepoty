@@ -10,7 +10,10 @@ class GetxSplashPresenter extends SplashPresenter {
 
   @override
   Future<void> loadCurrentAccount() async {
-    loadAccount.load();
+    var account = loadAccount.load();
+    if (account != null) {
+      _navigateTo.value = "/stock";
+    }
   }
 
   @override
