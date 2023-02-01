@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
-
-import '../../components/components.dart';
+import '../../ui.dart';
 import 'components/components.dart';
 
 class RegisterLotScreen extends StatefulWidget {

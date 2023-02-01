@@ -20,7 +20,7 @@ class _StockScreenState extends State<StockScreen> {
     widget.presenter.loadScreen();
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: getAppbar(context, "Estoque"),
+      appBar: makeHomeAppbar(context, "Estoque"),
       drawer: makeDrawer(context),
       body: SafeArea(
         child: Container(

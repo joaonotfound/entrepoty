@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xFFE8EBF3),
-        appBar: getLoginAppbarComponent(),
+        appBar: makeLoginAppbarComponent(),
         body: Builder(builder: (context) {
           handleLoginManager(context, presenter.isLoadingStream);
           handleNavigation(context, presenter.navigateToStream);

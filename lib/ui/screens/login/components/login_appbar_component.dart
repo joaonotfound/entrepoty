@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-AppBar getLoginAppbarComponent() {
+AppBar makeLoginAppbarComponent() {
   return AppBar(
     flexibleSpace: const Padding(
       padding: EdgeInsets.all(20.0),
