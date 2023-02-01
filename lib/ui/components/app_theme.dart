@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 
 ThemeData makeAppTheme() {
-  const primaryColor = Color(0xFF414BB2);
+  const primaryColor = Color(0xFF023e8a);
+  const secondaryColor = Color(0xFF84a98c);
+  const backgroundColor = Colors.white;
+  // const foregroundColor = ;
   return ThemeData(
     primaryColor: primaryColor,
-    appBarTheme: AppBarTheme(backgroundColor: primaryColor),
-    floatingActionButtonTheme:
-        FloatingActionButtonThemeData(backgroundColor: primaryColor),
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.grey[800],
+      elevation: 0,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primaryColor,
+    ),
     iconTheme: getIconThemeData(primaryColor),
     elevatedButtonTheme: getElevatedButtonTheme(primaryColor),
     inputDecorationTheme: getInputDecorationTheme(primaryColor),
+    scaffoldBackgroundColor: backgroundColor,
+    chipTheme: ChipThemeData(
+      checkmarkColor: Colors.white,
+      selectedColor: primaryColor,
+      backgroundColor: Colors.grey[400],
+      labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: backgroundColor,
+      elevation: 12,
+      selectedItemColor: primaryColor,
+      unselectedItemColor: Colors.grey[600],
+    ),
     textTheme: getTextTheme(primaryColor),
   );
 }
@@ -35,8 +56,11 @@ InputDecorationTheme getInputDecorationTheme(Color primaryColor) {
       filled: true,
       fillColor: Colors.white,
       focusColor: primaryColor,
-      border: const OutlineInputBorder(),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
         borderSide: BorderSide(color: primaryColor),
       ),
       alignLabelWithHint: true);

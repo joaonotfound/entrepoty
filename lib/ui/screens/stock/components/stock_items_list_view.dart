@@ -22,10 +22,9 @@ class _StockItemsListViewState extends State<StockItemsListView> {
           if (snapshot.data?.isNotEmpty == true && snapshot.data != null) {
             return Container(
               height: 600,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: ListView.separated(
                   separatorBuilder: ((context, index) => SizedBox(
-                        height: 20,
+                        height: 10,
                       )),
                   shrinkWrap: true,
                   itemCount: snapshot.data!.length,
@@ -34,33 +33,41 @@ class _StockItemsListViewState extends State<StockItemsListView> {
                         child: InkWell(
                           onTap: () {},
                           child: Container(
-                            padding: EdgeInsets.all(5),
-                            decoration:
-                                BoxDecoration(color: Colors.white, boxShadow: [
-                              BoxShadow(
-                                blurRadius: 8,
-                                spreadRadius: 0.8,
-                                color: Color.fromRGBO(0, 0, 0, 0.1),
-                              )
-                            ]),
-                            child: FittedBox(
-                              child: Column(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 15,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.image,
+                                  size: 40,
+                                  color: Colors.grey[500],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Image.network(
-                                      snapshot.data![index].imageUrl,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Container(
-                                      child: Text(
-                                        snapshot.data![index].description,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w300,
-                                        ),
+                                    Text(
+                                      snapshot.data![index].description,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25,
                                       ),
+                                    ),
+                                    Text(
+                                      snapshot.data![index].model,
+                                      style: TextStyle(fontSize: 15),
                                     )
-                                  ]),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ),

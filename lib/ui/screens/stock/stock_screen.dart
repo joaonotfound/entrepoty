@@ -20,21 +20,39 @@ class _StockScreenState extends State<StockScreen> {
     widget.presenter.loadScreen();
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: makeHomeAppbar(context, "Estoque"),
       drawer: makeDrawer(context),
+      appBar: makeHomeAppbar(context),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.folder), label: "Estoque"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.folder_shared,
+              ),
+              label: "Empréstimos"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_rounded),
+            label: "Usuários",
+          )
+        ],
+      ),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-          child: Column(children: [
-            const StockSearchInput(),
-            StockListFilterChips(presenter: widget.presenter),
-            StockItemsListView(
-              presenter: widget.presenter,
-            )
-            // ignore: sized_box_for_whitespace
-          ]),
+          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const StockSearchInput(),
+              StockListFilterChips(presenter: widget.presenter),
+              StockItemsListView(
+                presenter: widget.presenter,
+              )
+              // ignore: sized_box_for_whitespace
+            ],
+          ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.toNamed("/stock/create_lot/"),
         child: Icon(Icons.add),

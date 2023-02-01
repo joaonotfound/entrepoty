@@ -22,11 +22,7 @@ class _StockFilterChipState extends State<StockFilterChip> {
         });
       },
       selected: _activated,
-      backgroundColor: Color(0xFF9DA8C1),
-      selectedColor: Theme.of(context).primaryColor,
-      checkmarkColor: Colors.white,
       label: Text(widget.text.toLowerCase()),
-      labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
     );
   }
 }

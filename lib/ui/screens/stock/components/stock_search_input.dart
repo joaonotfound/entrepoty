@@ -13,12 +13,19 @@ class StockSearchInput extends StatelessWidget {
           Icons.search,
           color: Colors.grey,
         ),
+        fillColor: Colors.grey[200],
         hintText: "Procurar por item",
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).primaryColor)),
+        enabledBorder: defaultOutlineBorder(),
+        focusedBorder: defaultOutlineBorder(),
       ),
     );
+  }
+
+  OutlineInputBorder defaultOutlineBorder() {
+    return OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(
+          color: Colors.transparent,
+        ));
   }
 }
