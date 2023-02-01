@@ -8,7 +8,7 @@ class LocalAuthentication implements AuthenticationUsecase {
     required String password,
   }) async {
     await Future.delayed(const Duration(seconds: 2));
-    if (id == "ja-12345-6" && password == "123456") {
+    if (id == "ja12345" && password == "123456") {
       return Account(
         token: "random-token",
         id: id,
