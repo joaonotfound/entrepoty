@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import '../../../ui/ui.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget
+    with LoadingManager, NavigationManager, UiErrorManager {
   final LoginPresenter presenter;
   const LoginScreen({
     super.key,
     required this.presenter,
   });
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  @override
-  void dispose() {
-    super.dispose();
-    widget.presenter.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: const Color(0xFFE8EBF3),
         appBar: getLoginAppbarComponent(),
         body: Builder(builder: (context) {
-          widget.presenter.isLoadingStream.listen((isLoading) {
-            if (isLoading == true) {
-              showLoading(context);
-            } else {
-              hideLoading(context);
-            }
-          });
-
-          widget.presenter.navigateToStream.listen((page) {
-            if (page?.isNotEmpty == true) {
-              Get.offAllNamed(page!);
-            }
-          });
-
-          widget.presenter.mainErrorStream
-              .listen((error) => showErrorMessage(context, error));
+          handleLoginManager(context, presenter.isLoadingStream);
+          handleNavigation(context, presenter.navigateToStream);
+          handleUiError(context, presenter.mainErrorStream);
 
           return Padding(
             padding: const EdgeInsets.symmetric(
@@ -53,28 +30,20 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Expanded(
                   flex: 40,
-                  child: Center(
-                    child: Icon(
-                      Icons.account_circle_sharp,
-                      size: MediaQuery.of(context).size.height * 0.15,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
+                  child: CircularAccount(),
                 ),
                 Expanded(
                   flex: 60,
-                  child: Form(
-                    child: Column(
-                      children: [
-                        UserIdFormField(loginPresenter: widget.presenter),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16, bottom: 30),
-                          child: UserPasswordField(
-                            loginPresenter: widget.presenter,
-                          ),
-                        ),
-                        getLoginSubmitButton(widget.presenter)
-                      ],
+                  child: ListenableProvider(
+                    create: (_) => presenter,
+                    child: Form(
+                      child: Column(
+                        children: [
+                          UserIdFormField(),
+                          UserPasswordField(),
+                          LoginSubmitButton()
+                        ],
+                      ),
                     ),
                   ),
                 )

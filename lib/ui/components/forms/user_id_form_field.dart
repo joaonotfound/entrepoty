@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../ui/ui.dart';
 
 class UserIdFormField extends StatelessWidget {
-  final LoginPresenter loginPresenter;
-  const UserIdFormField({Key? key, required this.loginPresenter})
-      : super(key: key);
+  const UserIdFormField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final presenter = Provider.of<LoginPresenter>(context);
     return StreamBuilder<String?>(
-        stream: loginPresenter.idErrorStream,
+        stream: presenter.idErrorStream,
         builder: (context, snapshot) {
           return TextFormField(
-            onChanged: loginPresenter.validateId,
+            onChanged: presenter.validateId,
             decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
