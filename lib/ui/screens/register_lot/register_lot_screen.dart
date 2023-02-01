@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
+import '../../components/components.dart';
 import 'components/components.dart';
 
 class RegisterLotScreen extends StatefulWidget {
@@ -21,12 +21,7 @@ class _RegisterLotScreenState extends State<RegisterLotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text("Registrar lot"),
-          leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: Icon(Icons.close),
-          )),
+      appBar: makeFormAppbar("Registrar lot"),
       body: SafeArea(
         child: Container(
           width: double.infinity,

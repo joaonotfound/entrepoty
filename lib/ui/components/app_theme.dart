@@ -34,6 +34,7 @@ InputDecorationTheme getInputDecorationTheme(Color primaryColor) {
   return InputDecorationTheme(
       filled: true,
       fillColor: Colors.white,
+      focusColor: primaryColor,
       border: const OutlineInputBorder(),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: primaryColor),
