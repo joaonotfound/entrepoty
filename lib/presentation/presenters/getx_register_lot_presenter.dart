@@ -14,10 +14,12 @@ class GetxRegisterLotPresenter extends GetxController
     implements RegisterLotPresenter {
   final qtdError = RxString('');
   final modelError = RxString('');
+  final descriptionError = RxString('');
   final items = Rx<List<CreateStockItemEntity>>([]);
 
   int _qtd = 0;
   String _model = '';
+  String _description = '';
   List<CreateStockItemEntity> _items = [];
 
   @override
@@ -28,6 +30,9 @@ class GetxRegisterLotPresenter extends GetxController
 
   @override
   Stream<List<CreateStockItemEntity>> get itemsStreams => items.stream;
+
+  @override
+  Stream<String> get descriptionErrorStream => descriptionError.stream;
 
   @override
   Future<void> saveItem() async {
@@ -63,5 +68,11 @@ class GetxRegisterLotPresenter extends GetxController
   @override
   Future<void> saveAll() async {
     navigateTo = "/stocks";
+  }
+
+  @override
+  void validateDescription(String value) {
+    descriptionError.value = value == "" ? "Campo obrigatório." : '';
+    _description = value;
   }
 }
