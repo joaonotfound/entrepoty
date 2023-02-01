@@ -39,7 +39,7 @@ class GetxRegisterLotPresenter extends GetxController
   @override
   Future<void> saveItem() async {
     _items.add(CreateStockItemEntity(
-        description: "", quantity: _qtd, modelo: _model, notes: ""));
+        description: _description, quantity: _qtd, modelo: _model, notes: ""));
     items.subject.add(_items);
     _qtd = 0;
     _description = '';
