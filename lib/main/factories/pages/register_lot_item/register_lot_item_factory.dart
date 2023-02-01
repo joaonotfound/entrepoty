@@ -1,5 +1,5 @@
 import 'package:service_desk_2/ui/screens/screens.dart';
 
 RegisterLotItemScreen makeRegisterLotItemScreen() {
-  return RegisterLotItemScreen();
+  throw Exception("Do not use RegisterLotItemScreen factory yet");
 }

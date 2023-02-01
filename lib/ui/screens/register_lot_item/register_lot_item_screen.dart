@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
 import 'components/components.dart';
 
 class RegisterLotItemScreen extends StatelessWidget {
-  const RegisterLotItemScreen({super.key});
+  final RegisterLotPresenter presenter;
+  const RegisterLotItemScreen({
+    super.key,
+    required this.presenter,
+  });
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,28 +22,31 @@ class RegisterLotItemScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Column(
-                      children: [
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(bottom: 20, left: 2),
-                          child: Text(
-                            "Adicionar item",
-                            style: TextStyle(
-                              color: Colors.grey[900],
-                              fontWeight: FontWeight.w400,
-                              fontSize: 24,
+                    child: ListenableProvider(
+                      create: (_) => presenter,
+                      child: Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.only(bottom: 20, left: 2),
+                            child: Text(
+                              "Adicionar item",
+                              style: TextStyle(
+                                color: Colors.grey[900],
+                                fontWeight: FontWeight.w400,
+                                fontSize: 24,
+                              ),
                             ),
                           ),
-                        ),
-                        ProductDescriptionField(),
-                        SizedBox(height: 10),
-                        ProductQuantityField(),
-                        SizedBox(height: 10),
-                        ProductModelField(),
-                        SizedBox(height: 10),
-                        ProductNotesField(),
-                      ],
+                          ProductDescriptionField(),
+                          SizedBox(height: 10),
+                          ProductQuantityField(),
+                          SizedBox(height: 10),
+                          ProductModelField(),
+                          SizedBox(height: 10),
+                          ProductNotesField(),
+                        ],
+                      ),
                     ),
                   ),
                   Align(

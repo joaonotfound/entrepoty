@@ -29,7 +29,9 @@ class RegisterLotItemsListView extends StatelessWidget {
             ListenableProvider(
               create: (_) => presenter,
               child: FloatingActionButton(
-                onPressed: () => Get.to(RegisterLotItemScreen()),
+                onPressed: () => Get.to(RegisterLotItemScreen(
+                  presenter: presenter,
+                )),
                 child: Icon(Icons.add),
               ),
             ),

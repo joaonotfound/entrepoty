@@ -33,7 +33,6 @@ class _RegisterLotScreenState extends State<RegisterLotScreen> {
                   create: (_) => widget.presenter,
                   child: Column(
                     children: [
-                      AddTaxNoteButton(),
                       RegisterLotItemsListView(),
                     ],
                   ),
@@ -41,12 +40,18 @@ class _RegisterLotScreenState extends State<RegisterLotScreen> {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Próximo"),
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50),
-                      backgroundColor: Theme.of(context).primaryColor),
+                child: Column(
+                  children: [
+                    AddTaxNoteButton(),
+                    SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Próximo"),
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: Size(double.infinity, 50),
+                          backgroundColor: Theme.of(context).primaryColor),
+                    ),
+                  ],
                 ),
               )
             ],
