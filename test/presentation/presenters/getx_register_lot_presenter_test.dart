@@ -27,10 +27,15 @@ void main() {
       sut.qtdErrorStream.listen(expectAsync1((value) => expect(value, "")));
       sut.validateQtd(345);
     });
-    test("should emit no error when validating description", () {
+    test("should emit error when validating description", () {
       sut.descriptionErrorStream
           .listen(expectAsync1((error) => expect(error, "Campo obrigatório.")));
       sut.validateDescription('');
+    });
+    test("should emit no error when validating description", () {
+      sut.descriptionErrorStream
+          .listen(expectAsync1((error) => expect(error, "")));
+      sut.validateDescription('valid-description');
     });
     test("should emit valid form on valid fields", () {
       sut.isFormValidStream
