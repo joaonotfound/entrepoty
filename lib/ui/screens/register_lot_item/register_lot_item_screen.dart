@@ -51,13 +51,18 @@ class RegisterLotItemScreen extends StatelessWidget {
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Adicionar"),
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 50),
-                          backgroundColor: Theme.of(context).primaryColor),
-                    ),
+                    child: StreamBuilder(
+                        stream: presenter.isFormValidStream,
+                        builder: (context, snapshot) {
+                          return ElevatedButton(
+                            onPressed: snapshot.data == true ? () {} : null,
+                            child: Text("Adicionar"),
+                            style: ElevatedButton.styleFrom(
+                                minimumSize: Size(double.infinity, 50),
+                                backgroundColor:
+                                    Theme.of(context).primaryColor),
+                          );
+                        }),
                   )
                 ],
               ),
