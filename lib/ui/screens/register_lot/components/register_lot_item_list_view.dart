@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
 class RegisterLotItemsListView extends StatelessWidget {
@@ -28,10 +30,13 @@ class RegisterLotItemsListView extends StatelessWidget {
                       child: Text("Não há itens cadastrados!"),
                     )),
             ),
-            FloatingActionButton(
-              onPressed: () {},
-              child: Icon(Icons.add),
-            )
+            ListenableProvider(
+              create: (_) => presenter,
+              child: FloatingActionButton(
+                onPressed: () => Get.toNamed("/stock/create_lot/item"),
+                child: Icon(Icons.add),
+              ),
+            ),
           ],
         ),
       ),

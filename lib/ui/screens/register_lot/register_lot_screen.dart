@@ -23,7 +23,7 @@ class _RegisterLotScreenState extends State<RegisterLotScreen> {
       appBar: AppBar(
           title: Text("Registrar lot"),
           leading: IconButton(
-            onPressed: () => Get.offNamed("/stock/create_item"),
+            onPressed: () => Get.offNamed("/stock/create_lot"),
             icon: Icon(Icons.close),
           )),
       body: SafeArea(

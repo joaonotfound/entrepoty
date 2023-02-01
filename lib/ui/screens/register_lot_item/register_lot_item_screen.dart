@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:service_desk_2/ui/screens/screens.dart';
 
 class RegisterLotItemScreen extends StatefulWidget {
   const RegisterLotItemScreen({super.key});
@@ -11,6 +13,7 @@ class RegisterLotItemScreen extends StatefulWidget {
 class _RegisterLotItemScreenState extends State<RegisterLotItemScreen> {
   @override
   Widget build(BuildContext context) {
+    final presenter = Provider.of<RegisterLotPresenter>(context);
     return Scaffold(
       appBar: AppBar(
           title: Text("Registrar lot"),

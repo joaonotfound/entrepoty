@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:service_desk_2/domain/entities/entities.dart';
 
-abstract class RegisterLotPresenter {
+abstract class RegisterLotPresenter implements Listenable {
   Stream<bool> get isFormValidStream;
   Stream<bool> get isLoadingStream;
 
