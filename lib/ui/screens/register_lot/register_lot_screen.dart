@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
 import 'components/components.dart';
@@ -23,7 +24,7 @@ class _RegisterLotScreenState extends State<RegisterLotScreen> {
       appBar: AppBar(
           title: Text("Registrar lot"),
           leading: IconButton(
-            onPressed: () => Get.offNamed("/stock/create_lot"),
+            onPressed: () => Get.back(),
             icon: Icon(Icons.close),
           )),
       body: SafeArea(
@@ -35,11 +36,14 @@ class _RegisterLotScreenState extends State<RegisterLotScreen> {
             children: [
               Expanded(
                 flex: 2,
-                child: Column(
-                  children: [
-                    AddTaxNoteButton(),
-                    RegisterLotItemsListView(presenter: widget.presenter),
-                  ],
+                child: ListenableProvider(
+                  create: (_) => widget.presenter,
+                  child: Column(
+                    children: [
+                      AddTaxNoteButton(),
+                      RegisterLotItemsListView(),
+                    ],
+                  ),
                 ),
               ),
               Align(

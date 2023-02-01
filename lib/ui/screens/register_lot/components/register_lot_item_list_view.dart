@@ -4,15 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
 class RegisterLotItemsListView extends StatelessWidget {
-  const RegisterLotItemsListView({
-    Key? key,
-    required this.presenter,
-  }) : super(key: key);
-
-  final RegisterLotPresenter presenter;
+  const RegisterLotItemsListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final presenter = Provider.of<RegisterLotPresenter>(context);
     return Expanded(
       child: Container(
         padding: EdgeInsets.only(bottom: 20),
@@ -33,7 +29,7 @@ class RegisterLotItemsListView extends StatelessWidget {
             ListenableProvider(
               create: (_) => presenter,
               child: FloatingActionButton(
-                onPressed: () => Get.toNamed("/stock/create_lot/item"),
+                onPressed: () => Get.to(RegisterLotItemScreen()),
                 child: Icon(Icons.add),
               ),
             ),
