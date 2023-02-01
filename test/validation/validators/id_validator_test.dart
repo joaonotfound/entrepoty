@@ -21,7 +21,7 @@ void main() {
       expect(sut.validate("0123456789234"), null);
     });
     test("should return error if value doesnt have 10 caracteres", () {
-      expect(sut.validate("12"), "matrícula inválida, mínimo 10 dígitos");
+      expect(sut.validate("12"), "matrícula inválida, mínimo 7 dígitos");
     });
   });
 }
