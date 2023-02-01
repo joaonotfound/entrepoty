@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:service_desk_2/ui/screens/screens.dart';
 
 class ProductQuantityField extends StatelessWidget {
   const ProductQuantityField({
@@ -7,12 +10,23 @@ class ProductQuantityField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        hintText: "Quantidade",
-        label: const Text("Quantidade"),
-      ),
-      keyboardType: TextInputType.number,
-    );
+    final presenter = Provider.of<RegisterLotPresenter>(context);
+    return StreamBuilder(
+        stream: presenter.qtdErrorStream,
+        builder: (context, snapshot) {
+          return TextFormField(
+            decoration: InputDecoration(
+              hintText: "Quantidade",
+              label: const Text("Quantidade"),
+              errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
+            ),
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
+            onChanged: (value) =>
+                presenter.validateQtd(int.tryParse(value) ?? 0),
+            keyboardType: TextInputType.number,
+          );
+        });
   }
 }
