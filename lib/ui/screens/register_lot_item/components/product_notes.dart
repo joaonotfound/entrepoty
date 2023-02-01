@@ -9,8 +9,8 @@ class ProductNotesField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        hintText: "Anotação ( opcional )",
-        label: const Text("Anotações"),
+        hintText: "Anotação",
+        label: const Text("Anotações ( opcional )"),
       ),
       keyboardType: TextInputType.multiline,
     );
