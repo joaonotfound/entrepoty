@@ -46,19 +46,22 @@ class GetxRegisterLotPresenter extends GetxController
     isFormValid = qtdError.value == "" &&
         _model.length != 0 &&
         modelError.value == "" &&
-        _qtd != 0;
+        _qtd != 0 &&
+        _description != '';
   }
 
   @override
   void validateModel(String value) {
     modelError.value = value.length == 0 ? "Este campo é obrigatório." : "";
     _model = value;
+    validateForm();
   }
 
   @override
   void validateQtd(int value) {
     qtdError.value = value <= 0 ? "Número inválido." : "";
     _qtd = value;
+    validateForm();
   }
 
   Future<void> dispose() async {
@@ -74,5 +77,6 @@ class GetxRegisterLotPresenter extends GetxController
   void validateDescription(String value) {
     descriptionError.value = value == "" ? "Campo obrigatório." : '';
     _description = value;
+    validateForm();
   }
 }
