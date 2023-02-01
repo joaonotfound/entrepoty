@@ -17,20 +17,14 @@ class UserPasswordField extends StatelessWidget {
             return TextFormField(
               onChanged: presenter.validatePassword,
               decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  labelText: "Senha",
-                  errorText:
-                      snapshot.data?.isEmpty == true ? null : snapshot.data,
-                  prefixIcon: Icon(
-                    Icons.lock,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  border: const OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Theme.of(context).primaryColor),
-                  )),
+                labelText: "Senha",
+                errorText:
+                    snapshot.data?.isEmpty == true ? null : snapshot.data,
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               obscureText: true,
             );
           }),

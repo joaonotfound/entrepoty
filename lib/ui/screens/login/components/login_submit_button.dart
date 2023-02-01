@@ -15,12 +15,6 @@ class LoginSubmitButton extends StatelessWidget {
         builder: (context, snapshot) {
           return ElevatedButton(
             onPressed: snapshot.data == true ? presenter.authenticate : null,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor,
-              minimumSize: const Size(double.infinity, 50),
-              textStyle:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
             child: const Text("Entrar"),
           );
         });

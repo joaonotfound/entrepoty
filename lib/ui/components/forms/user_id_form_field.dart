@@ -15,21 +15,14 @@ class UserIdFormField extends StatelessWidget {
           return TextFormField(
             onChanged: presenter.validateId,
             decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                hintText: "ma-00000-0",
-                labelText: "Matrícula",
-                errorText:
-                    snapshot.data?.isEmpty == true ? null : snapshot.data,
-                border: const OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                ),
-                prefixIcon: Icon(
-                  Icons.account_circle,
-                  color: Theme.of(context).primaryColor,
-                ),
-                alignLabelWithHint: true),
+              hintText: "ma-00000-0",
+              labelText: "Matrícula",
+              errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
+              prefixIcon: Icon(
+                Icons.account_circle,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
           );
         });
   }
