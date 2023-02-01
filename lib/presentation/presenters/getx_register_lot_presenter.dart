@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:service_desk_2/domain/entities/create_stock_item_entity.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
@@ -39,6 +41,10 @@ class GetxRegisterLotPresenter extends GetxController
     _items.add(CreateStockItemEntity(
         description: "", quantity: _qtd, modelo: _model, notes: ""));
     items.subject.add(_items);
+    _qtd = 0;
+    _description = '';
+    _model = '';
+    Get.back();
   }
 
   @override

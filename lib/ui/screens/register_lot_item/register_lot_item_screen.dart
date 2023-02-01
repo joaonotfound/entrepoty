@@ -55,7 +55,9 @@ class RegisterLotItemScreen extends StatelessWidget {
                         stream: presenter.isFormValidStream,
                         builder: (context, snapshot) {
                           return ElevatedButton(
-                            onPressed: snapshot.data == true ? () {} : null,
+                            onPressed: snapshot.data == true
+                                ? presenter.saveItem
+                                : null,
                             child: Text("Adicionar"),
                             style: ElevatedButton.styleFrom(
                                 minimumSize: Size(double.infinity, 50),
