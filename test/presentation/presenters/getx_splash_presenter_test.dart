@@ -26,7 +26,7 @@ void main() {
   test(
       "should correct emit navigateTo if loadCurrentAccount returns an account",
       () async {
-    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/stock')));
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/home')));
 
     await sut.checkAccount();
   });
