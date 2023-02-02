@@ -27,7 +27,7 @@ ThemeData makeAppTheme() {
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: backgroundColor,
-      elevation: 12,
+      elevation: 8,
       selectedItemColor: primaryColor,
       unselectedItemColor: Colors.grey[600],
     ),
