@@ -11,7 +11,7 @@ class ProductModelField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<RegisterLotPresenter>(context);
+    final presenter = Provider.of<RegisterItemPresenter>(context);
     return DropdownButtonFormField(
       hint: Text("Modelo"),
       items: _modelos

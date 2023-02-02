@@ -5,7 +5,7 @@ import 'package:service_desk_2/ui/ui.dart';
 import 'components/components.dart';
 
 class RegisterLotItemScreen extends StatelessWidget {
-  final RegisterLotPresenter presenter;
+  final RegisterItemPresenter presenter;
   const RegisterLotItemScreen({
     super.key,
     required this.presenter,

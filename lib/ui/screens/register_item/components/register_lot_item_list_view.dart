@@ -9,7 +9,7 @@ class RegisterLotItemsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<RegisterLotPresenter>(context);
+    final presenter = Provider.of<RegisterItemPresenter>(context);
     return Expanded(
       child: Container(
         padding: EdgeInsets.only(bottom: 20),

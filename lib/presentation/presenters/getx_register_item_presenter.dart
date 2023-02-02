@@ -5,13 +5,13 @@ import 'package:service_desk_2/domain/entities/create_stock_item_entity.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
-class GetxRegisterLotPresenter extends GetxController
+class GetxRegisterItemPresenter extends GetxController
     with
         GetxLoadingManager,
         GetxFormManager,
         GetxUiErrorManager,
         GetxNavigatorManager
-    implements RegisterLotPresenter {
+    implements RegisterItemPresenter {
   final qtdError = RxString('');
   final modelError = RxString('');
   final descriptionError = RxString('');
@@ -19,7 +19,6 @@ class GetxRegisterLotPresenter extends GetxController
 
   int _qtd = 0;
   String _model = '';
-  String _description = '';
   List<CreateStockItemEntity> _items = [];
 
   @override
@@ -32,26 +31,21 @@ class GetxRegisterLotPresenter extends GetxController
   Stream<List<CreateStockItemEntity>> get itemsStreams => items.stream;
 
   @override
-  Stream<String> get descriptionErrorStream => descriptionError.stream;
-
-  @override
   Future<void> saveItem() async {
     _items.add(CreateStockItemEntity(
-        description: _description, quantity: _qtd, modelo: _model, notes: ""));
+        description: '', quantity: _qtd, modelo: _model, notes: ""));
     items.subject.add(_items);
     _qtd = 0;
-    _description = '';
     _model = '';
-    Get.back();
+
+    navigateTo = "/stocks";
   }
 
-  @override
   void validateForm() {
     isFormValid = qtdError.value == "" &&
         _model.length != 0 &&
         modelError.value == "" &&
-        _qtd != 0 &&
-        _description != '';
+        _qtd != 0;
   }
 
   @override
@@ -70,17 +64,5 @@ class GetxRegisterLotPresenter extends GetxController
 
   Future<void> dispose() async {
     super.dispose();
-  }
-
-  @override
-  Future<void> saveAll() async {
-    navigateTo = "/stocks";
-  }
-
-  @override
-  void validateDescription(String value) {
-    descriptionError.value = value == "" ? "Campo obrigatório." : '';
-    _description = value;
-    validateForm();
   }
 }

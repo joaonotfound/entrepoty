@@ -10,7 +10,7 @@ class ProductQuantityField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<RegisterLotPresenter>(context);
+    final presenter = Provider.of<RegisterItemPresenter>(context);
     return StreamBuilder(
         stream: presenter.qtdErrorStream,
         builder: (context, snapshot) {

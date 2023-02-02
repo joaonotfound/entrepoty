@@ -1,11 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:service_desk_2/domain/entities/entities.dart';
-import 'package:service_desk_2/presentation/presenters/getx_register_lot_presenter.dart';
+import 'package:service_desk_2/presentation/presenters/getx_register_item_presenter.dart';
 
 void main() {
-  late GetxRegisterLotPresenter sut;
+  late GetxRegisterItemPresenter sut;
   setUp(() {
-    sut = GetxRegisterLotPresenter();
+    sut = GetxRegisterItemPresenter();
   });
   group("GetxRegisterLotPresenter", () {
     test("should emit empty error when validating model", () {
@@ -27,26 +26,14 @@ void main() {
       sut.qtdErrorStream.listen(expectAsync1((value) => expect(value, "")));
       sut.validateQtd(345);
     });
-    test("should emit error when validating description", () {
-      sut.descriptionErrorStream
-          .listen(expectAsync1((error) => expect(error, "Campo obrigatório.")));
-      sut.validateDescription('');
-    });
-    test("should emit no error when validating description", () {
-      sut.descriptionErrorStream
-          .listen(expectAsync1((error) => expect(error, "")));
-      sut.validateDescription('valid-description');
-    });
+
     test("should emit valid form on valid fields", () {
       sut.validateModel("valid-model");
-      sut.validateQtd(1);
 
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, true)));
 
-      sut.validateDescription("asd");
-
-      sut.validateForm();
+      sut.validateQtd(1);
     });
     test("should emit invalid on invalid fields", () {
       sut.isFormValidStream
@@ -60,7 +47,6 @@ void main() {
     test("should emit invalid if model is an empty string", () {
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, false)));
-
       sut.validateForm();
     });
     test("should emit invalid if qtd is zero", () {
@@ -74,8 +60,10 @@ void main() {
     test("should redirect to stocks page", () {
       sut.navigateToStream
           .listen(expectAsync1((value) => expect(value, "/stocks")));
+      sut.validateModel("any-model");
+      sut.validateQtd(1);
 
-      sut.saveAll();
+      sut.saveItem();
     });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));

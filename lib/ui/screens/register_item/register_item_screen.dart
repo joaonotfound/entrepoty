@@ -4,7 +4,7 @@ import '../../ui.dart';
 import 'components/components.dart';
 
 class RegisterItemScreen extends StatefulWidget {
-  final RegisterLotPresenter presenter;
+  final RegisterItemPresenter presenter;
 
   const RegisterItemScreen({
     super.key,
