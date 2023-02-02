@@ -4,7 +4,6 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:service_desk_2/domain/domain.dart';
 import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/ui.dart';
 
 import '../../mocks/mocks.dart';
 
