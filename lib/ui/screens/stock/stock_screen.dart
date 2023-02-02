@@ -63,9 +63,10 @@ class _StockScreenState extends State<StockScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Get.toNamed("/stock/create_lot/"),
-        child: Icon(Icons.add),
+        label: Text("Adicionar item"),
+        icon: Icon(Icons.add),
       ),
     );
   }
