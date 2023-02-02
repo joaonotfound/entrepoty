@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData makeAppTheme() {
-  const primaryColor = Color(0xFF023e8a);
+  const primaryColor = Color(0xFF3a5a40);
   const secondaryColor = Color(0xFF84a98c);
   const backgroundColor = Colors.white;
   // const foregroundColor = ;
