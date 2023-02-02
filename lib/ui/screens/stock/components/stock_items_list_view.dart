@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../stock_presenter.dart';
 
 class StockItemsListView extends StatefulWidget {
-  final StockPresenter presenter;
-  const StockItemsListView({
-    super.key,
-    required this.presenter,
-  });
+  const StockItemsListView({super.key});
 
   @override
   State<StockItemsListView> createState() => _StockItemsListViewState();
@@ -16,8 +13,9 @@ class StockItemsListView extends StatefulWidget {
 class _StockItemsListViewState extends State<StockItemsListView> {
   @override
   Widget build(BuildContext context) {
+    final presenter = Provider.of<StockPresenter>(context);
     return StreamBuilder(
-        stream: widget.presenter.itemsStream,
+        stream: presenter.itemsStream,
         builder: ((context, snapshot) {
           if (snapshot.data?.isNotEmpty == true && snapshot.data != null) {
             return Container(

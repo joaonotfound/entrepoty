@@ -1,10 +1,11 @@
 import 'dart:async';
 
+import 'package:get/get.dart';
 import 'package:service_desk_2/domain/entities/entities.dart';
 import 'package:service_desk_2/domain/usecases/usecases.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
-class StreamStockPresenter implements StockPresenter {
+class StreamStockPresenter extends GetxController implements StockPresenter {
   final LoadCategoriesUsecase loadCategories;
   final LoadStockItemsUsecase loadItems;
   // ignore: close_sinks
@@ -34,6 +35,7 @@ class StreamStockPresenter implements StockPresenter {
 
   @override
   void dispose() {
+    super.dispose();
     categoriesController.close();
     itemsController.close();
   }

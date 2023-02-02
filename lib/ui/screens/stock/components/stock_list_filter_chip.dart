@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:service_desk_2/ui/screens/stock/components/stock_filter_chip.dart';
 
 import '../stock_presenter.dart';
 
 class StockListFilterChips extends StatelessWidget {
-  const StockListFilterChips({
-    Key? key,
-    required this.presenter,
-  }) : super(key: key);
-
-  final StockPresenter presenter;
+  const StockListFilterChips({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final presenter = Provider.of<StockPresenter>(context);
     return StreamBuilder(
       stream: presenter.categoriesStream,
       builder: ((context, snapshot) {
