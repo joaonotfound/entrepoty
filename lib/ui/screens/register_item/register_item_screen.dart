@@ -19,7 +19,7 @@ class _RegisterItemScreenState extends State<RegisterItemScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: makeFormAppbar("Registrar lot"),
+      appBar: makeFormAppbar("Registrar Item"),
       body: SafeArea(
         child: Container(
           width: double.infinity,
@@ -31,10 +31,16 @@ class _RegisterItemScreenState extends State<RegisterItemScreen> {
                 flex: 2,
                 child: ListenableProvider(
                   create: (_) => widget.presenter,
-                  child: Column(
-                    children: [
-                      RegisterLotItemsListView(),
-                    ],
+                  child: Form(
+                    child: Column(
+                      children: [
+                        ProductModelField(),
+                        SizedBox(height: 10),
+                        ProductQuantityField(),
+                        SizedBox(height: 10),
+                        AddTaxNoteButton(),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -42,15 +48,18 @@ class _RegisterItemScreenState extends State<RegisterItemScreen> {
                 alignment: Alignment.bottomCenter,
                 child: Column(
                   children: [
-                    AddTaxNoteButton(),
-                    SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Próximo"),
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 50),
-                          backgroundColor: Theme.of(context).primaryColor),
-                    ),
+                    StreamBuilder(
+                        stream: widget.presenter.isFormValidStream,
+                        builder: (context, snapshot) {
+                          return ElevatedButton(
+                            onPressed: snapshot.data == true ? () {} : null,
+                            child: Text("Próximo"),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(double.infinity, 50),
+                              backgroundColor: Theme.of(context).primaryColor,
+                            ),
+                          );
+                        }),
                   ],
                 ),
               )

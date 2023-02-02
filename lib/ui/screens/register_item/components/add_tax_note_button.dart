@@ -11,11 +11,11 @@ class AddTaxNoteButton extends StatelessWidget {
       style: TextButton.styleFrom(
         minimumSize: Size(double.infinity, 0),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Color(0xffc92a2a),
       ),
       onPressed: () {},
       icon: Icon(
-        Icons.picture_as_pdf,
+        Icons.upload,
         color: Colors.white,
       ),
       label: Text(
