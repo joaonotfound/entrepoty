@@ -26,7 +26,8 @@ class _HomeScaffoldControllerState extends State<HomeScaffoldController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: makeAppbar(),
-      drawer: makeDrawer(context),
+      resizeToAvoidBottomInset: false,
+      // drawer: makeDrawer(context),
       bottomNavigationBar: makeBottomNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.extended(
