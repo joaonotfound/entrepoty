@@ -15,13 +15,24 @@ class StockScreen extends StatefulWidget {
 }
 
 class _StockScreenState extends State<StockScreen> {
+  bool _searching = false;
   @override
   Widget build(BuildContext context) {
     widget.presenter.loadScreen();
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       drawer: makeDrawer(context),
-      appBar: makeHomeAppbar(context),
+      appBar: AppBar(
+        title: _searching ? StockSearchInput() : null,
+        actions: [
+          IconButton(
+              onPressed: () => setState(() {
+                    _searching = !_searching;
+                  }),
+              icon: Icon(_searching ? Icons.close : Icons.search)),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.folder), label: "Estoque"),
@@ -42,7 +53,6 @@ class _StockScreenState extends State<StockScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const StockSearchInput(),
               StockListFilterChips(presenter: widget.presenter),
               StockItemsListView(
                 presenter: widget.presenter,

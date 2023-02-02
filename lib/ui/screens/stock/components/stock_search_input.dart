@@ -8,12 +8,8 @@ class StockSearchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: true,
       decoration: InputDecoration(
-        prefixIcon: Icon(
-          Icons.search,
-          color: Colors.grey,
-        ),
-        fillColor: Colors.grey[200],
         hintText: "Procurar por item",
         enabledBorder: defaultOutlineBorder(),
         focusedBorder: defaultOutlineBorder(),
@@ -23,9 +19,8 @@ class StockSearchInput extends StatelessWidget {
 
   OutlineInputBorder defaultOutlineBorder() {
     return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
         borderSide: BorderSide(
-          color: Colors.transparent,
-        ));
+      color: Colors.transparent,
+    ));
   }
 }
