@@ -24,10 +24,6 @@ class App extends StatelessWidget {
         GetPage(name: "/login", page: makeLoginScreen),
         GetPage(name: "/stock", page: makeStockScreen),
         GetPage(name: "/stock/create_item", page: makeRegisterItemScreen),
-        GetPage(
-            name: "/stock/create_lot/",
-            page: makeRegisterLotScreen,
-            transition: Transition.native),
       ],
     );
   }
