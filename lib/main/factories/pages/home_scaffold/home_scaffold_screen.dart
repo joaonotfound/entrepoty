@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:service_desk_2/main/factories/factories.dart';
 import 'package:service_desk_2/main/factories/pages/stock/stock_screen_factory.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
@@ -12,7 +13,7 @@ List<HomeScaffoldScreen> makeHomeScaffoldScreens() {
       label: "Empréstimos",
     ),
     HomeScaffoldScreen(
-      widget: Center(child: Text("Tela de usuários")),
+      widget: makeUsersScreen(),
       icon: Icon(Icons.account_box_outlined),
       label: "Usuários",
     )
