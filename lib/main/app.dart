@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import './factories/factories.dart';
 import '../ui/ui.dart';
 
@@ -20,7 +20,7 @@ class App extends StatelessWidget {
       getPages: [
         GetPage(name: '/splash', page: makeSplashScreen),
         GetPage(name: "/login", page: makeLoginScreen),
-        GetPage(name: "/home", page: makeHomeScaffoldController),
+        GetPage(name: "/home", page: makeAppController),
         GetPage(name: "/stock/create_item", page: makeRegisterItemScreen),
       ],
     );

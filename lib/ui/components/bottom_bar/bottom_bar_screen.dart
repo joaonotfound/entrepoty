@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomeScaffoldScreen {
-  final Widget widget;
+class BottomBarScreen {
+  final Widget Function() widget;
   final Icon icon;
   final String label;
-  HomeScaffoldScreen({
+  BottomBarScreen({
     required this.widget,
     required this.icon,
     required this.label,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:service_desk_2/domain/domain.dart';
+import 'package:service_desk_2/ui/components/components.dart';
 import 'package:service_desk_2/ui/screens/screens.dart';
 
 class UsersScreen extends StatelessWidget {
@@ -12,21 +14,33 @@ class UsersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     presenter.loadUsers();
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-      child: StreamBuilder(
-          stream: presenter.usersStream,
-          builder: (context, snapshot) {
-            return snapshot.data?.isNotEmpty == true
-                ? ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(height: 10),
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: ((context, index) =>
-                        UserCard(user: snapshot.data![index])))
-                : Center(
-                    child: Text("Loading"),
-                  );
-          }),
+    return Scaffold(
+      bottomNavigationBar: makeBottomNavigationBar(),
+      floatingActionButton: FloatingActionButton.extended(
+        heroTag: "add-user",
+        onPressed: () {},
+        icon: Icon(Icons.add),
+        label: Text("Criar usuário"),
+      ),
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+          child: StreamBuilder(
+              stream: presenter.usersStream,
+              builder: (context, snapshot) {
+                return snapshot.data?.isNotEmpty == true
+                    ? ListView.separated(
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 10),
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: ((context, index) =>
+                            UserCard(user: snapshot.data![index])))
+                    : Center(
+                        child: Text("Loading"),
+                      );
+              }),
+        ),
+      ),
     );
   }
 }
