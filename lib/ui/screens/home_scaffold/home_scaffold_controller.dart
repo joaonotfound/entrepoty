@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:service_desk_2/ui/screens/stock/components/components.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
@@ -19,7 +18,11 @@ class _HomeScaffoldControllerState extends State<HomeScaffoldController> {
   int _selectedIndex = 0;
 
   Widget getPage(int index) {
-    return widget.screens.map((e) => e.widget).toList()[index];
+    return getPages()[index];
+  }
+
+  List<Widget> getPages() {
+    return widget.screens.map((e) => e.widget).toList();
   }
 
   @override
@@ -29,13 +32,11 @@ class _HomeScaffoldControllerState extends State<HomeScaffoldController> {
       resizeToAvoidBottomInset: false,
       // drawer: makeDrawer(context),
       bottomNavigationBar: makeBottomNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.toNamed("/stock/create_item/"),
-        label: Text("Adicionar item"),
-        icon: Icon(Icons.add),
+
+      body: IndexedStack(
+        children: getPages(),
+        index: _selectedIndex,
       ),
-      body: getPage(_selectedIndex),
     );
   }
 
