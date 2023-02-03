@@ -2,7 +2,7 @@ import 'package:service_desk_2/domain/domain.dart';
 
 class MockedLoadUsers extends LoadUsersUsecase {
   final _users = List.generate(
-      30,
+      3,
       (index) => UserEntity(
           name: "user $index",
           profilePicture: "https://source.boringavatars.com/beam"));
