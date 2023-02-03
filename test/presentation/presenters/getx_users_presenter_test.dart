@@ -22,5 +22,12 @@ void main() {
 
       sut.loadUsers();
     });
+    test("should emit error when loadUsersUsecase throws", () async {
+      loadUsers.mockLoadUsersError(Exception());
+      sut.mainErrorStream.listen(expectAsync1(
+          (error) => expect(error, "Um erro inesperado ocorreu :/")));
+
+      sut.loadUsers();
+    });
   });
 }

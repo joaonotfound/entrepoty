@@ -15,9 +15,14 @@ class GetxUsersPresenter extends GetxController
 
   @override
   Future<void> loadUsers() async {
-    isLoading = true;
-    final fetchedUsers = await loadUsersUsecase.loadUsers();
-    users.value = fetchedUsers;
+    try {
+      isLoading = true;
+      final fetchedUsers = await loadUsersUsecase.loadUsers();
+      users.value = fetchedUsers;
+    } catch (_) {
+      mainError = "Um erro inesperado ocorreu :/";
+    }
+
     isLoading = false;
   }
 
