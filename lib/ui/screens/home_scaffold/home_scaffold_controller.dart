@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:service_desk_2/ui/screens/stock/components/components.dart';
 import 'package:service_desk_2/ui/ui.dart';
 
@@ -31,6 +32,11 @@ class _HomeScaffoldControllerState extends State<HomeScaffoldController> {
       appBar: makeAppbar(),
       resizeToAvoidBottomInset: false,
       // drawer: makeDrawer(context),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => Get.toNamed("/stock/create_item"),
+        icon: Icon(Icons.add),
+        label: Text("Adicionar item"),
+      ),
       bottomNavigationBar: makeBottomNavigationBar(),
 
       body: IndexedStack(
