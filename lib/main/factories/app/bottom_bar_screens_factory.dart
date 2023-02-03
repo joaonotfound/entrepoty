@@ -11,7 +11,7 @@ List<BottomBarScreen> makeBottomBarScreens() {
       label: "Estoque",
     ),
     BottomBarScreen(
-      widget: () => Scaffold(body: Center(child: Text("Tela de empréstimos"))),
+      widget: () => makeLoanScreen(),
       icon: Icon(Icons.folder_shared),
       label: "Empréstimos",
     ),
