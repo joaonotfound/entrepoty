@@ -17,5 +17,10 @@ void main() {
 
       sut.loadUsers();
     });
+    test("should emit loading when calling loadUsers", () async {
+      expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+
+      sut.loadUsers();
+    });
   });
 }

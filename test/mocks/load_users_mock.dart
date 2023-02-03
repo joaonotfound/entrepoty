@@ -7,4 +7,6 @@ class MockLoadUsers extends Mock implements LoadUsersUsecase {
       );
   void mockLoadUsers(List<UserEntity> data) =>
       _mockLoadUsersCall().thenAnswer((invocation) async => data);
+  void mockLoadUsersError(dynamic error) =>
+      _mockLoadUsersCall().thenThrow(error);
 }
