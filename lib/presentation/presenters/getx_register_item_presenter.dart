@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 import 'package:entrepoty/domain/entities/create_stock_item_entity.dart';
 import 'package:entrepoty/presentation/presentation.dart';
-import 'package:entrepoty/ui/screens/screens.dart';
 
 class GetxRegisterItemPresenter extends GetxController
     with
@@ -38,7 +38,7 @@ class GetxRegisterItemPresenter extends GetxController
     _qtd = 0;
     _model = '';
 
-    navigateTo = "/stocks";
+    navigateTo = Routes.stock;
   }
 
   void validateForm() {

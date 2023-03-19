@@ -65,7 +65,7 @@ class GetxLoginPresenter extends GetxController
       final account =
           await authentication.authenticate(id: _id, password: _password);
       await saveCurrentAccount.saveAccount(account: account);
-      navigateTo = "/home";
+      navigateTo = Routes.home;
     } on DomainError catch (error) {
       mainError = error.description;
     } catch (error) {

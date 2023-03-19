@@ -1,6 +1,6 @@
+import 'package:entrepoty/main/factories/generate_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import './factories/factories.dart';
 import '../ui/ui.dart';
 
 void startApp() {
@@ -16,23 +16,8 @@ class App extends StatelessWidget {
       title: "Entrepoty",
       debugShowCheckedModeBanner: false,
       theme: makeAppTheme(),
-      initialRoute: "/splash",
-      getPages: [
-        GetPage(name: "/launch", page: () => LaunchScreen()),
-        GetPage(name: '/splash', page: makeSplashScreen),
-        GetPage(
-          name: "/login",
-          page: makeLoginScreen,
-          transition: Transition.rightToLeft,
-        ),
-        GetPage(name: "/home", page: makeAppController),
-        GetPage(
-          name: '/users/create',
-          page: () => CreateUserScreen(),
-          transition: Transition.rightToLeft,
-        ),
-        GetPage(name: "/stock/create_item", page: makeRegisterItemScreen),
-      ],
+      initialRoute: Routes.splash,
+      getPages: [...generateRoutes()],
     );
   }
 }

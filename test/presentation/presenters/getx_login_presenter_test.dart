@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -109,7 +110,7 @@ void main() {
       sut.validatePassword(password);
 
       sut.navigateToStream
-          .listen(expectAsync1((page) => expect(page, "/stock")));
+          .listen(expectAsync1((page) => expect(page, Routes.stock)));
 
       sut.authenticate();
     });

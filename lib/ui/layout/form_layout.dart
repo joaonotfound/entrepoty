@@ -21,13 +21,15 @@ class FormLayout extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           padding: EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 35),
-          child: Column(children: [
-            Expanded(
-              child: content,
-              flex: 1,
-            ),
-            Align(child: action)
-          ]),
+          child: Column(
+            children: [
+              Expanded(
+                child: content,
+                flex: 1,
+              ),
+              Align(child: action)
+            ],
+          ),
         ),
       ),
     );

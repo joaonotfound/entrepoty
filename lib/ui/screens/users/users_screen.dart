@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
 import 'package:get/get.dart';
 
+import '../../misc/misc.dart';
+
 class UsersScreen extends StatelessWidget {
   const UsersScreen({
     super.key,
@@ -29,7 +31,7 @@ class UsersScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         heroTag: "add-user",
-        onPressed: () => Get.toNamed("/users/create"),
+        onPressed: () => Get.toNamed(Routes.createUser),
         icon: Icon(Icons.add),
         label: Text("Criar usuário"),
       ),

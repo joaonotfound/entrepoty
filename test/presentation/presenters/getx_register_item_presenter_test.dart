@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:entrepoty/presentation/presenters/getx_register_item_presenter.dart';
 
@@ -59,7 +60,7 @@ void main() {
     });
     test("should redirect to stocks page", () {
       sut.navigateToStream
-          .listen(expectAsync1((value) => expect(value, "/stocks")));
+          .listen(expectAsync1((value) => expect(value, Routes.stock)));
       sut.validateModel("any-model");
       sut.validateQtd(1);
 

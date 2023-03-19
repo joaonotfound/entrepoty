@@ -8,16 +8,18 @@ class GetxSplashPresenter extends GetxController
     implements SplashPresenter {
   final LoadCurrentAccountUsecase loadAccount;
 
-  GetxSplashPresenter({required this.loadAccount});
+  GetxSplashPresenter({
+    required this.loadAccount,
+  });
 
   @override
   Future<void> checkAccount() async {
     await Future.delayed(Duration(seconds: 2));
     try {
       var account = await loadAccount.load();
-      navigateTo = account != null ? "/home" : "/launch";
+      navigateTo = account != null ? Routes.home : Routes.launch;
     } catch (_) {
-      navigateTo = "/launch";
+      navigateTo = Routes.launch;
     }
   }
 }

@@ -25,7 +25,7 @@ class _StockScreenState extends State<StockScreen> {
     return HomeLayout(
       appBar: makeAppbar(),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.toNamed("/stock/create_item"),
+        onPressed: () => Get.toNamed(Routes.createStockItem),
         icon: Icon(Icons.add),
         label: Text("Adicionar item"),
       ),
