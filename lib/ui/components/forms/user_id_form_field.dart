@@ -20,7 +20,7 @@ class UserIdFormField extends StatelessWidget {
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: Icon(
                 Icons.account_circle,
-                color: Theme.of(context).primaryColor,
+                color: Colors.black54,
               ),
             ),
           );

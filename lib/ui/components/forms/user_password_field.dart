@@ -12,22 +12,22 @@ class UserPasswordField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 16, bottom: 30),
       child: StreamBuilder<String?>(
-          stream: presenter.passwordErrorStream,
-          builder: (context, snapshot) {
-            return TextFormField(
-              onChanged: presenter.validatePassword,
-              decoration: InputDecoration(
-                labelText: "Senha",
-                errorText:
-                    snapshot.data?.isEmpty == true ? null : snapshot.data,
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Theme.of(context).primaryColor,
-                ),
+        stream: presenter.passwordErrorStream,
+        builder: (context, snapshot) {
+          return TextFormField(
+            onChanged: presenter.validatePassword,
+            decoration: InputDecoration(
+              labelText: "Senha",
+              errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.black54,
               ),
-              obscureText: true,
-            );
-          }),
+            ),
+            obscureText: true,
+          );
+        },
+      ),
     );
   }
 }

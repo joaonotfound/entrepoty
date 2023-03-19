@@ -7,6 +7,10 @@ ThemeData makeAppTheme() {
   // const foregroundColor = ;
   return ThemeData(
     primaryColor: primaryColor,
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      primary: primaryColor,
+      secondary: secondaryColor,
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       foregroundColor: Colors.grey[800],
@@ -25,6 +29,7 @@ ThemeData makeAppTheme() {
       backgroundColor: Colors.grey[400],
       labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
     ),
+    textSelectionTheme: TextSelectionThemeData(cursorColor: primaryColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: backgroundColor,
       elevation: 8,
@@ -53,17 +58,19 @@ TextTheme getTextTheme(Color primaryColor) {
 
 InputDecorationTheme getInputDecorationTheme(Color primaryColor) {
   return InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.white,
-      focusColor: primaryColor,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(color: primaryColor),
-      ),
-      alignLabelWithHint: true);
+    filled: true,
+    fillColor: Colors.white,
+    focusColor: primaryColor,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4),
+    ),
+    labelStyle: TextStyle(color: Colors.black54),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4),
+      borderSide: BorderSide(color: primaryColor),
+    ),
+    alignLabelWithHint: true,
+  );
 }
 
 ElevatedButtonThemeData getElevatedButtonTheme(Color primaryColor) {
@@ -72,6 +79,8 @@ ElevatedButtonThemeData getElevatedButtonTheme(Color primaryColor) {
       backgroundColor: primaryColor,
       minimumSize: const Size(double.infinity, 50),
       textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      disabledBackgroundColor: primaryColor.withAlpha(100),
+      disabledForegroundColor: Colors.white70,
     ),
   );
 }

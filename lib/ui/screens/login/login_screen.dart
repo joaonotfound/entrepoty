@@ -12,11 +12,11 @@ class LoginScreen extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color(0xFFE8EBF3),
-        appBar: makeLoginAppbarComponent(),
-        body: Builder(builder: (context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFE8EBF3),
+      // appBar: makeLoginAppbarComponent(),
+      body: SafeArea(
+        child: Builder(builder: (context) {
           handleLoginManager(context, presenter.isLoadingStream);
           handleNavigation(context, presenter.navigateToStream);
           handleUiError(context, presenter.mainErrorStream);
