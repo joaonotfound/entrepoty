@@ -29,6 +29,7 @@ ThemeData makeAppTheme() {
       backgroundColor: Colors.grey[400],
       labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
     ),
+    outlinedButtonTheme: getOutlinedButtonTheme(primaryColor),
     textSelectionTheme: TextSelectionThemeData(cursorColor: primaryColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: backgroundColor,
@@ -48,10 +49,15 @@ IconThemeData getIconThemeData(Color primaryColor) {
 
 TextTheme getTextTheme(Color primaryColor) {
   return TextTheme(
-    headline1: TextStyle(
-      color: primaryColor,
+    headlineMedium: TextStyle(
+      color: Colors.black87,
       fontSize: 30,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
+    ),
+    headlineSmall: TextStyle(
+      color: Colors.black87,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
     ),
   );
 }
@@ -70,6 +76,18 @@ InputDecorationTheme getInputDecorationTheme(Color primaryColor) {
       borderSide: BorderSide(color: primaryColor),
     ),
     alignLabelWithHint: true,
+  );
+}
+
+OutlinedButtonThemeData getOutlinedButtonTheme(Color primaryColor) {
+  return OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      minimumSize: const Size(double.infinity, 50),
+      side: BorderSide(
+        color: primaryColor.withAlpha(150),
+        width: 1,
+      ),
+    ),
   );
 }
 

@@ -18,8 +18,13 @@ class App extends StatelessWidget {
       theme: makeAppTheme(),
       initialRoute: "/splash",
       getPages: [
+        GetPage(name: "/launch", page: () => LaunchScreen()),
         GetPage(name: '/splash', page: makeSplashScreen),
-        GetPage(name: "/login", page: makeLoginScreen),
+        GetPage(
+          name: "/login",
+          page: makeLoginScreen,
+          transition: Transition.rightToLeft,
+        ),
         GetPage(name: "/home", page: makeAppController),
         GetPage(name: "/stock/create_item", page: makeRegisterItemScreen),
       ],

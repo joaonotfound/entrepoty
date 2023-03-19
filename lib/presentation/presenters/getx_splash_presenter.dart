@@ -15,9 +15,9 @@ class GetxSplashPresenter extends GetxController
     await Future.delayed(Duration(seconds: 2));
     try {
       var account = await loadAccount.load();
-      navigateTo = account != null ? "/home" : "/login";
+      navigateTo = account != null ? "/home" : "/launch";
     } catch (_) {
-      navigateTo = "/login";
+      navigateTo = "/launch";
     }
   }
 }

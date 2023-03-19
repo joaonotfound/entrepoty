@@ -34,14 +34,16 @@ void main() {
       () async {
     loadCurrentAccount.mockLoad(null);
 
-    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
+    sut.navigateToStream
+        .listen(expectAsync1((page) => expect(page, '/launch')));
 
     await sut.checkAccount();
   });
   test("should redirect to login page if loadCurrentAccount throws", () async {
     loadCurrentAccount.mockLoadError(Exception());
 
-    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
+    sut.navigateToStream
+        .listen(expectAsync1((page) => expect(page, '/launch')));
 
     await sut.checkAccount();
   });
