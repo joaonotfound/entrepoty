@@ -22,7 +22,7 @@ class UserCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.network(
-              user.profilePicture,
+              "https://source.boringavatars.com/beam",
               width: MediaQuery.of(context).size.width * 0.15,
             ),
             SizedBox(width: 15),
