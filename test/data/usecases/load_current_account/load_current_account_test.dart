@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:service_desk_2/data/usecases/usecases.dart';
-import 'package:service_desk_2/domain/entities/authentication/authentication.dart';
-import 'package:service_desk_2/domain/errors/domain_errors.dart';
+import 'package:entrepoty/data/usecases/usecases.dart';
+import 'package:entrepoty/domain/entities/authentication/authentication.dart';
+import 'package:entrepoty/domain/errors/domain_errors.dart';
 
 import '../../../mocks/mocks.dart';
 

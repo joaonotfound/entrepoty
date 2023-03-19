@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "SD",
+      title: "Entrepoty",
       debugShowCheckedModeBanner: false,
       theme: makeAppTheme(),
       initialRoute: "/splash",

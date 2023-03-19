@@ -1,5 +1,5 @@
-import 'package:service_desk_2/data/data.dart';
-import 'package:service_desk_2/domain/domain.dart';
+import 'package:entrepoty/data/data.dart';
+import 'package:entrepoty/domain/domain.dart';
 
 class LocalSaveCurrentAccount implements SaveCurrentAccountUsecase {
   final SaveSecureCacheStorage saveSecureCacheStorage;

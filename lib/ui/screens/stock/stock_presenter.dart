@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/domain/entities/category_entity.dart';
-import 'package:service_desk_2/domain/entities/stock_item_entity.dart';
+import 'package:entrepoty/domain/entities/category_entity.dart';
+import 'package:entrepoty/domain/entities/stock_item_entity.dart';
 
 abstract class StockPresenter implements Listenable {
   Stream<List<CategoryEntity>> get categoriesStream;

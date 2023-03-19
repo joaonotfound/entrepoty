@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:service_desk_2/ui/ui.dart';
+import 'package:entrepoty/ui/ui.dart';
 import './components/components.dart';
 
 class StockScreen extends StatefulWidget {

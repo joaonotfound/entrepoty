@@ -2,8 +2,8 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:service_desk_2/domain/domain.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
+import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/presentation/presentation.dart';
 
 import '../../mocks/mocks.dart';
 

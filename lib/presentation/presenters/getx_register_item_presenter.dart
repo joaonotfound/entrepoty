@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:service_desk_2/domain/entities/create_stock_item_entity.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:entrepoty/domain/entities/create_stock_item_entity.dart';
+import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/screens/screens.dart';
 
 class GetxRegisterItemPresenter extends GetxController
     with

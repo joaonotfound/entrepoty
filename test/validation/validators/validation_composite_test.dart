@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:service_desk_2/validation/validation.dart';
+import 'package:entrepoty/validation/validation.dart';
 
 import '../../mocks/mocks.dart';
 

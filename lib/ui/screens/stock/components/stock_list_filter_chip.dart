@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:service_desk_2/ui/screens/stock/components/stock_filter_chip.dart';
+import 'package:entrepoty/ui/screens/stock/components/stock_filter_chip.dart';
 
 import '../stock_presenter.dart';
 

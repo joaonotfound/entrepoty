@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:service_desk_2/domain/entities/entities.dart';
-import 'package:service_desk_2/domain/usecases/usecases.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:entrepoty/domain/entities/entities.dart';
+import 'package:entrepoty/domain/usecases/usecases.dart';
+import 'package:entrepoty/ui/screens/screens.dart';
 
 class StreamStockPresenter extends GetxController implements StockPresenter {
   final LoadCategoriesUsecase loadCategories;

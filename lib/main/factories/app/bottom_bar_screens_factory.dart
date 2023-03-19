@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/main/factories/factories.dart';
-import 'package:service_desk_2/main/factories/pages/stock/stock_screen_factory.dart';
-import 'package:service_desk_2/ui/ui.dart';
+import 'package:entrepoty/main/factories/factories.dart';
+import 'package:entrepoty/main/factories/pages/stock/stock_screen_factory.dart';
+import 'package:entrepoty/ui/ui.dart';
 
 List<BottomBarScreen> makeBottomBarScreens() {
   return [

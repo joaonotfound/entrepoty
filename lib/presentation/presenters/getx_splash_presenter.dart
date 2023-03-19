@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:service_desk_2/domain/usecases/usecases.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/ui.dart';
+import 'package:entrepoty/domain/usecases/usecases.dart';
+import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/ui.dart';
 
 class GetxSplashPresenter extends GetxController
     with GetxNavigatorManager

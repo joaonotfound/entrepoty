@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import 'package:service_desk_2/data/data.dart';
-import 'package:service_desk_2/domain/domain.dart';
+import 'package:entrepoty/data/data.dart';
+import 'package:entrepoty/domain/domain.dart';
 
 class LocalStorageAdapter
     implements SaveSecureCacheStorage, LoadSecureCacheStorage {

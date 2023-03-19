@@ -1,4 +1,4 @@
-import 'package:service_desk_2/ui/ui.dart';
+import 'package:entrepoty/ui/ui.dart';
 
 LoanScreen makeLoanScreen() {
   return LoanScreen();

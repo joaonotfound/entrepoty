@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:service_desk_2/presentation/presenters/getx_register_item_presenter.dart';
+import 'package:entrepoty/presentation/presenters/getx_register_item_presenter.dart';
 
 void main() {
   late GetxRegisterItemPresenter sut;

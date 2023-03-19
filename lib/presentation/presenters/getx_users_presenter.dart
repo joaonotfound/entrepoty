@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:service_desk_2/domain/domain.dart';
-import 'package:service_desk_2/presentation/presentation.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/screens/screens.dart';
 
 class GetxUsersPresenter extends GetxController
     with GetxUiErrorManager, GetxLoadingManager

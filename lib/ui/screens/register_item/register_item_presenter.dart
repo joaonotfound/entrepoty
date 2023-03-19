@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/domain/entities/entities.dart';
+import 'package:entrepoty/domain/entities/entities.dart';
 
 abstract class RegisterItemPresenter implements Listenable {
   Stream<bool> get isFormValidStream;

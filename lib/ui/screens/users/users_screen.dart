@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/ui/components/components.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:entrepoty/ui/components/components.dart';
+import 'package:entrepoty/ui/screens/screens.dart';
 
 class UsersScreen extends StatelessWidget {
   const UsersScreen({

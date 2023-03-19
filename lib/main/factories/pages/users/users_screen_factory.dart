@@ -1,5 +1,5 @@
-import 'package:service_desk_2/main/factories/factories.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:entrepoty/main/factories/factories.dart';
+import 'package:entrepoty/ui/screens/screens.dart';
 
 UsersScreen makeUsersScreen() {
   return UsersScreen(

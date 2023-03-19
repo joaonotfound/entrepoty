@@ -1,5 +1,5 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:service_desk_2/data/usecases/usecases.dart';
+import 'package:entrepoty/data/usecases/usecases.dart';
 
 class MockLocalSaveCurrentAccount extends Mock
     implements LocalSaveCurrentAccount {

@@ -1,4 +1,4 @@
-import 'package:service_desk_2/domain/domain.dart';
+import 'package:entrepoty/domain/domain.dart';
 
 // only to be used while there's no backend creayed yet.
 class LocalAuthentication implements AuthenticationUsecase {

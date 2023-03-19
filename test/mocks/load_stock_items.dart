@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:service_desk_2/domain/entities/stock_item_entity.dart';
-import 'package:service_desk_2/domain/usecases/usecases.dart';
+import 'package:entrepoty/domain/entities/stock_item_entity.dart';
+import 'package:entrepoty/domain/usecases/usecases.dart';
 
 class MockLoadStockItems extends Mock implements LoadStockItemsUsecase {
   When _mockLoadAllItemsCall() => when(() => loadAllItems());

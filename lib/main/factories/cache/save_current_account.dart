@@ -1,6 +1,6 @@
-import 'package:service_desk_2/data/usecases/usecases.dart';
-import 'package:service_desk_2/domain/usecases/usecases.dart';
-import 'package:service_desk_2/main/factories/factories.dart';
+import 'package:entrepoty/data/usecases/usecases.dart';
+import 'package:entrepoty/domain/usecases/usecases.dart';
+import 'package:entrepoty/main/factories/factories.dart';
 
 SaveCurrentAccountUsecase makeLocalSaveCurrentAccount() {
   return LocalSaveCurrentAccount(

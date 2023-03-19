@@ -1,4 +1,4 @@
-import 'package:service_desk_2/domain/domain.dart';
+import 'package:entrepoty/domain/domain.dart';
 
 class MockedLoadUsers extends LoadUsersUsecase {
   final _users = List.generate(

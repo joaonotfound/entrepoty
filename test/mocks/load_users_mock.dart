@@ -1,5 +1,5 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:service_desk_2/domain/domain.dart';
+import 'package:entrepoty/domain/domain.dart';
 
 class MockLoadUsers extends Mock implements LoadUsersUsecase {
   When _mockLoadUsersCall() => when(

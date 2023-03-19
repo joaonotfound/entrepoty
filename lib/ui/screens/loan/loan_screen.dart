@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_desk_2/ui/ui.dart';
+import 'package:entrepoty/ui/ui.dart';
 
 class LoanScreen extends StatelessWidget {
   const LoanScreen({super.key});

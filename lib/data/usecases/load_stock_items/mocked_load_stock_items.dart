@@ -1,5 +1,5 @@
-import 'package:service_desk_2/domain/entities/stock_item_entity.dart';
-import 'package:service_desk_2/domain/usecases/usecases.dart';
+import 'package:entrepoty/domain/entities/stock_item_entity.dart';
+import 'package:entrepoty/domain/usecases/usecases.dart';
 
 class MockedLoadStockItems implements LoadStockItemsUsecase {
   final List<String> _items = [

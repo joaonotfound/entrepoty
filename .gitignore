@@ -46,5 +46,5 @@ app.*.map.json
 .dart_tool/
 .idea
 .vscode
-service_desk_2.iml
+entrepoty.iml
 analysis_options.yaml

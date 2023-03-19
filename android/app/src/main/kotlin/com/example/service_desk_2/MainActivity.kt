@@ -1,4 +1,4 @@
-package com.example.service_desk_2
+package com.example.entrepoty
 
 import io.flutter.embedding.android.FlutterActivity
 

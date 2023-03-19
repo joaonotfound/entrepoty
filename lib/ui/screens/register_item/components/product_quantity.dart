@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:service_desk_2/ui/screens/screens.dart';
+import 'package:entrepoty/ui/screens/screens.dart';
 
 class ProductQuantityField extends StatelessWidget {
   const ProductQuantityField({
