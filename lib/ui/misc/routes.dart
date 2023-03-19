@@ -7,4 +7,5 @@ class Routes {
 
   static final createUser = '/users/create';
   static final createStockItem = '/stock/create';
+  static final createModel = '/models/create';
 }

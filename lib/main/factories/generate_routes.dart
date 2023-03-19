@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/screens/create_model/create_model.dart';
 import 'package:get/get.dart';
 import '../../ui/ui.dart';
 import 'factories.dart';
@@ -15,6 +16,11 @@ List<GetPage> generateRoutes() {
     GetPage(
       name: Routes.createUser,
       page: () => CreateUserScreen(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: Routes.createModel,
+      page: () => CreateModelForm(),
       transition: Transition.rightToLeft,
     ),
     GetPage(
