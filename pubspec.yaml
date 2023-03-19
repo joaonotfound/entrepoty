@@ -40,6 +40,7 @@ dependencies:
   flutter_secure_storage:
   provider:
   flutter_svg:
+  fpdart: ^0.5.0
 
 dev_dependencies:
   flutter_test:
