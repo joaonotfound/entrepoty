@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:entrepoty/ui/components/components.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
+import 'package:get/get.dart';
 
 class UsersScreen extends StatelessWidget {
   const UsersScreen({
@@ -15,7 +16,7 @@ class UsersScreen extends StatelessWidget {
       bottomNavigationBar: makeBottomNavigationBar(),
       floatingActionButton: FloatingActionButton.extended(
         heroTag: "add-user",
-        onPressed: () {},
+        onPressed: () => Get.toNamed("/users/create"),
         icon: Icon(Icons.add),
         label: Text("Criar usuário"),
       ),

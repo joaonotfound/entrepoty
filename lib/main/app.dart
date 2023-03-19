@@ -27,7 +27,7 @@ class App extends StatelessWidget {
         ),
         GetPage(name: "/home", page: makeAppController),
         GetPage(
-          name: '/users/create_user',
+          name: '/users/create',
           page: () => CreateUserScreen(),
           transition: Transition.rightToLeft,
         ),
