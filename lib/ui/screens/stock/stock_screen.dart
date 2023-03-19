@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -21,29 +22,21 @@ class _StockScreenState extends State<StockScreen> {
   @override
   Widget build(BuildContext context) {
     widget.presenter.loadScreen();
-
-    return Scaffold(
+    return HomeLayout(
       appBar: makeAppbar(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Get.toNamed("/stock/create_item"),
         icon: Icon(Icons.add),
         label: Text("Adicionar item"),
       ),
-      bottomNavigationBar: makeBottomNavigationBar(),
-      body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-          child: ListenableProvider(
-            create: (_) => widget.presenter,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StockListFilterChips(),
-                StockItemsListView()
-                // ignore: sized_box_for_whitespace
-              ],
-            ),
-          ),
+      body: ListenableProvider(
+        create: (_) => widget.presenter,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            StockListFilterChips(),
+            StockItemsListView(),
+          ],
         ),
       ),
     );
