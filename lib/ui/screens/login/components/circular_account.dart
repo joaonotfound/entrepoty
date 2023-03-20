@@ -11,7 +11,7 @@ class CircularAccount extends StatelessWidget {
       child: Icon(
         Icons.account_circle_sharp,
         size: MediaQuery.of(context).size.height * 0.15,
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.onBackground.withAlpha(180),
       ),
     );
   }

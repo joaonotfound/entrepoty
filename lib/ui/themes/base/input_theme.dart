@@ -7,8 +7,8 @@ InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
     filled: true,
     fillColor: scheme.surfaceColor.withAlpha(100),
     iconColor: scheme.textColor,
-    prefixIconColor: scheme.textColor.withAlpha(180),
-    suffixIconColor: scheme.textColor.withAlpha(180),
+    prefixIconColor: scheme.onBackground.withAlpha(180),
+    suffixIconColor: scheme.onBackground.withAlpha(180),
     hoverColor: scheme.textColor,
     focusColor: scheme.primaryColor,
     border: OutlineInputBorder(
@@ -21,8 +21,8 @@ InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
     //   color: scheme.textColor.withAlpha(170),
     // ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
-    ),
+        borderRadius: BorderRadius.circular(4),
+        borderSide: BorderSide(color: scheme.primaryColor)),
     alignLabelWithHint: true,
   );
 }

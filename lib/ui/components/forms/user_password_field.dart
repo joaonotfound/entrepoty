@@ -21,7 +21,7 @@ class UserPasswordField extends StatelessWidget {
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.black54,
+                // color: Colors.black54,
               ),
             ),
             obscureText: true,

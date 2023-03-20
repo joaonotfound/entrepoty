@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE8EBF3),
+      backgroundColor: Theme.of(context).colorScheme.background,
       // appBar: makeLoginAppbarComponent(),
       body: SafeArea(
         child: Builder(builder: (context) {

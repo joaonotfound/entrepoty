@@ -37,12 +37,14 @@ ThemeData makeDarkTheme() {
       //
     ),
   ).copyWith(
-    hintColor: Colors.white54,
-    appBarTheme: baseTheme.appBarTheme,
-    floatingActionButtonTheme: baseTheme.floatingActionButtonTheme,
-    chipTheme: baseTheme.chipTheme,
-    // scaffoldBackgroundColor: baseTheme.scaffoldBackgroundColor,
-    inputDecorationTheme: baseTheme.inputDecorationTheme,
-    elevatedButtonTheme: baseTheme.elevatedButtonTheme,
-  );
+      hintColor: Colors.white54,
+      appBarTheme: baseTheme.appBarTheme,
+      floatingActionButtonTheme: baseTheme.floatingActionButtonTheme,
+      chipTheme: baseTheme.chipTheme,
+      // scaffoldBackgroundColor: baseTheme.scaffoldBackgroundColor,
+      inputDecorationTheme: baseTheme.inputDecorationTheme,
+      elevatedButtonTheme: baseTheme.elevatedButtonTheme,
+      textTheme: baseTheme.textTheme,
+      outlinedButtonTheme: baseTheme.outlinedButtonTheme,
+      iconTheme: IconThemeData(color: Colors.white));
 }

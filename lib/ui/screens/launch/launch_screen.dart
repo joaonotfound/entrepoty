@@ -19,7 +19,7 @@ class LaunchScreen extends StatelessWidget {
                   flex: 1,
                 ),
                 Container(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.surface,
                   width: double.infinity,
                   child: Padding(
                     padding: EdgeInsets.all(20),
