@@ -38,7 +38,7 @@ ThemeData makeDarkTheme() {
       //
     ),
   ).copyWith(
-      hintColor: Colors.white54,
+      hintColor: Colors.white10,
       appBarTheme: baseTheme.appBarTheme,
       floatingActionButtonTheme: baseTheme.floatingActionButtonTheme,
       chipTheme: baseTheme.chipTheme,

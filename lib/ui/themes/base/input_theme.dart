@@ -17,9 +17,13 @@ InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
     // labelStyle: TextStyle(
     // color: scheme.textColor.withAlpha(200),
     // ),
-    // hintStyle: TextStyle(
-    //   color: scheme.textColor.withAlpha(170),
-    // ),
+    hintStyle: TextStyle(
+      color: scheme.onBackground,
+    ),
+    labelStyle: TextStyle(
+      color: scheme.onBackground,
+    ),
+    // labelStyle: ,
     focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4),
         borderSide: BorderSide(color: scheme.primaryColor)),
