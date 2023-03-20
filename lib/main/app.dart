@@ -15,7 +15,9 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: "Entrepoty",
       debugShowCheckedModeBanner: false,
-      theme: makeAppTheme(),
+      theme: makeLightTheme(),
+      darkTheme: makeDarkTheme(),
+      themeMode: ThemeMode.dark,
       initialRoute: Routes.splash,
       getPages: [...generateRoutes()],
     );

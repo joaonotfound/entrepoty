@@ -16,13 +16,6 @@ class DrawerItemWidget extends StatelessWidget {
         title: Container(
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color:
-                item.selected ? Colors.white : Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
           child: TextButton.icon(
             icon: Icon(
               item.icon,

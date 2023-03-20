@@ -12,7 +12,6 @@ Drawer makeDrawer(BuildContext context) {
         name: "Usuários", icon: Icons.account_box, selected: false),
   ];
   return Drawer(
-    backgroundColor: Theme.of(context).primaryColor,
     child: SafeArea(
       child: ListView(
         children: [

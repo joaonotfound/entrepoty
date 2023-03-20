@@ -15,8 +15,8 @@ class UserCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[100],
+          borderRadius: BorderRadius.circular(5),
+          color: Theme.of(context).colorScheme.surface,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,7 +28,10 @@ class UserCard extends StatelessWidget {
             SizedBox(width: 15),
             Text(
               user.name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
             ),
           ],
         ),

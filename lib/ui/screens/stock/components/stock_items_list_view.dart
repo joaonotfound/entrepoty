@@ -36,7 +36,7 @@ class _StockItemsListViewState extends State<StockItemsListView> {
                               horizontal: 15,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Theme.of(context).colorScheme.surface,
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Row(
@@ -44,7 +44,6 @@ class _StockItemsListViewState extends State<StockItemsListView> {
                                 Icon(
                                   Icons.image,
                                   size: 40,
-                                  color: Colors.grey[500],
                                 ),
                                 SizedBox(
                                   width: 10,
