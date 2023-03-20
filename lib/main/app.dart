@@ -13,18 +13,25 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = ThemeProvider();
     return ChangeNotifierProvider(
-      create: (ctx) => themeProvider,
-      child: GetMaterialApp(
-        title: "Entrepoty",
-        debugShowCheckedModeBanner: false,
-        theme: makeLightTheme(),
-        darkTheme: makeDarkTheme(),
-        themeMode: themeProvider.isDark ? ThemeMode.dark : ThemeMode.light,
-        initialRoute: Routes.splash,
-        getPages: [...generateRoutes()],
-      ),
+      create: (ctx) => ThemeProvider(),
+      builder: (context, child) {
+        ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+
+        return StreamBuilder(
+          stream: themeProvider.isDark.stream,
+          builder: (context, snapshot) => GetMaterialApp(
+            title: "Entrepoty",
+            debugShowCheckedModeBanner: false,
+            theme: makeLightTheme(),
+            darkTheme: makeDarkTheme(),
+            themeMode:
+                themeProvider.isDark.value ? ThemeMode.dark : ThemeMode.light,
+            initialRoute: Routes.splash,
+            getPages: [...generateRoutes()],
+          ),
+        );
+      },
     );
   }
 }

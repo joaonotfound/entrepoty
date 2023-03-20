@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../ui.dart';
 
 class WelcomeMessage extends StatelessWidget {
   const WelcomeMessage({super.key});
@@ -21,7 +24,9 @@ class WelcomeMessage extends StatelessWidget {
             ),
           ],
         ),
-        Icon(Icons.settings)
+        IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () => Get.toNamed(Routes.settings))
       ],
     );
   }

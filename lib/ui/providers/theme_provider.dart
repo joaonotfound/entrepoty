@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  bool isDark = false;
+  RxBool isDark = false.obs;
+
   void setIsDark(bool value) {
-    isDark = value;
+    isDark.value = value;
   }
 }

@@ -8,3 +8,4 @@ export './loan/loan.dart';
 export './launch/launch.dart';
 export './create_user/create_user.dart';
 export './models/models.dart';
+export './settings/settings.dart';
