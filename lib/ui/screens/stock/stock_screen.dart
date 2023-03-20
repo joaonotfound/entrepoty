@@ -23,7 +23,6 @@ class _StockScreenState extends State<StockScreen> {
   Widget build(BuildContext context) {
     widget.presenter.loadScreen();
     return HomeLayout(
-      appBar: makeAppbar(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Get.toNamed(Routes.createStockItem),
         icon: Icon(Icons.add),
@@ -31,25 +30,18 @@ class _StockScreenState extends State<StockScreen> {
       ),
       body: ListenableProvider(
         create: (_) => widget.presenter,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            StockListFilterChips(),
-            StockItemsListView(),
-          ],
+        child: Padding(
+          padding: EdgeInsets.only(top: 20),
+          child: ListView(
+            children: [
+              WelcomeMessage(),
+              StockSearchInput(),
+              StockListFilterChips(),
+              StockItemsListView(),
+            ],
+          ),
         ),
       ),
-    );
-  }
-
-  AppBar makeAppbar() {
-    return AppBar(
-      title: _searching ? StockSearchInput() : null,
-      actions: [
-        IconButton(
-            onPressed: () => setState(() => _searching = !_searching),
-            icon: Icon(_searching ? Icons.close : Icons.search)),
-      ],
     );
   }
 }
