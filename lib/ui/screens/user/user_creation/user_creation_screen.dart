@@ -2,14 +2,14 @@ import 'package:entrepoty/ui/components/components.dart';
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:flutter/material.dart';
 
-class CreateUserScreen extends StatefulWidget {
-  const CreateUserScreen({super.key});
+class UserCreationScreen extends StatefulWidget {
+  const UserCreationScreen({super.key});
 
   @override
-  State<CreateUserScreen> createState() => _CreateUserScreenState();
+  State<UserCreationScreen> createState() => _UserCreationScreenState();
 }
 
-class _CreateUserScreenState extends State<CreateUserScreen> {
+class _UserCreationScreenState extends State<UserCreationScreen> {
   @override
   Widget build(BuildContext context) {
     return FormLayout(
