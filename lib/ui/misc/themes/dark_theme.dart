@@ -1,6 +1,7 @@
-import 'package:entrepoty/ui/themes/app_color_scheme.dart';
-import 'package:entrepoty/ui/themes/base_theme.dart';
 import 'package:flutter/material.dart';
+
+import 'app_color_scheme.dart';
+import 'base_theme.dart';
 
 ThemeData makeDarkTheme() {
   final scheme = AppColorScheme(

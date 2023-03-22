@@ -1,5 +1,5 @@
 import '../components/components.dart';
-import '../errors/errors.dart';
+import '../misc/errors/errors.dart';
 import 'package:flutter/material.dart';
 
 mixin UiErrorManager {

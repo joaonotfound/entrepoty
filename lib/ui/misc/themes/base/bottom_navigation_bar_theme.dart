@@ -1,4 +1,4 @@
-import 'package:entrepoty/ui/themes/app_color_scheme.dart';
+import 'package:entrepoty/ui/misc/themes/app_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 getBottomNavigationTheme(AppColorScheme scheme) {

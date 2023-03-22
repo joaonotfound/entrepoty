@@ -1,5 +1,5 @@
-import '../../domain/domain.dart';
-import '../ui.dart';
+import '../../../domain/domain.dart';
+import '../../ui.dart';
 
 UiError fromDomain(DomainError error) {
   switch (error) {
