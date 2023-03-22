@@ -1,16 +1,16 @@
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:flutter/material.dart';
-import 'package:entrepoty/ui/screens/screens.dart';
 import 'package:get/get.dart';
 
-import '../../misc/misc.dart';
+import '../../../misc/misc.dart';
+import '../../screens.dart';
 
-class UsersScreen extends StatelessWidget {
-  const UsersScreen({
+class UserListScreen extends StatelessWidget {
+  const UserListScreen({
     super.key,
     required this.presenter,
   });
-  final UsersScreenPresenter presenter;
+  final UserListPresenter presenter;
   @override
   Widget build(BuildContext context) {
     presenter.loadUsers();

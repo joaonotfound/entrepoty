@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../domain/domain.dart';
+import '../../../../../domain/domain.dart';
 
 class UserCard extends StatelessWidget {
   UserCard({
