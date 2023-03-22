@@ -5,3 +5,4 @@ export './factories/factories.dart';
 export './misc/misc.dart';
 export './themes/themes.dart';
 export './providers/providers.dart';
+export './errors/errors.dart';
