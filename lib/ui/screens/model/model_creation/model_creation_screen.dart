@@ -1,8 +1,8 @@
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:flutter/material.dart';
 
-class CreateModelForm extends StatelessWidget {
-  const CreateModelForm({super.key});
+class ModelCreationScreen extends StatelessWidget {
+  const ModelCreationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
