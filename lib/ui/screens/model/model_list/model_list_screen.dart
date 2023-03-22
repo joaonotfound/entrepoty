@@ -3,14 +3,14 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ModelsScreen extends StatefulWidget {
-  const ModelsScreen({super.key});
+class ModelListScreen extends StatefulWidget {
+  const ModelListScreen({super.key});
 
   @override
-  State<ModelsScreen> createState() => _ModelsScreenState();
+  State<ModelListScreen> createState() => _ModelListScreenState();
 }
 
-class _ModelsScreenState extends State<ModelsScreen> {
+class _ModelListScreenState extends State<ModelListScreen> {
   @override
   Widget build(BuildContext context) {
     return HomeLayout(

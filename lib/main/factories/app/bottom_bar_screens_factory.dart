@@ -10,7 +10,7 @@ List<BottomBarScreen> makeBottomBarScreens() {
       label: "Estoque",
     ),
     BottomBarScreen(
-      widget: () => ModelsScreen(),
+      widget: () => ModelListScreen(),
       icon: Icon(Icons.model_training),
       label: "Modelos",
     ),
