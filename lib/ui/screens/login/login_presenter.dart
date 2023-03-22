@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 
 abstract class LoginPresenter implements Listenable {
@@ -6,7 +7,7 @@ abstract class LoginPresenter implements Listenable {
   Stream<String?> get navigateToStream;
   Stream<bool> get isFormValidStream;
   Stream<bool> get isLoadingStream;
-  Stream<String?> get mainErrorStream;
+  Stream<UiError?> get mainErrorStream;
 
   void validateId(String id);
   void validatePassword(String password);

@@ -1,7 +1,7 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
-import 'package:entrepoty/ui/screens/screens.dart';
 
 class GetxUsersPresenter extends GetxController
     with GetxUiErrorManager, GetxLoadingManager
@@ -20,7 +20,7 @@ class GetxUsersPresenter extends GetxController
       final fetchedUsers = await loadUsersUsecase.loadUsers();
       users.value = fetchedUsers;
     } catch (_) {
-      mainError = "Um erro inesperado ocorreu :/";
+      mainError = UiError.unexpected;
     }
 
     isLoading = false;

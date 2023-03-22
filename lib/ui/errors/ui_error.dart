@@ -19,6 +19,8 @@ extension UiErrorExtension on UiError {
         return "Required field.";
       case UiError.unexpected:
         return "Unexpected error.";
+      default:
+        return UiError.unexpected.description;
     }
   }
 }

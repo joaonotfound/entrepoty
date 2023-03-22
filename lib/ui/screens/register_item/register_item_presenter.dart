@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:entrepoty/domain/entities/entities.dart';
 
@@ -9,7 +10,7 @@ abstract class RegisterItemPresenter implements Listenable {
   Stream<String?> get modelErrorStream;
 
   Stream<String?> get navigateToStream;
-  Stream<String?> get mainErrorStream;
+  Stream<UiError?> get mainErrorStream;
 
   Stream<List<CreateStockItemEntity>> get itemsStreams;
 

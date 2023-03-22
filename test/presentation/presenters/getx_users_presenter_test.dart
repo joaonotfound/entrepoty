@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 
@@ -24,8 +25,8 @@ void main() {
     });
     test("should emit error when loadUsersUsecase throws", () async {
       loadUsers.mockLoadUsersError(Exception());
-      sut.mainErrorStream.listen(expectAsync1(
-          (error) => expect(error, "Um erro inesperado ocorreu :/")));
+      sut.mainErrorStream
+          .listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
       sut.loadUsers();
     });

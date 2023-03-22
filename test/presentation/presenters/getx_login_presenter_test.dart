@@ -123,7 +123,7 @@ void main() {
       sut.validatePassword(password);
 
       sut.mainErrorStream.listen(
-          expectAsync1((error) => expect(error, "Credenciais Inválidas.")));
+          expectAsync1((error) => expect(error, UiError.invalidCredentials)));
 
       sut.authenticate();
     });
@@ -133,8 +133,8 @@ void main() {
       sut.validateId(id);
       sut.validatePassword(password);
 
-      sut.mainErrorStream.listen(expectAsync1((error) =>
-          expect(error, "Algo deu errado, tente novamente em breve.")));
+      sut.mainErrorStream
+          .listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
       sut.authenticate();
     });
@@ -145,8 +145,8 @@ void main() {
       sut.validateId(id);
       sut.validatePassword(password);
 
-      sut.mainErrorStream.listen(expectAsync1(
-          (error) => expect(error, "Um error Inesperado aconteceu.")));
+      sut.mainErrorStream
+          .listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
       sut.authenticate();
     });

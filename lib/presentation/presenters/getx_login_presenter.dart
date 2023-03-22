@@ -67,9 +67,9 @@ class GetxLoginPresenter extends GetxController
       await saveCurrentAccount.saveAccount(account: account);
       navigateTo = Routes.home;
     } on DomainError catch (error) {
-      mainError = error.description;
+      mainError = fromDomain(error);
     } catch (error) {
-      mainError = "Um error Inesperado aconteceu.";
+      mainError = UiError.unexpected;
       debugPrint("error: " + error.toString());
     }
     isLoading = false;

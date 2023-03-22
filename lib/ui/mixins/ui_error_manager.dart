@@ -1,8 +1,13 @@
+import '../components/components.dart';
+import '../errors/errors.dart';
 import 'package:flutter/material.dart';
 
-import '../components/error_message.dart';
-
 mixin UiErrorManager {
-  void handleUiError(BuildContext context, Stream stream) =>
-      stream.listen((error) => showErrorMessage(context, error));
+  void handleUiError(BuildContext context, Stream<UiError?> stream) =>
+      stream.listen(
+        (error) => showErrorMessage(
+          context,
+          error != null ? error.description : UiError.unexpected.description,
+        ),
+      );
 }
