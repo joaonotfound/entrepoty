@@ -8,7 +8,6 @@ Feature: Create Model
         Then I shouldn't be able to create model
 
     Scenario: Unexpected Error
-        Given I'm on the create model screen
         Then I click on the submit button
         And the server returns an error
         Then I should see an error message
