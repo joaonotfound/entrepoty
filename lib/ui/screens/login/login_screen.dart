@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget
               children: [
                 Expanded(
                   flex: 40,
-                  child: CircularAccount(),
+                  child: LoginCircularAccount(),
                 ),
                 Expanded(
                   flex: 60,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CircularAccount extends StatelessWidget {
-  const CircularAccount({
+class LoginCircularAccount extends StatelessWidget {
+  const LoginCircularAccount({
     Key? key,
   }) : super(key: key);
 
