@@ -23,7 +23,7 @@ class UserListScreen extends StatelessWidget {
                   separatorBuilder: (context, index) => SizedBox(height: 10),
                   itemCount: snapshot.data!.length,
                   itemBuilder: ((context, index) =>
-                      UserCard(user: snapshot.data![index])))
+                      UserListCard(user: snapshot.data![index])))
               : Center(
                   child: Text("Loading"),
                 );

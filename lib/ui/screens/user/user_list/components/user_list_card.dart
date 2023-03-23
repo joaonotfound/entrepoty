@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../domain/domain.dart';
 
-class UserCard extends StatelessWidget {
-  UserCard({
+class UserListCard extends StatelessWidget {
+  UserListCard({
     super.key,
     required this.user,
   });
