@@ -28,9 +28,9 @@ class LaunchScreen extends StatelessWidget {
                         LaunchDescription(),
                         Column(
                           children: [
-                            LoginButton(),
+                            LaunchLoginButton(),
                             SizedBox(height: 5),
-                            SignupButton()
+                            LaunchSignupButton()
                           ],
                         )
                       ],
