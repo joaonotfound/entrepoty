@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class UserEmailField extends StatelessWidget {
@@ -8,7 +9,7 @@ class UserEmailField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         label: Text("Email"),
-        prefixIcon: Icon(Icons.email),
+        prefixIcon: Icon(FluentIcons.mail_12_regular),
         hintText: "E-mail",
       ),
     );

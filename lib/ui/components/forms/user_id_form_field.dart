@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,10 +19,9 @@ class UserIdFormField extends StatelessWidget {
               hintText: "ma-00000-0",
               labelText: "Your id",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: Icon(
-                Icons.account_circle,
-                // color: Colors.black54,
-              ),
+              prefixIcon: Icon(FluentIcons.person_12_regular
+                  // color: Colors.black54,
+                  ),
             ),
           );
         });
