@@ -6,11 +6,11 @@ import '../../mocks/mocks.dart';
 
 void main() {
   late MockLoadUsers loadUsers;
-  late GetxUsersPresenter sut;
+  late GetxUserListPresenter sut;
   setUp(() {
     loadUsers = MockLoadUsers();
     loadUsers.mockLoadUsers([]);
-    sut = GetxUsersPresenter(loadUsersUsecase: loadUsers);
+    sut = GetxUserListPresenter(loadUsersUsecase: loadUsers);
   });
   group("GetxUsersPresenter", () {
     test("should emit users when calling loadUsers", () async {

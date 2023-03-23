@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 
-class GetxUsersPresenter extends GetxController
+class GetxUserListPresenter extends GetxController
     with GetxUiErrorManager, GetxLoadingManager
     implements UserListPresenter {
   final LoadUsersUsecase loadUsersUsecase;
   final users = Rx<List<UserEntity>>([]);
 
-  GetxUsersPresenter({
+  GetxUserListPresenter({
     required this.loadUsersUsecase,
   });
 
