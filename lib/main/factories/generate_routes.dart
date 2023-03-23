@@ -25,7 +25,7 @@ List<GetPage> generateRoutes() {
     ),
     GetPage(
       name: Routes.createStockItem,
-      page: makeRegisterItemScreen,
+      page: makeStockItemCreationScreen,
       transition: Transition.rightToLeft,
     ),
   ];
