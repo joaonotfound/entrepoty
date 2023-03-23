@@ -5,7 +5,7 @@ import 'package:entrepoty/presentation/presenters/presenters.dart';
 import '../../mocks/mocks.dart';
 
 void main() {
-  late StreamStockPresenter sut;
+  late StreamStockListPresenter sut;
   late MockLoadCategories loadCategories;
   late MockLoadStockItems loadStockItems;
   setUp(() {
@@ -13,7 +13,7 @@ void main() {
     loadCategories.mockLoad([]);
     loadStockItems = MockLoadStockItems();
     loadStockItems.mockLoadAllItems([]);
-    sut = StreamStockPresenter(
+    sut = StreamStockListPresenter(
       loadCategories: loadCategories,
       loadItems: loadStockItems,
     );

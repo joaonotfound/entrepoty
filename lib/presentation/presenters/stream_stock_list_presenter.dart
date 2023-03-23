@@ -5,7 +5,7 @@ import 'package:entrepoty/domain/entities/entities.dart';
 import 'package:entrepoty/domain/usecases/usecases.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
 
-class StreamStockPresenter extends GetxController
+class StreamStockListPresenter extends GetxController
     implements StockListPresenter {
   final LoadCategoriesUsecase loadCategories;
   final LoadStockItemsUsecase loadItems;
@@ -14,7 +14,7 @@ class StreamStockPresenter extends GetxController
       StreamController<List<CategoryEntity>>.broadcast();
   final itemsController = StreamController<List<StockItemEntity>>.broadcast();
 
-  StreamStockPresenter({
+  StreamStockListPresenter({
     required this.loadCategories,
     required this.loadItems,
   });
