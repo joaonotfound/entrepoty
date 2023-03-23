@@ -5,7 +5,7 @@ import 'package:entrepoty/ui/ui.dart';
 List<BottomBarScreen> makeBottomBarScreens() {
   return [
     BottomBarScreen(
-      widget: () => makeStockScreen(),
+      widget: () => makeStockListScreen(),
       icon: Icon(Icons.folder),
       label: "Estoque",
     ),
