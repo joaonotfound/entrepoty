@@ -20,7 +20,7 @@ List<BottomBarScreen> makeBottomBarScreens() {
       label: "Empréstimos",
     ),
     BottomBarScreen(
-      widget: () => makeUsersScreen(),
+      widget: () => makeUserListScreen(),
       icon: Icon(Icons.account_box_outlined),
       label: "Usuários",
     )

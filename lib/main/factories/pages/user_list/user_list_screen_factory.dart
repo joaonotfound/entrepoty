@@ -1,8 +1,8 @@
 import 'package:entrepoty/main/factories/factories.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
 
-UserListScreen makeUsersScreen() {
+UserListScreen makeUserListScreen() {
   return UserListScreen(
-    presenter: makeGetxUsersPresenter(),
+    presenter: makeGetxUserListPresenter(),
   );
 }
