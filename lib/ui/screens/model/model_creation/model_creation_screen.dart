@@ -1,8 +1,13 @@
 import 'package:entrepoty/ui/layout/layout.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 
 class ModelCreationScreen extends StatelessWidget {
-  const ModelCreationScreen({super.key});
+  ModelCreationPresenter presenter;
+  ModelCreationScreen({
+    super.key,
+    required this.presenter,
+  });
 
   @override
   Widget build(BuildContext context) {

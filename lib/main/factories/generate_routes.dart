@@ -1,3 +1,4 @@
+import 'package:entrepoty/presentation/presentation.dart';
 import 'package:get/get.dart';
 import '../../ui/ui.dart';
 import 'factories.dart';
@@ -20,7 +21,9 @@ List<GetPage> generateRoutes() {
     GetPage(name: Routes.settings, page: () => SettingsScreen()),
     GetPage(
       name: Routes.createModel,
-      page: () => ModelCreationScreen(),
+      page: () => ModelCreationScreen(
+        presenter: MockedModelCreationPresenter(),
+      ),
       transition: Transition.rightToLeft,
     ),
     GetPage(
