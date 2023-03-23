@@ -1,11 +1,11 @@
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:entrepoty/presentation/presenters/getx_register_item_presenter.dart';
+import 'package:entrepoty/presentation/presenters/getx_stock_item_creation_presenter.dart';
 
 void main() {
-  late GetxRegisterItemPresenter sut;
+  late GetxStockItemCreationPresenter sut;
   setUp(() {
-    sut = GetxRegisterItemPresenter();
+    sut = GetxStockItemCreationPresenter();
   });
   group("GetxRegisterLotPresenter", () {
     test("should emit empty error when validating model", () {

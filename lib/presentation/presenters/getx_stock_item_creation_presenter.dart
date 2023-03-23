@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:entrepoty/domain/entities/create_stock_item_entity.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 
-class GetxRegisterItemPresenter extends GetxController
+class GetxStockItemCreationPresenter extends GetxController
     with
         GetxLoadingManager,
         GetxFormManager,

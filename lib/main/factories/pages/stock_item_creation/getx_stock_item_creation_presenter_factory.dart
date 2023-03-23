@@ -1,5 +1,5 @@
-import 'package:entrepoty/presentation/presenters/getx_register_item_presenter.dart';
+import 'package:entrepoty/presentation/presenters/getx_stock_item_creation_presenter.dart';
 
-GetxRegisterItemPresenter makeGetxStockItemCreationPresenter() {
-  return GetxRegisterItemPresenter();
+GetxStockItemCreationPresenter makeGetxStockItemCreationPresenter() {
+  return GetxStockItemCreationPresenter();
 }
