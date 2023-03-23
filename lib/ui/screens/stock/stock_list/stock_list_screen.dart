@@ -5,18 +5,18 @@ import 'package:provider/provider.dart';
 import 'package:entrepoty/ui/ui.dart';
 import './components/components.dart';
 
-class StockScreen extends StatefulWidget {
-  final StockPresenter presenter;
-  const StockScreen({
+class StockListScreen extends StatefulWidget {
+  final StockListPresenter presenter;
+  const StockListScreen({
     super.key,
     required this.presenter,
   });
 
   @override
-  State<StockScreen> createState() => _StockScreenState();
+  State<StockListScreen> createState() => _StockListScreenState();
 }
 
-class _StockScreenState extends State<StockScreen> {
+class _StockListScreenState extends State<StockListScreen> {
   bool _searching = false;
 
   @override

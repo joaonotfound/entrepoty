@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../ui.dart';
+import '../../../../misc/misc.dart';
 
 class WelcomeMessage extends StatelessWidget {
   const WelcomeMessage({super.key});

@@ -5,7 +5,8 @@ import 'package:entrepoty/domain/entities/entities.dart';
 import 'package:entrepoty/domain/usecases/usecases.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
 
-class StreamStockPresenter extends GetxController implements StockPresenter {
+class StreamStockPresenter extends GetxController
+    implements StockListPresenter {
   final LoadCategoriesUsecase loadCategories;
   final LoadStockItemsUsecase loadItems;
   // ignore: close_sinks

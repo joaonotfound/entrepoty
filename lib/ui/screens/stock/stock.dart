@@ -1,2 +1,1 @@
-export './stock_screen.dart';
-export './stock_presenter.dart';
+export 'stock_list/stock_list.dart';
