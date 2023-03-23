@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../../misc/misc.dart';
 
-class WelcomeMessage extends StatelessWidget {
-  const WelcomeMessage({super.key});
+class StockListWelcomeMessage extends StatelessWidget {
+  const StockListWelcomeMessage({super.key});
 
   @override
   Widget build(BuildContext context) {

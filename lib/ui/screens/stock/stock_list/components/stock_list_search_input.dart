@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class StockSearchInput extends StatelessWidget {
-  const StockSearchInput({super.key});
+class StockListSearchInput extends StatelessWidget {
+  const StockListSearchInput({super.key});
 
   @override
   Widget build(BuildContext context) {

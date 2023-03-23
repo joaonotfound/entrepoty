@@ -34,10 +34,10 @@ class _StockListScreenState extends State<StockListScreen> {
           padding: EdgeInsets.only(top: 20),
           child: ListView(
             children: [
-              WelcomeMessage(),
-              StockSearchInput(),
+              StockListWelcomeMessage(),
+              StockListSearchInput(),
               StockListFilterChips(),
-              StockItemsListView(),
+              StockListItemsView(),
             ],
           ),
         ),

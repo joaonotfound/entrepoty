@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 
 import '../stock_list_presenter.dart';
 
-class StockItemsListView extends StatefulWidget {
-  const StockItemsListView({super.key});
+class StockListItemsView extends StatefulWidget {
+  const StockListItemsView({super.key});
 
   @override
-  State<StockItemsListView> createState() => _StockItemsListViewState();
+  State<StockListItemsView> createState() => _StockListItemsViewState();
 }
 
-class _StockItemsListViewState extends State<StockItemsListView> {
+class _StockListItemsViewState extends State<StockListItemsView> {
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<StockListPresenter>(context);
@@ -28,7 +28,7 @@ class _StockItemsListViewState extends State<StockItemsListView> {
                 shrinkWrap: true,
                 itemCount: snapshot.data!.length,
                 itemBuilder: ((context, index) =>
-                    StockItem(item: snapshot.data![index]))),
+                    StockListItem(item: snapshot.data![index]))),
           );
         } else {
           return Center(
