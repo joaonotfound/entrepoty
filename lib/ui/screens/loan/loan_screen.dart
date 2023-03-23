@@ -8,7 +8,7 @@ class LoanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomeLayout(
       body: Center(
-        child: Text("Tela de empréstimos."),
+        child: Text("Loan screen."),
       ),
     );
   }

@@ -23,10 +23,10 @@ class _UserCreationScreenState extends State<UserCreationScreen> {
         ]),
       ),
       action: ElevatedButton(
-        child: Text("Criar usuário"),
+        child: Text("Create user"),
         onPressed: () {},
       ),
-      title: "Criar usuário",
+      title: "Create user",
     );
   }
 }

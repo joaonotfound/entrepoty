@@ -26,7 +26,7 @@ class _StockListScreenState extends State<StockListScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Get.toNamed(Routes.createStockItem),
         icon: Icon(Icons.add),
-        label: Text("Adicionar item"),
+        label: Text("Create item"),
       ),
       body: ListenableProvider(
         create: (_) => widget.presenter,

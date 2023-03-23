@@ -16,8 +16,8 @@ class ProductQuantityField extends StatelessWidget {
         builder: (context, snapshot) {
           return TextFormField(
             decoration: InputDecoration(
-              hintText: "Quantidade",
-              label: const Text("Quantidade"),
+              hintText: "Quantity",
+              label: const Text("Quantity"),
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
             ),
             inputFormatters: <TextInputFormatter>[

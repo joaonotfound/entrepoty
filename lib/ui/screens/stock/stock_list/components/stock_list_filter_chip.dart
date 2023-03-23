@@ -28,7 +28,7 @@ class StockListFilterChips extends StatelessWidget {
                     StockFilterChip(text: snapshot.data![index].name)),
           );
         }
-        return Text("Sem categorias!");
+        return Text("No categories!");
       }),
     );
   }

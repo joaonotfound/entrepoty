@@ -13,7 +13,7 @@ class ProductModelField extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = Provider.of<StockItemCreationPresenter>(context);
     return DropdownButtonFormField(
-      hint: Text("Modelo"),
+      hint: Text("Model"),
       items: _modelos
           .map((label) => DropdownMenuItem<String>(
                 value: label,

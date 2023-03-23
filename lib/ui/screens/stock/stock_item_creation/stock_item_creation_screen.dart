@@ -40,14 +40,14 @@ class _StockItemCreationScreenState extends State<StockItemCreationScreen> {
           builder: (context, snapshot) {
             return ElevatedButton(
               onPressed: snapshot.data == true ? () {} : null,
-              child: Text("Próximo"),
+              child: Text("Next"),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 backgroundColor: Theme.of(context).primaryColor,
               ),
             );
           }),
-      title: "Registrar Item",
+      title: "Create item",
     );
   }
 }

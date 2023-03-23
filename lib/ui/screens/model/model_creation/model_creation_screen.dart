@@ -14,7 +14,7 @@ class ModelCreationScreen extends StatelessWidget {
     return FormLayout(
       content: Center(child: Text("Create model")),
       action: ElevatedButton(
-        child: Text("Criar"),
+        child: Text("Create"),
         onPressed: () {},
       ),
       title: "Create Model",

@@ -7,22 +7,22 @@ List<BottomBarScreen> makeBottomBarScreens() {
     BottomBarScreen(
       widget: () => makeStockListScreen(),
       icon: Icon(Icons.folder),
-      label: "Estoque",
+      label: "Stock",
     ),
     BottomBarScreen(
       widget: () => ModelListScreen(),
       icon: Icon(Icons.model_training),
-      label: "Modelos",
+      label: "Models",
     ),
     BottomBarScreen(
       widget: () => makeLoanScreen(),
       icon: Icon(Icons.folder_shared),
-      label: "Empréstimos",
+      label: "Loan",
     ),
     BottomBarScreen(
       widget: () => makeUserListScreen(),
       icon: Icon(Icons.account_box_outlined),
-      label: "Usuários",
+      label: "Users",
     )
   ];
 }

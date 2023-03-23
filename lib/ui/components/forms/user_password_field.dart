@@ -17,7 +17,7 @@ class UserPasswordField extends StatelessWidget {
           return TextFormField(
             onChanged: presenter.validatePassword,
             decoration: InputDecoration(
-              labelText: "Senha",
+              labelText: "Password",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: Icon(
                 Icons.lock,

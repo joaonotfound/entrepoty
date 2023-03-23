@@ -19,7 +19,7 @@ class AddTaxNoteButton extends StatelessWidget {
         color: Colors.white,
       ),
       label: Text(
-        "Adicionar nota fiscal",
+        "Add receipt",
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,

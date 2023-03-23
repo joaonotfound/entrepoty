@@ -21,7 +21,7 @@ class _ModelListScreenState extends State<ModelListScreen> {
         heroTag: "add-model",
       ),
       body: Center(
-        child: Text("Modelos!"),
+        child: Text("Models!"),
       ),
     );
   }

@@ -33,7 +33,7 @@ class UserListScreen extends StatelessWidget {
         heroTag: "add-user",
         onPressed: () => Get.toNamed(Routes.createUser),
         icon: Icon(Icons.add),
-        label: Text("Criar usuário"),
+        label: Text("Create user"),
       ),
     );
   }

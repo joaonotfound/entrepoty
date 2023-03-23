@@ -16,7 +16,7 @@ class UserIdFormField extends StatelessWidget {
             onChanged: presenter.validateId,
             decoration: InputDecoration(
               hintText: "ma-00000-0",
-              labelText: "Matrícula",
+              labelText: "Your id",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: Icon(
                 Icons.account_circle,
