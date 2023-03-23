@@ -1,22 +1,23 @@
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../ui.dart';
 import 'components/components.dart';
+import './stock_item_creation_presenter.dart';
 
-class RegisterItemScreen extends StatefulWidget {
-  final RegisterItemPresenter presenter;
+class StockItemCreationScreen extends StatefulWidget {
+  final StockItemCreationPresenter presenter;
 
-  const RegisterItemScreen({
+  const StockItemCreationScreen({
     super.key,
     required this.presenter,
   });
 
   @override
-  State<RegisterItemScreen> createState() => _RegisterItemScreenState();
+  State<StockItemCreationScreen> createState() =>
+      _StockItemCreationScreenState();
 }
 
-class _RegisterItemScreenState extends State<RegisterItemScreen> {
+class _StockItemCreationScreenState extends State<StockItemCreationScreen> {
   @override
   Widget build(BuildContext context) {
     return FormLayout(

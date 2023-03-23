@@ -1,7 +1,7 @@
+import 'package:entrepoty/ui/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:entrepoty/ui/screens/screens.dart';
 
 class ProductQuantityField extends StatelessWidget {
   const ProductQuantityField({
@@ -10,7 +10,7 @@ class ProductQuantityField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<RegisterItemPresenter>(context);
+    final presenter = Provider.of<StockItemCreationPresenter>(context);
     return StreamBuilder(
         stream: presenter.qtdErrorStream,
         builder: (context, snapshot) {

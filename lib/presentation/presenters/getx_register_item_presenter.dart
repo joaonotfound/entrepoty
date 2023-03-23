@@ -11,7 +11,7 @@ class GetxRegisterItemPresenter extends GetxController
         GetxFormManager,
         GetxUiErrorManager,
         GetxNavigatorManager
-    implements RegisterItemPresenter {
+    implements StockItemCreationPresenter {
   final qtdError = RxString('');
   final modelError = RxString('');
   final descriptionError = RxString('');

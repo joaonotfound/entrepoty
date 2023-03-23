@@ -1,6 +1,6 @@
+import 'package:entrepoty/ui/screens/stock/stock_item_creation/stock_item_creation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:entrepoty/ui/screens/screens.dart';
 
 class ProductModelField extends StatelessWidget {
   ProductModelField({
@@ -11,7 +11,7 @@ class ProductModelField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<RegisterItemPresenter>(context);
+    final presenter = Provider.of<StockItemCreationPresenter>(context);
     return DropdownButtonFormField(
       hint: Text("Modelo"),
       items: _modelos

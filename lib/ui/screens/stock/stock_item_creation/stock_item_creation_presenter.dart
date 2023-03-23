@@ -2,7 +2,7 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:entrepoty/domain/entities/entities.dart';
 
-abstract class RegisterItemPresenter implements Listenable {
+abstract class StockItemCreationPresenter implements Listenable {
   Stream<bool> get isFormValidStream;
   Stream<bool> get isLoadingStream;
 
