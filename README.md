@@ -1,3 +1,5 @@
+[![My Skills](https://skills.thijs.gg/icons?i=dart,flutter,kotlin,spring,mongodb,docker,gradle,git,github,)](https://skills.thijs.gg)
+
 # Entrepoty
 
 Entrepoty is an application designed to help service desk teams organize their company's storage efficiently. The app offers features like registering items on the stock, recording the borrowing of an item by a user, and other inventory management functionalities.
