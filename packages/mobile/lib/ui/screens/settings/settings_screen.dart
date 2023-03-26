@@ -1,7 +1,6 @@
-import 'package:entrepoty/ui/ui.dart';
+import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -13,7 +12,6 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     // debugPrint(themeProvider.isDark.toString());
     return Scaffold(
       appBar: AppBar(
@@ -28,14 +26,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             horizontal: 10,
           ),
           child: Column(
-            children: [
-              Switch(
-                value: themeProvider.isDark.value,
-                onChanged: (_) => setState(
-                  () => themeProvider.setIsDark(!themeProvider.isDark.value),
-                ),
-              )
-            ],
+            children: [SettingsDarkToggle()],
           ),
         ),
       ),
