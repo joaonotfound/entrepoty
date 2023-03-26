@@ -15,10 +15,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
     // debugPrint(themeProvider.isDark.toString());
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-        icon: Icon(Icons.close),
-        onPressed: () => Get.back(),
-      )),
+        leading: IconButton(
+          icon: Icon(Icons.close),
+          onPressed: () => Get.back(),
+        ),
+        title: Text("Settings & Privacy"),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
