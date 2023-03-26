@@ -28,7 +28,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             horizontal: 10,
           ),
           child: Column(
-            children: [SettingsDarkToggle()],
+            children: [
+              SettingsDarkToggle(),
+              SettingsLogoutButton(),
+            ],
           ),
         ),
       ),
