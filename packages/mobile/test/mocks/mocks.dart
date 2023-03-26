@@ -10,3 +10,4 @@ export './load_current_account_mock.dart';
 export './load_categories_mock.dart';
 export './load_stock_items.dart';
 export './load_users_mock.dart';
+export './client_mock.dart';
