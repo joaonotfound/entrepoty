@@ -6,13 +6,15 @@ import jakarta.persistence.GenerationType
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
+import jakarta.persistence.Table
 import org.jetbrains.annotations.NotNull
 
 @Entity
+@Table(name = "users")
 class User {
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.AUTO)
-    var id: String = ""
+    var id: Long = 0
 
     @field:Column(unique = true)
     @field:NotNull
