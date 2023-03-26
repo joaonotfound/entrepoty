@@ -15,9 +15,9 @@ List<BottomBarScreen> makeBottomBarScreens() {
       label: "Models",
     ),
     BottomBarScreen(
-      widget: () => makeLoanScreen(),
+      widget: () => makeBorrowScreen(),
       icon: Icon(Icons.folder_shared),
-      label: "Loan",
+      label: "Borrows",
     ),
     BottomBarScreen(
       widget: () => makeUserListScreen(),

@@ -1,8 +1,8 @@
 import 'stock_item_entity.dart';
 
-class LoanStockItemEntity extends StockItemEntity {
+class BorrowStockItemEntity extends StockItemEntity {
   final int quantity;
-  const LoanStockItemEntity({
+  const BorrowStockItemEntity({
     required this.quantity,
     required super.description,
     required super.imageUrl,
@@ -12,15 +12,15 @@ class LoanStockItemEntity extends StockItemEntity {
   });
 }
 
-class LoanEntity {
+class BorrowEntity {
   final String customerId;
   final String customerName;
   final String cc;
   final String chamadoNumber;
   final String returnDate;
   final String notes;
-  final List<LoanStockItemEntity> items;
-  const LoanEntity({
+  final List<BorrowStockItemEntity> items;
+  const BorrowEntity({
     required this.customerId,
     required this.customerName,
     required this.cc,
