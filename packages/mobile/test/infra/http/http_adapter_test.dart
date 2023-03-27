@@ -21,6 +21,7 @@ class HttpAdapter {
         body: json.decode(response.body),
       );
     } catch (e) {
+      print(e);
       return const HttpResponse(statuscode: 500);
     }
   }
@@ -56,6 +57,7 @@ void main() {
   });
   setUp(() {
     client = ClientMock();
+    client.mockGet(http.Response("{}", 200));
     client.mockPost(http.Response("{}", 200));
     sut = HttpAdapter(client: client);
   });
@@ -67,14 +69,14 @@ void main() {
       verify(() => client.get(Uri.parse(url))).called(1);
     });
     test("should return correct status code", () async {
-      client.mockPost(http.Response("{}", 300));
+      client.mockGet(http.Response("{}", 300));
 
       var response = await sut.get(url: url);
 
       expect(response.statuscode, 300);
     });
     test("should return correct body", () async {
-      client.mockPost(http.Response("{ \"username\": \"any-username\" }", 200));
+      client.mockGet(http.Response("{ \"username\": \"any-username\" }", 200));
 
       var response = await sut.get(url: url);
 
@@ -82,7 +84,7 @@ void main() {
       expect(response.statuscode, 200);
     });
     test("should return 500 error if client throws", () async {
-      client.mockPostThrows();
+      client.mockGetThrows();
 
       var response = await sut.get(url: url);
 
