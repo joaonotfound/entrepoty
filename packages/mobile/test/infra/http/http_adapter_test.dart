@@ -13,11 +13,15 @@ class HttpAdapter {
   });
 
   Future<HttpResponse> get({required String url}) async {
-    var response = await client.get(Uri.parse(url));
-    return HttpResponse(
-      statuscode: response.statusCode,
-      body: json.decode(response.body),
-    );
+    try {
+      var response = await client.get(Uri.parse(url));
+      return HttpResponse(
+        statuscode: response.statusCode,
+        body: json.decode(response.body),
+      );
+    } catch (e) {
+      return const HttpResponse(statuscode: 500);
+    }
   }
 }
 
@@ -25,6 +29,7 @@ class ClientMock extends Mock implements http.Client {
   When mockGetCall() => when(() => get(any()));
   void mockGet(http.Response response) =>
       mockGetCall().thenAnswer((invocation) async => response);
+  void mockGetThrows() => mockGetCall().thenThrow(Error());
 }
 
 void main() {
@@ -60,6 +65,13 @@ void main() {
 
       expect(response.body, {"username": "any-username"});
       expect(response.statuscode, 200);
+    });
+    test("should return 500 error if client throws", () async {
+      client.mockGetThrows();
+
+      var response = await sut.get(url: url);
+
+      expect(response.statuscode, 500);
     });
   });
 }
