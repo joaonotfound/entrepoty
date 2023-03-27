@@ -1,4 +1,5 @@
 import 'package:entrepoty/presentation/presenters/getx_settings_presenter.dart';
+import 'package:entrepoty/ui/misc/misc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -20,7 +21,7 @@ void main() {
     });
     test("should redirect to splash screen", () {
       sut.navigateToStream
-          .listen(expectAsync1((route) => expect(route, "/splash")));
+          .listen(expectAsync1((route) => expect(route, Routes.splash)));
 
       sut.logout();
     });

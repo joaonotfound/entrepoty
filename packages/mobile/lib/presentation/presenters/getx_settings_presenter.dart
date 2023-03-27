@@ -15,6 +15,6 @@ class GetxSettingsPresenter extends GetxController
   void logout() {
     debugPrint("I'm being called...");
     usecase.logout();
-    navigateTo = "/splash";
+    navigateTo = Routes.splash;
   }
 }
