@@ -1,5 +1,7 @@
+import 'package:entrepoty/data/data.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
@@ -9,8 +11,9 @@ class HttpAdapter {
     required this.client,
   });
 
-  Future<void> get({required String url}) async {
-    await client.get(Uri.parse(url));
+  Future<HttpResponse> get({required String url}) async {
+    var response = await client.get(Uri.parse(url));
+    return HttpResponse(statuscode: response.statusCode);
   }
 }
 
@@ -38,6 +41,13 @@ void main() {
       await sut.get(url: url);
 
       verify(() => client.get(Uri.parse(url))).called(1);
+    });
+    test("should return correct status code", () async {
+      client.mockGet(http.Response("{}", 300));
+
+      var response = await sut.get(url: url);
+
+      expect(response.statuscode, 300);
     });
   });
 }
