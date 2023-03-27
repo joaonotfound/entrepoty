@@ -9,7 +9,8 @@ class LocalTheme implements Theme {
   });
 
   loadIsDark() async {
-    throw UnimplementedError();
+    var local = await storage.loadSecure(key: "is-dark");
+    return local == "true" ? true : false;
   }
 
   setIsDark(bool value) async {
