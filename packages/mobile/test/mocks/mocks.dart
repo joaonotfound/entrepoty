@@ -12,3 +12,4 @@ export './load_stock_items.dart';
 export './load_users_mock.dart';
 export './client_mock.dart';
 export './local_logout.dart';
+export 'secure_cache_storage_mock.dart';
