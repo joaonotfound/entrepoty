@@ -1,1 +1,1 @@
-export './local_logout.dart';
+export 'local_logout.dart';

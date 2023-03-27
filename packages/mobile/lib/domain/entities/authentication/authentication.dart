@@ -1,2 +1,2 @@
-export './account.dart';
-export './token_account.dart';
+export 'account.dart';
+export 'token_account.dart';

@@ -1,1 +1,1 @@
-export './domain_errors.dart';
+export 'domain_errors.dart';

@@ -1,1 +1,1 @@
-export './validators/validators.dart';
+export 'validators/validators.dart';

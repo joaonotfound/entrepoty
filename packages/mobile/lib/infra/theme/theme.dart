@@ -1,1 +1,1 @@
-export './local_theme.dart';
+export 'local_theme.dart';

@@ -1,1 +1,1 @@
-export './load_categories.dart';
+export 'load_categories.dart';

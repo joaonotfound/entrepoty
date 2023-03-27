@@ -1,9 +1,9 @@
-export './screens/screens.dart';
-export './components/components.dart';
-export './mixins/mixins.dart';
-export './factories/factories.dart';
-export './misc/misc.dart';
+export 'screens/screens.dart';
+export 'components/components.dart';
+export 'mixins/mixins.dart';
+export 'factories/factories.dart';
+export 'misc/misc.dart';
 export 'misc/themes/themes.dart';
-export './providers/providers.dart';
+export 'providers/providers.dart';
 export 'misc/errors/errors.dart';
 export 'misc/helpers/helpers.dart';

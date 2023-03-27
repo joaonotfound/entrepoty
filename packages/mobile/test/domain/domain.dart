@@ -1,1 +1,1 @@
-export './mocks/mocks.dart';
+export 'mocks/mocks.dart';

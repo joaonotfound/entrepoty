@@ -1,1 +1,1 @@
-export './launch_screen.dart';
+export 'launch_screen.dart';
