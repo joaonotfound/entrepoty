@@ -38,5 +38,12 @@ void main() {
 
       expect(response, false);
     });
+    test("should call save method", () async {
+      await sut.setIsDark(false);
+
+      verify(
+        () => storage.saveSecure(key: "is-dark", value: "false"),
+      ).called(1);
+    });
   });
 }
