@@ -13,14 +13,15 @@ class HttpAdapter {
   });
 
   @override
-  Future<HttpResponse<T>> get<T>({required String url}) async {
+  Future<HttpResponse<T>> get<T>({required String url, Map? headers}) async {
     try {
       var response = await client.get(
         Uri.parse(url),
-        headers: {
-          'content-type': 'application/json',
-          'accept': 'application/json',
-        },
+        headers: headers?.cast<String, String>() ??
+            {
+              'content-type': 'application/json',
+              'accept': 'application/json',
+            },
       );
       return HttpResponse(
         statuscode: response.statusCode,
@@ -49,14 +50,13 @@ class HttpAdapter {
         body: json.decode(response.body),
       );
     } catch (e) {
-      print(e);
       return const HttpResponse(statuscode: 500);
     }
   }
 }
 
 class ClientMock extends Mock implements http.Client {
-  When mockGetCall() => when(() => get(any()));
+  When mockGetCall() => when(() => get(any(), headers: any(named: "headers")));
   void mockGet(http.Response response) =>
       mockGetCall().thenAnswer((invocation) async => response);
   void mockGetThrows() => mockGetCall().thenThrow(Error());
@@ -86,7 +86,13 @@ void main() {
     test("should call client with correct url", () async {
       await sut.get(url: url);
 
-      verify(() => client.get(Uri.parse(url))).called(1);
+      verify(() => client.get(
+            Uri.parse(url),
+            headers: {
+              'content-type': 'application/json',
+              'accept': 'application/json',
+            },
+          )).called(1);
     });
     test("should return correct status code", () async {
       client.mockGet(http.Response("{}", 300));
@@ -116,6 +122,17 @@ void main() {
       verify(() => client.get(Uri.parse(url), headers: {
             'content-type': 'application/json',
             'accept': 'application/json'
+          })).called(1);
+    });
+    test("should call client with right headers", () async {
+      await sut.get(url: url, headers: {
+        'content-type': 'application/json',
+        'accept': 'application/xml'
+      });
+
+      verify(() => client.get(Uri.parse(url), headers: {
+            'content-type': 'application/json',
+            'accept': 'application/xml'
           })).called(1);
     });
   });
