@@ -40,5 +40,13 @@ void main() {
 
       expect(account, null);
     });
+    test("should return null if secureCacheStorage returns empty string",
+        () async {
+      loadSecureCacheStorage.mockLoadSecure("");
+
+      var account = await sut.load();
+
+      expect(account, null);
+    });
   });
 }
