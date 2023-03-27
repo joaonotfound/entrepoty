@@ -1,72 +1,10 @@
-import 'dart:convert';
-
-import 'package:entrepoty/data/data.dart';
+import 'package:entrepoty/infra/infra.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
-class HttpAdapter {
-  http.Client client;
-  HttpAdapter({
-    required this.client,
-  });
-
-  @override
-  Future<HttpResponse<T>> get<T>({required String url, Map? headers}) async {
-    try {
-      var response = await client.get(
-        Uri.parse(url),
-        headers: headers?.cast<String, String>() ??
-            {
-              'content-type': 'application/json',
-              'accept': 'application/json',
-            },
-      );
-      return HttpResponse(
-        statuscode: response.statusCode,
-        body: json.decode(response.body),
-      );
-    } catch (e) {
-      return const HttpResponse(statuscode: 500);
-    }
-  }
-
-  @override
-  Future<HttpResponse> post<T>(
-      {required String url, Map? body, Map? headers}) async {
-    try {
-      var response = await client.post(
-        Uri.parse(url),
-        body: body,
-        headers: headers?.cast<String, String>() ??
-            {
-              'content-type': 'application/json',
-              'accept': 'application/json',
-            },
-      );
-      return HttpResponse(
-        statuscode: response.statusCode,
-        body: json.decode(response.body),
-      );
-    } catch (e) {
-      return const HttpResponse(statuscode: 500);
-    }
-  }
-}
-
-class ClientMock extends Mock implements http.Client {
-  When mockGetCall() => when(() => get(any(), headers: any(named: "headers")));
-  void mockGet(http.Response response) =>
-      mockGetCall().thenAnswer((invocation) async => response);
-  void mockGetThrows() => mockGetCall().thenThrow(Error());
-
-  When mockPostCall() => when(() =>
-      post(any(), body: any(named: "body"), headers: any(named: "headers")));
-  void mockPost(http.Response response) =>
-      mockPostCall().thenAnswer((invocation) async => response);
-  void mockPostThrows() => mockPostCall().thenThrow(Error());
-}
+import '../mocks/mocks.dart';
 
 void main() {
   late HttpAdapter sut;
