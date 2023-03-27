@@ -1,3 +1,4 @@
+import 'package:entrepoty/ui/mixins/mixins.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
 import 'package:provider/provider.dart';
 
@@ -5,7 +6,7 @@ import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends StatefulWidget with NavigationManager {
   SettingsPresenter presenter;
   SettingsScreen({
     super.key,
@@ -29,19 +30,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         title: Text("Settings & Privacy"),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 10,
-          ),
-          child: Column(
-            children: [
-              SettingsDarkToggle(),
-              SettingsLogoutButton(),
-            ],
-          ),
-        ),
+      body: Builder(
+        builder: (context) {
+          widget.handleNavigation(context, widget.presenter.navigateToStream);
+          return SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 10,
+              ),
+              child: Column(
+                children: [
+                  SettingsDarkToggle(),
+                  SettingsLogoutButton(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
