@@ -12,7 +12,8 @@ class LocalLoadCurrentAccount implements LoadCurrentAccountUsecase {
   Future<TokenAccount?> load() async {
     try {
       var token = await loadSecureCacheStorage.loadSecure(key: "token");
-      if (token == null) return null;
+      if (token == null || token.length == 0) return null;
+
       return TokenAccount(token: token);
     } catch (_) {
       throw DomainError.unexpected;
