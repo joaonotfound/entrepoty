@@ -31,5 +31,12 @@ void main() {
 
       expect(response, true);
     });
+    test("should return false", () async {
+      storage.mockLoadSecure("any-other-value");
+
+      var response = await sut.loadIsDark();
+
+      expect(response, false);
+    });
   });
 }
