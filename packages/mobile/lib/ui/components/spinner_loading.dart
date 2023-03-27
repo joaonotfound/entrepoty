@@ -2,25 +2,29 @@ import 'package:flutter/material.dart';
 
 void showLoading(BuildContext context) {
   showDialog(
-      context: context,
-      builder: (context) => SimpleDialog(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircularProgressIndicator(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Se autenticando",
-                    textAlign: TextAlign.center,
-                  )
-                ],
+    context: context,
+    builder: (context) => SimpleDialog(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircularProgressIndicator(),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Wait one moment...",
+                textAlign: TextAlign.center,
               )
             ],
           ),
-      barrierDismissible: false);
+        )
+      ],
+    ),
+    barrierDismissible: false,
+  );
 }
 
 void hideLoading(BuildContext context) {
