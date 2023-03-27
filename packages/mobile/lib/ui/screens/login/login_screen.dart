@@ -26,31 +26,27 @@ class LoginScreen extends StatelessWidget
               horizontal: 30,
               vertical: 10,
             ),
-            child: ListView(
+            child: Column(
               children: [
-                Column(
-                  children: [
-                    Expanded(
-                      flex: 40,
-                      child: LoginCircularAccount(),
-                    ),
-                    Expanded(
-                      flex: 60,
-                      child: ListenableProvider(
-                        create: (_) => presenter,
-                        child: Form(
-                          child: Column(
-                            children: [
-                              UserIdFormField(),
-                              UserPasswordField(),
-                              LoginSubmitButton()
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+                Expanded(
+                  flex: 40,
+                  child: LoginCircularAccount(),
                 ),
+                Expanded(
+                  flex: 60,
+                  child: ListenableProvider(
+                    create: (_) => presenter,
+                    child: Form(
+                      child: Column(
+                        children: const [
+                          LoginUsernameField(),
+                          UserPasswordField(),
+                          LoginSubmitButton()
+                        ],
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           );

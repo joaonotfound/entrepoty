@@ -41,7 +41,7 @@ void main() {
 
   group("GetxLoginPresenter", () {
     test("should call validate with correct values when validating id", () {
-      sut.validateId(id);
+      sut.validateUsername(id);
       verify(() => validator.validate(field: "id", value: id)).called(1);
     });
     test("should call validate with correct values when validating password",
@@ -53,9 +53,9 @@ void main() {
     test("should emit error if id validation fails", () {
       validator.mockValidate("error");
 
-      expectLater(sut.idErrorStream, emits("error"));
+      expectLater(sut.usernameErrorStream, emits("error"));
 
-      sut.validateId(id);
+      sut.validateUsername(id);
     });
 
     test("should emit error if password validation fails", () {
@@ -80,15 +80,16 @@ void main() {
     test("idErrorStream should not emit duplicated values", () {
       validator.mockValidate("error");
 
-      sut.idErrorStream.listen(expectAsync1((error) => expect(error, "error")));
+      sut.usernameErrorStream
+          .listen(expectAsync1((error) => expect(error, "error")));
       sut.isFormValidStream
           .listen(expectAsync1((isValid) => expect(isValid, false)));
 
-      sut.validateId(id);
-      sut.validateId(id);
+      sut.validateUsername(id);
+      sut.validateUsername(id);
     });
     test('should call authentication with correct values', () {
-      sut.validateId(id);
+      sut.validateUsername(id);
       sut.validatePassword(password);
 
       sut.authenticate();
@@ -99,7 +100,7 @@ void main() {
     });
 
     test('should emit is loading stream', () {
-      sut.validateId(id);
+      sut.validateUsername(id);
       sut.validatePassword(password);
 
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
@@ -107,7 +108,7 @@ void main() {
       sut.authenticate();
     });
     test('should emit navigateToStream to stocks screen', () {
-      sut.validateId(id);
+      sut.validateUsername(id);
       sut.validatePassword(password);
 
       sut.navigateToStream
@@ -120,7 +121,7 @@ void main() {
         "should emit correct main error if authenctation throws invalidCredentials",
         () {
       authentication.mockAuthenticateError(DomainError.invalidCredentials);
-      sut.validateId(id);
+      sut.validateUsername(id);
       sut.validatePassword(password);
 
       sut.mainErrorStream.listen(
@@ -131,7 +132,7 @@ void main() {
     test("should emit correct main error if authentication throws unexpected",
         () {
       authentication.mockAuthenticateError(DomainError.unexpected);
-      sut.validateId(id);
+      sut.validateUsername(id);
       sut.validatePassword(password);
 
       sut.mainErrorStream
@@ -143,7 +144,7 @@ void main() {
         "should emit correct main error if saveCurrentAccount throws unexpected",
         () {
       saveCurrentAccount.mockSaveError(Exception());
-      sut.validateId(id);
+      sut.validateUsername(id);
       sut.validatePassword(password);
 
       sut.mainErrorStream

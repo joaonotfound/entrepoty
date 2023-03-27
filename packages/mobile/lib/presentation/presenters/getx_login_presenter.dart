@@ -24,29 +24,29 @@ class GetxLoginPresenter extends GetxController
     required this.saveCurrentAccount,
   });
 
-  final _idError = RxString('');
+  final _usernameError = RxString('');
   final _passwordError = RxString('');
 
-  String _id = '';
+  String _username = '';
   String _password = '';
 
   @override
-  Stream<String?> get idErrorStream => _idError.stream;
+  Stream<String?> get usernameErrorStream => _usernameError.stream;
 
   @override
   Stream<String?> get passwordErrorStream => _passwordError.stream;
 
   void _validateForm() {
-    isFormValid = _idError.value == '' &&
-        _id != '' &&
+    isFormValid = _usernameError.value == '' &&
+        _username != '' &&
         _passwordError.value == '' &&
         _password != '';
   }
 
   @override
-  void validateId(String id) {
-    _id = id;
-    _idError.value = validator.validate(field: 'id', value: id) ?? '';
+  void validateUsername(String id) {
+    _username = id;
+    _usernameError.value = validator.validate(field: 'id', value: id) ?? '';
     _validateForm();
   }
 
@@ -63,7 +63,7 @@ class GetxLoginPresenter extends GetxController
     isLoading = true;
     try {
       final account =
-          await authentication.authenticate(id: _id, password: _password);
+          await authentication.authenticate(id: _username, password: _password);
       await saveCurrentAccount.saveAccount(account: account);
       navigateTo = Routes.home;
     } on DomainError catch (error) {
