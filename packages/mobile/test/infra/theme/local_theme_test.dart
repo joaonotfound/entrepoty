@@ -23,5 +23,13 @@ void main() {
 
       verify(() => storage.loadSecure(key: "is-dark")).called(1);
     });
+
+    test("should return true", () async {
+      storage.mockLoadSecure("true");
+
+      var response = await sut.loadIsDark();
+
+      expect(response, true);
+    });
   });
 }
