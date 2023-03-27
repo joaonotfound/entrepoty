@@ -13,5 +13,6 @@ class GetxSettingsPresenter extends GetxController
   @override
   void logout() {
     usecase.logout();
+    navigateTo = "/splash";
   }
 }
