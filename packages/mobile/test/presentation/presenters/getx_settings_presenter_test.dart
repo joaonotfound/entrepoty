@@ -3,7 +3,8 @@ import 'package:entrepoty/ui/misc/misc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../mocks/mocks.dart';
+import '../../domain/domain.dart';
+import '../../infra/mocks/mocks.dart';
 
 void main() {
   late GetxSettingsPresenter sut;

@@ -4,7 +4,7 @@ import 'package:entrepoty/data/usecases/usecases.dart';
 import 'package:entrepoty/domain/entities/authentication/authentication.dart';
 import 'package:entrepoty/domain/errors/domain_errors.dart';
 
-import '../../../mocks/mocks.dart';
+import '../../data.dart';
 
 void main() {
   late LocalLoadCurrentAccount sut;

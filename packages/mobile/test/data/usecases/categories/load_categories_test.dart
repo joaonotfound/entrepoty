@@ -5,7 +5,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
 
-import '../../../mocks/http_client_mock.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   late LoadCategories sut;

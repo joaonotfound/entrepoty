@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:entrepoty/validation/validation.dart';
 
-import '../../mocks/mocks.dart';
+import '../../infra/mocks/mocks.dart';
 
 void main() {
   late ValidationComposite sut;

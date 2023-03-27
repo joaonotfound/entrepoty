@@ -1,5 +1,4 @@
 import 'package:mocktail/mocktail.dart';
-
 import 'package:entrepoty/data/data.dart';
 
 class MockHttpClient extends Mock implements HttpClient {

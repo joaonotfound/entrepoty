@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/infra/infra.dart';
 
-import '../../mocks/mocks.dart';
+import '../mocks/mocks.dart';
 
 void main() {
   late LocalStorageAdapter sut;

@@ -1,10 +1,9 @@
-import 'package:entrepoty/data/cache/cache.dart';
 import 'package:entrepoty/infra/infra.dart';
 import 'package:entrepoty/presentation/protocols/theme_loader.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../mocks/mocks.dart';
+import '../../data/data.dart';
 
 void main() {
   late SecureCacheStorageMock storage;

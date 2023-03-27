@@ -2,7 +2,7 @@ import 'package:entrepoty/data/data.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../mocks/save_secure_cache_storage_mock.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   late LocalLogout sut;
