@@ -18,7 +18,7 @@ List<GetPage> generateRoutes() {
       page: () => UserCreationScreen(),
       transition: Transition.rightToLeft,
     ),
-    GetPage(name: Routes.settings, page: () => SettingsScreen()),
+    GetPage(name: Routes.settings, page: () => makeSettingsScreen()),
     GetPage(
       name: Routes.createModel,
       page: () => ModelCreationScreen(

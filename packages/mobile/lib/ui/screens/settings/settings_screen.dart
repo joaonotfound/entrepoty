@@ -1,9 +1,15 @@
+import 'package:entrepoty/ui/screens/screens.dart';
+
 import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+  SettingsPresenter presenter;
+  SettingsScreen({
+    super.key,
+    required this.presenter,
+  });
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
