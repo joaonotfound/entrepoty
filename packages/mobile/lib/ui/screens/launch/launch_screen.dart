@@ -1,3 +1,6 @@
+import 'package:provider/provider.dart';
+
+import '../../providers/providers.dart';
 import './components/components.dart';
 import 'package:flutter/material.dart';
 
@@ -6,8 +9,11 @@ class LaunchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider provider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: provider.isDark.value
+          ? Theme.of(context).colorScheme.background
+          : Theme.of(context).colorScheme.secondary,
       body: SafeArea(
         child: Container(
           child: Padding(
@@ -19,7 +25,9 @@ class LaunchScreen extends StatelessWidget {
                   flex: 1,
                 ),
                 Container(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: provider.isDark.value
+                      ? Theme.of(context).colorScheme.background
+                      : Theme.of(context).colorScheme.surface,
                   width: double.infinity,
                   child: Padding(
                     padding: EdgeInsets.all(20),
