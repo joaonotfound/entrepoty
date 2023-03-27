@@ -28,7 +28,14 @@ class HttpAdapter {
   @override
   Future<HttpResponse> post<T>({required String url, Map? body}) async {
     try {
-      var response = await client.post(Uri.parse(url), body: body);
+      var response = await client.post(
+        Uri.parse(url),
+        body: body,
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json'
+        },
+      );
       return HttpResponse(
         statuscode: response.statusCode,
         body: json.decode(response.body),
@@ -115,6 +122,14 @@ void main() {
       var response = await sut.post(url: url);
 
       expect(response.statuscode, 500);
+    });
+    test("should call client with defaults headers", () async {
+      await sut.post(url: url);
+
+      verify(() => client.post(Uri.parse(url), headers: {
+            'content-type': 'application/json',
+            'accept': 'application/json'
+          })).called(1);
     });
   });
 }
