@@ -3,7 +3,7 @@ import 'dart:convert';
 import '../../data/data.dart';
 import 'package:http/http.dart' as http;
 
-class HttpAdapter {
+class HttpAdapter implements HttpClient {
   http.Client client;
   HttpAdapter({
     required this.client,
@@ -30,7 +30,7 @@ class HttpAdapter {
   }
 
   @override
-  Future<HttpResponse> post<T>(
+  Future<HttpResponse<T>> post<T>(
       {required String url, Map? body, Map? headers}) async {
     try {
       var response = await client.post(

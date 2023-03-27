@@ -15,6 +15,13 @@ enum HttpError {
 }
 
 abstract class HttpClient {
-  Future<HttpResponse<T>> get<T>({required String url});
-  Future<HttpResponse<T>> post<T>({required String url, Map body});
+  Future<HttpResponse<T>> get<T>({
+    required String url,
+    Map? headers,
+  });
+  Future<HttpResponse<T>> post<T>({
+    required String url,
+    Map? body,
+    Map? headers,
+  });
 }
