@@ -10,17 +10,17 @@ void main() {
   group("GetxRegisterLotPresenter", () {
     test("should emit empty error when validating model", () {
       sut.modelErrorStream.listen(
-          expectAsync1((value) => expect(value, "Este campo é obrigatório.")));
+          expectAsync1((value) => expect(value, "This field is mandatory.")));
       sut.validateModel("");
     });
     test("should emit invalid value error when validating quantity", () {
       sut.qtdErrorStream
-          .listen(expectAsync1((value) => expect(value, "Número inválido.")));
+          .listen(expectAsync1((value) => expect(value, "Invalid number.")));
       sut.validateQtd(0);
     });
     test("should emit invalid value error when validating quantity", () {
       sut.qtdErrorStream
-          .listen(expectAsync1((value) => expect(value, "Número inválido.")));
+          .listen(expectAsync1((value) => expect(value, "Invalid number.")));
       sut.validateQtd(-1);
     });
     test("should emit no error when validating quantity", () {

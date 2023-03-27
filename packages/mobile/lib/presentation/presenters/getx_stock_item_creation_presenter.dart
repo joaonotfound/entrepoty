@@ -50,14 +50,14 @@ class GetxStockItemCreationPresenter extends GetxController
 
   @override
   void validateModel(String value) {
-    modelError.value = value.length == 0 ? "Este campo é obrigatório." : "";
+    modelError.value = value.length == 0 ? "This field is mandatory." : "";
     _model = value;
     validateForm();
   }
 
   @override
   void validateQtd(int value) {
-    qtdError.value = value <= 0 ? "Número inválido." : "";
+    qtdError.value = value <= 0 ? "Invalid number." : "";
     _qtd = value;
     validateForm();
   }
