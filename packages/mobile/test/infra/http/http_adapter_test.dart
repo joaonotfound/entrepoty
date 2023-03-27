@@ -26,8 +26,12 @@ class HttpAdapter {
   }
 
   @override
-  Future<void> post<T>({required String url, Map? body}) async {
-    await client.post(Uri.parse(url), body: body);
+  Future<HttpResponse> post<T>({required String url, Map? body}) async {
+    var response = await client.post(Uri.parse(url), body: body);
+    return HttpResponse(
+      statuscode: response.statusCode,
+      body: json.decode(response.body),
+    );
   }
 }
 
@@ -91,6 +95,14 @@ void main() {
 
       verify(() => client.post(Uri.parse(url), body: {"key": "value"}))
           .called(1);
+    });
+    test("should return correct response", () async {
+      client.mockPost(http.Response("{ \"any-key\": \"any-value\"}", 200));
+
+      var response = await sut.post(url: url);
+
+      expect(response.statuscode, 200);
+      expect(response.body, {"any-key": "any-value"});
     });
   });
 }
