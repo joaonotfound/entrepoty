@@ -1,5 +1,6 @@
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class SettingsLogoutButton extends StatelessWidget {
@@ -8,8 +9,9 @@ class SettingsLogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
+    final logout = Get.find<SettingsPresenter>();
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => logout.logout(),
       style: ButtonStyle(
         backgroundColor:
             MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
