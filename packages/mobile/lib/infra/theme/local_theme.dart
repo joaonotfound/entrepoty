@@ -14,6 +14,7 @@ class LocalTheme implements Theme {
   }
 
   setIsDark(bool value) async {
+    await storage.saveSecure(key: "is-dark", value: value.toString());
     return;
   }
 }
