@@ -26,21 +26,21 @@ class HttpAdapter {
   }
 
   @override
-  Future<HttpResponse> post<T>({required String url, Map? body}) async {
+  Future<HttpResponse> post<T>(
+      {required String url, Map? body, Map? headers}) async {
     try {
       var response = await client.post(
         Uri.parse(url),
         body: body,
-        headers: {
-          'content-type': 'application/json',
-          'accept': 'application/json'
-        },
+        headers: headers?.cast<String, String>() ??
+            {'content-type': 'application/json', 'accept': 'application/json'},
       );
       return HttpResponse(
         statuscode: response.statusCode,
         body: json.decode(response.body),
       );
     } catch (e) {
+      print(e);
       return const HttpResponse(statuscode: 500);
     }
   }
@@ -52,7 +52,8 @@ class ClientMock extends Mock implements http.Client {
       mockGetCall().thenAnswer((invocation) async => response);
   void mockGetThrows() => mockGetCall().thenThrow(Error());
 
-  When mockPostCall() => when(() => post(any(), body: any(named: "body")));
+  When mockPostCall() => when(() =>
+      post(any(), body: any(named: "body"), headers: any(named: "headers")));
   void mockPost(http.Response response) =>
       mockPostCall().thenAnswer((invocation) async => response);
   void mockPostThrows() => mockPostCall().thenThrow(Error());
@@ -105,8 +106,12 @@ void main() {
     test("should call client with correct values", () async {
       await sut.post(url: url, body: {"key": "value"});
 
-      verify(() => client.post(Uri.parse(url), body: {"key": "value"}))
-          .called(1);
+      verify(() => client.post(Uri.parse(url), body: {
+            "key": "value"
+          }, headers: {
+            'content-type': 'application/json',
+            'accept': 'application/json'
+          })).called(1);
     });
     test("should return correct response", () async {
       client.mockPost(http.Response("{ \"any-key\": \"any-value\"}", 200));
@@ -129,6 +134,17 @@ void main() {
       verify(() => client.post(Uri.parse(url), headers: {
             'content-type': 'application/json',
             'accept': 'application/json'
+          })).called(1);
+    });
+    test("should call client with right headers", () async {
+      await sut.post(url: url, headers: {
+        'content-type': 'application/json',
+        'accept': 'application/xml'
+      });
+
+      verify(() => client.post(Uri.parse(url), headers: {
+            'content-type': 'application/json',
+            'accept': 'application/xml'
           })).called(1);
     });
   });
