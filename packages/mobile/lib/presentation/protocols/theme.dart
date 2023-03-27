@@ -1,4 +1,4 @@
 abstract class Theme {
-  setIsDark() {}
-  loadIsDark() {}
+  Future<void> setIsDark(bool value);
+  Future<bool> loadIsDark();
 }

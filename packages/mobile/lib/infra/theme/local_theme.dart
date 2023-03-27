@@ -8,12 +8,11 @@ class LocalTheme implements Theme {
     required this.storage,
   });
 
-  loadIsDark() {
+  loadIsDark() async {
     throw UnimplementedError();
   }
 
-  @override
-  setIsDark() {
-    throw UnimplementedError();
+  setIsDark(bool value) async {
+    return;
   }
 }

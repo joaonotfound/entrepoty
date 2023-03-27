@@ -1,4 +1,5 @@
-import 'package:entrepoty/main/factories/generate_routes.dart';
+import 'package:entrepoty/main/factories/factories.dart';
+import 'package:entrepoty/presentation/presenters/getx_theme_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (ctx) => ThemeProvider(),
+      create: (ctx) =>
+          ThemeProvider(presenter: GetxThemePresenter(theme: makeLocalTheme())),
       builder: (context, child) {
         ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
