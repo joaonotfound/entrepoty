@@ -10,20 +10,21 @@ void main() {
   late LogoutMock logout;
   setUp(() {
     logout = LogoutMock();
+    logout.mockLogout(null);
     sut = GetxSettingsPresenter(usecase: logout);
   });
 
   group("GetxSettingsPresenter", () {
-    test("should call logout method", () {
-      sut.logout();
+    test("should call logout method", () async {
+      await sut.logout();
 
       verify(() => logout.logout()).called(1);
     });
-    test("should redirect to splash screen", () {
+    test("should redirect to splash screen", () async {
       sut.navigateToStream
           .listen(expectAsync1((route) => expect(route, Routes.splash)));
 
-      sut.logout();
+      await sut.logout();
     });
   });
 }

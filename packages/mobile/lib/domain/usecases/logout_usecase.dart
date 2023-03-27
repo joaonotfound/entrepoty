@@ -1,3 +1,3 @@
 abstract class LogoutUsecase {
-  void logout();
+  Future<void> logout();
 }

@@ -1,3 +1,3 @@
 abstract class SettingsPresenter {
-  void logout();
+  Future<void> logout();
 }

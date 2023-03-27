@@ -12,9 +12,9 @@ class GetxSettingsPresenter extends GetxController
     required this.usecase,
   });
   @override
-  void logout() {
+  Future<void> logout() async {
     debugPrint("I'm being called...");
-    usecase.logout();
+    await usecase.logout();
     navigateTo = Routes.splash;
   }
 }
