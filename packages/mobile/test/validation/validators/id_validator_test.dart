@@ -21,7 +21,7 @@ void main() {
       expect(sut.validate("0123456789234"), null);
     });
     test("should return error if value doesnt have 10 caracteres", () {
-      expect(sut.validate("12"), "Invalid ID, minimum 7 digits");
+      expect(sut.validate("12"), "Invalid username, minimum 7 digits");
     });
   });
 }

@@ -8,6 +8,6 @@ class IdValidator implements FormFieldValidator {
   String? validate(String? value) {
     return value == null || value.isEmpty
         ? null
-        : (value.length < 7 ? "Invalid ID, minimum 7 digits" : null);
+        : (value.length < 7 ? "Invalid username, minimum 7 digits" : null);
   }
 }
