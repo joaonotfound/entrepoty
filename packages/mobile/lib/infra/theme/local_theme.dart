@@ -1,10 +1,10 @@
 import 'package:entrepoty/data/cache/cache.dart';
 
-import '../../presentation/protocols/theme.dart';
+import '../../presentation/protocols/theme_loader.dart';
 
-class LocalTheme implements Theme {
+class LocalThemeLoader implements ThemeLoader {
   SecureCacheStorage storage;
-  LocalTheme({
+  LocalThemeLoader({
     required this.storage,
   });
 

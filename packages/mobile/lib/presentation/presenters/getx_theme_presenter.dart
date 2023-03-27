@@ -1,11 +1,11 @@
 import 'package:entrepoty/data/cache/cache.dart';
-import 'package:entrepoty/presentation/protocols/theme.dart';
+import 'package:entrepoty/presentation/protocols/theme_loader.dart';
 import 'package:entrepoty/ui/providers/theme_presenter.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class GetxThemePresenter implements ThemePresenter {
   RxBool isDark = false.obs;
-  Theme theme;
+  ThemeLoader theme;
   GetxThemePresenter({required this.theme}) {
     loadThemeFromStorage();
   }
