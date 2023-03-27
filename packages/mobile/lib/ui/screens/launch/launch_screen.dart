@@ -11,9 +11,9 @@ class LaunchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: provider.isDark.value
-          ? Theme.of(context).colorScheme.background
-          : Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context)
+          .colorScheme
+          .background, //Theme.of(context).colorScheme.,
       body: SafeArea(
         child: Container(
           child: Padding(
