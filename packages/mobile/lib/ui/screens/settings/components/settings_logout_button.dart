@@ -5,13 +5,33 @@ import 'package:provider/provider.dart';
 
 class SettingsLogoutButton extends StatelessWidget {
   const SettingsLogoutButton({super.key});
+  void _askConfirmation(BuildContext context) async {
+    final logout = Get.find<SettingsPresenter>();
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Are you sure?"),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const [
+              Text("You are about to sign out."),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Get.back(), child: const Text("Cancel")),
+          TextButton(onPressed: () => logout.logout(), child: const Text("Ok")),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
-    final logout = Get.find<SettingsPresenter>();
+
     return ElevatedButton(
-      onPressed: () => logout.logout(),
+      onPressed: () => _askConfirmation(context),
       style: ButtonStyle(
         backgroundColor:
             MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
