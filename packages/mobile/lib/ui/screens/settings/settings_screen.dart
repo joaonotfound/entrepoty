@@ -25,22 +25,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
           onPressed: () => Get.back(),
         ),
-        title: Text("Settings & Privacy"),
+        title: const Text("Settings & Privacy"),
       ),
       body: Builder(
         builder: (context) {
           widget.handleNavigation(context, widget.presenter.navigateToStream);
           return SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 vertical: 20,
                 horizontal: 10,
               ),
               child: Column(
-                children: [
+                children: const [
                   SettingsDarkToggle(),
                   SettingsLogoutButton(),
                 ],
