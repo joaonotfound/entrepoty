@@ -4,7 +4,10 @@ import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
 
 class LocalStorageAdapter
-    implements SaveSecureCacheStorage, LoadSecureCacheStorage {
+    implements
+        SaveSecureCacheStorage,
+        LoadSecureCacheStorage,
+        SecureCacheStorage {
   final FlutterSecureStorage secureStorage;
 
   LocalStorageAdapter({
