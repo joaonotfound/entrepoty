@@ -1,7 +1,8 @@
+import 'dart:convert';
+
 import 'package:entrepoty/data/data.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
@@ -13,7 +14,10 @@ class HttpAdapter {
 
   Future<HttpResponse> get({required String url}) async {
     var response = await client.get(Uri.parse(url));
-    return HttpResponse(statuscode: response.statusCode);
+    return HttpResponse(
+      statuscode: response.statusCode,
+      body: json.decode(response.body),
+    );
   }
 }
 
@@ -48,6 +52,14 @@ void main() {
       var response = await sut.get(url: url);
 
       expect(response.statuscode, 300);
+    });
+    test("should return correct body", () async {
+      client.mockGet(http.Response("{ \"username\": \"any-username\" }", 200));
+
+      var response = await sut.get(url: url);
+
+      expect(response.body, {"username": "any-username"});
+      expect(response.statuscode, 200);
     });
   });
 }
