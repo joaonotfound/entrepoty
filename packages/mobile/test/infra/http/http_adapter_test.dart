@@ -21,18 +21,21 @@ class HttpAdapter {
         body: json.decode(response.body),
       );
     } catch (e) {
-      print(e);
       return const HttpResponse(statuscode: 500);
     }
   }
 
   @override
   Future<HttpResponse> post<T>({required String url, Map? body}) async {
-    var response = await client.post(Uri.parse(url), body: body);
-    return HttpResponse(
-      statuscode: response.statusCode,
-      body: json.decode(response.body),
-    );
+    try {
+      var response = await client.post(Uri.parse(url), body: body);
+      return HttpResponse(
+        statuscode: response.statusCode,
+        body: json.decode(response.body),
+      );
+    } catch (e) {
+      return const HttpResponse(statuscode: 500);
+    }
   }
 }
 
@@ -105,6 +108,13 @@ void main() {
 
       expect(response.statuscode, 200);
       expect(response.body, {"any-key": "any-value"});
+    });
+    test("should return 500 if client throws", () async {
+      client.mockPostThrows();
+
+      var response = await sut.post(url: url);
+
+      expect(response.statuscode, 500);
     });
   });
 }
