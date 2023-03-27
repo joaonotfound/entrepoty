@@ -18,5 +18,11 @@ void main() {
 
       verify(() => logout.logout()).called(1);
     });
+    test("should redirect to splash screen", () {
+      sut.navigateToStream
+          .listen(expectAsync1((route) => expect(route, "/splash")));
+
+      sut.logout();
+    });
   });
 }
