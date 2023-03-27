@@ -15,7 +15,13 @@ class HttpAdapter {
   @override
   Future<HttpResponse<T>> get<T>({required String url}) async {
     try {
-      var response = await client.get(Uri.parse(url));
+      var response = await client.get(
+        Uri.parse(url),
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+        },
+      );
       return HttpResponse(
         statuscode: response.statusCode,
         body: json.decode(response.body),
@@ -33,7 +39,10 @@ class HttpAdapter {
         Uri.parse(url),
         body: body,
         headers: headers?.cast<String, String>() ??
-            {'content-type': 'application/json', 'accept': 'application/json'},
+            {
+              'content-type': 'application/json',
+              'accept': 'application/json',
+            },
       );
       return HttpResponse(
         statuscode: response.statusCode,
@@ -100,6 +109,14 @@ void main() {
       var response = await sut.get(url: url);
 
       expect(response.statuscode, 500);
+    });
+    test("should call client with defaults headers", () async {
+      await sut.get(url: url);
+
+      verify(() => client.get(Uri.parse(url), headers: {
+            'content-type': 'application/json',
+            'accept': 'application/json'
+          })).called(1);
     });
   });
   group("HttpAdapter post", () {
