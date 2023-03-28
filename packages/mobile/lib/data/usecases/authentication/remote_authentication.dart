@@ -11,18 +11,18 @@ class RemoteAuthentication implements AuthenticationUsecase {
 
   @override
   Future<Account> authenticate({
-    required String id,
+    required String username,
     required String password,
   }) async {
     try {
       var response = await httpClient
-          .post(url: url, body: {"id": id, "password": password});
+          .post(url: url, body: {"username": username, "password": password});
 
       Map account = response.body?["account"];
 
       return Account(
         token: account["token"],
-        id: account["id"],
+        id: account["username"],
         name: account["name"],
         profilePictureUrl: account["profile_url"],
       );

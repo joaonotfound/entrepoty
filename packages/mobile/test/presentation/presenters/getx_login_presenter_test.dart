@@ -16,8 +16,8 @@ void main() {
   late MockLocalSaveCurrentAccount saveCurrentAccount;
 
   Account validAccount =
-      Account(token: "", id: "", name: "", profilePictureUrl: "");
-  String id = faker.guid.guid();
+      const Account(token: "", id: "", name: "", profilePictureUrl: "");
+  String username = faker.internet.userName();
   String password = faker.internet.password();
 
   setUp(() {
@@ -41,8 +41,9 @@ void main() {
 
   group("GetxLoginPresenter", () {
     test("should call validate with correct values when validating id", () {
-      sut.validateUsername(id);
-      verify(() => validator.validate(field: "id", value: id)).called(1);
+      sut.validateUsername(username);
+      verify(() => validator.validate(field: "username", value: username))
+          .called(1);
     });
     test("should call validate with correct values when validating password",
         () {
@@ -55,7 +56,7 @@ void main() {
 
       expectLater(sut.usernameErrorStream, emits("error"));
 
-      sut.validateUsername(id);
+      sut.validateUsername(username);
     });
 
     test("should emit error if password validation fails", () {
@@ -85,22 +86,23 @@ void main() {
       sut.isFormValidStream
           .listen(expectAsync1((isValid) => expect(isValid, false)));
 
-      sut.validateUsername(id);
-      sut.validateUsername(id);
+      sut.validateUsername(username);
+      sut.validateUsername(username);
     });
     test('should call authentication with correct values', () {
-      sut.validateUsername(id);
+      sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.authenticate();
 
       verify(
-        () => authentication.authenticate(id: id, password: password),
+        () =>
+            authentication.authenticate(username: username, password: password),
       ).called(1);
     });
 
     test('should emit is loading stream', () {
-      sut.validateUsername(id);
+      sut.validateUsername(username);
       sut.validatePassword(password);
 
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
@@ -108,7 +110,7 @@ void main() {
       sut.authenticate();
     });
     test('should emit navigateToStream to stocks screen', () {
-      sut.validateUsername(id);
+      sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.navigateToStream
@@ -121,7 +123,7 @@ void main() {
         "should emit correct main error if authenctation throws invalidCredentials",
         () {
       authentication.mockAuthenticateError(DomainError.invalidCredentials);
-      sut.validateUsername(id);
+      sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.mainErrorStream.listen(
@@ -132,7 +134,7 @@ void main() {
     test("should emit correct main error if authentication throws unexpected",
         () {
       authentication.mockAuthenticateError(DomainError.unexpected);
-      sut.validateUsername(id);
+      sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.mainErrorStream
@@ -144,7 +146,7 @@ void main() {
         "should emit correct main error if saveCurrentAccount throws unexpected",
         () {
       saveCurrentAccount.mockSaveError(Exception());
-      sut.validateUsername(id);
+      sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.mainErrorStream

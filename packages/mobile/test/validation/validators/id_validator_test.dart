@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:entrepoty/validation/validation.dart';
 
 void main() {
-  late IdValidator sut;
+  late UsernameValidator sut;
   setUp(() {
-    sut = const IdValidator(field: "any_field");
+    sut = const UsernameValidator(field: "any_field");
   });
   group("IdValidator", () {
     test("should return null if value is null", () {

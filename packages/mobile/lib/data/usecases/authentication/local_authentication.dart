@@ -4,14 +4,14 @@ import 'package:entrepoty/domain/domain.dart';
 class LocalAuthentication implements AuthenticationUsecase {
   @override
   Future<Account> authenticate({
-    required String id,
+    required String username,
     required String password,
   }) async {
     await Future.delayed(const Duration(seconds: 2));
-    if (id == "ja12345" && password == "123456") {
+    if (username == "ja12345" && password == "123456") {
       return Account(
         token: "random-token",
-        id: id,
+        id: username,
         name: "João",
         profilePictureUrl: "https://google.com",
       );

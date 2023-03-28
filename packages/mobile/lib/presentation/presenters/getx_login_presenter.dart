@@ -44,9 +44,10 @@ class GetxLoginPresenter extends GetxController
   }
 
   @override
-  void validateUsername(String id) {
-    _username = id;
-    _usernameError.value = validator.validate(field: 'id', value: id) ?? '';
+  void validateUsername(String username) {
+    _username = username;
+    _usernameError.value =
+        validator.validate(field: 'username', value: username) ?? '';
     _validateForm();
   }
 
@@ -62,8 +63,8 @@ class GetxLoginPresenter extends GetxController
   Future<void> authenticate() async {
     isLoading = true;
     try {
-      final account =
-          await authentication.authenticate(id: _username, password: _password);
+      final account = await authentication.authenticate(
+          username: _username, password: _password);
       await saveCurrentAccount.saveAccount(account: account);
       navigateTo = Routes.home;
     } on DomainError catch (error) {
