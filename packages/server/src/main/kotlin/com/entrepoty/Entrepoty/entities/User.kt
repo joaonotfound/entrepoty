@@ -1,17 +1,16 @@
 package com.entrepoty.Entrepoty.entities
 
-import jakarta.persistence.Column
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
+import jakarta.persistence.*
 
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
 import org.jetbrains.annotations.NotNull
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
+import java.awt.List
 
 @Entity
 @Table(name = "users")
-class User {
+class User : UserDetails {
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0
@@ -23,9 +22,23 @@ class User {
     @field:NotNull
     var password: String = ""
 
-    // 0 = readonly
-    // 1 = employer
-    // 2 = administrator
     @field:NotNull
-    var permissionLevel: Short = 0;
+    @field:Enumerated(EnumType.ORDINAL)
+    var role: Role = Role.USER;
+
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
+        return mutableListOf<GrantedAuthority>(SimpleGrantedAuthority(role.name));
+    }
+
+    override fun getPassword() = password;
+
+    override fun getUsername() = username;
+
+    override fun isAccountNonExpired() = true;
+
+    override fun isAccountNonLocked() = true;
+
+    override fun isCredentialsNonExpired() = true;
+
+    override fun isEnabled() = true;
 }
