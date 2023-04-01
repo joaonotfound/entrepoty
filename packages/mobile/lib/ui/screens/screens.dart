@@ -7,3 +7,4 @@ export 'launch/launch.dart';
 export 'model/model.dart';
 export 'settings/settings.dart';
 export 'search/search.dart';
+export 'signup/signup.dart';
