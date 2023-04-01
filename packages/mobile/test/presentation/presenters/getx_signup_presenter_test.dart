@@ -16,5 +16,12 @@ void main() {
       sut.validateName("any-name");
       verify(() => validator.validate(field: "name", value: "any-name"));
     });
+    test("should emit username error", () {
+      sut.nameErrorStream
+          .listen(expectAsync1((error) => expect(error, "any-error")));
+
+      validator.mockValidate("any-error");
+      sut.validateName('any-name');
+    });
   });
 }
