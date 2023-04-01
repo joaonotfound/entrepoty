@@ -18,17 +18,17 @@ class AuthenticationService {
     lateinit var jwtService: JwtService
     @Autowired
     lateinit var authenticationManager: AuthenticationManager
-    fun register(request: RegisterRequest): AccessToken {
+    fun register(request: RegisterRequest): AuthenticationResponse {
         var user = User(request.username, passwordEncoder.encode(request.password), Role.USER)
         userRepository.save(user);
         var token = jwtService.generateToken(user);
-        return AccessToken(token);
+        return AuthenticationResponse(user.name, user.username, token, user.profile_url);
     }
-    fun auth(request: AuthenticationRequest): AccessToken {
+    fun auth(request: AuthenticationRequest): AuthenticationResponse {
         authenticationManager.authenticate(UsernamePasswordAuthenticationToken(request.username, request.password))
         var user = userRepository.findByUsername(request.username).orElseThrow()
         var token = jwtService.generateToken(user);
-        return AccessToken(token);
+        return AuthenticationResponse(user.name, user.username, token, user.profile_url);
 
     }
 }

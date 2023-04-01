@@ -2,6 +2,7 @@ package com.entrepoty.Entrepoty.controllers
 
 import com.entrepoty.Entrepoty.entities.AccessToken
 import com.entrepoty.Entrepoty.entities.AuthenticationRequest
+import com.entrepoty.Entrepoty.entities.AuthenticationResponse
 import com.entrepoty.Entrepoty.entities.RegisterRequest
 import com.entrepoty.Entrepoty.services.AuthenticationService
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,11 +20,11 @@ class AuthenticationController {
      private lateinit var service: AuthenticationService;
 
     @PostMapping("/signup")
-    fun createAccount(@RequestBody body: RegisterRequest): ResponseEntity<AccessToken>{
+    fun createAccount(@RequestBody body: RegisterRequest): ResponseEntity<AuthenticationResponse>{
         return ResponseEntity.ok(service.register(body))
     }
     @PostMapping("/login")
-    fun authenticate(@RequestBody body: AuthenticationRequest): ResponseEntity<AccessToken> {
+    fun authenticate(@RequestBody body: AuthenticationRequest): ResponseEntity<AuthenticationResponse> {
         return ResponseEntity.ok(service.auth(body))
     }
 
