@@ -51,4 +51,25 @@ void main() {
       sut.validateUsername('any-username');
     });
   });
+  group("GetxSignupPresenter's password field", () {
+    test("should call validator with correct value", () {
+      sut.validatePassword("any-password");
+      verify(
+          () => validator.validate(field: "password", value: "any-password"));
+    });
+    test("should emit password error", () {
+      sut.passwordErrorStream
+          .listen(expectAsync1((error) => expect(error, "any-error")));
+
+      validator.mockValidate("any-error");
+      sut.validatePassword('any-password');
+    });
+    test("should emit empty string if validators returns null", () {
+      sut.passwordErrorStream
+          .listen(expectAsync1((error) => expect(error, "")));
+
+      validator.mockValidate(null);
+      sut.validatePassword('any-password');
+    });
+  });
 }
