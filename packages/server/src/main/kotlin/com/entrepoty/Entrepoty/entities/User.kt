@@ -1,26 +1,29 @@
 package com.entrepoty.Entrepoty.entities
 
 import jakarta.persistence.*
-
 import org.jetbrains.annotations.NotNull
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
-import java.awt.List
 
 @Entity
 @Table(name = "users")
 class User : UserDetails {
+    constructor(username: String, password: String, role: Role){
+        this.username = username
+        this.password = password
+        this.role = role
+    }
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0
 
     @field:Column(unique = true)
     @field:NotNull
-    var username: String = ""
+    private var username: String = ""
 
     @field:NotNull
-    var password: String = ""
+    private var password: String = ""
 
     @field:NotNull
     @field:Enumerated(EnumType.ORDINAL)
