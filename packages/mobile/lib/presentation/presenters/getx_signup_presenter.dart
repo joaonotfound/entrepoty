@@ -19,8 +19,9 @@ class GetxSignupPresenter extends GetxController
   final _nameError = RxString('');
   Stream<String?> get nameErrorStream => _nameError.stream;
 
-  @override
-  // TODO: implement passwordErrorStream
+  final _usernameError = RxString('');
+  Stream<String?> get usernameErrorStream => _usernameError.stream;
+
   Stream<String?> get passwordErrorStream => throw UnimplementedError();
 
   @override
@@ -28,10 +29,6 @@ class GetxSignupPresenter extends GetxController
     // TODO: implement signup
     throw UnimplementedError();
   }
-
-  @override
-  // TODO: implement usernameErrorStream
-  Stream<String?> get usernameErrorStream => throw UnimplementedError();
 
   @override
   void validateName(String name) {
@@ -45,6 +42,7 @@ class GetxSignupPresenter extends GetxController
 
   @override
   void validateUsername(String username) {
-    // TODO: implement validateUsername
+    _usernameError.value =
+        validation.validate(field: "username", value: username) ?? "";
   }
 }
