@@ -2,7 +2,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:entrepoty/domain/domain.dart';
 
-class MockAuthentication extends Mock implements AuthenticationUsecase {
+class MockAuthentication extends Mock implements LoginUsecase {
   When _mockAuthenticateCall() => when(() => authenticate(
       username: any(named: "username"), password: any(named: "password")));
   void mockAuthenticate(Account data) =>

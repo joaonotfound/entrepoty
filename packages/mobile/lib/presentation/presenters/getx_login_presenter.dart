@@ -16,7 +16,7 @@ class GetxLoginPresenter extends GetxController
         GetxNavigatorManager
     implements LoginPresenter {
   final Validation validator;
-  final AuthenticationUsecase authentication;
+  final LoginUsecase authentication;
   final SaveCurrentAccountUsecase saveCurrentAccount;
   GetxLoginPresenter({
     required this.validator,

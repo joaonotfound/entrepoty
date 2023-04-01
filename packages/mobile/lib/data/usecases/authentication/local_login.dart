@@ -1,7 +1,7 @@
 import 'package:entrepoty/domain/domain.dart';
 
 // only to be used while there's no backend creayed yet.
-class LocalAuthentication implements AuthenticationUsecase {
+class LocalLogin implements LoginUsecase {
   @override
   Future<Account> authenticate({
     required String username,

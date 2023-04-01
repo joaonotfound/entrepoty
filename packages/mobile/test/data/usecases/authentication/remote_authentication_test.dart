@@ -8,7 +8,7 @@ import 'package:entrepoty/domain/domain.dart';
 import '../../data.dart';
 
 void main() {
-  late RemoteAuthentication sut;
+  late RemoteLogin sut;
   final String url = faker.internet.httpUrl();
   late MockHttpClient httpClient;
   String username = faker.internet.userName();
@@ -27,7 +27,7 @@ void main() {
   setUp(() {
     httpClient = MockHttpClient();
     mockPost();
-    sut = RemoteAuthentication(url: url, httpClient: httpClient);
+    sut = RemoteLogin(url: url, httpClient: httpClient);
   });
   group("RemoteAuthentication", () {
     test("Should call httpclient with correct values", () async {

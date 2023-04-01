@@ -4,11 +4,11 @@ import '../../../data/data.dart';
 import '../../../domain/domain.dart';
 import '../../main.dart';
 
-AuthenticationUsecase makeLocalAuthentication() {
-  return LocalAuthentication();
+LoginUsecase makeLocalAuthentication() {
+  return LocalLogin();
 }
 
-AuthenticationUsecase makeRemoteAuthentication() {
-  return RemoteAuthentication(
+LoginUsecase makeRemoteAuthentication() {
+  return RemoteLogin(
       url: faker.internet.httpUrl(), httpClient: makeHttpAdapter());
 }

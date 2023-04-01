@@ -1,6 +1,6 @@
-import '../domain.dart';
+import '../../domain.dart';
 
-abstract class AuthenticationUsecase {
+abstract class LoginUsecase {
   Future<Account> authenticate({
     required String username,
     required String password,

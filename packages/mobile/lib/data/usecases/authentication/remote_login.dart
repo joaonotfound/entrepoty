@@ -1,10 +1,10 @@
 import '../../data.dart';
 import '../../../domain/domain.dart';
 
-class RemoteAuthentication implements AuthenticationUsecase {
+class RemoteLogin implements LoginUsecase {
   final String url;
   final HttpClient httpClient;
-  const RemoteAuthentication({
+  const RemoteLogin({
     required this.url,
     required this.httpClient,
   });
