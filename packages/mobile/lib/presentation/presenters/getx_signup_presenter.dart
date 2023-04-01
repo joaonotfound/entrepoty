@@ -1,3 +1,4 @@
+import 'package:entrepoty/presentation/presentation.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,10 @@ class GetxSignupPresenter extends GetxController
         GetxUiErrorManager,
         GetxNavigatorManager
     implements SignupPresenter {
+  Validation validation;
+  GetxSignupPresenter({
+    required this.validation,
+  });
   @override
   // TODO: implement nameErrorStream
   Stream<String?> get nameErrorStream => throw UnimplementedError();
@@ -30,7 +35,7 @@ class GetxSignupPresenter extends GetxController
 
   @override
   void validateName(String name) {
-    // TODO: implement validateName
+    validation.validate(field: "name", value: name);
   }
 
   @override
