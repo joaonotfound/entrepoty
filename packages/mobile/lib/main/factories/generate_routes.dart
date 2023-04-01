@@ -12,6 +12,11 @@ List<GetPage> generateRoutes() {
       page: makeLoginScreen,
       transition: Transition.rightToLeft,
     ),
+    GetPage(
+      name: Routes.signup,
+      page: () => makeSignupScreen(),
+      transition: Transition.rightToLeft,
+    ),
     GetPage(name: Routes.home, page: makeAppController),
     GetPage(
       name: Routes.createUser,
