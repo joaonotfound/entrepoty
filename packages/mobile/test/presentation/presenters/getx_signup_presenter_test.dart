@@ -23,5 +23,11 @@ void main() {
       validator.mockValidate("any-error");
       sut.validateName('any-name');
     });
+    test("should emit empty string if validators returns null", () {
+      sut.nameErrorStream.listen(expectAsync1((error) => expect(error, "")));
+
+      validator.mockValidate(null);
+      sut.validateName('any-name');
+    });
   });
 }
