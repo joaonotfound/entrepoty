@@ -18,12 +18,12 @@ class RemoteAuthentication implements AuthenticationUsecase {
       var response = await httpClient
           .post(url: url, body: {"username": username, "password": password});
 
-      Map account = response.body?["account"];
+      Map account = response.body ?? {};
 
       return Account(
         token: account["token"],
-        id: account["username"],
         name: account["name"],
+        username: account["username"],
         profilePictureUrl: account["profile_url"],
       );
     } on HttpError catch (error) {

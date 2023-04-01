@@ -11,7 +11,7 @@ class LocalAuthentication implements AuthenticationUsecase {
     if (username == "ja12345" && password == "123456") {
       return Account(
         token: "random-token",
-        id: username,
+        username: username,
         name: "João",
         profilePictureUrl: "https://google.com",
       );

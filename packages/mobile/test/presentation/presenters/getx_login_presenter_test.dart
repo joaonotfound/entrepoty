@@ -16,7 +16,7 @@ void main() {
   late MockLocalSaveCurrentAccount saveCurrentAccount;
 
   Account validAccount =
-      const Account(token: "", id: "", name: "", profilePictureUrl: "");
+      const Account(token: "", username: "", name: "", profilePictureUrl: "");
   String username = faker.internet.userName();
   String password = faker.internet.password();
 

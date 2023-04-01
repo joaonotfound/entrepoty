@@ -13,7 +13,7 @@ void main() {
 
   final account = Account(
     token: faker.guid.guid(),
-    id: "random-id",
+    username: "random-username",
     name: "random-name",
     profilePictureUrl: faker.internet.httpUrl(),
   );

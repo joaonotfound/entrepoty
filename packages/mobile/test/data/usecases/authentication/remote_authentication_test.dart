@@ -17,12 +17,10 @@ void main() {
   void mockPost() => httpClient.mockPost(HttpResponse(
         statuscode: 200,
         body: {
-          "account": {
-            "token": faker.guid.guid(),
-            "username": faker.internet.userName(),
-            "name": faker.internet.userName(),
-            "profile_url": faker.internet.httpUrl()
-          }
+          "token": faker.guid.guid(),
+          "username": faker.internet.userName(),
+          "name": faker.internet.userName(),
+          "profile_url": faker.internet.httpUrl()
         },
       ));
 

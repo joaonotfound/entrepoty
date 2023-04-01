@@ -18,6 +18,9 @@ class User : UserDetails {
     @field:GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0
 
+    @field:NotNull
+    var name: String = ""
+
     @field:Column(unique = true)
     @field:NotNull
     private var username: String = ""
@@ -28,6 +31,8 @@ class User : UserDetails {
     @field:NotNull
     @field:Enumerated(EnumType.ORDINAL)
     var role: Role = Role.USER;
+
+    var profile_url: String = "";
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         return mutableListOf<GrantedAuthority>(SimpleGrantedAuthority(role.name));
