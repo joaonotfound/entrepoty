@@ -3,7 +3,7 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatelessWidget with LoadingManager, NavigationManager, UiErrorManager  {
   SignupPresenter presenter;
 
   SignupScreen({
@@ -17,6 +17,10 @@ class SignupScreen extends StatelessWidget {
         appBar: AppBar(),
         body: Builder(
           builder: (context) {
+            handleLoginManager(context, presenter.isLoadingStream);
+            handleNavigation(context, presenter.navigateToStream);
+            handleUiError(context, presenter.mainErrorStream);
+
             return Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 30,
