@@ -10,10 +10,11 @@ import '../../data.dart';
 void main() {
   late RemoteSignup sut;
   late MockHttpClient http;
+  final url = "/api/v1/auth/signup";
   setUp(() {
     http = MockHttpClient();
     http.mockPost(HttpResponse(statuscode: 200));
-    sut = RemoteSignup(http: http);
+    sut = RemoteSignup(http: http, url: url);
   });
   group("RemoteSignup", () {
     test("should call http with correct values", () async {
@@ -23,7 +24,7 @@ void main() {
         password: "any-password",
       );
 
-      verify(() => http.post(url: "/api/v1/signup", body: {
+      verify(() => http.post(url: url, body: {
             "name": "any-name",
             "username": "any-username",
             "password": "any-password"

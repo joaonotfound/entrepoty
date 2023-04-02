@@ -7,7 +7,10 @@ SignupScreen makeSignupScreen() {
   return SignupScreen(
     presenter: GetxSignupPresenter(
       validation: makeSignupValidationComposite(),
-      usecase: RemoteSignup(http: makeHttpAdapter()),
+      usecase: RemoteSignup(
+        http: makeHttpAdapter(),
+        url: "/api/v1/auth/signup",
+      ),
       saveAccount: makeLocalSaveCurrentAccount(),
     ),
   );
