@@ -61,5 +61,13 @@ void main() {
 
       expect(response, Right(DomainError.invalidCredentials));
     });
+    test("should return unexpected if http returns other statuscode than 200",
+        () async {
+      http.mockPost(HttpResponse(statuscode: 500));
+
+      final response = await sut.register(name: "", username: "", password: "");
+
+      expect(response, Right(DomainError.unexpected));
+    });
   });
 }
