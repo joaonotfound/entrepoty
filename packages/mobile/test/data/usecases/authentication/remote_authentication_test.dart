@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
 import 'package:entrepoty/data/data.dart';
@@ -60,6 +61,13 @@ void main() {
       var response =
           await sut.authenticate(username: username, password: password);
       expect(response, isInstanceOf<Account>());
+    });
+    test("should return account doesn't exist on 404 error", () async {
+      httpClient.mockPost(HttpResponse(statuscode: 404));
+
+      var response = sut.authenticate(username: username, password: password);
+
+      expect(response, throwsA(DomainError.accountDoesntExist));
     });
   });
 }
