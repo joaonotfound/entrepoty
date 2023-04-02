@@ -1,14 +1,15 @@
 import 'package:entrepoty/ui/screens/signup/components/components.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  SignupPresenter presenter;
 
-  @override
-  State<SignupScreen> createState() => _SignupScreenState();
-}
+  SignupScreen({
+    super.key,
+    required this.presenter,
+  });
 
-class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
