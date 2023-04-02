@@ -1,4 +1,5 @@
 import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -29,6 +30,13 @@ void main() {
       validator.mockValidate(null);
       sut.validateName('any-name');
     });
+    test("should emit invalid when validator fails", () {
+      sut.isFormValidStream
+          .listen(expectAsync1((error) => expect(error, false)));
+
+      validator.mockValidate("error");
+      sut.validateName('any-name');
+    });
   });
   group("GetxSignupPresenter's username field", () {
     test("should call validator with correct value", () {
@@ -50,6 +58,13 @@ void main() {
       validator.mockValidate(null);
       sut.validateUsername('any-username');
     });
+    test("should emit invalid when validator fails", () {
+      sut.isFormValidStream
+          .listen(expectAsync1((error) => expect(error, false)));
+
+      validator.mockValidate("error");
+      sut.validateUsername('any-username');
+    });
   });
   group("GetxSignupPresenter's password field", () {
     test("should call validator with correct value", () {
@@ -69,6 +84,13 @@ void main() {
           .listen(expectAsync1((error) => expect(error, "")));
 
       validator.mockValidate(null);
+      sut.validatePassword('any-password');
+    });
+    test("should emit invalid when validator fails", () {
+      sut.isFormValidStream
+          .listen(expectAsync1((error) => expect(error, false)));
+
+      validator.mockValidate("error");
       sut.validatePassword('any-password');
     });
   });
