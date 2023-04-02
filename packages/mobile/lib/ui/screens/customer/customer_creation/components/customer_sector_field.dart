@@ -1,8 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
-class UserSectorField extends StatelessWidget {
-  const UserSectorField({super.key});
+class CustomerSectorField extends StatelessWidget {
+  const CustomerSectorField({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:entrepoty/presentation/presentation.dart';
 
 class GetxUserListPresenter extends GetxController
     with GetxUiErrorManager, GetxLoadingManager
-    implements UserListPresenter {
+    implements CustomerListPresenter {
   final LoadUsersUsecase loadUsersUsecase;
   final users = Rx<List<UserEntity>>([]);
 

@@ -6,12 +6,12 @@ import 'package:get/get.dart';
 import '../../../misc/misc.dart';
 import '../../screens.dart';
 
-class UserListScreen extends StatelessWidget {
-  const UserListScreen({
+class CustomerListScreen extends StatelessWidget {
+  const CustomerListScreen({
     super.key,
     required this.presenter,
   });
-  final UserListPresenter presenter;
+  final CustomerListPresenter presenter;
   @override
   Widget build(BuildContext context) {
     presenter.loadUsers();
@@ -36,7 +36,7 @@ class UserListScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                   itemCount: snapshot.data!.length,
                   itemBuilder: ((context, index) =>
-                      UserListCard(user: snapshot.data![index])))
+                      CustomerListCard(user: snapshot.data![index])))
               : const Center(child: Text("Loading"));
         },
       ),

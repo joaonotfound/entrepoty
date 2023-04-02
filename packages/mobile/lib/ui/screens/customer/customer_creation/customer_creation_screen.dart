@@ -1,16 +1,16 @@
 import 'package:entrepoty/ui/components/components.dart';
 import 'package:entrepoty/ui/layout/layout.dart';
-import 'package:entrepoty/ui/screens/user/user_creation/components/components.dart';
+import 'package:entrepoty/ui/screens/customer/customer_creation/components/components.dart';
 import 'package:flutter/material.dart';
 
-class UserCreationScreen extends StatefulWidget {
-  const UserCreationScreen({super.key});
+class CustomerCreationScreen extends StatefulWidget {
+  const CustomerCreationScreen({super.key});
 
   @override
-  State<UserCreationScreen> createState() => _UserCreationScreenState();
+  State<CustomerCreationScreen> createState() => _CustomerCreationScreenState();
 }
 
-class _UserCreationScreenState extends State<UserCreationScreen> {
+class _CustomerCreationScreenState extends State<CustomerCreationScreen> {
   @override
   Widget build(BuildContext context) {
     return FormLayout(
@@ -20,9 +20,9 @@ class _UserCreationScreenState extends State<UserCreationScreen> {
           SizedBox(height: 10),
           UserEmailField(),
           SizedBox(height: 10),
-          UserEnrollmentField(),
+          CustomerEnrollmentField(),
           SizedBox(height: 10),
-          UserSectorField(),
+          CustomerSectorField(),
         ]),
       ),
       action: ElevatedButton(

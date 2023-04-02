@@ -20,7 +20,7 @@ List<GetPage> generateRoutes() {
     GetPage(name: Routes.home, page: makeAppController),
     GetPage(
       name: Routes.createUser,
-      page: () => UserCreationScreen(),
+      page: () => CustomerCreationScreen(),
       transition: Transition.rightToLeft,
     ),
     GetPage(name: Routes.settings, page: () => makeSettingsScreen()),
