@@ -47,5 +47,12 @@ void main() {
       expect(account?.username, "random-username");
       expect(account?.token, "random-token");
     });
+    test("should return unexpected if client throws", () async {
+      http.mockPostError(HttpError.serverError);
+
+      final response = await sut.register(name: "", username: "", password: "");
+
+      expect(response, Right(DomainError.unexpected));
+    });
   });
 }
