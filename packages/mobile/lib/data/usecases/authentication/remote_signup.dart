@@ -14,20 +14,25 @@ class RemoteSignup implements SignupUsecase {
       {required String name,
       required String username,
       required String password}) async {
-    final response = await http.post(url: "/api/v1/signup", body: {
-      "name": name,
-      "username": username,
-      "password": password,
-    });
-    final account = response.body ?? {};
-    return Left(
-      Account(
-        token: account["token"],
-        username: account["username"],
-        name: account["name"],
-        profilePictureUrl: account["profile_url"],
-      ),
-    );
-    return Right(DomainError.unexpected);
+    try {
+      final response = await http.post(url: "/api/v1/signup", body: {
+        "name": name,
+        "username": username,
+        "password": password,
+      });
+      final account = response.body ?? {};
+      return Left(
+        Account(
+          token: account["token"],
+          username: account["username"],
+          name: account["name"],
+          profilePictureUrl: account["profile_url"],
+        ),
+      );
+    } on HttpError catch (e) {
+      return Right(e == HttpError.badRequest
+          ? DomainError.invalidCredentials
+          : DomainError.unexpected);
+    }
   }
 }
