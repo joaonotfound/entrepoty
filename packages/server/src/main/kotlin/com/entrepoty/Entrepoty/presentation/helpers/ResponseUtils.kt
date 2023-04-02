@@ -14,7 +14,8 @@ class ResponseUtils {
             DomainError.unauthorized -> ResponseEntity.status(401).build()
             DomainError.forbidden -> ResponseEntity.status(401).build()
             DomainError.serverError -> ResponseEntity.internalServerError().build()
-
+            DomainError.conflict -> ResponseEntity.status(409).build()
+            DomainError.notFound -> ResponseEntity.notFound().build()
         }
     }
 }

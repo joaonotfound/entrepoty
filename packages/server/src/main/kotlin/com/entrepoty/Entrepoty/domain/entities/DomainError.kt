@@ -5,4 +5,6 @@ enum class DomainError {
     serverError,
     unauthorized,
     forbidden,
+    conflict,
+    notFound
 }
