@@ -4,7 +4,7 @@ enum DomainError {
   serverError,
   networkError,
   accountAlreadyExists,
-  accountDoesntExist
+  accountDoesntExist,
 }
 
 extension DomainErrorExtension on DomainError {

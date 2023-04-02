@@ -22,10 +22,9 @@ class RemoteLogin implements LoginUsecase {
         body: {"username": username, "password": password},
         timeout: Duration(seconds: 2),
       );
-      if (response.statuscode == 404) {
-        throw DomainError.accountDoesntExist;
-      }
-      if (response.statuscode == 403) {
+      if (response.statuscode == 404 ||
+          response.statuscode == 401 ||
+          response.statuscode == 403) {
         throw DomainError.invalidCredentials;
       }
       if (response.body != null && response.statuscode == 200) {
