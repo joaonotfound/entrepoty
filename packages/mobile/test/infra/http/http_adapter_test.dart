@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:entrepoty/infra/infra.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -78,12 +80,16 @@ void main() {
     test("should call client with correct values", () async {
       await sut.post(url: url, body: {"key": "value"});
 
-      verify(() => client.post(Uri.parse(url), body: {
-            "key": "value"
-          }, headers: {
+      verify(
+        () => client.post(
+          Uri.parse(url),
+          body: jsonEncode({"key": "value"}),
+          headers: {
             'content-type': 'application/json',
             'accept': 'application/json'
-          })).called(1);
+          },
+        ),
+      ).called(1);
     });
     test("should return correct response", () async {
       client.mockPost(http.Response("{ \"any-key\": \"any-value\"}", 200));
@@ -103,10 +109,12 @@ void main() {
     test("should call client with defaults headers", () async {
       await sut.post(url: url);
 
-      verify(() => client.post(Uri.parse(url), headers: {
-            'content-type': 'application/json',
-            'accept': 'application/json'
-          })).called(1);
+      verify(() => client.post(Uri.parse(url),
+              body: jsonEncode(null),
+              headers: {
+                'content-type': 'application/json',
+                'accept': 'application/json'
+              })).called(1);
     });
     test("should call client with right headers", () async {
       await sut.post(url: url, headers: {
@@ -114,10 +122,26 @@ void main() {
         'accept': 'application/xml'
       });
 
-      verify(() => client.post(Uri.parse(url), headers: {
+      verify(
+        () => client.post(Uri.parse(url), body: jsonEncode(null), headers: {
+          'content-type': 'application/json',
+          'accept': 'application/xml'
+        }),
+      ).called(1);
+    });
+    test("should call post with json encode", () async {
+      await sut.post(url: url);
+
+      verify(
+        () => client.post(
+          Uri.parse(url),
+          body: jsonEncode(null),
+          headers: {
             'content-type': 'application/json',
-            'accept': 'application/xml'
-          })).called(1);
+            'accept': 'application/json'
+          },
+        ),
+      );
     });
   });
 }
