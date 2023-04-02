@@ -4,6 +4,7 @@ enum UiError {
   invalidCredentials,
   unexpected,
   emailInUse,
+  accountAlreadyExists,
   accountDoesntExist
 }
 
@@ -22,6 +23,8 @@ extension UiErrorExtension on UiError {
         return "Unexpected error.";
       case UiError.accountDoesntExist:
         return "Account doesn't exist.";
+      case UiError.accountAlreadyExists:
+        return "Account already exist.";
       default:
         return UiError.unexpected.description;
     }

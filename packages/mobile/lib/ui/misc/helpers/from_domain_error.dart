@@ -7,6 +7,8 @@ UiError fromDomain(DomainError error) {
       return UiError.invalidCredentials;
     case DomainError.accountDoesntExist:
       return UiError.accountDoesntExist;
+    case DomainError.accountAlreadyExists:
+      return UiError.accountAlreadyExists;
     default:
       return UiError.unexpected;
   }

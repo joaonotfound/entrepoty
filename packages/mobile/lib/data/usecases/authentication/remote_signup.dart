@@ -27,6 +27,9 @@ class RemoteSignup implements SignupUsecase {
         },
         timeout: Duration(seconds: 2),
       );
+      if (response.statuscode == 409) {
+        return Right(DomainError.accountAlreadyExists);
+      }
       if (response.statuscode != 200) {
         return Right(DomainError.unexpected);
       }

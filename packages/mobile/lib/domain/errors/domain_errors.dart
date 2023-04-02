@@ -3,6 +3,7 @@ enum DomainError {
   invalidCredentials,
   serverError,
   networkError,
+  accountAlreadyExists,
   accountDoesntExist
 }
 
