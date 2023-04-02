@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../../data.dart';
 import '../../../domain/domain.dart';
 
@@ -20,15 +22,13 @@ class RemoteLogin implements LoginUsecase {
         body: {"username": username, "password": password},
         timeout: Duration(seconds: 2),
       );
-
-      Map account = response.body ?? {};
-
-      return Account(
-        token: account["token"],
-        name: account["name"],
-        username: account["username"],
-        profilePictureUrl: account["profile_url"],
-      );
+      if (response.statuscode == 403) {
+        throw DomainError.invalidCredentials;
+      }
+      if (response.body != null && response.statuscode == 200) {
+        return Account.fromJson(response.body);
+      }
+      throw DomainError.unexpected;
     } on HttpError catch (error) {
       throw error == HttpError.badRequest
           ? DomainError.invalidCredentials

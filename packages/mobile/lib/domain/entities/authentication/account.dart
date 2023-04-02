@@ -9,4 +9,11 @@ class Account {
     required this.name,
     required this.profilePictureUrl,
   });
+
+  factory Account.fromJson(Map json) => Account(
+        token: json["token"] ?? "",
+        name: json["name"] ?? "",
+        username: json["username"] ?? "",
+        profilePictureUrl: json["profile_url"] ?? "",
+      );
 }
