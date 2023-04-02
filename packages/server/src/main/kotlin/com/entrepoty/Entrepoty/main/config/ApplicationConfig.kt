@@ -1,6 +1,6 @@
-package com.entrepoty.Entrepoty.config
+package com.entrepoty.Entrepoty.main.config
 
-import com.entrepoty.Entrepoty.repositories.UserRepository
+import com.entrepoty.Entrepoty.data.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

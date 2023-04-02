@@ -1,6 +1,6 @@
-package com.entrepoty.Entrepoty.repositories
+package com.entrepoty.Entrepoty.data.repositories
 
-import com.entrepoty.Entrepoty.entities.User
+import com.entrepoty.Entrepoty.domain.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 

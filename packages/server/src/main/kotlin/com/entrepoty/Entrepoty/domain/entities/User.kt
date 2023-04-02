@@ -1,4 +1,4 @@
-package com.entrepoty.Entrepoty.entities
+package com.entrepoty.Entrepoty.domain.entities
 
 import jakarta.persistence.*
 import org.jetbrains.annotations.NotNull

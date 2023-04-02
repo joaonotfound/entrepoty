@@ -1,4 +1,4 @@
-package com.entrepoty.Entrepoty.config
+package com.entrepoty.Entrepoty.main.config
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean

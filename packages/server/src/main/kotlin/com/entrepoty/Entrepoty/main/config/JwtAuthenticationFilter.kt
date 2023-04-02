@@ -1,4 +1,4 @@
-package com.entrepoty.Entrepoty.config
+package com.entrepoty.Entrepoty.main.config
 
 import com.entrepoty.Entrepoty.services.JwtService
 import jakarta.servlet.FilterChain

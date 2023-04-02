@@ -1,4 +1,4 @@
-package com.entrepoty.Entrepoty.controllers
+package com.entrepoty.Entrepoty.presentation.controllers
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

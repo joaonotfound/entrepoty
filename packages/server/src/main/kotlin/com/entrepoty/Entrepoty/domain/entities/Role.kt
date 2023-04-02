@@ -1,4 +1,4 @@
-package com.entrepoty.Entrepoty.entities
+package com.entrepoty.Entrepoty.domain.entities
 
 enum class Role {
     USER,
