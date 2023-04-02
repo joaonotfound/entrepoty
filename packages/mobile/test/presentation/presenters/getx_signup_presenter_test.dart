@@ -1,5 +1,6 @@
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/misc/misc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
@@ -12,14 +13,17 @@ void main() {
   late MockValidation validator;
   late SignupUsecaseMock usecase;
   late MockLocalSaveCurrentAccount saveCurrentAccount;
+  final dummyAccount = Account(token: "", username: "", name: "", profilePictureUrl: "");
   setUp(() {
     validator = MockValidation();
     usecase = SignupUsecaseMock();
+    usecase.mockSignup(Left(dummyAccount));
     saveCurrentAccount = MockLocalSaveCurrentAccount();
+    saveCurrentAccount.mockSave(null);
     sut = GetxSignupPresenter(validation: validator, usecase: usecase, saveAccount: saveCurrentAccount);
   });
   setUpAll(() {
-    registerFallbackValue(Account(token: "", username: "", name: "", profilePictureUrl: ""));
+    registerFallbackValue(dummyAccount);
   });
   group("GetxSignupPresenter's name field", () {
     test("should call validator with correct value", () {
@@ -112,6 +116,14 @@ void main() {
       await sut.signup();
 
       verify(() => saveCurrentAccount.saveAccount(account: account)).called(1);
+    });
+    test("should redirect to home on success", () async {
+
+      sut.navigateToStream.listen(expectAsync1((route) => expect(route, Routes.home)));
+
+      await sut.signup();
+
+
     });
   });
 }
