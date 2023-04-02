@@ -44,7 +44,9 @@ class GetxSignupPresenter extends GetxController
     response.fold((account) async {
       await saveAccount.saveAccount(account: account);
       navigateTo = Routes.home;
-    } , (error) {});
+    } , (error) {
+      mainError = fromDomain(error);
+    });
   }
 
   void _validateForm() {
