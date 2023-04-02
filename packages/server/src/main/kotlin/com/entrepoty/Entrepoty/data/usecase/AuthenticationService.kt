@@ -25,13 +25,16 @@ class AuthenticationService : SignupUsecase, LoginUsecase {
     lateinit var authenticationManager: AuthenticationManager
 
     override fun loginAccount(account: LoginAccountModel): Either<DomainError, AuthenticationModel> {
+        var userOption = userRepository.findByUsername(account.username)
+        if(userOption.isEmpty()){
+            return Either.Left(DomainError.notFound);
+        }
         try {
             authenticationManager.authenticate(UsernamePasswordAuthenticationToken(account.username, account.password))
         }catch (e: AuthenticationException){
-            return Either.Left(DomainError.notFound);
+            return Either.Left(DomainError.unauthorized);
         }
-
-        var user = userRepository.findByUsername(account.username).orElseThrow()
+        var user = userOption.get();
         var token = jwtService.generateToken(user);
         return Either.Right(AuthenticationModel(user.name, user.username, token, user.profile_url));
     }
