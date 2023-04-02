@@ -4,6 +4,7 @@ ValidationComposite makeSignupValidationComposite() {
   return ValidationComposite(validators: [
     UsernameValidator(field: "username"),
     RequiredFieldValidator(field: "name"),
+    RequiredFieldValidator(field: "username"),
     RequiredFieldValidator(field: "password")
   ]);
 }

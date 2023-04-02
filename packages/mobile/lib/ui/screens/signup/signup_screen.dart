@@ -1,6 +1,7 @@
 import 'package:entrepoty/ui/screens/signup/components/components.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupPresenter presenter;
@@ -21,14 +22,17 @@ class SignupScreen extends StatelessWidget {
                 horizontal: 30,
                 vertical: 10,
               ),
-              child: Form(
-                child: ListView(children: [
-                  SignupWelcomeMessage(),
-                  SignupNameField(),
-                  SignupUsernameField(),
-                  SignupPasswordField(),
-                  SignupSubmit()
-                ]),
+              child: ListenableProvider(
+                create: (_) => presenter,
+                child: Form(
+                  child: ListView(children: [
+                    SignupWelcomeMessage(),
+                    SignupNameField(),
+                    SignupUsernameField(),
+                    SignupPasswordField(),
+                    SignupSubmit()
+                  ]),
+                ),
               ),
             );
           },
