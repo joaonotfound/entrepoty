@@ -18,10 +18,12 @@ abstract class HttpClient {
   Future<HttpResponse<T>> get<T>({
     required String url,
     Map? headers,
+    Duration? timeout,
   });
   Future<HttpResponse<T>> post<T>({
     required String url,
     Map? body,
     Map? headers,
+    Duration? timeout,
   });
 }
