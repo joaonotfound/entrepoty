@@ -129,5 +129,11 @@ void main() {
 
       await sut.signup();
     });
+    test('should emit is loading', () async {
+
+      expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+
+      await sut.signup();
+    });
   });
 }
