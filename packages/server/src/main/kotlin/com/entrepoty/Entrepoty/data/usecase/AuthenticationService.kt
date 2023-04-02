@@ -9,6 +9,7 @@ import com.entrepoty.Entrepoty.services.JwtService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.AuthenticationException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
@@ -24,7 +25,12 @@ class AuthenticationService : SignupUsecase, LoginUsecase {
     lateinit var authenticationManager: AuthenticationManager
 
     override fun loginAccount(account: LoginAccountModel): Either<DomainError, AuthenticationModel> {
-        authenticationManager.authenticate(UsernamePasswordAuthenticationToken(account.username, account.password))
+        try {
+            authenticationManager.authenticate(UsernamePasswordAuthenticationToken(account.username, account.password))
+        }catch (e: AuthenticationException){
+            return Either.Left(DomainError.notFound);
+        }
+
         var user = userRepository.findByUsername(account.username).orElseThrow()
         var token = jwtService.generateToken(user);
         return Either.Right(AuthenticationModel(user.name, user.username, token, user.profile_url));
