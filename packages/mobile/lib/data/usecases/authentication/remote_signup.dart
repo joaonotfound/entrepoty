@@ -20,6 +20,9 @@ class RemoteSignup implements SignupUsecase {
         "username": username,
         "password": password,
       });
+      if (response.statuscode != 200) {
+        return Right(DomainError.unexpected);
+      }
       final account = response.body ?? {};
       return Left(
         Account(
