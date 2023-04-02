@@ -1,16 +1,25 @@
+import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
-import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../domain/domain.dart';
 import '../../infra/mocks/mocks.dart';
 
 void main() {
   late GetxSignupPresenter sut;
   late MockValidation validator;
+  late SignupUsecaseMock usecase;
+  late MockLocalSaveCurrentAccount saveCurrentAccount;
   setUp(() {
     validator = MockValidation();
-    sut = GetxSignupPresenter(validation: validator);
+    usecase = SignupUsecaseMock();
+    saveCurrentAccount = MockLocalSaveCurrentAccount();
+    sut = GetxSignupPresenter(validation: validator, usecase: usecase, saveAccount: saveCurrentAccount);
+  });
+  setUpAll(() {
+    registerFallbackValue(Account(token: "", username: "", name: "", profilePictureUrl: ""));
   });
   group("GetxSignupPresenter's name field", () {
     test("should call validator with correct value", () {
@@ -92,6 +101,17 @@ void main() {
 
       validator.mockValidate("error");
       sut.validatePassword('any-password');
+    });
+  });
+  group("GetxSignupPresenter create account", () {
+    test("should call save current account on success", () async {
+      final account = Account(token: "any-token", username: "any-username", name: "any-name", profilePictureUrl: "any-pf-url");
+      usecase.mockSignup(Left(account));
+      saveCurrentAccount.mockSave(null);
+
+      await sut.signup();
+
+      verify(() => saveCurrentAccount.saveAccount(account: account)).called(1);
     });
   });
 }
