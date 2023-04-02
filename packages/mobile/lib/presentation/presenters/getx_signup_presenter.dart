@@ -1,6 +1,7 @@
 import 'package:entrepoty/presentation/presentation.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:entrepoty/domain/domain.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../mixins/mixins.dart';
@@ -40,14 +41,19 @@ class GetxSignupPresenter extends GetxController
   @override
   Future<void> signup() async {
     isLoading = true;
-    final response = await usecase.register(
-        name: _name, username: _username, password: _password);
-    response.fold((account) async {
-      await saveAccount.saveAccount(account: account);
-      navigateTo = Routes.home;
-    } , (error) {
-      mainError = fromDomain(error);
-    });
+    try{
+      final response = await usecase.register(
+          name: _name, username: _username, password: _password);
+      response.fold((account) async {
+        await saveAccount.saveAccount(account: account);
+        navigateTo = Routes.home;
+      } , (error) {
+        mainError = fromDomain(error);
+      });
+    } catch (e) {
+     mainError = UiError.unexpected;
+     debugPrint("error: " + e.toString());
+    }
     isLoading = false;
   }
 
