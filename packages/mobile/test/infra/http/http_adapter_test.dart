@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:entrepoty/infra/infra.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
@@ -142,6 +143,21 @@ void main() {
           },
         ),
       );
+    });
+    test("should return empty object body if empty string", () async {
+      client.mockPost(http.Response("", 200));
+      final response = await sut.post(url: url);
+
+      print(response.body);
+      expect(response.body, jsonDecode("{}"));
+    });
+
+    test("should return correct body", () async {
+      client.mockPost(http.Response("{\"username\":\"any-data\"}", 200));
+      final response = await sut.post(url: url);
+
+      print(response.body);
+      expect(response.body, jsonDecode("{\"username\":\"any-data\"}"));
     });
   });
 }
