@@ -54,5 +54,12 @@ void main() {
 
       expect(response, Right(DomainError.unexpected));
     });
+    test("should return invalid credentials on bad request", () async {
+      http.mockPostError(HttpError.badRequest);
+
+      final response = await sut.register(name: "", username: "", password: "");
+
+      expect(response, Right(DomainError.invalidCredentials));
+    });
   });
 }
