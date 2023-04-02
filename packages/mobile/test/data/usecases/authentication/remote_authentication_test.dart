@@ -62,12 +62,12 @@ void main() {
           await sut.authenticate(username: username, password: password);
       expect(response, isInstanceOf<Account>());
     });
-    test("should return account doesn't exist on 404 error", () async {
+    test("should return invalid credentials exist on 404 error", () async {
       httpClient.mockPost(HttpResponse(statuscode: 404));
 
       var response = sut.authenticate(username: username, password: password);
 
-      expect(response, throwsA(DomainError.accountDoesntExist));
+      expect(response, throwsA(DomainError.invalidCredentials));
     });
   });
 }
