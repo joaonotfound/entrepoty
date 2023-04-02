@@ -118,12 +118,16 @@ void main() {
       verify(() => saveCurrentAccount.saveAccount(account: account)).called(1);
     });
     test("should redirect to home on success", () async {
-
       sut.navigateToStream.listen(expectAsync1((route) => expect(route, Routes.home)));
 
       await sut.signup();
+    });
 
+    test("should emit correct error if signup fails", () async {
+      usecase.mockSignup(Right(DomainError.serverError));
+      sut.mainErrorStream.listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
+      await sut.signup();
     });
   });
 }
