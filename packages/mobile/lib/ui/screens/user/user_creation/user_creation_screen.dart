@@ -1,5 +1,6 @@
 import 'package:entrepoty/ui/components/components.dart';
 import 'package:entrepoty/ui/layout/layout.dart';
+import 'package:entrepoty/ui/screens/user/user_creation/components/components.dart';
 import 'package:flutter/material.dart';
 
 class UserCreationScreen extends StatefulWidget {
@@ -19,7 +20,9 @@ class _UserCreationScreenState extends State<UserCreationScreen> {
           SizedBox(height: 10),
           UserEmailField(),
           SizedBox(height: 10),
-          UserPermissionField()
+          UserEnrollmentField(),
+          SizedBox(height: 10),
+          UserSectorField(),
         ]),
       ),
       action: ElevatedButton(
