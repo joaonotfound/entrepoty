@@ -43,6 +43,7 @@ class GetxSignupPresenter extends GetxController
         name: _name, username: _username, password: _password);
     response.fold((account) async {
       await saveAccount.saveAccount(account: account);
+      navigateTo = Routes.home;
     } , (error) {});
   }
 
