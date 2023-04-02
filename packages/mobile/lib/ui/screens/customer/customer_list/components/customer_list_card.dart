@@ -8,7 +8,7 @@ class CustomerListCard extends StatelessWidget {
     super.key,
     required this.user,
   });
-  final UserEntity user;
+  final CustomerEntity user;
   @override
   Widget build(BuildContext context) {
     return InkWell(

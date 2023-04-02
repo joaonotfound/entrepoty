@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:entrepoty/domain/domain.dart';
 
 abstract class CustomerListPresenter implements Listenable {
-  Stream<List<UserEntity>?> get usersStream;
+  Stream<List<CustomerEntity>?> get customersStream;
   Stream<bool> get isLoadingStream;
   Stream<UiError?> get mainErrorStream;
-  Future<void> loadUsers();
+  Future<void> loadCustomers();
 }

@@ -1,9 +1,9 @@
 import 'package:entrepoty/domain/domain.dart';
 
-class MockedLoadUsers extends LoadUsersUsecase {
+class MockedLoadCustomers extends LoadCustomersUsecase {
   final _users = List.generate(
     3,
-    (index) => UserEntity(
+    (index) => CustomerEntity(
       id: "id-$index",
       name: "user $index",
       email: "mocked@gmail.com",
@@ -11,7 +11,7 @@ class MockedLoadUsers extends LoadUsersUsecase {
     ),
   );
   @override
-  Future<List<UserEntity>> loadUsers() async {
+  Future<List<CustomerEntity>> loadCustomers() async {
     await Future.delayed(Duration(seconds: 2));
     return _users;
   }

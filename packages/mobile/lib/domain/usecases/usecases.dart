@@ -4,7 +4,7 @@ export 'save_current_account_usecase.dart';
 export 'load_current_account_usecase.dart';
 export 'load_stock_items.dart';
 export 'register_lot.dart';
-export 'load_users_usecase.dart';
+export 'load_customers_usecase.dart';
 export 'save_model_usecase.dart';
 export 'logout_usecase.dart';
 export 'authentication/authentication.dart';

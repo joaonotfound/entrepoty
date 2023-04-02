@@ -20,9 +20,9 @@ List<BottomBarScreen> makeBottomBarScreens() {
       label: "Borrows",
     ),
     BottomBarScreen(
-      widget: () => makeUserListScreen(),
+      widget: () => makeCustomerListScreen(),
       icon: Icon(Icons.account_box_outlined),
-      label: "Users",
+      label: "Customers",
     )
   ];
 }

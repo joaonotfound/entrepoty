@@ -6,7 +6,7 @@ class Routes {
   static final home = '/home';
   static final stock = "/stock";
   static final settings = '/settings';
-  static final createUser = '/users/create';
+  static final createCustomer = '/customers/create';
   static final createStockItem = '/stock/create';
   static final createModel = '/models/create';
 }

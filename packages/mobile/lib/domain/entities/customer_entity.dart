@@ -3,12 +3,12 @@ enum PermissionLevel {
   Employeer,
 }
 
-class UserEntity {
+class CustomerEntity {
   final String id;
   final String name;
   final String email;
   final PermissionLevel permissionLevel;
-  const UserEntity({
+  const CustomerEntity({
     required this.id,
     required this.name,
     required this.email,

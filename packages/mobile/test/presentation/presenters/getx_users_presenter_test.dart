@@ -5,30 +5,31 @@ import 'package:entrepoty/presentation/presentation.dart';
 import '../../domain/domain.dart';
 
 void main() {
-  late MockLoadUsers loadUsers;
-  late GetxUserListPresenter sut;
+  late MockLoadCustomers loadCustomers;
+  late GetxCustomerListPresenter sut;
   setUp(() {
-    loadUsers = MockLoadUsers();
-    loadUsers.mockLoadUsers([]);
-    sut = GetxUserListPresenter(loadUsersUsecase: loadUsers);
+    loadCustomers = MockLoadCustomers();
+    loadCustomers.mockLoadCustomers([]);
+    sut = GetxCustomerListPresenter(loadCustomersUsecase: loadCustomers);
   });
-  group("GetxUsersPresenter", () {
-    test("should emit users when calling loadUsers", () async {
-      sut.usersStream.listen(expectAsync1((users) => expect(users, [])));
+  group("GetxCustomersPresenter", () {
+    test("should emit customers when calling loadCustomers", () async {
+      sut.customersStream
+          .listen(expectAsync1((customers) => expect(customers, [])));
 
-      sut.loadUsers();
+      sut.loadCustomers();
     });
-    test("should emit loading when calling loadUsers", () async {
+    test("should emit loading when calling loadCustomers", () async {
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
 
-      sut.loadUsers();
+      sut.loadCustomers();
     });
-    test("should emit error when loadUsersUsecase throws", () async {
-      loadUsers.mockLoadUsersError(Exception());
+    test("should emit error when loadCustomersUsecase throws", () async {
+      loadCustomers.mockLoadCustomersError(Exception());
       sut.mainErrorStream
           .listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
-      sut.loadUsers();
+      sut.loadCustomers();
     });
   });
 }

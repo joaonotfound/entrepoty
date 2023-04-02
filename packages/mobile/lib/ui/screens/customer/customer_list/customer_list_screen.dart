@@ -14,7 +14,7 @@ class CustomerListScreen extends StatelessWidget {
   final CustomerListPresenter presenter;
   @override
   Widget build(BuildContext context) {
-    presenter.loadUsers();
+    presenter.loadCustomers();
     return HomeLayout(
       appBar: AppBar(
         actions: [
@@ -28,7 +28,7 @@ class CustomerListScreen extends StatelessWidget {
         ],
       ),
       body: StreamBuilder(
-        stream: presenter.usersStream,
+        stream: presenter.customersStream,
         builder: (context, snapshot) {
           return snapshot.data?.isNotEmpty == true
               ? ListView.separated(
@@ -42,7 +42,7 @@ class CustomerListScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         heroTag: "add-user",
-        onPressed: () => Get.toNamed(Routes.createUser),
+        onPressed: () => Get.toNamed(Routes.createCustomer),
         icon: const Icon(Icons.add),
         label: const Text("Create user"),
       ),
