@@ -135,5 +135,12 @@ void main() {
 
       await sut.signup();
     });
+    test("should emit unexpected error if anything throws", () async {
+      usecase.mockSignupCall().thenThrow(Error);
+
+      sut.mainErrorStream.listen(expectAsync1((error) => expect(error, UiError.unexpected)));
+
+      await sut.signup();
+    });
   });
 }
