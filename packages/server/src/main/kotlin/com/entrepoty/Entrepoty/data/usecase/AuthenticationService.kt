@@ -30,6 +30,10 @@ class AuthenticationService : SignupUsecase, LoginUsecase {
         return Either.Right(AuthenticationModel(user.name, user.username, token, user.profile_url));
     }
     override fun registerAccount(account: CreateAccountModel): Either<DomainError, AuthenticationModel> {
+        var existingAccount = userRepository.findByUsername(account.username)
+        if(!existingAccount.isEmpty){
+            return Either.Left(DomainError.conflict);
+        }
         var user = User(account.username, passwordEncoder.encode(account.password), Role.USER)
         userRepository.save(user);
         var token = jwtService.generateToken(user);
