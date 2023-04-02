@@ -3,7 +3,8 @@ enum UiError {
   invalidField,
   invalidCredentials,
   unexpected,
-  emailInUse
+  emailInUse,
+  accountDoesntExist
 }
 
 extension UiErrorExtension on UiError {
@@ -19,6 +20,8 @@ extension UiErrorExtension on UiError {
         return "Required field.";
       case UiError.unexpected:
         return "Unexpected error.";
+      case UiError.accountDoesntExist:
+        return "Account doesn't exist.";
       default:
         return UiError.unexpected.description;
     }
