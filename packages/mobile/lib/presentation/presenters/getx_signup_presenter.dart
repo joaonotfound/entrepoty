@@ -39,6 +39,7 @@ class GetxSignupPresenter extends GetxController
 
   @override
   Future<void> signup() async {
+    isLoading = true;
     final response = await usecase.register(
         name: _name, username: _username, password: _password);
     response.fold((account) async {
@@ -47,6 +48,7 @@ class GetxSignupPresenter extends GetxController
     } , (error) {
       mainError = fromDomain(error);
     });
+    isLoading = false;
   }
 
   void _validateForm() {
