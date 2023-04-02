@@ -32,10 +32,13 @@ void main() {
   group("RemoteAuthentication", () {
     test("Should call httpclient with correct values", () async {
       await sut.authenticate(username: username, password: password);
-      verify(() => httpClient.post(url: url, body: {
+      verify(() => httpClient.post(
+          url: url,
+          body: {
             "username": username,
             "password": password,
-          })).called(1);
+          },
+          timeout: Duration(seconds: 2))).called(1);
     });
     test("Should throw invalidCredentials if httpclient throws badrequest",
         () async {

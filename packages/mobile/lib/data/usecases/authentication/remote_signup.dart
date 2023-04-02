@@ -18,11 +18,15 @@ class RemoteSignup implements SignupUsecase {
     required String password,
   }) async {
     try {
-      final response = await http.post(url: url, body: {
-        "name": name,
-        "username": username,
-        "password": password,
-      });
+      final response = await http.post(
+        url: url,
+        body: {
+          "name": name,
+          "username": username,
+          "password": password,
+        },
+        timeout: Duration(seconds: 2),
+      );
       if (response.statuscode != 200) {
         return Right(DomainError.unexpected);
       }

@@ -3,7 +3,8 @@ import 'package:entrepoty/data/data.dart';
 
 class MockHttpClient extends Mock implements HttpClient {
   // ignore: unnecessary_this
-  When _mockGetCall() => when(() => this.get(url: any(named: "url")));
+  When _mockGetCall() => when(
+      () => this.get(url: any(named: "url"), timeout: any(named: "timeout")));
   void mockGet(HttpResponse response) =>
       // ignore: prefer_const_constructors
       _mockGetCall().thenAnswer((_) async => response);
@@ -11,7 +12,10 @@ class MockHttpClient extends Mock implements HttpClient {
 
   When _mockPostCall() =>
       // ignore: unnecessary_this
-      when(() => this.post(url: any(named: "url"), body: any(named: "body")));
+      when(() => this.post(
+          url: any(named: "url"),
+          body: any(named: "body"),
+          timeout: any(named: "timeout")));
   void mockPost(HttpResponse response) =>
       // ignore: prefer_const_constructors
       _mockPostCall().thenAnswer((_) async => response);

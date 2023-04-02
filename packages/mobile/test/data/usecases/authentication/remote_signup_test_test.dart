@@ -24,11 +24,17 @@ void main() {
         password: "any-password",
       );
 
-      verify(() => http.post(url: url, body: {
+      verify(
+        () => http.post(
+          url: url,
+          body: {
             "name": "any-name",
             "username": "any-username",
             "password": "any-password"
-          })).called(1);
+          },
+          timeout: Duration(seconds: 2),
+        ),
+      ).called(1);
     });
     test("should return account with correct values", () async {
       final response = HttpResponse(statuscode: 200, body: {

@@ -15,8 +15,11 @@ class RemoteLogin implements LoginUsecase {
     required String password,
   }) async {
     try {
-      var response = await httpClient
-          .post(url: url, body: {"username": username, "password": password});
+      var response = await httpClient.post(
+        url: url,
+        body: {"username": username, "password": password},
+        timeout: Duration(seconds: 2),
+      );
 
       Map account = response.body ?? {};
 
