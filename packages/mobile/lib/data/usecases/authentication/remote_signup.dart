@@ -23,16 +23,18 @@ class RemoteSignup implements SignupUsecase {
       final account = response.body ?? {};
       return Left(
         Account(
-          token: account["token"],
-          username: account["username"],
-          name: account["name"],
-          profilePictureUrl: account["profile_url"],
+          token: account["token"] ?? "",
+          username: account["username"] ?? "",
+          name: account["name"] ?? "",
+          profilePictureUrl: account["profile_url"] ?? "",
         ),
       );
     } on HttpError catch (e) {
       return Right(e == HttpError.badRequest
           ? DomainError.invalidCredentials
           : DomainError.unexpected);
+    } catch (e) {
+      return Right(DomainError.unexpected);
     }
   }
 }

@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 class HttpAdapter implements HttpClient {
   http.Client client;
+
   HttpAdapter({
     required this.client,
   });
@@ -30,8 +31,11 @@ class HttpAdapter implements HttpClient {
   }
 
   @override
-  Future<HttpResponse<T>> post<T>(
-      {required String url, Map? body, Map? headers}) async {
+  Future<HttpResponse<T>> post<T>({
+    required String url,
+    Map? body,
+    Map? headers,
+  }) async {
     try {
       var response = await client.post(
         Uri.parse(url),

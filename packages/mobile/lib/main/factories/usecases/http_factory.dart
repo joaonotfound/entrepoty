@@ -1,9 +1,8 @@
-import 'package:mocktail/mocktail.dart';
+import 'package:entrepoty/infra/http/http.dart';
+import 'package:http/http.dart';
 
 import '../../../data/data.dart';
 
-class MockHttpClient extends Mock implements HttpClient {}
-
 HttpClient makeHttpAdapter() {
-  return MockHttpClient();
+  return HttpAdapter(client: Client());
 }

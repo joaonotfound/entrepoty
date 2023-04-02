@@ -1,4 +1,4 @@
-import 'package:entrepoty/data/data.dart';
+import 'package:entrepoty/data/usecases/authentication/remote_signup.dart';
 import 'package:entrepoty/main/main.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 import 'package:entrepoty/ui/ui.dart';
@@ -7,7 +7,7 @@ SignupScreen makeSignupScreen() {
   return SignupScreen(
     presenter: GetxSignupPresenter(
       validation: makeSignupValidationComposite(),
-      usecase: LocalSignup(),
+      usecase: RemoteSignup(http: makeHttpAdapter()),
       saveAccount: makeLocalSaveCurrentAccount(),
     ),
   );
