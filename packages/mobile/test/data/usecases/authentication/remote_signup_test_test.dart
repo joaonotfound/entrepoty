@@ -1,5 +1,7 @@
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/data/usecases/authentication/remote_signup.dart';
+import 'package:entrepoty/domain/domain.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -26,6 +28,24 @@ void main() {
             "username": "any-username",
             "password": "any-password"
           })).called(1);
+    });
+    test("should return account with correct values", () async {
+      final response = HttpResponse(statuscode: 200, body: {
+        "token": "random-token",
+        "username": "random-username",
+        "name": "random-name",
+        "profile_url": "random_profile_url",
+      });
+      http.mockPost(response);
+
+      final registerResponse = await sut.register(
+        name: "random-name",
+        username: "random-username",
+        password: "random-password",
+      );
+      final account = registerResponse.getLeft().toNullable();
+      expect(account?.username, "random-username");
+      expect(account?.token, "random-token");
     });
   });
 }
