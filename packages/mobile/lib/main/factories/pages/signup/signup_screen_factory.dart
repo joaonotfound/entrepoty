@@ -9,7 +9,7 @@ SignupScreen makeSignupScreen() {
       validation: makeSignupValidationComposite(),
       usecase: RemoteSignup(
         http: makeHttpAdapter(),
-        url: "/api/v1/auth/signup",
+        url: BackendUrls.signup,
       ),
       saveAccount: makeLocalSaveCurrentAccount(),
     ),

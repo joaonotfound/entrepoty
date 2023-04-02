@@ -10,5 +10,7 @@ LoginUsecase makeLocalAuthentication() {
 
 LoginUsecase makeRemoteAuthentication() {
   return RemoteLogin(
-      url: faker.internet.httpUrl(), httpClient: makeHttpAdapter());
+    url: BackendUrls.login,
+    httpClient: makeHttpAdapter(),
+  );
 }

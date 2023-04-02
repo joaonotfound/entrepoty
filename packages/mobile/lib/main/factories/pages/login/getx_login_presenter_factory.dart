@@ -4,7 +4,8 @@ import '../../../../ui/ui.dart';
 
 LoginPresenter makeGetxLoginPresenter() {
   return GetxLoginPresenter(
-      saveCurrentAccount: makeLocalSaveCurrentAccount(),
-      validator: makeLoginValidationComposite(),
-      authentication: makeLocalAuthentication());
+    saveCurrentAccount: makeLocalSaveCurrentAccount(),
+    validator: makeLoginValidationComposite(),
+    authentication: makeRemoteAuthentication(),
+  );
 }
