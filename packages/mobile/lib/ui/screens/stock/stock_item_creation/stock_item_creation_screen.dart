@@ -1,4 +1,5 @@
 import 'package:entrepoty/ui/layout/layout.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'components/components.dart';
@@ -17,7 +18,8 @@ class StockItemCreationScreen extends StatefulWidget {
       _StockItemCreationScreenState();
 }
 
-class _StockItemCreationScreenState extends State<StockItemCreationScreen> {
+class _StockItemCreationScreenState extends State<StockItemCreationScreen>
+    with LoadingManager {
   @override
   Widget build(BuildContext context) {
     return FormLayout(
@@ -38,13 +40,12 @@ class _StockItemCreationScreenState extends State<StockItemCreationScreen> {
       action: StreamBuilder(
           stream: widget.presenter.isFormValidStream,
           builder: (context, snapshot) {
+            handleLoginManager(context, widget.presenter.isLoadingStream);
             return ElevatedButton(
-              onPressed: snapshot.data == true ? () {} : null,
-              child: Text("Next"),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor: Theme.of(context).primaryColor,
-              ),
+              onPressed: snapshot.data == true
+                  ? () => widget.presenter.saveItem()
+                  : null,
+              child: Text("Create"),
             );
           }),
       title: "Create item",

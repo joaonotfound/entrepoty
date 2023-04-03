@@ -12,11 +12,10 @@ abstract class StockItemCreationPresenter implements Listenable {
   Stream<String?> get navigateToStream;
   Stream<UiError?> get mainErrorStream;
 
-  Stream<List<CreateStockItemEntity>> get itemsStreams;
   Stream<List<ProductModelEntity>> get modelsStream;
 
   void validateQtd(int value);
-  void validateModel(String value);
+  void validateModel(int value);
   void loadModels();
 
   Future<void> saveItem();

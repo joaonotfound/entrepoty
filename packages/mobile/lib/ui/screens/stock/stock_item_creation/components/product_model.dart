@@ -13,19 +13,21 @@ class ProductModelField extends StatelessWidget {
     final presenter = Provider.of<StockItemCreationPresenter>(context);
     presenter.loadModels();
     return StreamBuilder<List<ProductModelEntity>>(
-      stream: presenter.modelsStream,
-      builder: (context, snapshot) => DropdownButtonFormField(
-        hint: Text("Model"),
-        items: snapshot.data == null
-            ? []
-            : snapshot.data!
-                .map((model) => DropdownMenuItem<String>(
-                      value: model.id.toString(),
-                      child: Text(model.name),
-                    ))
-                .toList(),
-        onChanged: (value) => presenter.validateModel(value.toString() ?? ''),
-      ),
-    );
+        stream: presenter.modelsStream,
+        builder: (context, snapshot) {
+          debugPrint(snapshot.data.toString());
+          return DropdownButtonFormField<int>(
+            hint: Text("Model"),
+            items: snapshot.data == null
+                ? []
+                : snapshot.data!
+                    .map((model) => DropdownMenuItem<int>(
+                          value: model.id,
+                          child: Text(model.name),
+                        ))
+                    .toList(),
+            onChanged: (value) => presenter.validateModel(value ?? 0),
+          );
+        });
   }
 }

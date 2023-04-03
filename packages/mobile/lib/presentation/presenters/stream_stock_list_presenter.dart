@@ -19,24 +19,21 @@ class StreamStockListPresenter extends GetxController
     required this.loadItems,
   });
 
-  @override
   Stream<List<CategoryEntity>> get categoriesStream =>
       categoriesController.stream.distinct();
 
-  @override
   Stream<List<ProductEntity>> get itemsStream => itemsController.stream;
 
-  @override
   Future<void> loadScreen() async {
     final categories = await loadCategories.load();
     categoriesController.add(categories);
-    final items = await loadItems.loadProducts();
-    items.fold((l) {}, (items) {
+    final response = await loadItems.loadProducts();
+    response.fold((l) {}, (items) {
       itemsController.add(items);
+      Get.back();
     });
   }
 
-  @override
   void dispose() {
     super.dispose();
     categoriesController.close();

@@ -14,16 +14,19 @@ class GetxStockItemCreationPresenter extends GetxController
         GetxNavigatorManager
     implements StockItemCreationPresenter {
   LoadProductModelsUsecase loadModelsUsecase;
+  CreateProductUsecas createProduct;
+
   GetxStockItemCreationPresenter({
     required this.loadModelsUsecase,
+    required this.createProduct,
   });
+
   final qtdError = RxString('');
   final modelError = RxString('');
   final descriptionError = RxString('');
-  final items = Rx<List<CreateStockItemEntity>>([]);
 
   int _qtd = 0;
-  String _model = '';
+  int _model = 0;
   List<CreateStockItemEntity> _items = [];
 
   Rx<List<ProductModelEntity>> _models = Rx([]);
@@ -36,29 +39,31 @@ class GetxStockItemCreationPresenter extends GetxController
   Stream<String?> get qtdErrorStream => qtdError.stream;
 
   @override
-  Stream<List<CreateStockItemEntity>> get itemsStreams => items.stream;
-
-  @override
   Future<void> saveItem() async {
-    _items.add(CreateStockItemEntity(
-        description: '', quantity: _qtd, modelo: _model, notes: ""));
-    items.subject.add(_items);
-    _qtd = 0;
-    _model = '';
-
-    navigateTo = Routes.stock;
+    isLoading = true;
+    final response = await createProduct.createProduct(
+      model: _model,
+      quantity: _qtd,
+      receipt_path: "",
+    );
+    isLoading = false;
+    response.fold((error) {
+      mainError = fromDomain(error);
+    }, (r) {
+      Get.back();
+    });
   }
 
   void validateForm() {
     isFormValid = qtdError.value == "" &&
-        _model.length != 0 &&
+        _model != 0 &&
         modelError.value == "" &&
         _qtd != 0;
   }
 
   @override
-  void validateModel(String value) {
-    modelError.value = value.length == 0 ? "This field is mandatory." : "";
+  void validateModel(int value) {
+    modelError.value = value == 0 ? "This field is mandatory." : "";
     _model = value;
     validateForm();
   }
@@ -77,7 +82,10 @@ class GetxStockItemCreationPresenter extends GetxController
   @override
   Future<void> loadModels() async {
     final response = await loadModelsUsecase.loadModels();
-    response.fold((l) {}, (models) {
+    response.fold((l) {
+      print(l);
+    }, (models) {
+      print(models);
       _models.value = models;
     });
   }

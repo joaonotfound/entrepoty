@@ -1,6 +1,8 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../misc/misc.dart';
 
@@ -9,6 +11,7 @@ class StockListWelcomeMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final presenter = Provider.of<StockListPresenter>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -25,9 +28,17 @@ class StockListWelcomeMessage extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-            icon: Icon(FluentIcons.settings_16_regular),
-            onPressed: () => Get.toNamed(Routes.settings))
+        Row(
+          
+          children: [
+            IconButton(
+                icon: Icon(Icons.refresh),
+                onPressed: () => presenter.loadScreen()),
+            IconButton(
+                icon: Icon(FluentIcons.settings_16_regular),
+                onPressed: () => Get.toNamed(Routes.settings))
+          ],
+        )
       ],
     );
   }

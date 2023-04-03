@@ -34,12 +34,15 @@ class _StockListScreenState extends State<StockListScreen> {
           create: (_) => widget.presenter,
           child: Padding(
             padding: EdgeInsets.only(top: 20),
-            child: ListView(
+            child: Column(
               children: [
                 StockListWelcomeMessage(),
                 StockListSearchInput(),
                 StockListFilterChips(),
-                StockListItemsView(),
+                Expanded(
+                  child: StockListItemsView(),
+                  flex: 1,
+                ),
               ],
             ),
           ),
