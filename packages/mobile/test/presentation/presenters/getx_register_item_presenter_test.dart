@@ -2,10 +2,14 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:entrepoty/presentation/presenters/getx_stock_item_creation_presenter.dart';
 
+import '../../domain/mocks/load_models_usecase_mock.dart';
+
 void main() {
   late GetxStockItemCreationPresenter sut;
+  late LoadModelsUsecaseMock loadModels;
   setUp(() {
-    sut = GetxStockItemCreationPresenter();
+    loadModels = LoadModelsUsecaseMock();
+    sut = GetxStockItemCreationPresenter(loadModelsUsecase: loadModels);
   });
   group("GetxRegisterLotPresenter", () {
     test("should emit empty error when validating model", () {
