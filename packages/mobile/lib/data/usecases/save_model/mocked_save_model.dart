@@ -3,8 +3,8 @@ import 'package:fpdart/fpdart.dart';
 
 class MockedSaveModel extends SaveModelUsecase {
   @override
-  Future<Either<DomainError, StockItemModelEntity>> saveModel(
+  Future<Either<DomainError, ProductModelEntity>> saveModel(
       String name, String imagePath) async {
-    return Right(StockItemModelEntity(name: "one model"));
+    return Right(ProductModelEntity(name: "one model"));
   }
 }

@@ -1,6 +1,6 @@
-class StockItemModelEntity {
+class ProductModelEntity {
   final String name;
-  const StockItemModelEntity({
+  const ProductModelEntity({
     required this.name,
   });
 }

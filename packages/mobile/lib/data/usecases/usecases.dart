@@ -9,3 +9,4 @@ export 'load_customers/load_customers.dart';
 export 'logout/logout.dart';
 export 'save_customer/save_customer.dart';
 export 'remove_customer/remove_customer.dart';
+export 'create_product_model/create_product_model.dart';
