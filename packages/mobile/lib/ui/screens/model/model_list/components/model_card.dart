@@ -14,43 +14,21 @@ class ModelListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ModelListPresenter>(context);
-    return InkWell(
-      child: Card(
-        margin: EdgeInsets.only(),
-        color: Theme.of(context).colorScheme.surface,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Row(
-                  children: [
-                    Icon(FluentIcons.production_20_regular),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(model.name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                  ],
-                ),
-              ),
-              PopupMenuButton(
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    child: ListTile(
-                      leading: Icon(FluentIcons.delete_12_regular),
-                      title: Text("Delete"),
-                    ),
-                    onTap: () => provider.deleteModel(model.id),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
+    return ListTile(
+      tileColor: Theme.of(context).colorScheme.surface,
+      leading: Icon(FluentIcons.production_20_regular),
+      title: Text(model.name,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+      trailing: PopupMenuButton(
+        itemBuilder: (context) => [
+          PopupMenuItem(
+            child: ListTile(
+              leading: Icon(FluentIcons.delete_12_regular),
+              title: Text("Delete"),
+            ),
+            onTap: () => provider.deleteModel(model.id),
+          )
+        ],
       ),
     );
   }

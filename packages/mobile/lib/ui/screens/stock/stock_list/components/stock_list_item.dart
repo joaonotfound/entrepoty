@@ -10,44 +10,20 @@ class StockListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {},
-        child: InkWell(
-          onTap: () {},
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 15,
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.image,
-                  size: 40,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.model.name,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    Text(
-                      item.quantity.toString() + " units.",
-                      style: TextStyle(fontSize: 15),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ));
+    return ListTile(
+      tileColor: Theme.of(context).colorScheme.surface,
+      leading: Icon(
+        Icons.image,
+        size: 40,
+      ),
+      title: Text(
+        item.model.name,
+        style: Theme.of(context).textTheme.headlineSmall,
+      ),
+      subtitle: Text(
+        item.quantity.toString() + "x Units.",
+        style: TextStyle(fontSize: 15),
+      ),
+    );
   }
 }

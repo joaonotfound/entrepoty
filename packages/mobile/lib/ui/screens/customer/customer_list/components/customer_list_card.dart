@@ -16,63 +16,44 @@ class CustomerListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<CustomerListPresenter>(context);
     return InkWell(
-      child: Card(
-        margin: EdgeInsets.only(),
-        color: Theme.of(context).colorScheme.surface,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.network(
-                "https://source.boringavatars.com/beam",
-                width: MediaQuery.of(context).size.width * 0.15,
+      child: ListTile(
+        tileColor: Theme.of(context).colorScheme.surface,
+        dense: true,
+        leading: SvgPicture.network(
+          "https://source.boringavatars.com/beam",
+        ),
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              user.name,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            SizedBox(width: 10),
+            Text("@${user.enrollment}",
+                style: Theme.of(context).textTheme.bodyMedium)
+          ],
+        ),
+        subtitle: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(FluentIcons.organization_12_regular, size: 15),
+            SizedBox(width: 5),
+            Text(user.sector),
+          ],
+        ),
+        trailing: PopupMenuButton(
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              child: ListTile(
+                visualDensity: VisualDensity.compact,
+                leading: Icon(FluentIcons.delete_12_regular),
+                title: Text("Delete"),
               ),
-              SizedBox(width: 15),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  constraints: BoxConstraints(minHeight: 50),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            user.name,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          ),
-                          SizedBox(width: 10),
-                          Text("@${user.enrollment}",
-                              style: Theme.of(context).textTheme.bodyMedium),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(FluentIcons.organization_12_regular, size: 15),
-                          SizedBox(width: 5),
-                          Text(user.sector),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              PopupMenuButton(
-                  itemBuilder: (context) => [
-                        PopupMenuItem(
-                          child: ListTile(
-                            leading: Icon(FluentIcons.delete_12_regular),
-                            title: Text("Delete"),
-                          ),
-                          onTap: () => provider.deleteCustomer(user.enrollment),
-                        )
-                      ])
-            ],
-          ),
+              onTap: () => provider.deleteCustomer(user.enrollment),
+            )
+          ],
         ),
       ),
     );
