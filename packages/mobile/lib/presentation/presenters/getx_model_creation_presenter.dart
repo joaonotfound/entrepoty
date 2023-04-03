@@ -1,7 +1,8 @@
+import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/misc/helpers/from_domain_error.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class GetxModelCreationPresenter extends GetxController
     with
@@ -11,8 +12,10 @@ class GetxModelCreationPresenter extends GetxController
         GetxFormManager
     implements ModelCreationPresenter {
   Validation validation;
+  CreateProductModelUsecase usecase;
   GetxModelCreationPresenter({
     required this.validation,
+    required this.usecase,
   });
 
   String _name = "";
@@ -36,8 +39,17 @@ class GetxModelCreationPresenter extends GetxController
   Future<void> pickImage() async {}
 
   @override
-  Future<void> createModel() {
-    // TODO: implement createModel
-    throw UnimplementedError();
+  Future<void> createModel() async {
+    isLoading = true;
+    final response = await usecase.createModel(
+      ProductModelEntity(name: _name),
+    );
+    response.fold((error) {
+      mainError = fromDomain(error);
+    }, (model) {
+      Get.back();
+    });
+
+    isLoading = false;
   }
 }

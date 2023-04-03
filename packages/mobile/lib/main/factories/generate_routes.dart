@@ -27,9 +27,7 @@ List<GetPage> generateRoutes() {
     GetPage(name: Routes.settings, page: () => makeSettingsScreen()),
     GetPage(
       name: Routes.createModel,
-      page: () => ModelCreationScreen(
-        presenter: MockedModelCreationPresenter(),
-      ),
+      page: () => makeModelsCreationScreen(),
       transition: Transition.rightToLeft,
     ),
     GetPage(

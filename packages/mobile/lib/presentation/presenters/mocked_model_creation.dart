@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
@@ -37,5 +39,15 @@ class MockedModelCreationPresenter implements ModelCreationPresenter {
   Future<void> createModel() {
     // TODO: implement createModel
     throw UnimplementedError();
+  }
+
+  @override
+  void addListener(VoidCallback listener) {
+    // TODO: implement addListener
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    // TODO: implement removeListener
   }
 }

@@ -10,4 +10,5 @@ class BackendUrls {
   static String get login => _complete("/api/v1/auth/login");
   static String get signup => _complete("/api/v1/auth/signup");
   static String get customers => _complete("/api/v1/customers");
+  static String get models => _complete("/api/v1/models");
 }
