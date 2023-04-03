@@ -2,6 +2,7 @@ import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 import 'package:entrepoty/ui/misc/helpers/from_domain_error.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class GetxModelCreationPresenter extends GetxController
@@ -45,6 +46,7 @@ class GetxModelCreationPresenter extends GetxController
       ProductModelEntity(name: _name),
     );
     response.fold((error) {
+      debugPrint("error: " + error.toString());
       mainError = fromDomain(error);
     }, (model) {
       Get.back();

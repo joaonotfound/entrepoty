@@ -1,3 +1,4 @@
+import 'package:entrepoty/main/factories/pages/models_list/models_list_screen_factory.dart';
 import 'package:flutter/material.dart';
 import 'package:entrepoty/main/factories/factories.dart';
 import 'package:entrepoty/ui/ui.dart';
@@ -10,7 +11,7 @@ List<BottomBarScreen> makeBottomBarScreens() {
       label: "Stock",
     ),
     BottomBarScreen(
-      widget: () => ModelListScreen(),
+      widget: () => makeModelListScreen(),
       icon: Icon(Icons.model_training),
       label: "Models",
     ),
