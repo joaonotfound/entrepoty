@@ -55,8 +55,7 @@ class ModelListScreen extends StatelessWidget with UiErrorManager {
                                       ModelListCard(
                                           model: modelsSnapshot.data![index]))),
                             )
-                          : const Center(
-                              child: Text("Couldn't find any models"));
+                          : const Center(child: Text("There's no models."));
                 },
               );
             },
