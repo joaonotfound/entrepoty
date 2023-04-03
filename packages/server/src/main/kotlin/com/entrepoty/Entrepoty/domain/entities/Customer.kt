@@ -14,7 +14,12 @@ class Customer {
     @field:NotNull
     var enrollment: String = ""
 
+    @field:NotNull
     var name: String = ""
+
+    @field:NotNull
     var email: String = ""
-    var setor: String = ""
+
+    @field:NotNull
+    var sector: String = ""
 }
