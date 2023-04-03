@@ -36,7 +36,11 @@ class GetxBorrowCreationPresenter extends GetxController
   Future<void> create() async {}
 
   void _validateForm() {
-    isFormValid = _customer != null && _product != null;
+    print(_customer);
+    print(_product);
+    print(_date);
+
+    isFormValid = _customer != null && _product != null && _date != null;
   }
 
   void validateCustomer(CustomerEntity customer) {

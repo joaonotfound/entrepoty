@@ -1,3 +1,4 @@
+import 'package:entrepoty/main/factories/pages/borrow_creation/borrow_creation.dart';
 import 'package:entrepoty/main/factories/pages/customer_creation/customer_creation.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ List<GetPage> generateRoutes() {
     ),
     GetPage(
       name: Routes.createBorrow,
-      page: () => BorrowCreationScreen(),
+      page: () => makeBorrowCreationScreen(),
       transition: Transition.rightToLeft,
     ),
     GetPage(

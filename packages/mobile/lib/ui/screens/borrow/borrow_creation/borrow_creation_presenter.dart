@@ -1,8 +1,9 @@
 import 'package:entrepoty/domain/domain.dart';
+import 'package:flutter/material.dart';
 
 import '../../../misc/errors/errors.dart';
 
-abstract class BorrowCreationPresenter {
+abstract class BorrowCreationPresenter implements Listenable {
   Stream<String?> get navigateToStream;
   Stream<bool> get isFormValidStream;
   Stream<bool> get isLoadingStream;

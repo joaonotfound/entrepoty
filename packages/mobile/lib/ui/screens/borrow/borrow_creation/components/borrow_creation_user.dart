@@ -1,6 +1,9 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/ui/screens/borrow/borrow_creation/borrow_creation_presenter.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BorrowCreationUser extends StatelessWidget {
   BorrowCreationUser({super.key});
@@ -8,22 +11,30 @@ class BorrowCreationUser extends StatelessWidget {
   final users = ['maria', 'asd', 'thomas'];
   @override
   Widget build(BuildContext context) {
-    return DropdownSearch(
-      dropdownDecoratorProps: DropDownDecoratorProps(
-        dropdownSearchDecoration: InputDecoration(hintText: "User"),
+    final presenter = Provider.of<BorrowCreationPresenter>(context);
+    presenter.loadCustomers();
+
+    return StreamBuilder<List<CustomerEntity>>(
+      stream: presenter.customersStream,
+      builder: (context, snapshot) => DropdownSearch<CustomerEntity>(
+        filterFn: (item, filter) =>
+            item.name.toLowerCase().contains(filter.toLowerCase()),
+        dropdownBuilder: (context, selectedItem) =>
+            Text(selectedItem?.name ?? "Select one user"),
+        onChanged: (value) => presenter.validateCustomer(value!),
+        popupProps: PopupProps.dialog(
+            showSearchBox: true,
+            isFilterOnline: true,
+            searchDelay: Duration.zero,
+            itemBuilder: (context, customer, isSelected) => ListTile(
+                  leading: Icon(FluentIcons.person_12_regular),
+                  title: Text(customer.name),
+                ),
+            searchFieldProps: TextFieldProps(
+              decoration: InputDecoration(hintText: "Search user"),
+            )),
+        items: snapshot.data ?? [],
       ),
-      popupProps: PopupProps.dialog(
-          showSearchBox: true,
-          isFilterOnline: true,
-          searchDelay: Duration.zero,
-          itemBuilder: (context, item, isSelected) => ListTile(
-                leading: Icon(FluentIcons.person_12_regular),
-                title: Text(item.toString()),
-              ),
-          searchFieldProps: TextFieldProps(
-            decoration: InputDecoration(hintText: "Search user"),
-          )),
-      items: users,
     );
   }
 }
