@@ -39,6 +39,17 @@ class GetxCustomerPresenter extends GetxController
     isLoading = false;
   }
 
+  void _validateForm() {
+    isFormValid = _name != '' &&
+        _nameError.value == '' &&
+        _email != "" &&
+        _emailError.value == "" &&
+        _enrollment != "" &&
+        _enrollmentError.value == "" &&
+        _sector != "" &&
+        _sectorError.value == "";
+  }
+
   var _email = "";
   final _emailError = RxString("");
   Stream<String?> get emailErrorStream => _emailError.stream;
@@ -58,22 +69,26 @@ class GetxCustomerPresenter extends GetxController
   void validateEmail(String email) {
     _email = email;
     _emailError.value = validation.validate(field: "email", value: email) ?? "";
+    _validateForm();
   }
 
   void validateEnrollment(String enrollment) {
     _enrollment = enrollment;
     _enrollmentError.value =
         validation.validate(field: "enrollment", value: enrollment) ?? "";
+    _validateForm();
   }
 
   void validateName(String name) {
     _name = name;
     _nameError.value = validation.validate(field: "name", value: name) ?? "";
+    _validateForm();
   }
 
   void validateSector(String sector) {
     _sector = sector;
     _sectorError.value =
         validation.validate(field: "sector", value: sector) ?? "";
+    _validateForm();
   }
 }
