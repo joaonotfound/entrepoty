@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import '../../../misc/misc.dart';
 
-class BorrowScreen extends StatelessWidget {
-  const BorrowScreen({super.key});
+class BorrowListScreen extends StatelessWidget {
+  const BorrowListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
