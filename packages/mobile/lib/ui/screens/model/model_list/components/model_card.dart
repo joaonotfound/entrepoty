@@ -23,9 +23,31 @@ class ModelListCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(FluentIcons.production_20_regular),
-              Text(model.name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+              Expanded(
+                flex: 1,
+                child: Row(
+                  children: [
+                    Icon(FluentIcons.production_20_regular),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(model.name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20)),
+                  ],
+                ),
+              ),
+              PopupMenuButton(
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: Icon(FluentIcons.delete_12_regular),
+                      title: Text("Delete"),
+                    ),
+                    onTap: () => provider.deleteModel(model.id),
+                  )
+                ],
+              )
             ],
           ),
         ),

@@ -8,4 +8,5 @@ abstract class ModelListPresenter implements Listenable {
   Stream<bool> get isLoadingStream;
   Stream<UiError?> get mainErrorStream;
   Future<void> loadModels();
+  Future<void> deleteModel(int id);
 }

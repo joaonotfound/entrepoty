@@ -4,15 +4,19 @@ import 'package:entrepoty/presentation/mixins/gext_ui_error_manager.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:fpdart/src/either.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 
 import '../../ui/misc/misc.dart';
 
 class GetxLoadModelsPresenter extends GetxController
     with GetxLoadingManager, GetxUiErrorManager
     implements ModelListPresenter {
-  LoadProductModelsUsecase usecase;
+  LoadProductModelsUsecase loadModelsUsecase;
+  DeleteProductModelUsecase deleteUescase;
+
   GetxLoadModelsPresenter({
-    required this.usecase,
+    required this.loadModelsUsecase,
+    required this.deleteUescase,
   });
 
   final models = Rx<List<ProductModelEntity>>([]);
@@ -22,7 +26,7 @@ class GetxLoadModelsPresenter extends GetxController
   Future<void> loadModels() async {
     try {
       isLoading = true;
-      final response = await usecase.loadModels();
+      final response = await loadModelsUsecase.loadModels();
       response.fold((error) {
         mainError = fromDomain(error);
       }, (newModels) {
@@ -33,5 +37,13 @@ class GetxLoadModelsPresenter extends GetxController
     }
 
     isLoading = false;
+  }
+
+  @override
+  Future<void> deleteModel(int id) async {
+    final response = await deleteUescase.deleteModel(id);
+    if (response.isRight()) {
+      await loadModels();
+    }
   }
 }
