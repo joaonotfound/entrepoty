@@ -17,6 +17,7 @@ enum HttpError {
 abstract class HttpClient {
   Future<HttpResponse<T>> delete<T>({
     required String url,
+    Map? body,
     Map? headers,
     Duration? timeout,
   });

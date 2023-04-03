@@ -8,3 +8,4 @@ export 'register_lot/register_lot.dart';
 export 'load_customers/load_customers.dart';
 export 'logout/logout.dart';
 export 'save_customer/save_customer.dart';
+export 'remove_customer/remove_customer.dart';

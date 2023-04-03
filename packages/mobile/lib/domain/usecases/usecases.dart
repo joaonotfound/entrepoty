@@ -9,3 +9,4 @@ export 'save_model_usecase.dart';
 export 'save_customer_usecase.dart';
 export 'logout_usecase.dart';
 export 'authentication/authentication.dart';
+export 'delete_customer_usecase.dart';
