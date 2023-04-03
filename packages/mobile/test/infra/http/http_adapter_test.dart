@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/infra/infra.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,11 +8,13 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
+import '../../domain/domain.dart';
 import '../mocks/mocks.dart';
 
 void main() {
   late HttpAdapter sut;
   late ClientMock client;
+  late MockLoadCurrentAccount currentAccount;
   var url = faker.internet.httpUrl();
   setUpAll(() {
     registerFallbackValue(Uri.parse(url));
@@ -20,7 +23,9 @@ void main() {
     client = ClientMock();
     client.mockGet(http.Response("{}", 200));
     client.mockPost(http.Response("{}", 200));
-    sut = HttpAdapter(client: client);
+    currentAccount = MockLoadCurrentAccount();
+    currentAccount.mockLoad(TokenAccount(token: ""));
+    sut = HttpAdapter(client: client, currentAccount: currentAccount);
   });
 
   group("HttpAdapter get", () {
@@ -87,7 +92,7 @@ void main() {
           body: jsonEncode({"key": "value"}),
           headers: {
             'content-type': 'application/json',
-            'accept': 'application/json'
+            'accept': 'application/json',
           },
         ),
       ).called(1);
@@ -120,13 +125,13 @@ void main() {
     test("should call client with right headers", () async {
       await sut.post(url: url, headers: {
         'content-type': 'application/json',
-        'accept': 'application/xml'
+        'accept': 'application/xml',
       });
 
       verify(
         () => client.post(Uri.parse(url), body: jsonEncode(null), headers: {
           'content-type': 'application/json',
-          'accept': 'application/xml'
+          'accept': 'application/xml',
         }),
       ).called(1);
     });

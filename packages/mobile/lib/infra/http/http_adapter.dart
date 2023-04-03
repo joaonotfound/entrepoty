@@ -15,9 +15,9 @@ class HttpAdapter implements HttpClient {
     required this.currentAccount,
   });
 
-  Future<String> getAuthorization() async {
+  Future<String?> getAuthorization() async {
     final account = await currentAccount.load();
-    return account?.token ?? "";
+    return account?.token;
   }
 
   @override
@@ -28,7 +28,6 @@ class HttpAdapter implements HttpClient {
   }) async {
     try {
       final authorization = await getAuthorization();
-      print("authoriaztion " + authorization);
       var response = await client
           .get(
             Uri.parse(url),
@@ -36,8 +35,10 @@ class HttpAdapter implements HttpClient {
                 {
                   'content-type': 'application/json',
                   'accept': 'application/json',
-                  'Authorization': 'Bearer ' + authorization
-                },
+                }
+              ..addAll((authorization == null || authorization.length <= 2)
+                  ? {}
+                  : {"Authorization": "Bearer " + authorization}),
           )
           .timeout(
             timeout ?? Duration(seconds: 5),
@@ -60,18 +61,18 @@ class HttpAdapter implements HttpClient {
   }) async {
     try {
       final authorization = await getAuthorization();
-      print("authoriaztion " + authorization);
+      print(authorization);
       var response = await client
-          .post(
-            Uri.parse(url),
-            body: jsonEncode(body),
-            headers: headers?.cast<String, String>() ??
-                {
-                  'content-type': 'application/json',
-                  'accept': 'application/json',
-                  'Authorization': 'Bearer ' + authorization
-                },
-          )
+          .post(Uri.parse(url),
+              body: jsonEncode(body),
+              headers: headers?.cast<String, String>() ??
+                  {
+                    'content-type': 'application/json',
+                    'accept': 'application/json',
+                  }
+                ..addAll((authorization == null || authorization.length <= 2)
+                    ? {}
+                    : {"Authorization": "Bearer " + authorization}))
           .timeout(timeout ?? Duration(seconds: 5));
 
       final responseBody = response.body.length == 0 ? "{}" : response.body;
