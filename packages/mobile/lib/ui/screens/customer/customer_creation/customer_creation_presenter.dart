@@ -7,6 +7,7 @@ abstract class CustomerCreationPresenter implements Listenable {
   Stream<String?> get nameErrorStream;
   Stream<String?> get emailErrorStream;
   Stream<String?> get enrollmentErrorStream;
+  Stream<String?> get sectorErrorStream;
 
   Stream<String?> get navigateToStream;
   Stream<bool> get isFormValidStream;
@@ -18,6 +19,6 @@ abstract class CustomerCreationPresenter implements Listenable {
   void validateEnrollment(String enrollment);
   void validateSector(String sector);
 
-  Future<void> authenticate();
+  Future<void> authenticate(BuildContext context);
   void dispose();
 }
