@@ -17,10 +17,12 @@ class GetxBorrowCreationPresenter extends GetxController
     implements BorrowCreationPresenter {
   LoadCustomersUsecase loadCustomersUsecase;
   LoadProductsUsecase loadProductsUsecase;
+  CreateBorrowUsecase createBorrowUsecase;
 
   GetxBorrowCreationPresenter({
     required this.loadCustomersUsecase,
     required this.loadProductsUsecase,
+    required this.createBorrowUsecase,
   });
 
   CustomerEntity? _customer = null;
@@ -33,7 +35,21 @@ class GetxBorrowCreationPresenter extends GetxController
   final _products = Rx<List<ProductEntity>>([]);
   Stream<List<ProductEntity>> get productsStream => _products.stream;
 
-  Future<void> create() async {}
+  Future<void> create() async {
+    isLoading = true;
+    final response = await createBorrowUsecase.create(
+      product: _product!.id,
+      customer: int.parse(_customer!.id),
+      date: _date!,
+    );
+    isLoading = false;
+    response.fold((l) {
+      print(l);
+    }, (borrow) {
+      print("created");
+      Get.back();
+    });
+  }
 
   void _validateForm() {
     print(_customer);

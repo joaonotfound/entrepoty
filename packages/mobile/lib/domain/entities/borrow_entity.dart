@@ -1,29 +1,23 @@
+import 'package:entrepoty/domain/domain.dart';
+
 import 'product_entity.dart';
 
-// class BorrowStockItemEntity extends ProductEntity {
-//   final int quantity;
-//   const BorrowStockItemEntity({
-//     required this.quantity,
-//     required super.model,
-//     required super.receiptUrl,
-//   });
-// }
-
 class BorrowEntity {
-  final String customerId;
-  final String customerName;
-  final String cc;
-  final String chamadoNumber;
-  final String returnDate;
-  final String notes;
-  final List<dynamic> items;
-  const BorrowEntity({
-    required this.customerId,
-    required this.customerName,
-    required this.cc,
-    required this.chamadoNumber,
-    required this.returnDate,
-    required this.notes,
-    required this.items,
+  int id;
+  CustomerEntity customer;
+  ProductEntity product;
+  DateTime date;
+  BorrowEntity({
+    required this.id,
+    required this.customer,
+    required this.product,
+    required this.date,
   });
+
+  factory BorrowEntity.fromJson(Map json) => BorrowEntity(
+        id: json['id'] ?? 0,
+        customer: CustomerEntity.fromJson(json['customer'] ?? {}),
+        product: ProductEntity.fromJson(json['product'] ?? {}),
+        date: DateTime.parse(json['datetime']),
+      );
 }

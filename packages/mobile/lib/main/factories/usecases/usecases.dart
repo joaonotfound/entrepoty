@@ -6,3 +6,4 @@ export 'logout_factory.dart';
 export 'save_customer_factory.dart';
 export 'load_models_factory.dart';
 export 'load_product_factory.dart';
+export 'create_borrow_factory.dart';

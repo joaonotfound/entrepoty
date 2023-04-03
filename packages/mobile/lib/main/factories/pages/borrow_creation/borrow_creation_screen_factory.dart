@@ -7,6 +7,7 @@ BorrowCreationScreen makeBorrowCreationScreen() {
     presenter: GetxBorrowCreationPresenter(
       loadCustomersUsecase: makeRemoteLoadCustomers(),
       loadProductsUsecase: makeRemoteLoadProduct(),
+      createBorrowUsecase: makeRemoteCreateBorrow(),
     ),
   );
 }
