@@ -9,4 +9,5 @@ class Routes {
   static final createCustomer = '/customers/create';
   static final createStockItem = '/stock/create';
   static final createModel = '/models/create';
+  static final createBorrow = '/borrow/create';
 }
