@@ -11,8 +11,7 @@ ModelListScreen makeModelListScreen() {
         client: makeHttpAdapter(),
         url: BackendUrls.models,
       ),
-      loadModelsUsecase: RemoteLoadProductModels(
-          client: makeHttpAdapter(), url: BackendUrls.models),
+      loadModelsUsecase: makeRemoteLoadProductModels(),
     ),
   );
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 import 'package:entrepoty/domain/entities/create_stock_item_entity.dart';
@@ -12,6 +13,10 @@ class GetxStockItemCreationPresenter extends GetxController
         GetxUiErrorManager,
         GetxNavigatorManager
     implements StockItemCreationPresenter {
+  LoadProductModelsUsecase loadModelsUsecase;
+  GetxStockItemCreationPresenter({
+    required this.loadModelsUsecase,
+  });
   final qtdError = RxString('');
   final modelError = RxString('');
   final descriptionError = RxString('');
@@ -20,6 +25,9 @@ class GetxStockItemCreationPresenter extends GetxController
   int _qtd = 0;
   String _model = '';
   List<CreateStockItemEntity> _items = [];
+
+  Rx<List<ProductModelEntity>> _models = Rx([]);
+  Stream<List<ProductModelEntity>> get modelsStream => _models.stream;
 
   @override
   Stream<String?> get modelErrorStream => modelError.stream;
@@ -64,5 +72,13 @@ class GetxStockItemCreationPresenter extends GetxController
 
   Future<void> dispose() async {
     super.dispose();
+  }
+
+  @override
+  Future<void> loadModels() async {
+    final response = await loadModelsUsecase.loadModels();
+    response.fold((l) {}, (models) {
+      _models.value = models;
+    });
   }
 }
