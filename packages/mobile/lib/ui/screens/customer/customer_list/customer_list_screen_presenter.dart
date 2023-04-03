@@ -7,4 +7,5 @@ abstract class CustomerListPresenter implements Listenable {
   Stream<bool> get isLoadingStream;
   Stream<UiError?> get mainErrorStream;
   Future<void> loadCustomers();
+  Future<void> deleteCustomer(String enrollment);
 }
