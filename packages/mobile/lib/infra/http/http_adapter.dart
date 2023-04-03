@@ -28,24 +28,27 @@ class HttpAdapter implements HttpClient {
   }) async {
     try {
       final authorization = await getAuthorization();
+      final requestHeaders = headers?.cast<String, String>() ??
+          {
+            'content-type': 'application/json',
+            'accept': 'application/json',
+          }
+        ..addAll((authorization == null || authorization.length <= 2)
+            ? {}
+            : {"Authorization": "Bearer " + authorization});
+
       var response = await client
           .get(
             Uri.parse(url),
-            headers: headers?.cast<String, String>() ??
-                {
-                  'content-type': 'application/json',
-                  'accept': 'application/json',
-                }
-              ..addAll((authorization == null || authorization.length <= 2)
-                  ? {}
-                  : {"Authorization": "Bearer " + authorization}),
+            headers: requestHeaders,
           )
-          .timeout(
-            timeout ?? Duration(seconds: 5),
-          );
+          .timeout(timeout ?? Duration(seconds: 5));
+
       return HttpResponse(
         statuscode: response.statusCode,
-        body: json.decode(response.body),
+        body: response.body.runtimeType is String
+            ? json.decode(response.body)
+            : response.body,
       );
     } catch (e) {
       return const HttpResponse(statuscode: 500);
