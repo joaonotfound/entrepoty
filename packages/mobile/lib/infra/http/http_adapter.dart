@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../data/data.dart';
@@ -7,10 +8,17 @@ import 'package:http/http.dart' as http;
 
 class HttpAdapter implements HttpClient {
   http.Client client;
+  LoadCurrentAccountUsecase currentAccount;
 
   HttpAdapter({
     required this.client,
+    required this.currentAccount,
   });
+
+  Future<String> getAuthorization() async {
+    final account = await currentAccount.load();
+    return account?.token ?? "";
+  }
 
   @override
   Future<HttpResponse<T>> get<T>({
@@ -19,6 +27,8 @@ class HttpAdapter implements HttpClient {
     Duration? timeout,
   }) async {
     try {
+      final authorization = await getAuthorization();
+      print("authoriaztion " + authorization);
       var response = await client
           .get(
             Uri.parse(url),
@@ -26,6 +36,7 @@ class HttpAdapter implements HttpClient {
                 {
                   'content-type': 'application/json',
                   'accept': 'application/json',
+                  'Authorization': 'Bearer ' + authorization
                 },
           )
           .timeout(
@@ -48,6 +59,8 @@ class HttpAdapter implements HttpClient {
     Duration? timeout,
   }) async {
     try {
+      final authorization = await getAuthorization();
+      print("authoriaztion " + authorization);
       var response = await client
           .post(
             Uri.parse(url),
@@ -56,6 +69,7 @@ class HttpAdapter implements HttpClient {
                 {
                   'content-type': 'application/json',
                   'accept': 'application/json',
+                  'Authorization': 'Bearer ' + authorization
                 },
           )
           .timeout(timeout ?? Duration(seconds: 5));

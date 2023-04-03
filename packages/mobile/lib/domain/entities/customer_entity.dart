@@ -13,8 +13,8 @@ class CustomerEntity {
     required this.sector,
   });
 
-  factory CustomerEntity.fromJson(Map<String, String> json) => CustomerEntity(
-        id: json["id"] ?? "",
+  factory CustomerEntity.fromJson(Map json) => CustomerEntity(
+        id: json["id"].toString() ?? "",
         name: json["name"] ?? "",
         email: json["email"] ?? "",
         enrollment: json["enrollment"] ?? "",

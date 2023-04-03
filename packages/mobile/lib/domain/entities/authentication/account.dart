@@ -11,7 +11,7 @@ class Account {
   });
 
   factory Account.fromJson(Map json) => Account(
-        token: json["token"] ?? "",
+        token: json["accessToken"] ?? "",
         name: json["name"] ?? "",
         username: json["username"] ?? "",
         profilePictureUrl: json["profile_url"] ?? "",

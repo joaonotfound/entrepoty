@@ -30,11 +30,7 @@ class GetxCustomerPresenter extends GetxController
       sector: _sector,
     ));
     response.fold((error) => mainError = fromDomain(error), (customer) {
-      navigateTo = "/home";
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Customer created.")),
-      );
+      Get.back();
     });
     isLoading = false;
   }
