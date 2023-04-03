@@ -7,3 +7,4 @@ export 'load_stock_items/load_stock_items.dart';
 export 'register_lot/register_lot.dart';
 export 'load_customers/load_customers.dart';
 export 'logout/logout.dart';
+export 'save_customer/save_customer.dart';
