@@ -1,5 +1,5 @@
-import 'package:entrepoty/domain/entities/stock_item_entity.dart';
+import 'package:entrepoty/domain/entities/product_entity.dart';
 
 abstract class LoadStockItemsUsecase {
-  Future<List<StockItemEntity>> loadAllItems();
+  Future<List<ProductEntity>> loadAllItems();
 }

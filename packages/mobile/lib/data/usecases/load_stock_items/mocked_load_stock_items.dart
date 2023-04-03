@@ -1,4 +1,4 @@
-import 'package:entrepoty/domain/entities/stock_item_entity.dart';
+import 'package:entrepoty/domain/entities/product_entity.dart';
 import 'package:entrepoty/domain/usecases/usecases.dart';
 
 class MockedLoadStockItems implements LoadStockItemsUsecase {
@@ -8,9 +8,9 @@ class MockedLoadStockItems implements LoadStockItemsUsecase {
     "Headset a2f1e"
   ];
   @override
-  Future<List<StockItemEntity>> loadAllItems() async {
+  Future<List<ProductEntity>> loadAllItems() async {
     return _items
-        .map((e) => StockItemEntity(
+        .map((e) => ProductEntity(
               description: "random-description",
               model: "random-model",
               notes: "aqui vai alguma anotação opcional.",

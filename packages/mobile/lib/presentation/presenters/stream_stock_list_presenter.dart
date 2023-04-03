@@ -12,7 +12,7 @@ class StreamStockListPresenter extends GetxController
   // ignore: close_sinks
   final categoriesController =
       StreamController<List<CategoryEntity>>.broadcast();
-  final itemsController = StreamController<List<StockItemEntity>>.broadcast();
+  final itemsController = StreamController<List<ProductEntity>>.broadcast();
 
   StreamStockListPresenter({
     required this.loadCategories,
@@ -24,7 +24,7 @@ class StreamStockListPresenter extends GetxController
       categoriesController.stream.distinct();
 
   @override
-  Stream<List<StockItemEntity>> get itemsStream => itemsController.stream;
+  Stream<List<ProductEntity>> get itemsStream => itemsController.stream;
 
   @override
   Future<void> loadScreen() async {

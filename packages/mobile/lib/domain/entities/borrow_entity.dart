@@ -1,6 +1,6 @@
-import 'stock_item_entity.dart';
+import 'product_entity.dart';
 
-class BorrowStockItemEntity extends StockItemEntity {
+class BorrowStockItemEntity extends ProductEntity {
   final int quantity;
   const BorrowStockItemEntity({
     required this.quantity,

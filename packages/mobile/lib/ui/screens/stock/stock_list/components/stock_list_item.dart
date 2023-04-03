@@ -2,7 +2,7 @@ import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/material.dart';
 
 class StockListItem extends StatelessWidget {
-  StockItemEntity item;
+  ProductEntity item;
   StockListItem({
     super.key,
     required this.item,
