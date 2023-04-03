@@ -38,7 +38,7 @@ void main() {
     });
     test("should return account with correct values", () async {
       final response = HttpResponse(statuscode: 200, body: {
-        "token": "random-token",
+        "accessToken": "random-token",
         "username": "random-username",
         "name": "random-name",
         "profile_url": "random_profile_url",

@@ -2,15 +2,21 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 
+import '../../data/usecases/remote_customer/remove_customer_mock.dart';
 import '../../domain/domain.dart';
 
 void main() {
   late MockLoadCustomers loadCustomers;
   late GetxCustomerListPresenter sut;
+  late RemoveCustomerMock removeCusomer;
   setUp(() {
     loadCustomers = MockLoadCustomers();
     loadCustomers.mockLoadCustomers([]);
-    sut = GetxCustomerListPresenter(loadCustomersUsecase: loadCustomers);
+    removeCusomer = RemoveCustomerMock();
+    sut = GetxCustomerListPresenter(
+      loadCustomersUsecase: loadCustomers,
+      removeCustomer: removeCusomer,
+    );
   });
   group("GetxCustomersPresenter", () {
     test("should emit customers when calling loadCustomers", () async {
