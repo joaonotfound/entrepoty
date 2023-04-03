@@ -1,10 +1,14 @@
-import 'package:entrepoty/ui/components/components.dart';
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:entrepoty/ui/screens/customer/customer_creation/components/components.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 
 class CustomerCreationScreen extends StatefulWidget {
-  const CustomerCreationScreen({super.key});
+  CustomerCreationPresenter presenter;
+  CustomerCreationScreen({
+    super.key,
+    required this.presenter,
+  });
 
   @override
   State<CustomerCreationScreen> createState() => _CustomerCreationScreenState();

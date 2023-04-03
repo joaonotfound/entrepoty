@@ -1,3 +1,4 @@
+import 'package:entrepoty/main/factories/pages/customer_creation/customer_creation.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 import 'package:get/get.dart';
 import '../../ui/ui.dart';
@@ -20,7 +21,7 @@ List<GetPage> generateRoutes() {
     GetPage(name: Routes.home, page: makeAppController),
     GetPage(
       name: Routes.createCustomer,
-      page: () => CustomerCreationScreen(),
+      page: () => makeCustomerCreationScreen(),
       transition: Transition.rightToLeft,
     ),
     GetPage(name: Routes.settings, page: () => makeSettingsScreen()),
