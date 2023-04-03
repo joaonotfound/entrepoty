@@ -89,4 +89,38 @@ class HttpAdapter implements HttpClient {
       return const HttpResponse(statuscode: 500);
     }
   }
+
+  @override
+  Future<HttpResponse<T>> delete<T>({
+    required String url,
+    Map? body,
+    Map? headers,
+    Duration? timeout,
+  }) async {
+    try {
+      final authorization = await getAuthorization();
+      print(authorization);
+      var response = await client
+          .delete(Uri.parse(url),
+              body: jsonEncode(body),
+              headers: headers?.cast<String, String>() ??
+                  {
+                    'content-type': 'application/json',
+                    'accept': 'application/json',
+                  }
+                ..addAll((authorization == null || authorization.length <= 2)
+                    ? {}
+                    : {"Authorization": "Bearer " + authorization}))
+          .timeout(timeout ?? Duration(seconds: 5));
+
+      final responseBody = response.body.length == 0 ? "{}" : response.body;
+      debugPrint(response.statusCode.toString());
+      return HttpResponse(
+        statuscode: response.statusCode,
+        body: json.decode(responseBody),
+      );
+    } catch (e) {
+      return const HttpResponse(statuscode: 500);
+    }
+  }
 }
