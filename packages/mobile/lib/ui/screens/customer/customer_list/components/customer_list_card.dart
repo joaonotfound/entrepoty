@@ -1,6 +1,8 @@
+import 'package:entrepoty/ui/ui.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../domain/domain.dart';
 
@@ -12,6 +14,7 @@ class CustomerListCard extends StatelessWidget {
   final CustomerEntity user;
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<CustomerListPresenter>(context);
     return InkWell(
       child: Card(
         margin: EdgeInsets.only(),
@@ -58,6 +61,16 @@ class CustomerListCard extends StatelessWidget {
                   ),
                 ),
               ),
+              PopupMenuButton(
+                  itemBuilder: (context) => [
+                        PopupMenuItem(
+                          child: ListTile(
+                            leading: Icon(FluentIcons.delete_12_regular),
+                            title: Text("Delete"),
+                          ),
+                          onTap: () => provider.deleteCustomer(user.enrollment),
+                        )
+                      ])
             ],
           ),
         ),

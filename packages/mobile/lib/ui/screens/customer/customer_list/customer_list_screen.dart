@@ -3,6 +3,7 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class CustomerListScreen extends StatelessWidget with UiErrorManager {
   const CustomerListScreen({
@@ -42,13 +43,17 @@ class CustomerListScreen extends StatelessWidget with UiErrorManager {
                   return isLoadingSnapshot.data == true
                       ? Center(child: Text("Loading"))
                       : customersSnapshot.data?.isNotEmpty == true
-                          ? ListView.separated(
-                              separatorBuilder: (context, index) =>
-                                  const SizedBox(height: 10),
-                              itemCount: customersSnapshot.data!.length,
-                              itemBuilder: ((context, index) =>
-                                  CustomerListCard(
-                                      user: customersSnapshot.data![index])))
+                          ? ListenableProvider(
+                              create: (context) => presenter,
+                              child: ListView.separated(
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 10),
+                                  itemCount: customersSnapshot.data!.length,
+                                  itemBuilder: ((context, index) =>
+                                      CustomerListCard(
+                                          user:
+                                              customersSnapshot.data![index]))),
+                            )
                           : const Center(
                               child: Text("Couldn't find any customer"));
                 },
