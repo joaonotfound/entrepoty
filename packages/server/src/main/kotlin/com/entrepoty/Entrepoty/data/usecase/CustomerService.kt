@@ -6,11 +6,12 @@ import com.entrepoty.Entrepoty.domain.entities.Customer
 import com.entrepoty.Entrepoty.domain.entities.DomainError
 import com.entrepoty.Entrepoty.domain.usecase.CreateCustomerUsecase
 import com.entrepoty.Entrepoty.domain.usecase.LoadCustomersUsecase
+import com.entrepoty.Entrepoty.domain.usecase.RemoveCustomerUsecase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class CustomerService : CreateCustomerUsecase, LoadCustomersUsecase {
+class CustomerService : CreateCustomerUsecase, LoadCustomersUsecase, RemoveCustomerUsecase {
     @Autowired
     lateinit var repository: CustomersRepository;
 
@@ -22,6 +23,14 @@ class CustomerService : CreateCustomerUsecase, LoadCustomersUsecase {
         return Either.Right(repository.save(customer))
     }
 
+    override fun removeCustomer(enrollment: String): Either<DomainError, Customer> {
+        var user = repository.findByEnrollment(enrollment);
+        if(user.isEmpty){
+            return Either.Left(DomainError.notFound);
+        }
+        repository.delete(user.get());
+        return Either.Right(user.get());
+    }
     override fun loadCustomers(): List<Customer> {
         return repository.findAll()
     }
