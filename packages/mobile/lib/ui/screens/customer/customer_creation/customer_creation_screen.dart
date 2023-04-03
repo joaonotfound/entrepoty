@@ -1,7 +1,9 @@
 import 'package:entrepoty/ui/layout/layout.dart';
-import 'package:entrepoty/ui/screens/customer/customer_creation/components/components.dart';
+
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'components/components.dart';
 
 class CustomerCreationScreen extends StatefulWidget {
   CustomerCreationPresenter presenter;
@@ -17,23 +19,23 @@ class CustomerCreationScreen extends StatefulWidget {
 class _CustomerCreationScreenState extends State<CustomerCreationScreen> {
   @override
   Widget build(BuildContext context) {
-    return FormLayout(
-      content: Form(
-        child: ListView(children: [
-          UserNameField(),
-          SizedBox(height: 10),
-          UserEmailField(),
-          SizedBox(height: 10),
-          CustomerEnrollmentField(),
-          SizedBox(height: 10),
-          CustomerSectorField(),
-        ]),
+    return ListenableProvider(
+      create: (context) => widget.presenter,
+      child: FormLayout(
+        content: Form(
+          child: ListView(children: [
+            CustomerCreationName(),
+            SizedBox(height: 10),
+            CustomerCreationEmailField(),
+            SizedBox(height: 10),
+            CustomerCreationEnrollmentField(),
+            SizedBox(height: 10),
+            CustomerCreationSectorField(),
+          ]),
+        ),
+        action: CustomerCreationSubmit(),
+        title: "Create Customer",
       ),
-      action: ElevatedButton(
-        child: Text("Create"),
-        onPressed: () {},
-      ),
-      title: "Create Customer",
     );
   }
 }
