@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,28 +13,53 @@ class CustomerListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Theme.of(context).colorScheme.surface,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgPicture.network(
-              "https://source.boringavatars.com/beam",
-              width: MediaQuery.of(context).size.width * 0.15,
-            ),
-            SizedBox(width: 15),
-            Text(
-              user.name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+      child: Card(
+        margin: EdgeInsets.only(),
+        color: Theme.of(context).colorScheme.surface,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.network(
+                "https://source.boringavatars.com/beam",
+                width: MediaQuery.of(context).size.width * 0.15,
               ),
-            ),
-          ],
+              SizedBox(width: 15),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  constraints: BoxConstraints(minHeight: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            user.name,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          SizedBox(width: 10),
+                          Text("@${user.enrollment}",
+                              style: Theme.of(context).textTheme.bodyMedium),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(FluentIcons.organization_12_regular, size: 15),
+                          SizedBox(width: 5),
+                          Text(user.sector),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

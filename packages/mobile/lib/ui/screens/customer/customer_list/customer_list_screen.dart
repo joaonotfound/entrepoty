@@ -27,18 +27,21 @@ class CustomerListScreen extends StatelessWidget with UiErrorManager {
             )
           ],
         ),
-        body: StreamBuilder(
-          stream: presenter.customersStream,
-          builder: (context, snapshot) {
-            return snapshot.data?.isNotEmpty == true
-                ? ListView.separated(
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10),
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: ((context, index) =>
-                        CustomerListCard(user: snapshot.data![index])))
-                : const Center(child: Text("Loading"));
-          },
+        body: RefreshIndicator(
+          onRefresh: () => presenter.loadCustomers(),
+          child: StreamBuilder(
+            stream: presenter.customersStream,
+            builder: (context, snapshot) {
+              return snapshot.data?.isNotEmpty == true
+                  ? ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: ((context, index) =>
+                          CustomerListCard(user: snapshot.data![index])))
+                  : const Center(child: Text("Loading"));
+            },
+          ),
         ),
         floatingActionButton: FloatingActionButton.extended(
           heroTag: "add-user",
