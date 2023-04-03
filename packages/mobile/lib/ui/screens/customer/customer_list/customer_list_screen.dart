@@ -19,6 +19,10 @@ class CustomerListScreen extends StatelessWidget with UiErrorManager {
         appBar: AppBar(
           actions: [
             IconButton(
+              icon: const Icon(Icons.refresh),
+              onPressed: () => presenter.loadCustomers(),
+            ),
+            IconButton(
               icon: const Icon(FluentIcons.search_12_regular),
               onPressed: () => Get.to(
                 const SearchScreen(),
@@ -31,15 +35,24 @@ class CustomerListScreen extends StatelessWidget with UiErrorManager {
           onRefresh: () => presenter.loadCustomers(),
           child: StreamBuilder(
             stream: presenter.customersStream,
-            builder: (context, snapshot) {
-              return snapshot.data?.isNotEmpty == true
-                  ? ListView.separated(
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 10),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: ((context, index) =>
-                          CustomerListCard(user: snapshot.data![index])))
-                  : const Center(child: Text("Loading"));
+            builder: (context, customersSnapshot) {
+              return StreamBuilder(
+                stream: presenter.isLoadingStream,
+                builder: (context, isLoadingSnapshot) {
+                  return isLoadingSnapshot.data == true
+                      ? Center(child: Text("Loading"))
+                      : customersSnapshot.data?.isNotEmpty == true
+                          ? ListView.separated(
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 10),
+                              itemCount: customersSnapshot.data!.length,
+                              itemBuilder: ((context, index) =>
+                                  CustomerListCard(
+                                      user: customersSnapshot.data![index])))
+                          : const Center(
+                              child: Text("Couldn't find any customer"));
+                },
+              );
             },
           ),
         ),

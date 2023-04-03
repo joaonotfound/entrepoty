@@ -34,12 +34,7 @@ class RemoteSignup implements SignupUsecase {
         return Right(DomainError.unexpected);
       }
       final account = response.body ?? {};
-      return Left(Account(
-        token: account["token"] ?? "",
-        username: account["username"] ?? "",
-        name: account["name"] ?? "",
-        profilePictureUrl: account["profile_url"] ?? "",
-      ));
+      return Left(Account.fromJson(account));
     } on HttpError catch (e) {
       return Right(e == HttpError.badRequest
           ? DomainError.invalidCredentials
