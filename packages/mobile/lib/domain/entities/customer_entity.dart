@@ -1,17 +1,15 @@
-enum PermissionLevel {
-  Administrator,
-  Employeer,
-}
-
 class CustomerEntity {
   final String id;
   final String name;
   final String email;
-  final PermissionLevel permissionLevel;
+  final String enrollment;
+  final String sector;
+
   const CustomerEntity({
     required this.id,
     required this.name,
     required this.email,
-    required this.permissionLevel,
+    required this.enrollment,
+    required this.sector,
   });
 }

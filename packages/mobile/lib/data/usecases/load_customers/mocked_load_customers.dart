@@ -7,7 +7,8 @@ class MockedLoadCustomers extends LoadCustomersUsecase {
       id: "id-$index",
       name: "user $index",
       email: "mocked@gmail.com",
-      permissionLevel: PermissionLevel.Employeer,
+      enrollment: "random-number",
+      sector: "Human Resources",
     ),
   );
   @override
