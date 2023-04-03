@@ -1,16 +1,13 @@
 import 'product_entity.dart';
 
-class BorrowStockItemEntity extends ProductEntity {
-  final int quantity;
-  const BorrowStockItemEntity({
-    required this.quantity,
-    required super.description,
-    required super.imageUrl,
-    required super.model,
-    required super.notes,
-    required super.receiptUrl,
-  });
-}
+// class BorrowStockItemEntity extends ProductEntity {
+//   final int quantity;
+//   const BorrowStockItemEntity({
+//     required this.quantity,
+//     required super.model,
+//     required super.receiptUrl,
+//   });
+// }
 
 class BorrowEntity {
   final String customerId;
@@ -19,7 +16,7 @@ class BorrowEntity {
   final String chamadoNumber;
   final String returnDate;
   final String notes;
-  final List<BorrowStockItemEntity> items;
+  final List<dynamic> items;
   const BorrowEntity({
     required this.customerId,
     required this.customerName,

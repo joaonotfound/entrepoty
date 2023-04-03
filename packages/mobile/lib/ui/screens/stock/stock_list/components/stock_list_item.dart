@@ -36,11 +36,11 @@ class StockListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      item.description,
+                      item.model.name,
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     Text(
-                      item.model,
+                      item.quantity.toString() + " units.",
                       style: TextStyle(fontSize: 15),
                     )
                   ],

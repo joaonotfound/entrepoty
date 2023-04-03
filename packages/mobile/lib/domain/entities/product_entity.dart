@@ -1,14 +1,18 @@
+import 'package:entrepoty/domain/domain.dart';
+
 class ProductEntity {
-  final String description;
-  final String model;
-  final String notes;
-  final String imageUrl;
+  final ProductModelEntity model;
   final String receiptUrl;
+  final int quantity;
   const ProductEntity({
-    required this.description,
     required this.model,
-    required this.notes,
-    required this.imageUrl,
     required this.receiptUrl,
+    required this.quantity,
   });
+
+  factory ProductEntity.fromJson(Map json) => ProductEntity(
+        model: ProductModelEntity.fromJson(json['model'] ?? {}),
+        receiptUrl: json['receipt_url'] ?? 0,
+        quantity: json['quantity'] ?? 0,
+      );
 }
