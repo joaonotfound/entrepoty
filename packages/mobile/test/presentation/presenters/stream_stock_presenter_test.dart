@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:entrepoty/presentation/presenters/presenters.dart';
 
@@ -7,12 +8,12 @@ import '../../domain/domain.dart';
 void main() {
   late StreamStockListPresenter sut;
   late MockLoadCategories loadCategories;
-  late MockLoadStockItems loadStockItems;
+  late LoadProductsMock loadStockItems;
   setUp(() {
     loadCategories = MockLoadCategories();
     loadCategories.mockLoad([]);
-    loadStockItems = MockLoadStockItems();
-    loadStockItems.mockLoadAllItems([]);
+    loadStockItems = LoadProductsMock();
+    loadStockItems.mockLoad(Either.right([]));
     sut = StreamStockListPresenter(
       loadCategories: loadCategories,
       loadItems: loadStockItems,

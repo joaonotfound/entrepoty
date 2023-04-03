@@ -4,6 +4,6 @@ import 'package:entrepoty/presentation/presenters/presenters.dart';
 StreamStockListPresenter makeStreamStockListPresenter() {
   return StreamStockListPresenter(
     loadCategories: makeMockedLoadCategories(),
-    loadItems: makeMockedLoadStockItems(),
+    loadItems: makeRemoteLoadProduct(),
   );
 }

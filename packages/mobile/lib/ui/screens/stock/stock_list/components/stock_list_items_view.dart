@@ -31,9 +31,10 @@ class _StockListItemsViewState extends State<StockListItemsView> {
                     StockListItem(item: snapshot.data![index]))),
           );
         } else {
-          return Center(
-              child:
-                  Text("Não há items no estoque! ${snapshot.data.toString()}"));
+          return Expanded(
+            flex: 1,
+            child: Center(child: Text("There's no product on stock")),
+          );
         }
       }),
     );

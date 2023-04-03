@@ -22,23 +22,26 @@ class _StockListScreenState extends State<StockListScreen> {
   @override
   Widget build(BuildContext context) {
     widget.presenter.loadScreen();
-    return HomeLayout(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.toNamed(Routes.createStockItem),
-        icon: Icon(Icons.add),
-        label: Text("Create item"),
-      ),
-      body: ListenableProvider(
-        create: (_) => widget.presenter,
-        child: Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: ListView(
-            children: [
-              StockListWelcomeMessage(),
-              StockListSearchInput(),
-              StockListFilterChips(),
-              StockListItemsView(),
-            ],
+    return RefreshIndicator(
+      onRefresh: () => widget.presenter.loadScreen(),
+      child: HomeLayout(
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () => Get.toNamed(Routes.createStockItem),
+          icon: Icon(Icons.add),
+          label: Text("Create item"),
+        ),
+        body: ListenableProvider(
+          create: (_) => widget.presenter,
+          child: Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: ListView(
+              children: [
+                StockListWelcomeMessage(),
+                StockListSearchInput(),
+                StockListFilterChips(),
+                StockListItemsView(),
+              ],
+            ),
           ),
         ),
       ),

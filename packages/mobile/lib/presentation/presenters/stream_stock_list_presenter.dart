@@ -8,7 +8,7 @@ import 'package:entrepoty/ui/screens/screens.dart';
 class StreamStockListPresenter extends GetxController
     implements StockListPresenter {
   final LoadCategoriesUsecase loadCategories;
-  final LoadStockItemsUsecase loadItems;
+  final LoadProductsUsecase loadItems;
   // ignore: close_sinks
   final categoriesController =
       StreamController<List<CategoryEntity>>.broadcast();
@@ -30,8 +30,10 @@ class StreamStockListPresenter extends GetxController
   Future<void> loadScreen() async {
     final categories = await loadCategories.load();
     categoriesController.add(categories);
-    final items = await loadItems.loadAllItems();
-    itemsController.add(items);
+    final items = await loadItems.loadProducts();
+    items.fold((l) {}, (items) {
+      itemsController.add(items);
+    });
   }
 
   @override
