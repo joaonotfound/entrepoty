@@ -13,3 +13,4 @@ export 'delete_customer_usecase.dart';
 export 'create_product_model.dart';
 export 'load_product_models.dart';
 export 'delete_product_model_usecase.dart';
+export 'products/products.dart';
