@@ -44,7 +44,7 @@ class CustomerListScreen extends StatelessWidget {
         heroTag: "add-user",
         onPressed: () => Get.toNamed(Routes.createCustomer),
         icon: const Icon(Icons.add),
-        label: const Text("Create user"),
+        label: const Text("Customer"),
       ),
     );
   }

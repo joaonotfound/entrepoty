@@ -26,10 +26,10 @@ class _CustomerCreationScreenState extends State<CustomerCreationScreen> {
         ]),
       ),
       action: ElevatedButton(
-        child: Text("Create user"),
+        child: Text("Create"),
         onPressed: () {},
       ),
-      title: "Create user",
+      title: "Create Customer",
     );
   }
 }
