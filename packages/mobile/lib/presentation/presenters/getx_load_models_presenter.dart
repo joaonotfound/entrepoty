@@ -27,9 +27,7 @@ class GetxLoadModelsPresenter extends GetxController
     try {
       isLoading = true;
       final response = await loadModelsUsecase.loadModels();
-      response.fold((error) {
-        mainError = fromDomain(error);
-      }, (newModels) {
+      response.fold((error) {}, (newModels) {
         models.value = newModels;
       });
     } catch (_) {
