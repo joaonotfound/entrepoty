@@ -4,6 +4,7 @@ import arrow.core.Either
 import com.entrepoty.Entrepoty.data.repositories.ProductModelRepository
 import com.entrepoty.Entrepoty.domain.entities.DomainError
 import com.entrepoty.Entrepoty.domain.entities.ProductModelEntity
+import com.entrepoty.Entrepoty.presentation.controllers.ProductModelController
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -19,5 +20,12 @@ class ProductModelService {
     fun loadModels(): Either<DomainError, List<ProductModelEntity>>{
         return Either.Right(repository.findAll());
     }
-
+    fun deleteModel(id: Long): Either<DomainError, ProductModelEntity> {
+        var possibleModel = repository.findById(id);
+        if(possibleModel.isEmpty){
+            return Either.Left(DomainError.notFound);
+        }
+        repository.delete(possibleModel.get());
+        return Either.Right(possibleModel.get());
+    }
 }
