@@ -24,9 +24,12 @@ class GetxModelCreationPresenter extends GetxController
 
   String _name = "";
   final _nameError = RxString('');
+
   Stream<String?> get nameErrorStream => _nameError.stream;
 
+  String _image = "";
   final _hasImage = RxBool(false);
+
   Stream<bool> get hasImageStream => _hasImage.stream;
 
   @override
@@ -38,15 +41,21 @@ class GetxModelCreationPresenter extends GetxController
   }
 
   void _validateForm() {
-    isFormValid = _name != '' && _nameError.value == "";
+    isFormValid = _name != '' && _nameError.value == "" && _image != '';
   }
 
-  Future<void> deletePhoto() async {}
+  Future<void> deletePhoto() async {
+    _image = '';
+    _hasImage.value = false;
+    _validateForm();
+  }
 
   Future<void> pickImage() async {
     final response = await takeImage.takeImage();
     response.fold((l) {}, (path) {
       _hasImage.value = true;
+      _image = path;
+      _validateForm();
     });
   }
 
