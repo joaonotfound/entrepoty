@@ -14,3 +14,4 @@ export 'load_product_models.dart';
 export 'delete_product_model_usecase.dart';
 export 'products/products.dart';
 export 'borrow/borrow.dart';
+export 'take_image_usecase.dart';
