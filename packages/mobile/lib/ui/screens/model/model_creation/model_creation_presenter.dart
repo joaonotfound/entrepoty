@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../misc/errors/ui_error.dart';
 
 abstract class ModelCreationPresenter implements Listenable {
+  Stream<bool> get hasImageStream;
   Stream<String?> get nameErrorStream;
   Stream<String?> get navigateToStream;
   Stream<bool> get isFormValidStream;

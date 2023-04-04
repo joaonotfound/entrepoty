@@ -50,4 +50,8 @@ class MockedModelCreationPresenter implements ModelCreationPresenter {
   void removeListener(VoidCallback listener) {
     // TODO: implement removeListener
   }
+
+  @override
+  // TODO: implement hasImageStream
+  Stream<bool> get hasImageStream => throw UnimplementedError();
 }

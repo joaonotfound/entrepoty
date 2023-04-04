@@ -13,15 +13,21 @@ class GetxModelCreationPresenter extends GetxController
         GetxFormManager
     implements ModelCreationPresenter {
   Validation validation;
+  TakeImageUsecase takeImage;
   CreateProductModelUsecase usecase;
+
   GetxModelCreationPresenter({
     required this.validation,
     required this.usecase,
+    required this.takeImage,
   });
 
   String _name = "";
   final _nameError = RxString('');
   Stream<String?> get nameErrorStream => _nameError.stream;
+
+  final _hasImage = RxBool(false);
+  Stream<bool> get hasImageStream => _hasImage.stream;
 
   @override
   void validateName(String name) {
@@ -37,7 +43,12 @@ class GetxModelCreationPresenter extends GetxController
 
   Future<void> deletePhoto() async {}
 
-  Future<void> pickImage() async {}
+  Future<void> pickImage() async {
+    final response = await takeImage.takeImage();
+    response.fold((l) {}, (path) {
+      _hasImage.value = true;
+    });
+  }
 
   @override
   Future<void> createModel() async {
