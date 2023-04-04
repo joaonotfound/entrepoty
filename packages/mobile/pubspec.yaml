@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get:
   intl:
+  image_picker:
   dropdown_search: ^5.0.6
   flutter_secure_storage:
   provider:
