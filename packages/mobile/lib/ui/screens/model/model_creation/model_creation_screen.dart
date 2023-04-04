@@ -25,8 +25,8 @@ class ModelCreationScreen extends StatelessWidget
           return FormLayout(
             content: Form(
               child: ListView(children: [
-                Text('The models'),
                 ModelCreationNameField(),
+                ModelCreationImagePicker()
               ]),
             ),
             action: ModelCreationSubmit(),
