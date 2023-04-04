@@ -64,6 +64,7 @@ class GetxModelCreationPresenter extends GetxController
     isLoading = true;
     final response = await usecase.createModel(
       ProductModelEntity(name: _name),
+      _image
     );
     response.fold((error) {
       debugPrint("error: " + error.toString());

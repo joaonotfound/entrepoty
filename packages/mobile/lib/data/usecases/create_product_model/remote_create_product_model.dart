@@ -14,13 +14,12 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
   @override
   Future<Either<DomainError, ProductModelEntity>> createModel(
     ProductModelEntity model,
+    String image,
   ) async {
     try {
       final response = await client.post(
         url: url,
-        body: {
-          "name": model.name,
-        },
+        body: {"name": model.name},
       );
       if (response.statuscode == 200) {
         return Either.right(model);

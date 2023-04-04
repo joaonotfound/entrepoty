@@ -4,5 +4,6 @@ import 'package:fpdart/fpdart.dart';
 abstract class CreateProductModelUsecase {
   Future<Either<DomainError, ProductModelEntity>> createModel(
     ProductModelEntity model,
+    String image,
   );
 }
