@@ -15,10 +15,9 @@ class RemoteLoadProduct implements LoadProductsUsecase {
 
   Future<Either<DomainError, List<ProductEntity>>> loadProducts() async {
     try {
-      final httpResponse = await client.get(url: url);
-      final listable = json.decode(httpResponse.body) as List;
+      final httpResponse = await client.get<List<dynamic>>(url: url);
       List<ProductEntity> response = [];
-      for (var json in listable) {
+      for (var json in httpResponse.body ?? []) {
         response.add(ProductEntity.fromJson(json));
       }
       return Either.right(response);

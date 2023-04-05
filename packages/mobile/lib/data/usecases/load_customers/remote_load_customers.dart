@@ -14,10 +14,9 @@ class RemoteLoadCustomers implements LoadCustomersUsecase {
 
   Future<List<CustomerEntity>> loadCustomers() async {
     try {
-      final httpResponse = await client.get(url: url);
-      final listable = json.decode(httpResponse.body) as List;
+      final httpResponse = await client.get<List<dynamic>>(url: url);
       List<CustomerEntity> response = [];
-      for (var json in listable) {
+      for (var json in httpResponse.body ?? []) {
         response.add(CustomerEntity.fromJson(json));
       }
       return response;

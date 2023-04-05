@@ -14,10 +14,10 @@ class RemoteLoadBorrow implements LoadBorrowUsecase {
 
   Future<Either<DomainError, List<BorrowEntity>>> loadAll() async {
     try {
-      final httpResponse = await client.get(url: url);
-      final listable = json.decode(httpResponse.body) as List;
+      final httpResponse = await client.get<List<dynamic>>(url: url);
+
       List<BorrowEntity> response = [];
-      for (var json in listable) {
+      for (var json in httpResponse.body ?? []) {
         response.add(BorrowEntity.fromJson(json));
       }
       return Either.right(response);
