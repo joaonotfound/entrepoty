@@ -24,7 +24,7 @@ class SecurityConfig {
             .exceptionHandling()
             .and()
             .authorizeHttpRequests()
-            .requestMatchers("/api/v1/auth/**")
+            .requestMatchers("/api/v1/auth/**", "/public/**")
             .permitAll()
             .anyRequest()
             .authenticated()

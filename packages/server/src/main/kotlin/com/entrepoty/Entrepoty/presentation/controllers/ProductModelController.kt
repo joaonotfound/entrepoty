@@ -1,5 +1,7 @@
 package com.entrepoty.Entrepoty.presentation.controllers
 
+import arrow.core.getOrElse
+import com.entrepoty.Entrepoty.data.usecase.FileService
 import com.entrepoty.Entrepoty.data.usecase.ProductModelService
 import com.entrepoty.Entrepoty.domain.entities.ProductModelEntity
 import com.entrepoty.Entrepoty.domain.entities.RemoveProductModelEntity
@@ -14,25 +16,43 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.io.path.Path
 
 @RestController
 @RequestMapping("/api/v1/models")
-class ProductModelController  {
+class ProductModelController {
     @Autowired
     lateinit var service: ProductModelService
+
     @Autowired
     lateinit var utils: ResponseUtils
 
-    @PostMapping
-    fun createModel(@RequestPart("name") name: String, @RequestPart("image") image: MultipartFile,): ResponseEntity<ProductModelEntity> {
-        var creation = ProductModelEntity()
-        creation.name = name
+    @Autowired
+    lateinit var fileService: FileService
 
-        return service.createModel(creation).fold(
-            { error -> utils.fromDomain(error) },
-            { model -> ResponseEntity.ok(model) }
-        );
+    @PostMapping
+    fun createModel(
+        @RequestPart("name") name: String,
+        @RequestPart("image") image: MultipartFile
+    ): ResponseEntity<ProductModelEntity> {
+        var savedFile = fileService.saveFile(image, ".jpg")
+        return savedFile.fold({ domainError -> utils.fromDomain(domainError) },
+            { createdFile ->
+                var creation = ProductModelEntity()
+                creation.name = name
+                creation.image_path = createdFile.url
+
+                return service.createModel(creation).fold(
+                    { error -> utils.fromDomain(error) },
+                    { model -> ResponseEntity.ok(model) }
+                )
+            }
+        )
     }
+
     @GetMapping
     fun loadModels(): ResponseEntity<List<ProductModelEntity>> {
         return service.loadModels().fold(
@@ -43,7 +63,7 @@ class ProductModelController  {
 
 
     @DeleteMapping
-    fun deleteModel(@RequestBody body: RemoveProductModelEntity): ResponseEntity<ProductModelEntity>{
+    fun deleteModel(@RequestBody body: RemoveProductModelEntity): ResponseEntity<ProductModelEntity> {
         return service.deleteModel(body.id).fold(
             { error -> utils.fromDomain(error) },
             { models -> ResponseEntity.ok(models) }
