@@ -26,6 +26,7 @@ class ModelCreationScreen extends StatelessWidget
             content: Form(
               child: ListView(children: [
                 ModelCreationNameField(),
+                ModelCreationCategories(),
                 ModelCreationImagePicker()
               ]),
             ),

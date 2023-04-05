@@ -11,6 +11,7 @@ abstract class ModelCreationPresenter implements Listenable {
   Stream<bool> get isLoadingStream;
   Stream<UiError?> get mainErrorStream;
 
+  void validateCategory(String category);
   void validateName(String name);
   Future<void> createModel();
 

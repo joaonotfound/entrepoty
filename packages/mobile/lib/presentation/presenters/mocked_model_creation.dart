@@ -54,4 +54,9 @@ class MockedModelCreationPresenter implements ModelCreationPresenter {
   @override
   // TODO: implement hasImageStream
   Stream<bool> get hasImageStream => throw UnimplementedError();
+
+  @override
+  void validateCategory(String category) {
+    // TODO: implement validateCategory
+  }
 }

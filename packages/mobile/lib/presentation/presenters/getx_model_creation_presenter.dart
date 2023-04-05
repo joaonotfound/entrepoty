@@ -22,9 +22,11 @@ class GetxModelCreationPresenter extends GetxController
     required this.takeImage,
   });
 
+
+  String _category = "";
+
   String _name = "";
   final _nameError = RxString('');
-
   Stream<String?> get nameErrorStream => _nameError.stream;
 
   String _image = "";
@@ -39,9 +41,9 @@ class GetxModelCreationPresenter extends GetxController
         validation.validate(field: "model-name", value: name) ?? "";
     _validateForm();
   }
-
+  
   void _validateForm() {
-    isFormValid = _name != '' && _nameError.value == "" && _image != '';
+    isFormValid = _name != '' && _nameError.value == "" && _image != '' && _category != "";
   }
 
   Future<void> deletePhoto() async {
@@ -74,5 +76,11 @@ class GetxModelCreationPresenter extends GetxController
     });
 
     isLoading = false;
+  }
+
+
+  void validateCategory(String category) {
+    _category = category;
+    _validateForm();
   }
 }
