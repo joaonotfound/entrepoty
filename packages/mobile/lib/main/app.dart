@@ -16,6 +16,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(BackendProvider(presenter: ImplBackendPresenter()));
+    Get.put(CategoriesProvider());
+
     return ChangeNotifierProvider(
       create: (context) => ThemeProvider(
         presenter: GetxThemePresenter(theme: makeLocalTheme()),

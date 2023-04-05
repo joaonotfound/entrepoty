@@ -10,26 +10,25 @@ class StockListFilterChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<StockListPresenter>(context);
-    return StreamBuilder(
-      stream: presenter.categoriesStream,
-      builder: ((context, snapshot) {
-        if (snapshot.data?.isNotEmpty == true && snapshot.data != null) {
+
+    return FutureBuilder(
+        future: presenter.loadCategories(),
+        builder: (context, snapshot) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
             height: 30,
             child: ListView.separated(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: ((context, index) => SizedBox(
-                      width: 5,
-                    )),
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) =>
-                    StockFilterChip(text: snapshot.data![index].name)),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: ((context, index) => SizedBox(
+                    width: 5,
+                  )),
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) => StockFilterChip(
+                text: snapshot.data![index],
+              ),
+            ),
           );
-        }
-        return Text("No categories!");
-      }),
-    );
+        });
   }
 }
