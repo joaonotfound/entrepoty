@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:entrepoty/presentation/presenters/presenters.dart';
 
@@ -18,6 +19,8 @@ void main() {
       loadCategories: loadCategories,
       loadItems: loadStockItems,
     );
+    Get.testMode = true;
+    TestWidgetsFlutterBinding.ensureInitialized();
   });
   group("GetxStockPresenter", () {
     test("should call load categories", () {

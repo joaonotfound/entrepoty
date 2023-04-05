@@ -48,7 +48,7 @@ class HttpAdapter implements HttpClient {
 
       return HttpResponse(
         statuscode: response.statusCode,
-        body: response.body.runtimeType is String
+        body: response.body.runtimeType == String
             ? json.decode(response.body)
             : response.body,
       );
@@ -91,18 +91,17 @@ class HttpAdapter implements HttpClient {
     }
   }
 
-Future<Map<String, String>> _buildHeaders(Map? headers) async {
-
-  final authorization = await getAuthorization();
-  return headers?.cast<String, String>() ??
-      {
-        'content-type': 'application/json',
-        'accept': 'application/json',
-      }
-        ..addAll((authorization == null || authorization.length <= 2)
-            ? {}
-            : {"Authorization": "Bearer " + authorization});
-}
+  Future<Map<String, String>> _buildHeaders(Map? headers) async {
+    final authorization = await getAuthorization();
+    return headers?.cast<String, String>() ??
+        {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+        }
+      ..addAll((authorization == null || authorization.length <= 2)
+          ? {}
+          : {"Authorization": "Bearer " + authorization});
+  }
 
   Future<HttpResponse<T>> delete<T>({
     required String url,
@@ -113,8 +112,7 @@ Future<Map<String, String>> _buildHeaders(Map? headers) async {
     try {
       var response = await client
           .delete(Uri.parse(url),
-              body: jsonEncode(body),
-              headers: await _buildHeaders(headers))
+              body: jsonEncode(body), headers: await _buildHeaders(headers))
           .timeout(timeout ?? Duration(seconds: 5));
 
       final responseBody = response.body.length == 0 ? "{}" : response.body;
