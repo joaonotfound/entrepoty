@@ -14,14 +14,14 @@ class RemoteLoadProductModels implements LoadProductModelsUsecase {
 
   Future<Either<DomainError, List<ProductModelEntity>>> loadModels() async {
     try {
-      final httpResponse = await client.get(url: url);
-      final listable = json.decode(httpResponse.body) as List;
+      final httpResponse = await client.get<List<dynamic>>(url: url);
       List<ProductModelEntity> response = [];
-      for (var json in listable) {
+      for (var json in httpResponse.body ?? []) {
         response.add(ProductModelEntity.fromJson(json));
       }
       return Either.right(response);
     } catch (e) {
+      print(e.toString());
       return Either.left(DomainError.unexpected);
     }
   }
