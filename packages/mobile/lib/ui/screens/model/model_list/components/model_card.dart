@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 class ModelListCard extends StatelessWidget {
   ProductModelEntity model;
+
   ModelListCard({
     super.key,
     required this.model,
@@ -14,21 +15,46 @@ class ModelListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ModelListPresenter>(context);
-    return ListTile(
-      tileColor: Theme.of(context).colorScheme.surface,
-      leading: Icon(FluentIcons.production_20_regular),
-      title: Text(model.name,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-      trailing: PopupMenuButton(
-        itemBuilder: (context) => [
-          PopupMenuItem(
-            child: ListTile(
-              leading: Icon(FluentIcons.delete_12_regular),
-              title: Text("Delete"),
+    final border = 5.0;
+    return InkWell(
+      onTap: () {},
+      child: Card(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(border)),
+        elevation: 0,
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(border),
+                topRight: Radius.circular(border),
+              ),
+              child: Image.network(
+                "http://10.0.2.2:8080" + model.imagePath,
+                height: 250,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fill,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(FluentIcons.production_20_regular);
+                },
+              ),
             ),
-            onTap: () => provider.deleteModel(model.id),
-          )
-        ],
+            ListTile(
+              title: Text(model.name),
+              trailing: PopupMenuButton(
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: Icon(FluentIcons.delete_12_regular),
+                      title: Text("Delete"),
+                    ),
+                    onTap: () => provider.deleteModel(model.id),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
