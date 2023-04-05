@@ -17,7 +17,7 @@ class ModelListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<ModelListPresenter>(context);
     final backend = Provider.of<BackendProvider>(context);
-    
+
     final border = 5.0;
     print(backend.loadResource(model.imagePath));
     return InkWell(
@@ -39,7 +39,27 @@ class ModelListCard extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.fill,
                 errorBuilder: (context, error, stackTrace) {
-                  return Icon(FluentIcons.production_20_regular);
+                  return Container(
+                    width: double.infinity,
+                    color: Theme.of(context).colorScheme.onBackground,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          FluentIcons.image_16_regular,
+                          size: 50,
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
+                        SizedBox(height: 10,),
+                        Text(
+                          "Missing image",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.surface),
+                        )
+                      ],
+                    ),
+                    height: 250,
+                  );
                 },
               ),
             ),
