@@ -9,16 +9,15 @@ import org.jetbrains.annotations.NotNull
 
 @Entity
 @Table(name = "product_models")
-class ProductModelEntity{
+data class ProductModelEntity(
     @field:NotNull
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.AUTO)
-     var id: Long = 0;
+    var id: Long = 0,
 
     @field:NotNull
-     var name: String = "";
+    var name: String = "",
 
-     @field:NotNull
-     var image_path: String = "";
-
- }
+    @field:NotNull
+    var image_path: String = "",
+);
