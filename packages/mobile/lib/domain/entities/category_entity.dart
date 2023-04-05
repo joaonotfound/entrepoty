@@ -11,7 +11,7 @@ class CategoryEntity {
   factory CategoryEntity.fromJson(Map json) => CategoryEntity(
         name: json["name"],
         models: (json["models"].cast() as List)
-            .map((model) => ProductModelEntity(name: model["name"]))
+            .map((model) => ProductModelEntity(name: model["name"], category: model['category']))
             .toList(),
       );
 }

@@ -36,6 +36,7 @@ class ProductModelController {
     @PostMapping
     fun createModel(
         @RequestPart("name") name: String,
+        @RequestPart("category") category: String,
         @RequestPart("image") image: MultipartFile
     ): ResponseEntity<ProductModelEntity> {
         var savedFile = fileService.saveFile(image, ".jpg")
@@ -43,6 +44,7 @@ class ProductModelController {
             { createdFile ->
                 var creation = ProductModelEntity()
                 creation.name = name
+                creation.category = category
                 creation.image_path = createdFile.url
 
                 return service.createModel(creation).fold(

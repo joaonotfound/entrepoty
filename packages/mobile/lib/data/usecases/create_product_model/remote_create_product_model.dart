@@ -20,7 +20,10 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
       method: "POST",
       url: url,
       files: [MultipleFile(name: "image", filePath: image)],
-      data: [MultipleData(name: "name", content: model.name)],
+      data: [
+        MultipleData(name: "name", content: model.name),
+        MultipleData(name: "category", content: model.category)
+      ],
     );
 
     print("image: " + image);

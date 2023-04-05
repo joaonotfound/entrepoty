@@ -5,6 +5,6 @@ class MockedSaveModel extends SaveModelUsecase {
   @override
   Future<Either<DomainError, ProductModelEntity>> saveModel(
       String name, String imagePath) async {
-    return Right(ProductModelEntity(name: "one model"));
+    return Right(ProductModelEntity(name: "one model", category: "category"));
   }
 }

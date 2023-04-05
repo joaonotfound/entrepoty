@@ -16,6 +16,9 @@ data class ProductModelEntity(
     var id: Long = 0,
 
     @field:NotNull
+    var category: String = "",
+
+    @field:NotNull
     var name: String = "",
 
     @field:NotNull

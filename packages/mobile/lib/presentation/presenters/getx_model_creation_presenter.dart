@@ -65,7 +65,7 @@ class GetxModelCreationPresenter extends GetxController
   Future<void> createModel() async {
     isLoading = true;
     final response = await usecase.createModel(
-      ProductModelEntity(name: _name),
+      ProductModelEntity(name: _name, category: _category),
       _image
     );
     response.fold((error) {

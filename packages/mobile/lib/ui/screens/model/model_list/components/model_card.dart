@@ -67,6 +67,7 @@ class ModelListCard extends StatelessWidget {
             ),
             ListTile(
               title: Text(model.name),
+              subtitle: Text(model.category),
               trailing: PopupMenuButton(
                 itemBuilder: (context) => [
                   PopupMenuItem(

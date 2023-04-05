@@ -18,6 +18,7 @@ class _ModelCreationCategoriesState extends State<ModelCreationCategories> {
     "Headset",
     "Mousepad",
     "Charger",
+    "Others"
   ];
 
   String? _value;
