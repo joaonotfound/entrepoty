@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fpdart/src/either.dart';
 
 import '../../data/data.dart';
 import 'package:http/http.dart' as http;
@@ -55,7 +56,6 @@ class HttpAdapter implements HttpClient {
     }
   }
 
-  @override
   Future<HttpResponse<T>> post<T>({
     required String url,
     Map? body,
@@ -86,11 +86,23 @@ class HttpAdapter implements HttpClient {
       );
     } catch (e) {
       debugPrint("error-something: " + e.toString());
-      return const HttpResponse(statuscode: 500);
+      rconst HttpResponse(statuscode: 500);
     }
   }
 
-  @override
+Future<Map<String, String>> _buildHeaders(Map? headers) async {
+
+  final authorization = await getAuthorization();
+  return headers?.cast<String, String>() ??
+      {
+        'content-type': 'application/json',
+        'accept': 'application/json',
+      }
+        ..addAll((authorization == null || authorization.length <= 2)
+            ? {}
+            : {"Authorization": "Bearer " + authorization});
+}
+
   Future<HttpResponse<T>> delete<T>({
     required String url,
     Map? body,
@@ -98,23 +110,14 @@ class HttpAdapter implements HttpClient {
     Duration? timeout,
   }) async {
     try {
-      final authorization = await getAuthorization();
-      print(authorization);
       var response = await client
           .delete(Uri.parse(url),
               body: jsonEncode(body),
-              headers: headers?.cast<String, String>() ??
-                  {
-                    'content-type': 'application/json',
-                    'accept': 'application/json',
-                  }
-                ..addAll((authorization == null || authorization.length <= 2)
-                    ? {}
-                    : {"Authorization": "Bearer " + authorization}))
+              headers: await _buildHeaders(headers))
           .timeout(timeout ?? Duration(seconds: 5));
 
       final responseBody = response.body.length == 0 ? "{}" : response.body;
-      debugPrint(response.statusCode.toString());
+
       return HttpResponse(
         statuscode: response.statusCode,
         body: json.decode(responseBody),
@@ -122,5 +125,40 @@ class HttpAdapter implements HttpClient {
     } catch (e) {
       return const HttpResponse(statuscode: 500);
     }
+  }
+
+  Future<Either<DomainError, HttpResponse<T>>> multiples<T>({
+    required String method,
+    required String url,
+    List<MultipleData>? data,
+    List<MultipleFile>? files,
+  }) async {
+    try {
+      final request = http.MultipartRequest(method, Uri.parse(url));
+
+      for (var file in files ?? [] as List<MultipleFile>) {
+        final content =
+            await http.MultipartFile.fromPath(file.name, file.filePath);
+        request.files.add(content);
+      }
+
+      for (var data in data ?? [] as List<MultipleData>) {
+        request.fields[data.name] = data.content;
+      }
+
+      request.headers.addAll(await _buildHeaders(null));
+
+      final response = await request.send();
+      final body = json.decode(await response.stream.bytesToString());
+
+      return Either.right(
+        HttpResponse(
+          statuscode: response.statusCode,
+          body: body,
+        ),
+      );
+    } catch (e) {}
+
+    return Either.left(DomainError.unexpected);
   }
 }
