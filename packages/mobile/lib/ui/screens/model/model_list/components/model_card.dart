@@ -1,4 +1,5 @@
 import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,10 @@ class ModelListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ModelListPresenter>(context);
+    final backend = Provider.of<BackendProvider>(context);
+    
     final border = 5.0;
+    print(backend.loadResource(model.imagePath));
     return InkWell(
       onTap: () {},
       child: Card(
@@ -30,7 +34,7 @@ class ModelListCard extends StatelessWidget {
                 topRight: Radius.circular(border),
               ),
               child: Image.network(
-                "http://10.0.2.2:8080" + model.imagePath,
+                backend.loadResource(model.imagePath),
                 height: 250,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.fill,

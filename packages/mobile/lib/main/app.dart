@@ -1,3 +1,4 @@
+import 'package:entrepoty/infra/backend/backend.dart';
 import 'package:entrepoty/main/factories/factories.dart';
 import 'package:entrepoty/presentation/presenters/getx_theme_presenter.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) =>
-          ThemeProvider(presenter: GetxThemePresenter(theme: makeLocalTheme())),
+    return MultiProvider(
+      providers: [
+        Provider(
+            create: (context) => ThemeProvider(
+                presenter: GetxThemePresenter(theme: makeLocalTheme()))),
+        Provider(
+          create: (context) =>
+              BackendProvider(presenter: ImplBackendPresenter()),
+        )
+      ],
       builder: (context, child) {
         ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
