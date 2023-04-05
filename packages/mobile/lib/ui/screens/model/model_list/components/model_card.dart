@@ -3,7 +3,9 @@ import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/dialog/dialog_route.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class ModelListCard extends StatelessWidget {
   ProductModelEntity model;
@@ -16,7 +18,7 @@ class ModelListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ModelListPresenter>(context);
-    final backend = Provider.of<BackendProvider>(context);
+    final backend = Get.find<BackendProvider>();
 
     final border = 5.0;
     print(backend.loadResource(model.imagePath));

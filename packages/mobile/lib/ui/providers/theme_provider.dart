@@ -1,6 +1,7 @@
 import 'package:entrepoty/ui/providers/providers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemePresenter presenter;

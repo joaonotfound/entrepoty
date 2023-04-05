@@ -15,16 +15,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider(
-            create: (context) => ThemeProvider(
-                presenter: GetxThemePresenter(theme: makeLocalTheme()))),
-        Provider(
-          create: (context) =>
-              BackendProvider(presenter: ImplBackendPresenter()),
-        )
-      ],
+    Get.put(BackendProvider(presenter: ImplBackendPresenter()));
+    return ChangeNotifierProvider(
+      create: (context) => ThemeProvider(
+        presenter: GetxThemePresenter(theme: makeLocalTheme()),
+      ),
       builder: (context, child) {
         ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
