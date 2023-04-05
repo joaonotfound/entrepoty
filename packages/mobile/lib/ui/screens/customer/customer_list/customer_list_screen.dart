@@ -55,7 +55,7 @@ class CustomerListScreen extends StatelessWidget with UiErrorManager {
                                               customersSnapshot.data![index]))),
                             )
                           : const Center(
-                              child: Text("Couldn't find any customer"));
+                              child: Text("No customers found"));
                 },
               );
             },
