@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/rendering.dart';
@@ -86,7 +87,7 @@ class HttpAdapter implements HttpClient {
       );
     } catch (e) {
       debugPrint("error-something: " + e.toString());
-      rconst HttpResponse(statuscode: 500);
+      return HttpResponse(statuscode: 500);
     }
   }
 

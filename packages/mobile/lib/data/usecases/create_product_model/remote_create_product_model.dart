@@ -1,5 +1,6 @@
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:fpdart/src/either.dart';
 
 class RemoteCreateProductModel implements CreateProductModelUsecase {
@@ -11,23 +12,26 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
     required this.url,
   });
 
-  @override
   Future<Either<DomainError, ProductModelEntity>> createModel(
     ProductModelEntity model,
     String image,
   ) async {
-    try {
-      final response = await client.post(
-        url: url,
-        body: {"name": model.name},
-      );
-      if (response.statuscode == 200) {
-        return Either.right(model);
-      }
-      if (response.statuscode == 409) {
-        return Either.left(DomainError.accountAlreadyExists);
-      }
-    } catch (e) {}
-    return Either.left(DomainError.unexpected);
+    final rawResponse = await client.multiples(
+      method: "POST",
+      url: url,
+      files: [MultipleFile(name: "image", filePath: image)],
+      data: [MultipleData(name: "name", content: model.name)],
+    );
+
+    print("image: " + image);
+
+    return rawResponse.fold(
+      (error) => Either.left(error),
+      (response) => response.statuscode == 200
+          ? Either.right(model)
+          : response.statuscode == 409
+              ? Either.left(DomainError.accountAlreadyExists)
+              : Either.left(DomainError.unexpected),
+    );
   }
 }
