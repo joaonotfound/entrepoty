@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
+
 import 'backend_presenter.dart';
 
-class BackendProvider {
+class BackendProvider extends ChangeNotifier {
   BackendPresenter presenter;
 
   BackendProvider({
