@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 class ModelListScreen extends StatelessWidget with UiErrorManager {
   ModelListPresenter presenter;
+
   ModelListScreen({
     super.key,
     required this.presenter,
@@ -26,12 +27,14 @@ class ModelListScreen extends StatelessWidget with UiErrorManager {
               onPressed: () => presenter.loadModels(),
             ),
             IconButton(
-              icon: const Icon(FluentIcons.search_12_regular),
-              onPressed: () => Get.to(
-                const SearchScreen(),
-                transition: Transition.rightToLeft,
-              ),
-            )
+                icon: const Icon(FluentIcons.search_12_regular),
+                onPressed: () {
+                  Get.put(presenter);
+                  Get.to(
+                    const SearchScreen(),
+                    transition: Transition.rightToLeft,
+                  );
+                })
           ],
         ),
         body: RefreshIndicator(

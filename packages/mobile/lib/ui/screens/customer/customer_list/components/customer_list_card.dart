@@ -15,6 +15,7 @@ class CustomerListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CustomerListPresenter>(context);
+
     return InkWell(
       child: ListTile(
         tileColor: Theme.of(context).colorScheme.surface,

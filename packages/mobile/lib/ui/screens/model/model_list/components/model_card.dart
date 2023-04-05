@@ -3,7 +3,6 @@ import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/dialog/dialog_route.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 
@@ -17,13 +16,18 @@ class ModelListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ModelListPresenter>(context);
+    final presenter = Provider.of<ModelListPresenter>(context);
     final backend = Get.find<BackendProvider>();
 
     final border = 5.0;
     print(backend.loadResource(model.imagePath));
     return InkWell(
-      onTap: () {},
+      onTap: () => Get.to(
+        ModelViewScreen(
+          model: model,
+          presenter: presenter,
+        ),
+      ),
       child: Card(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(border)),
@@ -52,7 +56,9 @@ class ModelListCard extends StatelessWidget {
                           size: 50,
                           color: Theme.of(context).colorScheme.surface,
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Text(
                           "Missing image",
                           style: TextStyle(
@@ -75,7 +81,7 @@ class ModelListCard extends StatelessWidget {
                       leading: Icon(FluentIcons.delete_12_regular),
                       title: Text("Delete"),
                     ),
-                    onTap: () => provider.deleteModel(model.id),
+                    onTap: () => presenter.deleteModel(model.id),
                   )
                 ],
               ),
