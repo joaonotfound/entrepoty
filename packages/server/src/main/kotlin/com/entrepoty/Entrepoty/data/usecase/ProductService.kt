@@ -26,8 +26,7 @@ class ProductService {
         return Either.Right(repository.save(ProductEntity(possibleModel.get(), product.quantity, "")));
 
     }
-
     fun loadProducts(): Either<DomainError, List<ProductEntity>> {
-        return Either.Right(repository.findAll());
+        return Either.Right(repository.findAll())
     }
 }
