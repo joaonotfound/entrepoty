@@ -2,7 +2,7 @@ import '../../../../validation/validation.dart';
 
 ValidationComposite makeLoginValidationComposite() {
   return ValidationComposite(validators: const [
-    UsernameValidator(field: "username"),
+    UsernameFieldValidator(field: "username"),
     RequiredFieldValidator(field: "username"),
     RequiredFieldValidator(field: "password")
   ]);
