@@ -1,13 +1,8 @@
 import 'package:entrepoty/domain/domain.dart';
-import 'package:entrepoty/ui/providers/providers.dart';
-import 'package:entrepoty/ui/screens/model/model_view/components/components.dart';
-import 'package:entrepoty/ui/screens/model/model_view/model_view_presenter.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-
-import '../../../ui.dart';
+import 'components/components.dart';
+import 'model_view_presenter.dart';
 
 class ModelViewScreen extends StatelessWidget {
   ModelViewPresenter presenter;
@@ -16,7 +11,6 @@ class ModelViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backend = Get.find<BackendProvider>();
     Get.put<ModelViewPresenter>(presenter);
 
     final id = int.parse(Get.parameters['id'] ?? '0');
@@ -35,15 +29,16 @@ class ModelViewScreen extends StatelessWidget {
                 ? null
                 : [
                     IconButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) => ModelViewBottomSheet(
-                              model: snapshot.data!,
-                            ),
-                          );
-                        },
-                        icon: Icon(Icons.more_vert))
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => ModelViewBottomSheet(
+                            model: snapshot.data!,
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.more_vert),
+                    )
                   ],
             backgroundColor: Colors.transparent,
           ),
@@ -55,23 +50,8 @@ class ModelViewScreen extends StatelessWidget {
                     color: Colors.transparent,
                     child: Column(
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: Image.network(
-                            fit: BoxFit.fill,
-                            backend.loadResource(snapshot.data!.imagePath),
-                          ),
-                        ),
-                        ListTile(
-                          title: Text(
-                            snapshot.data!.name,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          subtitle: Text(
-                            snapshot.data!.category,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
+                        ModelViewImage(model: snapshot.data!),
+                        ModelViewDescription(model: snapshot.data!)
                       ],
                     ),
                   ),
