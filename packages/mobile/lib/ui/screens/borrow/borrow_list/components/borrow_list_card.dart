@@ -1,9 +1,12 @@
 import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/ui/misc/misc.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BorrowListCard extends StatelessWidget {
   final BorrowEntity borrow;
+
   BorrowListCard({
     super.key,
     required this.borrow,
@@ -11,15 +14,20 @@ class BorrowListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      tileColor: Theme.of(context).colorScheme.surface,
-      leading: Icon(FluentIcons.person_12_regular),
-      title: Text(
-        borrow.customer.name,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+    return InkWell(
+      onTap: () => Get.toNamed(
+        Routes.getViewBorrow(borrow.id),
       ),
-      subtitle: Text(
-        borrow.product.model.name,
+      child: ListTile(
+        tileColor: Theme.of(context).colorScheme.surface,
+        leading: Icon(FluentIcons.person_12_regular),
+        title: Text(
+          borrow.customer.name,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        subtitle: Text(
+          borrow.product.model.name,
+        ),
       ),
     );
   }
