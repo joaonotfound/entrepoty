@@ -20,8 +20,13 @@ class _StockListScreenState extends State<StockListScreen> {
   bool _searching = false;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     widget.presenter.loadScreen();
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+
     return RefreshIndicator(
       onRefresh: () => widget.presenter.loadScreen(),
       child: HomeLayout(

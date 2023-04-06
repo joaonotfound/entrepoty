@@ -24,6 +24,7 @@ class GetxLoadModelsPresenter extends GetxController
 
   @override
   Future<void> loadModels() async {
+    print("loading products.");
     try {
       isLoading = true;
       final response = await loadModelsUsecase.loadModels();

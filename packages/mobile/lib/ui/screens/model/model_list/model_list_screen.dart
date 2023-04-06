@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-class ModelListScreen extends StatelessWidget with UiErrorManager {
+class ModelListScreen extends StatefulWidget {
   ModelListPresenter presenter;
 
   ModelListScreen({
@@ -15,21 +15,30 @@ class ModelListScreen extends StatelessWidget with UiErrorManager {
   });
 
   @override
+  State<ModelListScreen> createState() => _ModelListScreenState();
+}
+
+class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
+  @override
+  void initState() {
+    widget.presenter.loadModels();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    presenter.loadModels();
     return Builder(builder: (context) {
-      handleUiError(context, presenter.mainErrorStream);
+      handleUiError(context, widget.presenter.mainErrorStream);
       return HomeLayout(
         appBar: AppBar(
           actions: [
             IconButton(
               icon: const Icon(Icons.refresh),
-              onPressed: () => presenter.loadModels(),
+              onPressed: () => widget.presenter.loadModels(),
             ),
             IconButton(
                 icon: const Icon(FluentIcons.search_12_regular),
                 onPressed: () {
-                  Get.put(presenter);
+                  Get.put(widget.presenter);
                   Get.to(
                     const SearchScreen(),
                     transition: Transition.rightToLeft,
@@ -38,18 +47,18 @@ class ModelListScreen extends StatelessWidget with UiErrorManager {
           ],
         ),
         body: RefreshIndicator(
-          onRefresh: () => presenter.loadModels(),
+          onRefresh: () => widget.presenter.loadModels(),
           child: StreamBuilder(
-            stream: presenter.modelsEntity,
+            stream: widget.presenter.modelsEntity,
             builder: (context, modelsSnapshot) {
               return StreamBuilder(
-                stream: presenter.isLoadingStream,
+                stream: widget.presenter.isLoadingStream,
                 builder: (context, isLoadingSnapshot) {
                   return isLoadingSnapshot.data == true
                       ? Center(child: Text("Loading"))
                       : modelsSnapshot.data?.isNotEmpty == true
                           ? ListenableProvider(
-                              create: (context) => presenter,
+                              create: (context) => widget.presenter,
                               child: ListView.separated(
                                   separatorBuilder: (context, index) =>
                                       const SizedBox(height: 10),

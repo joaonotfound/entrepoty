@@ -6,8 +6,13 @@ class HomeLayout extends StatelessWidget {
   Widget body;
   Widget? floatingActionButton;
   AppBar? appBar;
-  HomeLayout(
-      {super.key, required this.body, this.floatingActionButton, this.appBar});
+
+  HomeLayout({
+    super.key,
+    required this.body,
+    this.floatingActionButton,
+    this.appBar,
+  });
 
   @override
   Widget build(BuildContext context) {

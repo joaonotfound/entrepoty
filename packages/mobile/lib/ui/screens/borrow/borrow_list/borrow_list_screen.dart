@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../misc/misc.dart';
 
-class BorrowListScreen extends StatelessWidget {
+class BorrowListScreen extends StatefulWidget {
   BorrowListPresenter presenter;
   BorrowListScreen({
     super.key,
@@ -15,23 +15,32 @@ class BorrowListScreen extends StatelessWidget {
   });
 
   @override
+  State<BorrowListScreen> createState() => _BorrowListScreenState();
+}
+
+class _BorrowListScreenState extends State<BorrowListScreen> {
+  @override
+  void initState() {
+    widget.presenter.loadBorrows();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    presenter.loadBorrows();
     return HomeLayout(
       body: RefreshIndicator(
-        onRefresh: () => presenter.loadBorrows(),
+        onRefresh: () => widget.presenter.loadBorrows(),
         child: StreamBuilder(
-          stream: presenter.borrowsStream,
+          stream: widget.presenter.borrowsStream,
           builder: (context, borrowsSnapshot) {
             print(borrowsSnapshot);
             return StreamBuilder(
-              stream: presenter.isLoadingStream,
+              stream: widget.presenter.isLoadingStream,
               builder: (context, isLoadingSnapshot) {
                 return isLoadingSnapshot.data == true
                     ? Center(child: Text("Loading"))
                     : borrowsSnapshot.data?.isNotEmpty == true
                         ? ListenableProvider(
-                            create: (context) => presenter,
+                            create: (context) => widget.presenter,
                             child: ListView.separated(
                                 separatorBuilder: (context, index) =>
                                     const SizedBox(height: 10),
@@ -48,7 +57,7 @@ class BorrowListScreen extends StatelessWidget {
       ),
       appBar: AppBar(actions: [
         IconButton(
-          onPressed: () => presenter.loadBorrows(),
+          onPressed: () => widget.presenter.loadBorrows(),
           icon: Icon(Icons.refresh),
         )
       ]),
