@@ -21,7 +21,10 @@ class GetxModelViewPresenter extends GetxController
 
   Future<void> deleteModel(int id) async {
     isLoading = true;
-    await remoteDeleteProductModel.deleteModel(id);
+    final response = await remoteDeleteProductModel.deleteModel(id);
+    response.fold((l){}, (account) {
+      Get.back();
+    });
     isLoading = false;
   }
 

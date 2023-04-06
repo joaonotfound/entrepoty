@@ -17,8 +17,9 @@ class ModelViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backend = Get.find<BackendProvider>();
+    Get.put<ModelViewPresenter>(presenter);
+
     final id = int.parse(Get.parameters['id'] ?? '0');
-    print("the id is: " + id.toString());
     presenter.loadModel(id);
 
     return StreamBuilder<ProductModelEntity?>(
