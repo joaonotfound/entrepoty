@@ -18,6 +18,10 @@ List<GetPage> generateRoutes() {
       transition: Transition.rightToLeft,
     ),
     GetPage(
+      name: Routes.viewBorrow,
+      page: makeBorrowViewScreen,
+    ),
+    GetPage(
       name: Routes.viewModel,
       page: makeModelViewScreen,
     ),

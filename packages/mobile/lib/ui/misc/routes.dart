@@ -13,6 +13,9 @@ class Routes {
   static final viewModel = "/models/view/:id";
   static getViewModel(int id) => "/models/view/$id";
 
+  static final viewBorrow = "/borrow/view/:id";
+  static getBorrowModel(int id) => "/borrow/view/$id";
+
   static final createBorrow = '/borrow/create';
 
 }

@@ -10,3 +10,4 @@ export 'models_creation/models_creation.dart';
 export 'models_view/models_view.dart';
 export 'customer_creation/customer_creation.dart';
 export 'borrow_creation/borrow_creation.dart';
+export 'borrow_view/borrow_view.dart';

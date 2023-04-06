@@ -1,8 +1,11 @@
 import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class StockListItem extends StatelessWidget {
   final ProductEntity item;
+
   StockListItem({
     super.key,
     required this.item,
@@ -10,11 +13,14 @@ class StockListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final backendProvider = Get.find<BackendProvider>();
+
     return ListTile(
       tileColor: Theme.of(context).colorScheme.surface,
-      leading: Icon(
-        Icons.image,
-        size: 40,
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(
+          backendProvider.loadResource(item.model.imagePath),
+        ),
       ),
       title: Text(
         item.model.name,
