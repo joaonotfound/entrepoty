@@ -7,3 +7,4 @@ export 'borrow/borrow.dart';
 export 'settings/settings.dart';
 export 'signup/signup.dart';
 export 'models_creation/models_creation.dart';
+export 'models_view/models_view.dart';

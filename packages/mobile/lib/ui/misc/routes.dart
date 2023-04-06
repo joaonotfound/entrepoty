@@ -9,5 +9,10 @@ class Routes {
   static final createCustomer = '/customers/create';
   static final createStockItem = '/stock/create';
   static final createModel = '/models/create';
+
+  static final viewModel = "/models/view/:id";
+  static getViewModel(int id) => "/models/view/$id";
+
   static final createBorrow = '/borrow/create';
+
 }

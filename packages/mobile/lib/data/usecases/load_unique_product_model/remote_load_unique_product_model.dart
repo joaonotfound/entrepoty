@@ -16,10 +16,10 @@ class RemoteLoadUniqueProductModel implements LoadUniqueProductModelUsecase {
   @override
   Future<Either<DomainError, ProductModelEntity>> loadModelById(int id) async {
     try {
-      final response = await client.get(url: url + "?domain=$id");
+      print(url);
+      final response = await client.get(url: "$url/$id");
       if(response.statuscode == 200){
-        final decodedBody = json.decode(response.body);
-        return Either.right(ProductModelEntity.fromJson(decodedBody));
+        return Either.right(ProductModelEntity.fromJson(response.body));
       }
     }catch(e){}
 

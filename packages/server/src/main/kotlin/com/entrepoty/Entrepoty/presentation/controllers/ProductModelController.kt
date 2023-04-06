@@ -64,7 +64,7 @@ class ProductModelController {
         );
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{model}")
     fun loadProduct(@PathVariable("model") id: Long): ResponseEntity<ProductModelEntity> {
         return service.findProduct(id).fold(
             { error -> utils.fromDomain(error) },

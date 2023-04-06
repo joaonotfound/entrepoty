@@ -19,16 +19,26 @@ List<GetPage> generateRoutes() {
       page: () => makeSignupScreen(),
       transition: Transition.rightToLeft,
     ),
-    GetPage(name: Routes.home, page: makeAppController),
+    GetPage(
+      name: Routes.viewModel,
+      page: makeModelsViewScreen,
+    ),
+    GetPage(
+      name: Routes.home,
+      page: makeAppController,
+    ),
     GetPage(
       name: Routes.createCustomer,
       page: () => makeCustomerCreationScreen(),
       transition: Transition.rightToLeft,
     ),
-    GetPage(name: Routes.settings, page: () => makeSettingsScreen()),
+    GetPage(
+      name: Routes.settings,
+      page: () => makeSettingsScreen(),
+    ),
     GetPage(
       name: Routes.createModel,
-      page: () => makeModelsCreationScreen(),
+      page: makeModelsCreationScreen,
       transition: Transition.rightToLeft,
     ),
     GetPage(

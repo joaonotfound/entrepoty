@@ -28,7 +28,9 @@ class GetxModelViewPresenter extends GetxController
   Future<void> loadModel(int id) async {
     isLoading = true;
     final response = await loadUniqueProductModel.loadModelById(id);
-    response.fold((l) {}, (_response) => _model.value = _response);
+    response.fold((error) {
+      print("an error ocurred while loading unique model" + error.toString());
+    }, (_response) => _model.value = _response);
     isLoading = false;
   }
 }

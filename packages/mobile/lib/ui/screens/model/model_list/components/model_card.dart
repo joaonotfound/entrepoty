@@ -1,4 +1,5 @@
 import 'package:entrepoty/domain/domain.dart';
+import 'package:entrepoty/ui/misc/misc.dart';
 import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -22,12 +23,7 @@ class ModelListCard extends StatelessWidget {
     final border = 5.0;
     print(backend.loadResource(model.imagePath));
     return InkWell(
-      onTap: () => Get.to(
-        ModelViewScreen(
-          model: model,
-          presenter: presenter,
-        ),
-      ),
+      onTap: () => Get.toNamed(Routes.getViewModel(model.id)),
       child: Card(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(border)),
