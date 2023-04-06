@@ -2,6 +2,7 @@ package com.entrepoty.Entrepoty.data.usecase
 
 import arrow.core.Either
 import arrow.core.left
+import arrow.core.right
 import com.entrepoty.Entrepoty.data.repositories.CustomersRepository
 import com.entrepoty.Entrepoty.data.repositories.ProductRepository
 import com.entrepoty.Entrepoty.domain.entities.BorrowEntity
@@ -31,7 +32,10 @@ class BorrowService {
         }
         return Either.Right(borrowRepository.save(BorrowEntity(possibleCustomer.get(), possibleProduct.get(), creation.date)));
     }
-
+    fun loadById(id: Long): Either<DomainError, BorrowEntity> {
+        var response = borrowRepository.findById(id)
+        return if (response.isEmpty == true ) Either.Left(DomainError.notFound) else Either.Right(response.get())
+    }
     fun loadAll(): Either<DomainError, List<BorrowEntity>> {
         return Either.Right(borrowRepository.findAll());
     }

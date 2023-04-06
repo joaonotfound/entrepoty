@@ -7,6 +7,7 @@ import com.entrepoty.Entrepoty.presentation.helpers.ResponseUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -22,12 +23,12 @@ class BorrowController {
 
     @PostMapping
     fun createBorrow(@RequestBody body: CreateBorrowModel): ResponseEntity<BorrowEntity> {
-        return service.createBorrow(body).fold(
-            { error -> utils.fromDomain(error)},
-            { borrow -> ResponseEntity.ok(borrow) }
-        );
+        return utils.fromEither(service.createBorrow(body));
     }
-
+    @GetMapping("{borrow}")
+    fun loadById(@PathVariable("borrow") borrow: Long): ResponseEntity<BorrowEntity> {
+        return utils.fromEither(service.loadById(borrow))
+    }
     @GetMapping
     fun loadAll(): ResponseEntity<List<BorrowEntity>>{
         return service.loadAll().fold(
