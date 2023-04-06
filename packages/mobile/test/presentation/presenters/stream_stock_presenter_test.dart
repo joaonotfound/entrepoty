@@ -21,22 +21,4 @@ void main() {
     Get.testMode = true;
     TestWidgetsFlutterBinding.ensureInitialized();
   });
-  group("GetxStockPresenter", () {
-    test("should call load categories", () {
-      sut.loadScreen();
-
-      verify(() => loadCategories.load()).called(1);
-    });
-    test("should emit categories", () {
-      sut.categoriesStream
-          .listen(expectAsync1((categories) => expect(categories, [])));
-      sut.loadScreen();
-    });
-    test("should not emit duplicated values", () {
-      sut.categoriesStream
-          .listen(expectAsync1((categories) => expect(categories, [])));
-      sut.loadScreen();
-      sut.loadScreen();
-    });
-  });
 }

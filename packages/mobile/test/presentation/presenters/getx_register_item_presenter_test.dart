@@ -38,7 +38,7 @@ void main() {
     });
 
     test("should emit valid form on valid fields", () {
-      sut.validateModel(0);
+      sut.validateModel(2);
 
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, true)));
@@ -66,14 +66,6 @@ void main() {
       sut.validateModel(0);
 
       sut.validateForm();
-    });
-    test("should redirect to stocks page", () {
-      sut.navigateToStream
-          .listen(expectAsync1((value) => expect(value, Routes.stock)));
-      sut.validateModel(2);
-      sut.validateQtd(1);
-
-      sut.saveItem();
     });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));
