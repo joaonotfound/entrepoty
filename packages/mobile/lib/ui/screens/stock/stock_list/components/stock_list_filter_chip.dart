@@ -14,7 +14,7 @@ class StockListFilterChips extends StatelessWidget {
     return FutureBuilder(
         future: presenter.loadCategories(),
         builder: (context, snapshot) {
-          return Container(
+          return snapshot.data == null ? Center() : Container(
             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
             height: 30,
             child: ListView.separated(
