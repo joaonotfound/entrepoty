@@ -1,5 +1,3 @@
-import 'package:faker/faker.dart';
-
 import '../../../data/data.dart';
 import '../../../domain/domain.dart';
 import '../../main.dart';

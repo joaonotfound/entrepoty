@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../providers/providers.dart';
 
 class ModelViewImage extends StatelessWidget {
-  ProductModelEntity model;
+  final ProductModelEntity model;
 
   ModelViewImage({
     Key? key,

@@ -3,7 +3,6 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'components/components.dart';
-import './stock_item_creation_presenter.dart';
 
 class StockItemCreationScreen extends StatefulWidget {
   final StockItemCreationPresenter presenter;

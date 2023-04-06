@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ModelViewBottomSheet extends StatelessWidget {
-  ProductModelEntity model;
+  final ProductModelEntity model;
 
   ModelViewBottomSheet({
     Key? key,

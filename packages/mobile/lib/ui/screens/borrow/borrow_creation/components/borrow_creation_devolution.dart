@@ -11,7 +11,7 @@ class BorrowCreationDevolution extends StatefulWidget {
 }
 
 class _BorrowCreationDevolutionState extends State<BorrowCreationDevolution> {
-  DateTime? _date = null;
+  DateTime? _date;
 
   void _showDatePicker(
       BuildContext context, BorrowCreationPresenter presenter) async {

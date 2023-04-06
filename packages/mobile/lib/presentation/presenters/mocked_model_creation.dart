@@ -5,9 +5,6 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class MockedModelCreationPresenter implements ModelCreationPresenter {
   @override
-  String? imageUrl;
-
-  @override
   Stream<String?> nameErrorStream = Rx<String?>(null).stream;
 
   @override

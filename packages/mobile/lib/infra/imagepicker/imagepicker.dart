@@ -1,7 +1,7 @@
 
 
 import 'package:entrepoty/domain/domain.dart';
-import 'package:fpdart/src/either.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerImpl implements TakeImageUsecase {

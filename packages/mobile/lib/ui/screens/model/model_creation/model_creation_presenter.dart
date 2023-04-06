@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 
-import '../../../misc/errors/ui_error.dart';
+import '../../../misc/misc.dart';
 
 abstract class ModelCreationPresenter implements Listenable {
   Stream<bool> get hasImageStream;

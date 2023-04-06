@@ -5,7 +5,7 @@ import 'components/components.dart';
 import 'model_view_presenter.dart';
 
 class ModelViewScreen extends StatelessWidget {
-  ModelViewPresenter presenter;
+  final ModelViewPresenter presenter;
 
   ModelViewScreen({Key? key, required this.presenter}) : super(key: key);
 

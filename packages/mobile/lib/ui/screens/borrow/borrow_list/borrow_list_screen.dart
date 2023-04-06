@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../misc/misc.dart';
 
 class BorrowListScreen extends StatefulWidget {
-  BorrowListPresenter presenter;
+  final BorrowListPresenter presenter;
   BorrowListScreen({
     super.key,
     required this.presenter,

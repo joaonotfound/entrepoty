@@ -16,7 +16,6 @@ void main() {
     loadStockItems = LoadProductsMock();
     loadStockItems.mockLoad(Either.right([]));
     sut = StreamStockListPresenter(
-      loadCategories: loadCategories,
       loadItems: loadStockItems,
     );
     Get.testMode = true;

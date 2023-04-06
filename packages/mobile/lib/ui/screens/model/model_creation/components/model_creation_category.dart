@@ -14,10 +14,6 @@ class ModelCreationCategories extends StatefulWidget {
 }
 
 class _ModelCreationCategoriesState extends State<ModelCreationCategories> {
-
-
-  String? _value;
-
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<ModelCreationPresenter>(context);
@@ -27,7 +23,8 @@ class _ModelCreationCategoriesState extends State<ModelCreationCategories> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: DropdownSearch(
-        dropdownBuilder: (context, selectedItem) => Text(selectedItem ?? "Select one category"),
+        dropdownBuilder: (context, selectedItem) =>
+            Text(selectedItem ?? "Select one category"),
         onChanged: (value) => presenter.validateCategory(value ?? ''),
         items: [
           ...categories.map(

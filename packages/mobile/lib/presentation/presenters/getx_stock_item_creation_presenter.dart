@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
-import 'package:entrepoty/domain/entities/create_stock_item_entity.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 
 class GetxStockItemCreationPresenter extends GetxController
@@ -27,7 +26,6 @@ class GetxStockItemCreationPresenter extends GetxController
 
   int _qtd = 0;
   int _model = 0;
-  List<CreateStockItemEntity> _items = [];
 
   Rx<List<ProductModelEntity>> _models = Rx([]);
   Stream<List<ProductModelEntity>> get modelsStream => _models.stream;

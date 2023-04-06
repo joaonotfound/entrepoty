@@ -4,8 +4,6 @@ import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../mixins/mixins.dart';
-
 class GetxSignupPresenter extends GetxController
     with
         GetxLoadingManager,

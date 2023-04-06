@@ -4,7 +4,6 @@ import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/infra/infra.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 

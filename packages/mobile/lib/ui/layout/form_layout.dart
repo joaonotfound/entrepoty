@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../factories/factories.dart';
 
 class FormLayout extends StatelessWidget {
-  Widget content;
-  Widget action;
-  String title;
+  final Widget content;
+  final Widget action;
+  final String title;
   FormLayout({
     super.key,
     required this.content,

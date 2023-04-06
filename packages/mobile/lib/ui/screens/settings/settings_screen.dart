@@ -1,13 +1,10 @@
-import 'package:entrepoty/ui/mixins/mixins.dart';
-import 'package:entrepoty/ui/screens/screens.dart';
-import 'package:provider/provider.dart';
-
+import 'package:entrepoty/ui/ui.dart';
 import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget with NavigationManager {
-  SettingsPresenter presenter;
+  final SettingsPresenter presenter;
   SettingsScreen({
     super.key,
     required this.presenter,

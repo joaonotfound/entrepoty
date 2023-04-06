@@ -7,7 +7,7 @@ import 'components/components.dart';
 
 class CustomerCreationScreen extends StatelessWidget
     with LoadingManager, NavigationManager, UiErrorManager {
-  CustomerCreationPresenter presenter;
+  final CustomerCreationPresenter presenter;
   CustomerCreationScreen({
     super.key,
     required this.presenter,

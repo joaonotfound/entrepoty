@@ -1,7 +1,6 @@
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
-import 'package:flutter/material.dart';
-import 'package:fpdart/src/either.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
 class RemoteCreateBorrow implements CreateBorrowUsecase {

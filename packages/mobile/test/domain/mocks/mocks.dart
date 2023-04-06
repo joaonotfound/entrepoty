@@ -6,3 +6,5 @@ export 'load_customers_usecase_mock.dart';
 export 'local_save_current_account_mock.dart';
 export 'logout_usecase_mock.dart';
 export 'signup_usecase_mock.dart';
+export 'load_models_usecase_mock.dart';
+export 'create_product_usecase_mock.dart';

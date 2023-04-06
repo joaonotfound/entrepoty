@@ -1,6 +1,6 @@
-import 'package:entrepoty/ui/ui.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:entrepoty/ui/ui.dart';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
 

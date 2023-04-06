@@ -1,6 +1,4 @@
-import 'package:entrepoty/main/factories/pages/borrow_creation/borrow_creation.dart';
-import 'package:entrepoty/main/factories/pages/customer_creation/customer_creation.dart';
-import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/main/main.dart';
 import 'package:get/get.dart';
 import '../../ui/ui.dart';
 import 'factories.dart';

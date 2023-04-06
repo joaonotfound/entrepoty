@@ -7,3 +7,6 @@ export 'getx_signup_presenter.dart';
 export 'getx_customer_presenter.dart';
 export 'getx_borrow_list_presenter.dart';
 export 'getx_model_view_presenter.dart';
+export 'getx_load_models_presenter.dart';
+export 'getx_settings_presenter.dart';
+export 'getx_stock_item_creation_presenter.dart';

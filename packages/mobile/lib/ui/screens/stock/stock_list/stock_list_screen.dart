@@ -1,8 +1,8 @@
-import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:entrepoty/ui/ui.dart';
+import '../../../layout/layout.dart';
 import './components/components.dart';
 
 class StockListScreen extends StatefulWidget {
@@ -17,7 +17,6 @@ class StockListScreen extends StatefulWidget {
 }
 
 class _StockListScreenState extends State<StockListScreen> {
-  bool _searching = false;
 
   @override
   void initState() {

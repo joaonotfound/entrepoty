@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fpdart/src/either.dart';
+import 'package:fpdart/fpdart.dart';
 
 import '../../data/data.dart';
 import 'package:http/http.dart' as http;

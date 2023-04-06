@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 
 class ModelListCard extends StatelessWidget {
-  ProductModelEntity model;
+  final ProductModelEntity model;
 
   ModelListCard({
     super.key,

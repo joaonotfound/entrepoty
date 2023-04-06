@@ -1,6 +1,6 @@
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
-import 'package:fpdart/src/either.dart';
+import 'package:fpdart/fpdart.dart';
 
 class RemoteCreateProduct implements CreateProductUsecas {
   HttpClient client;
@@ -11,10 +11,11 @@ class RemoteCreateProduct implements CreateProductUsecas {
     required this.url,
   });
 
-  Future<Either<DomainError, ProductEntity>> createProduct(
-      {required int model,
-      required int quantity,
-      required String receipt_path}) async {
+  Future<Either<DomainError, ProductEntity>> createProduct({
+    required int model,
+    required int quantity,
+    required String receipt_path,
+  }) async {
     try {
       final response = await client.post(
         url: url,

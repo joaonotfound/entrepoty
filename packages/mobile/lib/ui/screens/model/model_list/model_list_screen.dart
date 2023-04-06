@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class ModelListScreen extends StatefulWidget {
-  ModelListPresenter presenter;
+  final ModelListPresenter presenter;
 
   ModelListScreen({
     super.key,

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class ModelCreationScreen extends StatelessWidget
     with LoadingManager, NavigationManager, UiErrorManager {
-  ModelCreationPresenter presenter;
+  final ModelCreationPresenter presenter;
   ModelCreationScreen({
     super.key,
     required this.presenter,

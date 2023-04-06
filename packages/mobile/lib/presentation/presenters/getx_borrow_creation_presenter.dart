@@ -1,11 +1,6 @@
 import 'package:entrepoty/domain/domain.dart';
-import 'package:entrepoty/domain/entities/product_entity.dart';
-import 'package:entrepoty/domain/entities/customer_entity.dart';
-import 'package:entrepoty/presentation/mixins/getx_form_manager.dart';
-import 'package:entrepoty/presentation/mixins/getx_loading_manager.dart';
-import 'package:entrepoty/presentation/mixins/getx_navigator_manager.dart';
-import 'package:entrepoty/presentation/mixins/gext_ui_error_manager.dart';
-import 'package:entrepoty/ui/screens/borrow/borrow_creation/borrow_creation_presenter.dart';
+import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 
 class GetxBorrowCreationPresenter extends GetxController
@@ -25,9 +20,9 @@ class GetxBorrowCreationPresenter extends GetxController
     required this.createBorrowUsecase,
   });
 
-  CustomerEntity? _customer = null;
-  ProductEntity? _product = null;
-  DateTime? _date = null;
+  CustomerEntity? _customer;
+  ProductEntity? _product;
+  DateTime? _date;
 
   final _customers = Rx<List<CustomerEntity>>([]);
   Stream<List<CustomerEntity>> get customersStream => _customers.stream;

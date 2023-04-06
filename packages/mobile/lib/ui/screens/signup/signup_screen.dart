@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SignupScreen extends StatelessWidget with LoadingManager, NavigationManager, UiErrorManager  {
-  SignupPresenter presenter;
+  final SignupPresenter presenter;
 
   SignupScreen({
     super.key,

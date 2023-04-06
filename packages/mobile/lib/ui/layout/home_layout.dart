@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../components/components.dart';
 
 class HomeLayout extends StatelessWidget {
-  Widget body;
-  Widget? floatingActionButton;
-  AppBar? appBar;
+  final Widget body;
+  final Widget? floatingActionButton;
+  final AppBar? appBar;
 
   HomeLayout({
     super.key,

@@ -1,12 +1,7 @@
 import 'package:entrepoty/domain/domain.dart';
-import 'package:entrepoty/presentation/mixins/getx_loading_manager.dart';
-import 'package:entrepoty/presentation/mixins/gext_ui_error_manager.dart';
-import 'package:entrepoty/ui/screens/model/model.dart';
-import 'package:fpdart/src/either.dart';
+import 'package:entrepoty/presentation/presentation.dart';
+import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
-
-import '../../ui/misc/misc.dart';
 
 class GetxLoadModelsPresenter extends GetxController
     with GetxLoadingManager, GetxUiErrorManager

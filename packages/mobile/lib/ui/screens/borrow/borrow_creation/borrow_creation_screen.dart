@@ -1,7 +1,4 @@
-import 'package:entrepoty/presentation/mixins/getx_loading_manager.dart';
-import 'package:entrepoty/presentation/mixins/gext_ui_error_manager.dart';
-import 'package:entrepoty/ui/mixins/mixins.dart';
-import 'package:entrepoty/ui/screens/borrow/borrow_creation/borrow_creation_presenter.dart';
+import 'package:entrepoty/ui/ui.dart';
 
 import 'components/components.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +8,7 @@ import '../../../layout/layout.dart';
 
 class BorrowCreationScreen extends StatelessWidget
     with UiErrorManager, LoadingManager {
-  BorrowCreationPresenter presenter;
+  final BorrowCreationPresenter presenter;
   BorrowCreationScreen({
     super.key,
     required this.presenter,

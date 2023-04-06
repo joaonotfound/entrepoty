@@ -1,21 +1,26 @@
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:entrepoty/presentation/presenters/getx_stock_item_creation_presenter.dart';
+import 'package:entrepoty/presentation/presentation.dart';
 
-import '../../domain/mocks/load_models_usecase_mock.dart';
+import '../../domain/domain.dart';
 
 void main() {
   late GetxStockItemCreationPresenter sut;
   late LoadModelsUsecaseMock loadModels;
+  late CreateProductUsecaseMock createProductUsecaseMock;
   setUp(() {
     loadModels = LoadModelsUsecaseMock();
-    sut = GetxStockItemCreationPresenter(loadModelsUsecase: loadModels);
+    createProductUsecaseMock = CreateProductUsecaseMock();
+    sut = GetxStockItemCreationPresenter(
+      loadModelsUsecase: loadModels,
+      createProduct: createProductUsecaseMock,
+    );
   });
   group("GetxRegisterLotPresenter", () {
     test("should emit empty error when validating model", () {
       sut.modelErrorStream.listen(
           expectAsync1((value) => expect(value, "This field is mandatory.")));
-      sut.validateModel("");
+      sut.validateModel(0);
     });
     test("should emit invalid value error when validating quantity", () {
       sut.qtdErrorStream
@@ -33,7 +38,7 @@ void main() {
     });
 
     test("should emit valid form on valid fields", () {
-      sut.validateModel("valid-model");
+      sut.validateModel(0);
 
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, true)));
@@ -44,7 +49,7 @@ void main() {
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, false)));
 
-      sut.validateModel("invalid-model");
+      sut.validateModel(8);
       sut.validateQtd(-1);
 
       sut.validateForm();
@@ -58,21 +63,21 @@ void main() {
       sut.isFormValidStream
           .listen(expectAsync1((value) => expect(value, false)));
 
-      sut.validateModel("valid-model");
+      sut.validateModel(0);
 
       sut.validateForm();
     });
     test("should redirect to stocks page", () {
       sut.navigateToStream
           .listen(expectAsync1((value) => expect(value, Routes.stock)));
-      sut.validateModel("any-model");
+      sut.validateModel(2);
       sut.validateQtd(1);
 
       sut.saveItem();
     });
     test("should emit no error when validating model", () {
       sut.modelErrorStream.listen(expectAsync1((value) => expect(value, "")));
-      sut.validateModel("valid-model");
+      sut.validateModel(1);
     });
   });
 }

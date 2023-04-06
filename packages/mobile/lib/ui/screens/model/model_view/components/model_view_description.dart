@@ -2,7 +2,7 @@ import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/material.dart';
 
 class ModelViewDescription extends StatelessWidget {
-  ProductModelEntity model;
+  final ProductModelEntity model;
 
   ModelViewDescription({Key? key, required this.model,})
       : super(key: key);

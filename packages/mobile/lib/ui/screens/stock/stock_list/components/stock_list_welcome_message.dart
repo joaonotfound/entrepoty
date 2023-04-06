@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../misc/misc.dart';
-
 class StockListWelcomeMessage extends StatelessWidget {
   const StockListWelcomeMessage({super.key});
 
