@@ -19,7 +19,7 @@ List<GetPage> generateRoutes() {
     ),
     GetPage(
       name: Routes.viewModel,
-      page: makeModelsViewScreen,
+      page: makeModelViewScreen,
     ),
     GetPage(
       name: Routes.home,
