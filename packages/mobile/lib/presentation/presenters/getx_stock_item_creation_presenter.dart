@@ -42,7 +42,7 @@ class GetxStockItemCreationPresenter extends GetxController
     final response = await createProduct.createProduct(
       model: _model,
       quantity: _qtd,
-      receipt_path: "",
+      receiptPath: "",
     );
     isLoading = false;
     response.fold((error) {
