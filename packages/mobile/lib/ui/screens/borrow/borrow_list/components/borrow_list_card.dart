@@ -20,13 +20,13 @@ class BorrowListCard extends StatelessWidget {
       ),
       child: ListTile(
         tileColor: Theme.of(context).colorScheme.surface,
-        leading: Icon(FluentIcons.person_12_regular),
-        title: Text(
-          borrow.customer.name,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        leading: CircleAvatar(
+          child: Icon(FluentIcons.person_12_regular),
         ),
+        title: Text(borrow.product.model.name,
+            style: Theme.of(context).textTheme.headlineSmall),
         subtitle: Text(
-          borrow.product.model.name,
+          borrow.customer.name,
         ),
       ),
     );
