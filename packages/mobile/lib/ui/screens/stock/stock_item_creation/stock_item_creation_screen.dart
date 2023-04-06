@@ -40,7 +40,7 @@ class _StockItemCreationScreenState extends State<StockItemCreationScreen>
       action: StreamBuilder(
           stream: widget.presenter.isFormValidStream,
           builder: (context, snapshot) {
-            handleLoginManager(context, widget.presenter.isLoadingStream);
+            handleLoading(context, widget.presenter.isLoadingStream);
             return ElevatedButton(
               onPressed: snapshot.data == true
                   ? () => widget.presenter.saveItem()

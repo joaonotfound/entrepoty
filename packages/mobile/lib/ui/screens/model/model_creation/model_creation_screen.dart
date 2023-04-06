@@ -18,7 +18,7 @@ class ModelCreationScreen extends StatelessWidget
       create: (context) => presenter,
       child: Builder(
         builder: (context) {
-          handleLoginManager(context, presenter.isLoadingStream);
+          handleLoading(context, presenter.isLoadingStream);
           handleNavigation(context, presenter.navigateToStream);
           handleUiError(context, presenter.mainErrorStream);
 

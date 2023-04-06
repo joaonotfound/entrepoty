@@ -17,7 +17,7 @@ class SignupScreen extends StatelessWidget with LoadingManager, NavigationManage
         appBar: AppBar(),
         body: Builder(
           builder: (context) {
-            handleLoginManager(context, presenter.isLoadingStream);
+            handleLoading(context, presenter.isLoadingStream);
             handleNavigation(context, presenter.navigateToStream);
             handleUiError(context, presenter.mainErrorStream);
 

@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget
       // appBar: makeLoginAppbarComponent(),
       body: SafeArea(
         child: Builder(builder: (context) {
-          handleLoginManager(context, presenter.isLoadingStream);
+          handleLoading(context, presenter.isLoadingStream);
           handleNavigation(context, presenter.navigateToStream);
           handleUiError(context, presenter.mainErrorStream);
 

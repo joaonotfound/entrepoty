@@ -22,7 +22,7 @@ class BorrowCreationScreen extends StatelessWidget
     return Builder(
       builder: (context) {
         handleUiError(context, presenter.mainErrorStream);
-        handleLoginManager(context, presenter.isLoadingStream);
+        handleLoading(context, presenter.isLoadingStream);
 
         return ListenableProvider(
           create: (context) => presenter,
