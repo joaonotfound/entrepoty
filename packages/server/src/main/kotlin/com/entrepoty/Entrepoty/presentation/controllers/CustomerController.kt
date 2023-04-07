@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -28,6 +29,10 @@ class CustomerController {
     fun loadCustomers(): ResponseEntity<List<Customer>> {
         return ResponseEntity.ok(customerService.loadCustomers());
     };
+    @GetMapping("{customer}")
+    fun loadCustomer(@PathVariable("customer") enrollment: String): ResponseEntity<Customer> {
+        return utils.fromEither(customerService.loadCustomer(enrollment));
+    }
 
     @PostMapping
     fun createCustomer(@RequestBody body: Customer): ResponseEntity<Customer> {

@@ -22,7 +22,10 @@ class CustomerService : CreateCustomerUsecase, LoadCustomersUsecase, RemoveCusto
         }
         return Either.Right(repository.save(customer))
     }
-
+    fun loadCustomer(enrollment: String): Either<DomainError, Customer>{
+        var user = repository.findByEnrollment(enrollment);
+        return if (user.isEmpty) Either.Left(DomainError.notFound) else Either.Right(user.get())
+    }
     override fun removeCustomer(enrollment: String): Either<DomainError, Customer> {
         var user = repository.findByEnrollment(enrollment);
         if(user.isEmpty){
