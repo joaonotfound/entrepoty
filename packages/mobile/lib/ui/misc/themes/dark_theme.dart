@@ -9,10 +9,10 @@ ThemeData makeDarkTheme() {
     //Color.fromARGB(255, 6, 12, 18),
     onBackground: Colors.white70,
     //
-    primaryColor: Color(0xff86bbd8),
+    primaryColor: Color(0xff98c1d9),
     onPrimaryColor: Color(0xff080808),
     //
-    secondaryColor: Color(0xffffc443),
+    secondaryColor: Color(0xffe0fbfc),
     onSecondaryColor: Colors.white70,
 
     textColor: Colors.white70,
@@ -20,7 +20,7 @@ ThemeData makeDarkTheme() {
     //
     surfaceColor: Color(0xff302e38),
     //Color.fromARGB(255, 7, 18, 29),
-    onSurfaceColor: Colors.white10,
+    onSurfaceColor: Colors.white70,
   );
   final baseTheme = makeBaseTheme(scheme);
 

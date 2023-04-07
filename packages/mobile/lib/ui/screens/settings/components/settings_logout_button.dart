@@ -39,7 +39,10 @@ class SettingsLogoutButton extends StatelessWidget {
         backgroundColor:
             MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
       ),
-      icon: Icon(FluentIcons.sign_out_20_regular),
+      icon: Icon(
+        FluentIcons.sign_out_20_regular,
+        color: Theme.of(context).colorScheme.onSurface,
+      ),
       label: Text(
         "Logout account",
         style: Theme.of(context).textTheme.bodyLarge,
