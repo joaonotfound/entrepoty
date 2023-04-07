@@ -1,5 +1,8 @@
 import 'package:mobile_customers/mobile_customers.dart';
 
 GetxCustomerViewPresenter makeGetxCustomerViewPresenter() {
-  return GetxCustomerViewPresenter();
+  return GetxCustomerViewPresenter(
+    removeCustomerUsecase: makeRemoteRemoveCustomer(),
+    loadUniqueCustomerUsecase: makeRemoteLoadUniqueCustomer(),
+  );
 }

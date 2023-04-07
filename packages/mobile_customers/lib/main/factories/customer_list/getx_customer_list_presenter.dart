@@ -6,12 +6,10 @@ import '../../../mobile_customers.dart';
 
 GetxCustomerListPresenter makeGetxUserListPresenter() {
   return GetxCustomerListPresenter(
-      loadCustomersUsecase: RemoteLoadCustomers(
-        client: makeHttpAdapter(),
-        url: BackendUrls.customers,
-      ),
-      removeCustomer: RemoteRemoveCustomer(
-        client: makeHttpAdapter(),
-        url: BackendUrls.customers,
-      ));
+    loadCustomersUsecase: RemoteLoadCustomers(
+      client: makeHttpAdapter(),
+      url: BackendUrls.customers,
+    ),
+    removeCustomer: makeRemoteRemoveCustomer(),
+  );
 }
