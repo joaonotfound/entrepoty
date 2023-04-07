@@ -41,10 +41,9 @@ List<GetPage> generateRoutes() {
       transition: Transition.rightToLeft,
     ),
     GetPage(
-      name: Routes.settings,
-      page: () => makeSettingsScreen(),
-      transition: Transition.rightToLeft
-    ),
+        name: Routes.settings,
+        page: () => makeSettingsScreen(),
+        transition: Transition.rightToLeft),
     GetPage(
       name: Routes.createModel,
       page: makeModelsCreationScreen,
@@ -60,5 +59,10 @@ List<GetPage> generateRoutes() {
       page: makeStockItemCreationScreen,
       transition: Transition.rightToLeft,
     ),
+    GetPage(
+      name: Routes.viewCustomer,
+      page: makeCustomerViewScreen,
+      transition: Transition.rightToLeft,
+    )
   ];
 }

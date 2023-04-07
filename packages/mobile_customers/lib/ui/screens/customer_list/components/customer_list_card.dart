@@ -1,6 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../domain/domain.dart';
@@ -11,12 +13,17 @@ class CustomerListCard extends StatelessWidget {
     super.key,
     required this.user,
   });
+
   final CustomerEntity user;
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CustomerListPresenter>(context);
 
     return InkWell(
+      onTap: () => Get.toNamed(
+        Routes.getViewCustomer(user.enrollment),
+      ),
       child: ListTile(
         tileColor: Theme.of(context).colorScheme.surface,
         dense: true,
