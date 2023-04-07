@@ -6,13 +6,16 @@ class SignupWelcomeMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 20),
+      padding: EdgeInsets.only(bottom: 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Join Entrepoty",
-            style: Theme.of(context).textTheme.headlineMedium,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: Text(
+              "Join Entrepoty",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
           ),
           Text(
             "Create an account to access exclusive features and personalized content! It only takes a minute to sign up.",

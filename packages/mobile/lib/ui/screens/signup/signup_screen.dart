@@ -3,7 +3,8 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignupScreen extends StatelessWidget with LoadingManager, NavigationManager, UiErrorManager  {
+class SignupScreen extends StatelessWidget
+    with LoadingManager, NavigationManager, UiErrorManager {
   final SignupPresenter presenter;
 
   SignupScreen({
@@ -34,7 +35,20 @@ class SignupScreen extends StatelessWidget with LoadingManager, NavigationManage
                     SignupNameField(),
                     SignupUsernameField(),
                     SignupPasswordField(),
-                    SignupSubmit()
+                    SignupSubmit(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("By signing up, you agree to the "),
+                        Text(
+                          "Terms of Use.",
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            decoration: TextDecoration.underline,
+                          ),
+                        )
+                      ],
+                    ),
                   ]),
                 ),
               ),

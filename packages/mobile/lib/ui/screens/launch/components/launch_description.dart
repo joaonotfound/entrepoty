@@ -9,18 +9,23 @@ class LaunchDescription extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: Text(
-              "Easy Online Management",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium,
+          Text(
+            "Easy Online Management",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 30,
             ),
           ),
           Text(
             "Make your experience managing your storage easier.",
-            style: Theme.of(context).textTheme.headlineSmall,
             textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w300,
+              fontSize: 18,
+            ),
           ),
         ],
       ),

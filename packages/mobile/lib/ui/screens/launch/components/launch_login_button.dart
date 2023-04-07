@@ -8,8 +8,18 @@ class LaunchLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        elevation: 0
+      ),
       onPressed: () => Get.toNamed(Routes.login),
-      child: Text("Login"),
+      child: Text(
+        "Login",
+        style: TextStyle(
+          color: Color(0xff0014cc),
+          fontWeight: FontWeight.w400
+        ),
+      ),
     );
   }
 }

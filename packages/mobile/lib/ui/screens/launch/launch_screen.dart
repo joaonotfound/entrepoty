@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/providers.dart';
@@ -11,9 +12,7 @@ class LaunchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Theme.of(context)
-          .colorScheme
-          .background, //Theme.of(context).colorScheme.,
+      backgroundColor: Color(0xff0014cc), //Theme.of(context).colorScheme.,
       body: SafeArea(
         child: Container(
           child: Padding(
@@ -21,13 +20,16 @@ class LaunchScreen extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: Image.asset("lib/ui/assets/launch_image.png"),
+                  child: Center(
+                    child: Icon(
+                      FluentIcons.box_20_filled,
+                      size: 140,
+                    ),
+                  ),
+                  //child: Image.asset("lib/ui/assets/launch_image.png"),
                   flex: 1,
                 ),
                 Container(
-                  color: provider.isDark.value
-                      ? Theme.of(context).colorScheme.background
-                      : Theme.of(context).colorScheme.surface,
                   width: double.infinity,
                   child: Padding(
                     padding: EdgeInsets.all(20),

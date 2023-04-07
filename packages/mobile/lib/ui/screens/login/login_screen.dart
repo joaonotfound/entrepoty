@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget
                         LoginUsernameField(),
                         UserPasswordField(),
                         LoginSubmitButton(),
-                        LoginSignupRedirect()
+                        LoginSignupRedirect(),
                       ],
                     ),
                   ),
