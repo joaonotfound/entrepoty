@@ -1,4 +1,3 @@
-import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:entrepoty/ui/screens/model/model_list/components/components.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -25,6 +24,7 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
     widget.presenter.loadModels();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:entrepoty/main/factories/factories.dart';
-import 'package:entrepoty/ui/ui.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 Obx makeAppController() {
   List<BottomBarScreen> screens = Get.put(makeBottomBarScreens());

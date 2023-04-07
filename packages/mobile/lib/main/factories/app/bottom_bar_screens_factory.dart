@@ -2,7 +2,8 @@ import 'package:entrepoty/main/factories/pages/models_list/models_list_screen_fa
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:entrepoty/main/factories/factories.dart';
-import 'package:entrepoty/ui/ui.dart';
+import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_customers/mobile_customers.dart';
 
 List<BottomBarScreen> makeBottomBarScreens() {
   return [

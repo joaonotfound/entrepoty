@@ -374,6 +374,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  mobile_customers:
+    dependency: "direct main"
+    description:
+      path: "../mobile_customers"
+      relative: true
+    source: path
+    version: "0.0.1"
   mobile_remote:
     dependency: "direct main"
     description:

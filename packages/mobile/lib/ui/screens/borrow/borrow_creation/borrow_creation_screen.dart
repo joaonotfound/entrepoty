@@ -5,8 +5,6 @@ import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../layout/layout.dart';
-
 class BorrowCreationScreen extends StatelessWidget
     with UiErrorManager, LoadingManager {
   final BorrowCreationPresenter presenter;
