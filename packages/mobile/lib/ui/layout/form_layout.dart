@@ -16,7 +16,7 @@ class FormLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: makeFormAppbar(title),
+       appBar: makeFormAppbar(title),
       body: SafeArea(
         child: Container(
           width: double.infinity,

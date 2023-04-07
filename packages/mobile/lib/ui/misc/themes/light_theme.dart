@@ -6,7 +6,7 @@ import 'base_theme.dart';
 ThemeData makeLightTheme() {
   return makeBaseTheme(
     AppColorScheme(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Color(0xfff2f4f3),
       onBackground: Color(0xff0d1b2a),
       //
       primaryColor: Color(0xff274c77),
@@ -18,7 +18,7 @@ ThemeData makeLightTheme() {
       textColor: Colors.black87,
       brightness: Brightness.light,
       //
-      surfaceColor: Colors.grey.shade200,
+      surfaceColor: Color(0xffe6e8e6),
       onSurfaceColor: Colors.black54,
     ),
   );

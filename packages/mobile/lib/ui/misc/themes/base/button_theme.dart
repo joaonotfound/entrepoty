@@ -17,9 +17,10 @@ ElevatedButtonThemeData getElevatedButtonTheme(AppColorScheme scheme) {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: scheme.primaryColor,
+      elevation: 0,
       minimumSize: const Size(double.infinity, 50),
       textStyle: const TextStyle(
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w400,
         fontSize: 16,
         color: Colors.white,
       ),

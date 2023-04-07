@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class AddTaxNoteButton extends StatelessWidget {
@@ -15,14 +16,13 @@ class AddTaxNoteButton extends StatelessWidget {
       ),
       onPressed: () {},
       icon: Icon(
-        Icons.upload,
+        FluentIcons.arrow_upload_20_regular,
         color: Colors.white,
       ),
       label: Text(
         "Add receipt",
         style: TextStyle(
           color: Colors.white,
-          fontWeight: FontWeight.bold,
         ),
       ),
     );

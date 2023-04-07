@@ -21,6 +21,7 @@ class _StockFilterChipState extends State<StockFilterChip> {
           _activated = selected;
         });
       },
+
       selected: _activated,
       label: Text(widget.text.toLowerCase()),
     );

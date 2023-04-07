@@ -37,6 +37,7 @@ List<GetPage> generateRoutes() {
     GetPage(
       name: Routes.settings,
       page: () => makeSettingsScreen(),
+      transition: Transition.rightToLeft
     ),
     GetPage(
       name: Routes.createModel,
