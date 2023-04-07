@@ -6,6 +6,7 @@ import 'package:mobile_authentication/mobile_authentication.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:mobile_products/mobile_products.dart';
 import 'package:mobile_products_model/mobile_products_model.dart';
+import 'package:mobile_settings/mobile_settings.dart';
 import 'factories.dart';
 
 List<GetPage> generateRoutes() {

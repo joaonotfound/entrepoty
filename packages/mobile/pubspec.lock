@@ -409,6 +409,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  mobile_settings:
+    dependency: "direct main"
+    description:
+      path: "../mobile_settings"
+      relative: true
+    source: path
+    version: "0.0.1"
   mocktail:
     dependency: "direct dev"
     description:
