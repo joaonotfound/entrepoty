@@ -1,7 +1,7 @@
 import 'package:entrepoty/domain/domain.dart';
-import 'package:entrepoty/presentation/presentation.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class GetxBorrowViewPresenter extends GetxController with GetxLoadingManager implements BorrowViewPresenter {
   LoadUniqueBorrowUsecase loadUniqueBorrow;

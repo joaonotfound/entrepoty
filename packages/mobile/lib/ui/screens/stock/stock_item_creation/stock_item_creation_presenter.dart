@@ -1,6 +1,7 @@
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:entrepoty/domain/entities/entities.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 abstract class StockItemCreationPresenter implements Listenable {
   Stream<bool> get isFormValidStream;

@@ -360,10 +360,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  mobile_authentication:
+    dependency: "direct main"
+    description:
+      path: "../mobile_authentication"
+      relative: true
+    source: path
+    version: "0.0.1"
   mobile_core:
     dependency: "direct main"
     description:
       path: "../mobile_core"
+      relative: true
+    source: path
+    version: "0.0.1"
+  mobile_remote:
+    dependency: "direct main"
+    description:
+      path: "../mobile_remote"
       relative: true
     source: path
     version: "0.0.1"

@@ -1,9 +1,9 @@
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/presentation/presentation.dart';
-import 'package:entrepoty/ui/misc/helpers/from_domain_error.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class GetxModelCreationPresenter extends GetxController
     with

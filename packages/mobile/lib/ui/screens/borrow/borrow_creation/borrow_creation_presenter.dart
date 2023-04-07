@@ -1,7 +1,6 @@
 import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/material.dart';
-
-import '../../../misc/errors/errors.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 abstract class BorrowCreationPresenter implements Listenable {
   Stream<String?> get navigateToStream;

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class MockedModelCreationPresenter implements ModelCreationPresenter {
   @override

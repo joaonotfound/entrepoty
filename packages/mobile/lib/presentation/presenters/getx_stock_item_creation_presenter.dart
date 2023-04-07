@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
-import 'package:entrepoty/presentation/presentation.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class GetxStockItemCreationPresenter extends GetxController
     with

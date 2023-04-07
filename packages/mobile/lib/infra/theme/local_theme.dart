@@ -1,4 +1,4 @@
-import 'package:entrepoty/data/cache/cache.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 import '../../presentation/protocols/theme_loader.dart';
 

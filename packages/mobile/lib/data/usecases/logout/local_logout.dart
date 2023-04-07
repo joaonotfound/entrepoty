@@ -1,5 +1,5 @@
-import 'package:entrepoty/data/cache/cache.dart';
 import 'package:entrepoty/domain/domain.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class LocalLogout implements LogoutUsecase {
   SaveSecureCacheStorage storage;

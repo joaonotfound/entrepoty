@@ -1,8 +1,8 @@
-import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_remote/mobile_remote.dart';
 
 class RemoteCreateBorrow implements CreateBorrowUsecase {
   HttpClient client;

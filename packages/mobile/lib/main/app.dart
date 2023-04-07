@@ -3,6 +3,7 @@ import 'package:entrepoty/main/factories/factories.dart';
 import 'package:entrepoty/presentation/presenters/getx_theme_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
 import '../ui/ui.dart';
 

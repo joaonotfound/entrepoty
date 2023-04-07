@@ -1,5 +1,6 @@
+import 'package:mobile_remote/mobile_remote.dart';
+
 import '../../../domain/domain.dart';
-import '../../http/http.dart';
 
 class LoadCategories implements LoadCategoriesUsecase {
   final String url;

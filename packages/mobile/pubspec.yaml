@@ -48,6 +48,10 @@ dependencies:
   fluentui_system_icons: ^1.1.191
   mobile_core:
     path: ../mobile_core
+  mobile_remote:
+    path: ../mobile_remote
+  mobile_authentication:
+    path: ../mobile_authentication
 
 dev_dependencies:
   flutter_test:

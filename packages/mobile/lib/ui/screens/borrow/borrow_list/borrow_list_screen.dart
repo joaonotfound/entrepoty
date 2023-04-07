@@ -5,9 +5,8 @@ import 'package:entrepoty/ui/screens/screens.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
-
-import '../../../misc/misc.dart';
 
 class BorrowListScreen extends StatefulWidget {
   final BorrowListPresenter presenter;

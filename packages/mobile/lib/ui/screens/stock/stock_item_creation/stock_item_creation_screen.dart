@@ -1,6 +1,7 @@
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
 import 'components/components.dart';
 

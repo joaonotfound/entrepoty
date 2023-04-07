@@ -1,6 +1,6 @@
 import 'package:entrepoty/main/factories/factories.dart';
 import 'package:entrepoty/presentation/presentation.dart';
-import 'package:entrepoty/validation/validation.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 GetxCustomerPresenter makeGetxCustomerPresenter() {
   return GetxCustomerPresenter(

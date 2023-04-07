@@ -1,5 +1,5 @@
-import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
+import 'package:mobile_remote/mobile_remote.dart';
 
 class RemoteLoadCustomers implements LoadCustomersUsecase {
   HttpClient client;

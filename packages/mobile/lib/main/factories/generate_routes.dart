@@ -1,6 +1,7 @@
 import 'package:entrepoty/main/main.dart';
 import 'package:get/get.dart';
-import '../../ui/ui.dart';
+import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_authentication/mobile_authentication.dart';
 import 'factories.dart';
 
 List<GetPage> generateRoutes() {

@@ -1,6 +1,6 @@
 import 'package:entrepoty/domain/domain.dart';
-import 'package:entrepoty/presentation/presentation.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 import '../../ui/ui.dart';
 

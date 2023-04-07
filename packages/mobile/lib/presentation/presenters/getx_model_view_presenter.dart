@@ -1,8 +1,8 @@
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/entities/product_model_entity.dart';
-import 'package:entrepoty/presentation/mixins/getx_loading_manager.dart';
 import 'package:entrepoty/ui/screens/model/model_view/model_view_presenter.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class GetxModelViewPresenter extends GetxController
     with GetxLoadingManager

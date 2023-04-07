@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:entrepoty/ui/mixins/mixins.dart';
 import 'package:entrepoty/ui/screens/splash/splash.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class SplashScreen extends StatelessWidget with NavigationManager {
   final SplashPresenter presenter;

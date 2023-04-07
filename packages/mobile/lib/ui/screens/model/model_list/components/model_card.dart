@@ -4,6 +4,7 @@ import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:entrepoty/ui/screens/model/model.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 
