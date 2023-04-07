@@ -67,7 +67,7 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
                                       ModelListCard(
                                           model: modelsSnapshot.data![index]))),
                             )
-                          : const Center(child: Text("There's no models."));
+                          : NoData();
                 },
               );
             },

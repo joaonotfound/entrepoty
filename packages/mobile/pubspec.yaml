@@ -66,12 +66,16 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
+  fonts:
+    - family: AllrounderGrotesk
+      fonts:
+        - asset: lib/ui/assets/fonts/all_rounder_grotesk/AllrounderGrotesk-Regular.otf
+        - asset: lib/ui/assets/fonts/all_rounder_grotesk/AllrounderGroteskTest-Bold.otf
+          weight: 700
+    - family: Bungee
+      fonts:
+        - asset: lib/ui/assets/fonts/bungee/Bungee-Regular.ttf
   assets:
      - lib/ui/assets/
   #   - images/a_dot_ham.jpeg

@@ -65,7 +65,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorMan
                                               customersSnapshot.data![index]))),
                             )
                           : const Center(
-                              child: Text("No customers found"));
+                              child: NoData());
                 },
               );
             },
