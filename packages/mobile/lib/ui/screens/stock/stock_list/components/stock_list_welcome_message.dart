@@ -18,11 +18,11 @@ class StockListWelcomeMessage extends StatelessWidget {
           children: [
             Text(
               "Hello, name!",
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             Text(
               "Welcome to your storage.",
-              style: Theme.of(context).textTheme.headlineSmall,
+              style: TextStyle(fontWeight: FontWeight.w300),
             ),
           ],
         ),
