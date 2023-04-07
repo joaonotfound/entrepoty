@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:mobile_core/domain/domain.dart';
 
 import '../../data/data.dart';
 import 'package:http/http.dart' as http;

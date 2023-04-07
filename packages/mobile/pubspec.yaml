@@ -46,6 +46,8 @@ dependencies:
   http: 
   fpdart: ^0.5.0
   fluentui_system_icons: ^1.1.191
+  mobile_core:
+    path: ../mobile_core
 
 dev_dependencies:
   flutter_test:
@@ -67,15 +69,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-  fonts:
-    - family: AllrounderGrotesk
-      fonts:
-        - asset: lib/ui/assets/fonts/all_rounder_grotesk/AllrounderGrotesk-Regular.otf
-        - asset: lib/ui/assets/fonts/all_rounder_grotesk/AllrounderGroteskTest-Bold.otf
-          weight: 700
-    - family: Bungee
-      fonts:
-        - asset: lib/ui/assets/fonts/bungee/Bungee-Regular.ttf
   assets:
      - lib/ui/assets/
   #   - images/a_dot_ham.jpeg

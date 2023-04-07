@@ -3,6 +3,7 @@
 import 'package:entrepoty/domain/domain.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class ImagePickerImpl implements TakeImageUsecase {
   final imagePicker = ImagePicker();

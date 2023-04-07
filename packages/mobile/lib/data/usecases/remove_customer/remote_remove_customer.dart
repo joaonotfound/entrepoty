@@ -1,6 +1,7 @@
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class RemoteRemoveCustomer implements RemoveCustomerUsecase {
   HttpClient client;

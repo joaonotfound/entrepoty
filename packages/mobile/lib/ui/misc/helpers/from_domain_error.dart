@@ -1,3 +1,5 @@
+import 'package:mobile_core/domain/domain.dart';
+
 import '../../../domain/domain.dart';
 import '../../ui.dart';
 

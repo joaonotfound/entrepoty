@@ -6,6 +6,7 @@ class BackendUrls {
   static String complete(String url) {
     return (production ? _productionUrl : _developmentUrl) + url;
   }
+
   static String get login => complete("/api/v1/auth/login");
   static String get signup => complete("/api/v1/auth/signup");
   static String get customers => complete("/api/v1/customers");

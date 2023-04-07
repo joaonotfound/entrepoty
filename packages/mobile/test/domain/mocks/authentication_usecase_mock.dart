@@ -1,3 +1,4 @@
+import 'package:mobile_core/mobile_core.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:entrepoty/domain/domain.dart';

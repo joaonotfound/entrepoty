@@ -2,6 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:entrepoty/data/data.dart';
 import 'package:entrepoty/domain/domain.dart';
+import 'package:mobile_core/domain/domain.dart';
 
 class LocalStorageAdapter
     implements

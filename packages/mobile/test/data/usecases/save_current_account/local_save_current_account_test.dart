@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:entrepoty/data/data.dart';
