@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_authentication/mobile_authentication.dart';
 import 'package:mobile_customers/mobile_customers.dart';
+import 'package:mobile_products_model/mobile_products_model.dart';
 import 'factories.dart';
 
 List<GetPage> generateRoutes() {

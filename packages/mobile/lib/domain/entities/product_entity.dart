@@ -1,4 +1,4 @@
-import 'package:entrepoty/domain/domain.dart';
+import 'package:mobile_products_model/mobile_products_model.dart';
 
 class ProductEntity {
   final int id;

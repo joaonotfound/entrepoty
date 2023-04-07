@@ -4,6 +4,7 @@ import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_products_model/mobile_products_model.dart';
 
 class GetxStockItemCreationPresenter extends GetxController
     with

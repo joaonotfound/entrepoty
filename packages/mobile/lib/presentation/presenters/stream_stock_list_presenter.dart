@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:entrepoty/domain/entities/entities.dart';
 import 'package:entrepoty/domain/usecases/usecases.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
+import 'package:mobile_core/mobile_core.dart';
 
-import '../../ui/providers/providers.dart';
 
 class StreamStockListPresenter extends GetxController
     implements StockListPresenter {

@@ -5,3 +5,4 @@ export 'routes.dart';
 export 'from_domain_error.dart';
 export 'layout/layout.dart';
 export 'factories/factories.dart';
+export 'providers/providers.dart';

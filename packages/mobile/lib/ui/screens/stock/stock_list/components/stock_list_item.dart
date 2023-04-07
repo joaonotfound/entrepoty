@@ -1,7 +1,7 @@
 import 'package:entrepoty/domain/domain.dart';
-import 'package:entrepoty/ui/providers/backend_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class StockListItem extends StatelessWidget {
   final ProductEntity item;

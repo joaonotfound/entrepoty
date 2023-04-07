@@ -381,6 +381,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  mobile_products_model:
+    dependency: "direct main"
+    description:
+      path: "../mobile_products_model"
+      relative: true
+    source: path
+    version: "0.0.1"
   mobile_remote:
     dependency: "direct main"
     description:

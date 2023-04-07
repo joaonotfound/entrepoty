@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_secure_storage:
+  fpdart:
   fluentui_system_icons:
   get:
 

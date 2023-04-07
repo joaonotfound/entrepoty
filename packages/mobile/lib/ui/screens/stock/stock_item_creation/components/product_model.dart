@@ -1,6 +1,7 @@
 import 'package:entrepoty/domain/domain.dart';
 import 'package:entrepoty/ui/screens/stock/stock_item_creation/stock_item_creation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_products_model/mobile_products_model.dart';
 import 'package:provider/provider.dart';
 
 class ProductModelField extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:mobile_core/backend_urls.dart';
-import 'package:entrepoty/ui/providers/backend_presenter.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class ImplBackendPresenter implements BackendPresenter {
 
