@@ -1,5 +1,5 @@
-import 'package:entrepoty/domain/domain.dart';
 import 'package:mobile_customers/mobile_customers.dart';
+import 'package:mobile_products/mobile_products.dart';
 
 class BorrowEntity {
   int id;

@@ -1,6 +1,4 @@
 
-
-import 'package:entrepoty/infra/infra.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_remote/mobile_remote.dart';
 

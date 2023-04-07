@@ -3,6 +3,7 @@ import 'package:entrepoty/ui/ui.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
+import 'package:mobile_products/mobile_products.dart';
 
 class GetxBorrowCreationPresenter extends GetxController
     with

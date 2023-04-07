@@ -13,6 +13,7 @@ dependencies:
   flutter_secure_storage:
   fpdart:
   fluentui_system_icons:
+  image_picker:
   get:
 
 dev_dependencies:
