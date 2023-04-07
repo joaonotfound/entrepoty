@@ -367,6 +367,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  mobile_borrow:
+    dependency: "direct main"
+    description:
+      path: "../mobile_borrow"
+      relative: true
+    source: path
+    version: "0.0.1"
   mobile_core:
     dependency: "direct main"
     description:

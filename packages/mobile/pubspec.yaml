@@ -46,6 +46,8 @@ dependencies:
   http: 
   fpdart: ^0.5.0
   fluentui_system_icons: ^1.1.191
+  mobile_borrow:
+    path: ../mobile_borrow
   mobile_products:
     path: ../mobile_products
   mobile_products_model:

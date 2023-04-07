@@ -1,5 +1,6 @@
 import 'package:entrepoty/main/main.dart';
 import 'package:get/get.dart';
+import 'package:mobile_borrow/mobile_borrow.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_authentication/mobile_authentication.dart';
 import 'package:mobile_customers/mobile_customers.dart';
