@@ -30,7 +30,9 @@ ThemeData makeBaseTheme(AppColorScheme scheme) {
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: scheme.primaryColor,
+      foregroundColor: scheme.onPrimaryColor
     ),
+
     elevatedButtonTheme: getElevatedButtonTheme(scheme),
     inputDecorationTheme: getInputDecorationTheme(scheme),
     scaffoldBackgroundColor: scheme.backgroundColor,

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 getBottomNavigationTheme(AppColorScheme scheme) {
   return BottomNavigationBarThemeData(
+    showUnselectedLabels: false,
     backgroundColor: scheme.backgroundColor,
-    elevation: 8,
+    elevation: 0,
+    type: BottomNavigationBarType.fixed,
     selectedItemColor: scheme.primaryColor,
-    unselectedItemColor: scheme.onBackground.withAlpha(200),
+    unselectedItemColor: scheme.onBackground.withAlpha(150),
   );
 }

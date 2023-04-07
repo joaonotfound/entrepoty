@@ -19,7 +19,7 @@ class CustomerCreationEmailField extends StatelessWidget {
               hintText: "email@email.com",
               labelText: "Email",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: const Icon(FluentIcons.mail_12_regular),
+              prefixIcon: const Icon(FluentIcons.mail_16_regular),
             ),
           );
         });

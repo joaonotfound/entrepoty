@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,8 +19,8 @@ class ModelCreationImagePicker extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () =>
                   photo ? presenter.deletePhoto() : presenter.pickImage(),
-              label: Text(photo ? "Remove photo" : "Take photo"),
-              icon: Icon(photo ? Icons.close : Icons.camera),
+              label: Text(photo ? "Remove Picture" : "Add picture"),
+              icon: Icon(photo ? Icons.close : FluentIcons.camera_add_20_regular),
             ),
           );
         });

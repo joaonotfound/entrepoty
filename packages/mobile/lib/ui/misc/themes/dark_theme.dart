@@ -5,20 +5,20 @@ import 'base_theme.dart';
 
 ThemeData makeDarkTheme() {
   final scheme = AppColorScheme(
-    backgroundColor: Color.fromARGB(255, 25, 25, 25),
+    backgroundColor: Color(0xff080808),
     //Color.fromARGB(255, 6, 12, 18),
     onBackground: Colors.white70,
     //
-    primaryColor: Color(0xff274c77),
-    onPrimaryColor: Colors.white70,
+    primaryColor: Color(0xff86bbd8),
+    onPrimaryColor: Color(0xff080808),
     //
-    secondaryColor: Color(0xFFA3CEF1),
+    secondaryColor: Color(0xffffc443),
     onSecondaryColor: Colors.white70,
 
     textColor: Colors.white70,
     brightness: Brightness.dark,
     //
-    surfaceColor: Color(0xff373737),
+    surfaceColor: Color(0xff302e38),
     //Color.fromARGB(255, 7, 18, 29),
     onSurfaceColor: Colors.white10,
   );
@@ -44,12 +44,13 @@ ThemeData makeDarkTheme() {
     appBarTheme: baseTheme.appBarTheme,
     floatingActionButtonTheme: baseTheme.floatingActionButtonTheme,
     chipTheme: baseTheme.chipTheme,
+    bottomNavigationBarTheme: baseTheme.bottomNavigationBarTheme,
     // scaffoldBackgroundColor: baseTheme.scaffoldBackgroundColor,
     inputDecorationTheme: baseTheme.inputDecorationTheme,
     elevatedButtonTheme: baseTheme.elevatedButtonTheme,
     textTheme: baseTheme.textTheme,
     outlinedButtonTheme: baseTheme.outlinedButtonTheme,
-    iconTheme: IconThemeData(color: Colors.white),
+    iconTheme: IconThemeData(color: scheme.onBackground),
     snackBarTheme: SnackBarThemeData(
       contentTextStyle: TextStyle(color: Colors.white),
     ),

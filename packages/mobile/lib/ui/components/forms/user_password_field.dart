@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class UserPasswordField extends StatelessWidget {
               labelText: "Password",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: Icon(
-                Icons.lock,
+                FluentIcons.lock_closed_16_regular,
                 // color: Colors.black54,
               ),
             ),

@@ -4,12 +4,7 @@ import '../app_color_scheme.dart';
 
 ChipThemeData getChipTheme(AppColorScheme scheme) {
   return ChipThemeData(
-    checkmarkColor: scheme.onPrimaryColor,
-    selectedColor: scheme.primaryColor,
-    backgroundColor: Colors.black26,
-    labelStyle: TextStyle(
-      color: scheme.onSecondaryColor,
-      fontWeight: FontWeight.w500,
-    ),
+    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+    backgroundColor: scheme.surfaceColor
   );
 }

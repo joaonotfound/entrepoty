@@ -30,11 +30,11 @@ class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorMan
         appBar: AppBar(
           actions: [
             IconButton(
-              icon: const Icon(Icons.refresh),
+              icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
               onPressed: () => widget.presenter.loadCustomers(),
             ),
             IconButton(
-              icon: const Icon(FluentIcons.search_12_regular),
+              icon: const Icon(FluentIcons.search_16_regular),
               onPressed: () => Get.to(
                 const SearchScreen(),
                 transition: Transition.rightToLeft,
@@ -74,7 +74,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorMan
         floatingActionButton: FloatingActionButton.extended(
           heroTag: "add-user",
           onPressed: () => Get.toNamed(Routes.createCustomer),
-          icon: const Icon(Icons.add),
+          icon: const Icon(FluentIcons.add_12_regular),
           label: const Text("Customer"),
         ),
       );

@@ -1,10 +1,12 @@
 import 'package:entrepoty/ui/ui.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class SettingsLogoutButton extends StatelessWidget {
   const SettingsLogoutButton({super.key});
+
   void _askConfirmation(BuildContext context) async {
     final logout = Get.find<SettingsPresenter>();
     await showDialog(
@@ -30,18 +32,17 @@ class SettingsLogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
 
-    return ElevatedButton(
+    return ElevatedButton.icon(
       onPressed: () => _askConfirmation(context),
       style: ButtonStyle(
+        elevation: MaterialStatePropertyAll(0),
         backgroundColor:
             MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
       ),
-      child: Text(
+      icon: Icon(FluentIcons.sign_out_20_regular),
+      label: Text(
         "Logout account",
-        style: TextStyle(
-          color: provider.isDark.value ? Color(0xffFEE8E7) : Color(0xff6F0D06),
-          fontWeight: FontWeight.w400,
-        ),
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
     );
   }

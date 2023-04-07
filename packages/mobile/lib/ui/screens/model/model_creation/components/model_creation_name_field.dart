@@ -18,7 +18,7 @@ class ModelCreationNameField extends StatelessWidget {
               hintText: "Logitech Keyboard",
               labelText: "Model's name",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: const Icon(FluentIcons.person_12_regular),
+              prefixIcon: const Icon(FluentIcons.person_16_regular),
             ),
           );
         });

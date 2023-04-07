@@ -30,10 +30,10 @@ class StockListWelcomeMessage extends StatelessWidget {
           
           children: [
             IconButton(
-                icon: Icon(Icons.refresh),
+                icon: Icon(FluentIcons.arrow_clockwise_16_regular),
                 onPressed: () => presenter.loadScreen()),
             IconButton(
-                icon: Icon(FluentIcons.settings_16_regular),
+                icon: Icon(FluentIcons.settings_20_regular),
                 onPressed: () => Get.toNamed(Routes.settings))
           ],
         )

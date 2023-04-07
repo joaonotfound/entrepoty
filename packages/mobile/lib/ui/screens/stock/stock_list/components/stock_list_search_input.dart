@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class StockListSearchInput extends StatelessWidget {
@@ -9,7 +10,7 @@ class StockListSearchInput extends StatelessWidget {
       padding: EdgeInsets.only(top: 20, bottom: 10),
       child: TextField(
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search), hintText: "Search for product"),
+            prefixIcon: Icon(FluentIcons.search_16_regular), hintText: "Search for product"),
       ),
     );
   }

@@ -14,7 +14,7 @@ class SignupNameField extends StatelessWidget {
       builder: (context, snapshot) => TextFormField(
         onChanged: presenter.validateName,
         decoration: InputDecoration(
-          prefixIcon: Icon(FluentIcons.person_12_regular),
+          prefixIcon: Icon(FluentIcons.person_20_regular),
           errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
           hintText: "Your full name",
           label: Text("Name"),

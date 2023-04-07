@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class UserNameField extends StatelessWidget {
@@ -8,7 +9,7 @@ class UserNameField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         label: Text("Name"),
-        prefixIcon: Icon(Icons.account_circle),
+        prefixIcon: Icon(FluentIcons.person_16_regular),
         hintText: "Name",
       ),
     );

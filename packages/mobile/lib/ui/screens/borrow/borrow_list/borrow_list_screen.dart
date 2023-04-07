@@ -1,6 +1,7 @@
 import 'package:entrepoty/ui/layout/layout.dart';
 import 'package:entrepoty/ui/screens/borrow/borrow_list/components/components.dart';
 import 'package:entrepoty/ui/screens/screens.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -58,13 +59,13 @@ class _BorrowListScreenState extends State<BorrowListScreen> {
       appBar: AppBar(actions: [
         IconButton(
           onPressed: () => widget.presenter.loadBorrows(),
-          icon: Icon(Icons.refresh),
+          icon: Icon(FluentIcons.arrow_clockwise_16_regular),
         )
       ]),
       floatingActionButton: FloatingActionButton.extended(
         heroTag: "create-borrow",
         onPressed: () => Get.toNamed(Routes.createBorrow),
-        icon: const Icon(Icons.add),
+        icon: const Icon(FluentIcons.add_12_regular),
         label: const Text("Borrow"),
       ),
     );

@@ -19,7 +19,7 @@ class CustomerCreationSectorField extends StatelessWidget {
               hintText: "Human Resources",
               labelText: "Sector",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: const Icon(FluentIcons.organization_12_regular),
+              prefixIcon: const Icon(FluentIcons.organization_16_regular),
             ),
           );
         });

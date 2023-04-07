@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -31,8 +32,8 @@ class _StockListScreenState extends State<StockListScreen> {
       child: HomeLayout(
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () => Get.toNamed(Routes.createStockItem),
-          icon: Icon(Icons.add),
-          label: Text("Create item"),
+          icon: Icon(FluentIcons.add_12_regular),
+          label: Text("Item"),
         ),
         body: ListenableProvider(
           create: (_) => widget.presenter,

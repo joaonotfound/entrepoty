@@ -19,7 +19,7 @@ class CustomerCreationEnrollmentField extends StatelessWidget {
               hintText: "Enrollments's id",
               labelText: "Enrollment",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: const Icon(FluentIcons.person_accounts_20_regular),
+              prefixIcon: const Icon(FluentIcons.person_accounts_24_regular),
             ),
           );
         });

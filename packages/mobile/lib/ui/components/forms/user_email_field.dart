@@ -9,7 +9,7 @@ class UserEmailField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         label: Text("Email"),
-        prefixIcon: Icon(FluentIcons.mail_12_regular),
+        prefixIcon: Icon(FluentIcons.mail_16_regular),
         hintText: "E-mail",
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../app_color_scheme.dart';
 
 InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
+  double borderRadius = 5;
   return InputDecorationTheme(
     filled: true,
     fillColor: scheme.surfaceColor.withAlpha(100),
@@ -11,9 +12,13 @@ InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
     suffixIconColor: scheme.onBackground.withAlpha(180),
     hoverColor: scheme.textColor,
     focusColor: scheme.primaryColor,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(borderRadius),
+      borderSide: BorderSide(
+        color: scheme.onSurfaceColor.withAlpha(20),
+      ),
     ),
+    //contentPadding: EdgeInsets.symmetric(vertical: 20),
     // labelStyle: TextStyle(
     // color: scheme.textColor.withAlpha(200),
     // ),
@@ -25,8 +30,11 @@ InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
     ),
     // labelStyle: ,
     focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(color: scheme.primaryColor)),
+      borderRadius: BorderRadius.circular(borderRadius),
+      borderSide: BorderSide(
+        color: scheme.primaryColor.withAlpha(20),
+      ),
+    ),
     alignLabelWithHint: true,
   );
 }

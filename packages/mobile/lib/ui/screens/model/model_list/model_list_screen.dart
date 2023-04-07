@@ -32,11 +32,11 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
         appBar: AppBar(
           actions: [
             IconButton(
-              icon: const Icon(Icons.refresh),
+              icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
               onPressed: () => widget.presenter.loadModels(),
             ),
             IconButton(
-                icon: const Icon(FluentIcons.search_12_regular),
+                icon: const Icon(FluentIcons.search_16_regular),
                 onPressed: () {
                   Get.put(widget.presenter);
                   Get.to(
@@ -76,7 +76,7 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
         floatingActionButton: FloatingActionButton.extended(
           heroTag: "create-model",
           onPressed: () => Get.toNamed(Routes.createModel),
-          icon: const Icon(Icons.add),
+          icon: const Icon(FluentIcons.add_12_regular),
           label: const Text("Model"),
         ),
       );

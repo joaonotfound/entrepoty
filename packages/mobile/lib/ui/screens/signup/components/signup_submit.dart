@@ -1,4 +1,5 @@
 import 'package:entrepoty/ui/ui.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
         stream: provider.isFormValidStream,
         builder: (context, snapshot) => ElevatedButton(
           onPressed: snapshot.data == true ? provider.signup : null,
-          child: Text("Sign up"),
+          child: Text("Sign up", style: TextStyle(fontWeight: FontWeight.w400),),
         ),
       ),
     );

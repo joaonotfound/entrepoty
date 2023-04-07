@@ -19,7 +19,7 @@ class LoginUsernameField extends StatelessWidget {
               hintText: "username",
               labelText: "Username",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: const Icon(FluentIcons.person_12_regular),
+              prefixIcon: const Icon(FluentIcons.person_20_regular),
             ),
           );
         });
