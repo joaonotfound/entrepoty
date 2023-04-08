@@ -18,17 +18,18 @@ class ModelViewBottomSheet extends StatelessWidget {
     final presenter = Get.find<ModelViewPresenter>();
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
       child: ElevatedButton.icon(
-        icon: Icon(FluentIcons.delete_12_regular),
-        label: Text("Delete"),
+        icon: const Icon(FluentIcons.delete_12_regular),
+        label: const Text("Delete"),
         onPressed: () async {
           await presenter.deleteModel(model.id);
           Get.back();
         },
         style: ButtonStyle(
           alignment: Alignment.centerLeft,
-          backgroundColor: MaterialStatePropertyAll(Colors.transparent),
+          foregroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.onSurface),
+          backgroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
         ),
       ),
     );
