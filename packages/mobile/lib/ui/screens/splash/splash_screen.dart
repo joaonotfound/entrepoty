@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:entrepoty/ui/screens/splash/splash.dart';
 import 'package:mobile_core/mobile_core.dart';
 
-class SplashScreen extends StatelessWidget with NavigationManager {
+class SplashScreen extends StatefulWidget {
   final SplashPresenter presenter;
 
   const SplashScreen({
@@ -12,31 +12,38 @@ class SplashScreen extends StatelessWidget with NavigationManager {
   });
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> with NavigationManager  {
+  @override
+  void initState() {
+    handleNavigation(context, widget.presenter.navigateToStream);
+    widget.presenter.checkAccount();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    presenter.checkAccount();
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Builder(builder: (context) {
-        handleNavigation(context, presenter.navigateToStream);
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(
+              color: Colors.white,
+            ),
+            SizedBox(height: 20,),
+            Text(
+              "Loading",
+              style: TextStyle(
                 color: Colors.white,
               ),
-              SizedBox(height: 20,),
-              Text(
-                "Loading",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              )
-            ],
-          ),
-        );
-      }),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
