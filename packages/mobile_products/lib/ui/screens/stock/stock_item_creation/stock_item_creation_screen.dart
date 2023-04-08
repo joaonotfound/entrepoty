@@ -20,6 +20,12 @@ class StockItemCreationScreen extends StatefulWidget {
 
 class _StockItemCreationScreenState extends State<StockItemCreationScreen>
     with LoadingManager {
+
+  @override
+  void initState() {
+    handleLoading(context, widget.presenter.isLoadingStream);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return FormLayout(
@@ -40,7 +46,6 @@ class _StockItemCreationScreenState extends State<StockItemCreationScreen>
       action: StreamBuilder(
           stream: widget.presenter.isFormValidStream,
           builder: (context, snapshot) {
-            handleLoading(context, widget.presenter.isLoadingStream);
             return ElevatedButton(
               onPressed: snapshot.data == true
                   ? () => widget.presenter.saveItem()

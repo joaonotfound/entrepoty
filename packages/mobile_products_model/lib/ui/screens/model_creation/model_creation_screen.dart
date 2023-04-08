@@ -5,36 +5,42 @@ import 'components/components.dart';
 
 import 'model_creation_presenter.dart';
 
-class ModelCreationScreen extends StatelessWidget
-    with LoadingManager, NavigationManager, UiErrorManager {
+class ModelCreationScreen extends StatefulWidget {
   final ModelCreationPresenter presenter;
+
   ModelCreationScreen({
     super.key,
     required this.presenter,
   });
 
   @override
+  State<ModelCreationScreen> createState() => _ModelCreationScreenState();
+}
+
+class _ModelCreationScreenState extends State<ModelCreationScreen>
+    with LoadingManager, NavigationManager, UiErrorManager {
+  @override
+  void initState() {
+    handleLoading(context, widget.presenter.isLoadingStream);
+    handleNavigation(context, widget.presenter.navigateToStream);
+    handleUiError(context, widget.presenter.mainErrorStream);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ListenableProvider(
-      create: (context) => presenter,
-      child: Builder(
-        builder: (context) {
-          handleLoading(context, presenter.isLoadingStream);
-          handleNavigation(context, presenter.navigateToStream);
-          handleUiError(context, presenter.mainErrorStream);
-
-          return FormLayout(
-            content: Form(
-              child: ListView(children: [
-                ModelCreationNameField(),
-                ModelCreationCategories(),
-                ModelCreationImagePicker()
-              ]),
-            ),
-            action: ModelCreationSubmit(),
-            title: "Create Product Model",
-          );
-        },
+      create: (context) => widget.presenter,
+      child: FormLayout(
+        content: Form(
+          child: ListView(children: [
+            ModelCreationNameField(),
+            ModelCreationCategories(),
+            ModelCreationImagePicker()
+          ]),
+        ),
+        action: ModelCreationSubmit(),
+        title: "Create Product Model",
       ),
     );
   }

@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 import 'components/components.dart';
 import 'login_presenter.dart';
 
-class LoginScreen extends StatelessWidget
-    with LoadingManager, NavigationManager, UiErrorManager {
+class LoginScreen extends StatefulWidget
+    {
   final LoginPresenter presenter;
 
   const LoginScreen({
@@ -17,6 +17,18 @@ class LoginScreen extends StatelessWidget
   });
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> with LoadingManager, NavigationManager, UiErrorManager {
+  @override
+  void initState() {
+    handleLoading(context, widget.presenter.isLoadingStream);
+    handleNavigation(context, widget.presenter.navigateToStream);
+    handleUiError(context, widget.presenter.mainErrorStream);
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +36,7 @@ class LoginScreen extends StatelessWidget
         actions: [
           IconButton(
             onPressed: () => Get.toNamed(Routes.settingsBackend),
-            icon: Icon(
+            icon: const Icon(
               FluentIcons.settings_20_regular,
             ),
           ),
@@ -33,40 +45,34 @@ class LoginScreen extends StatelessWidget
       backgroundColor: Theme.of(context).colorScheme.background,
       // appBar: makeLoginAppbarComponent(),
       body: SafeArea(
-        child: Builder(builder: (context) {
-          handleLoading(context, presenter.isLoadingStream);
-          handleNavigation(context, presenter.navigateToStream);
-          handleUiError(context, presenter.mainErrorStream);
-
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 10,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
+            vertical: 10,
+          ),
+          child: Column(children: [
+            Expanded(
+              flex: 40,
+              child: LoginCircularAccount(),
             ),
-            child: Column(children: [
-              Expanded(
-                flex: 40,
-                child: LoginCircularAccount(),
-              ),
-              Expanded(
-                flex: 60,
-                child: Form(
-                  child: ListenableProvider(
-                    create: (_) => presenter,
-                    child: ListView(
-                      children: [
-                        LoginUsernameField(),
-                        UserPasswordField(),
-                        LoginSubmitButton(),
-                        LoginSignupRedirect(),
-                      ],
-                    ),
+            Expanded(
+              flex: 60,
+              child: Form(
+                child: ListenableProvider(
+                  create: (_) => widget.presenter,
+                  child: ListView(
+                    children: [
+                      LoginUsernameField(),
+                      UserPasswordField(),
+                      LoginSubmitButton(),
+                      LoginSignupRedirect(),
+                    ],
                   ),
                 ),
               ),
-            ]),
-          );
-        }),
+            ),
+          ]),
+        ),
       ),
     );
   }

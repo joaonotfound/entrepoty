@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 import '../screens.dart';
 import 'components/components.dart';
 
-class CustomerCreationScreen extends StatelessWidget
-    with LoadingManager, NavigationManager, UiErrorManager {
+class CustomerCreationScreen extends StatefulWidget {
   final CustomerCreationPresenter presenter;
 
   CustomerCreationScreen({
@@ -14,30 +13,38 @@ class CustomerCreationScreen extends StatelessWidget
   });
 
   @override
+  State<CustomerCreationScreen> createState() => _CustomerCreationScreenState();
+}
+
+class _CustomerCreationScreenState extends State<CustomerCreationScreen>
+    with LoadingManager, NavigationManager, UiErrorManager {
+  @override
+  void initState() {
+    handleLoading(context, widget.presenter.isLoadingStream);
+    handleNavigation(context, widget.presenter.navigateToStream);
+    handleUiError(context, widget.presenter.mainErrorStream);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ListenableProvider(
-      create: (context) => presenter,
-      child: Builder(builder: (context) {
-        handleLoading(context, presenter.isLoadingStream);
-        handleNavigation(context, presenter.navigateToStream);
-        handleUiError(context, presenter.mainErrorStream);
-
-        return FormLayout(
-          content: Form(
-            child: ListView(children: [
-              CustomerCreationName(),
-              SizedBox(height: 10),
-              CustomerCreationEmailField(),
-              SizedBox(height: 10),
-              CustomerCreationEnrollmentField(),
-              SizedBox(height: 10),
-              CustomerCreationSectorField(),
-            ]),
-          ),
-          action: CustomerCreationSubmit(),
-          title: "Create Customer",
-        );
-      }),
+      create: (context) => widget.presenter,
+      child: FormLayout(
+        content: Form(
+          child: ListView(children: [
+            CustomerCreationName(),
+            SizedBox(height: 10),
+            CustomerCreationEmailField(),
+            SizedBox(height: 10),
+            CustomerCreationEnrollmentField(),
+            SizedBox(height: 10),
+            CustomerCreationSectorField(),
+          ]),
+        ),
+        action: CustomerCreationSubmit(),
+        title: "Create Customer",
+      ),
     );
   }
 }

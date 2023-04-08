@@ -19,6 +19,11 @@ class SettingsScreen extends StatefulWidget with NavigationManager {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
+  void initState() {
+    widget.handleNavigation(context, widget.presenter.navigateToStream);
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     Get.put(widget.presenter);
     // debugPrint(themeProvider.isDark.toString());
@@ -30,25 +35,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         title: const Text("Settings & Privacy"),
       ),
-      body: Builder(
-        builder: (context) {
-          widget.handleNavigation(context, widget.presenter.navigateToStream);
-          return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 15,
-              ),
-              child: Column(
-                children:  const [
-                  SettingsDarkToggle(),
-                  SettingsServer(),
-                  SettingsLogoutButton(),
-                ],
-              ),
-            ),
-          );
-        },
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 15,
+          ),
+          child: Column(
+            children:  const [
+              SettingsDarkToggle(),
+              SettingsServer(),
+              SettingsLogoutButton(),
+            ],
+          ),
+        ),
       ),
     );
   }
