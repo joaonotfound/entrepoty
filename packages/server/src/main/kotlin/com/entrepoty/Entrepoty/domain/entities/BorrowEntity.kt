@@ -1,8 +1,9 @@
 package com.entrepoty.Entrepoty.domain.entities
 
 import jakarta.persistence.*
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
 import org.jetbrains.annotations.NotNull
-import java.util.Date
 
 @Entity
 @Table(name = "borrow")
@@ -14,10 +15,12 @@ class BorrowEntity {
 
     @field:NotNull
     @field:ManyToOne
+    @field:OnDelete(action = OnDeleteAction.CASCADE)
     lateinit var customer: Customer
 
     @field:NotNull
     @field:OneToOne
+    @field:OnDelete(action = OnDeleteAction.CASCADE)
     lateinit var product: ProductEntity
 
     @field:NotNull
