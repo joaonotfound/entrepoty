@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:get/get.dart';
+import 'package:mobile_customers/ui/screens/customer_view/components/components.dart';
 
 class CustomerViewScreen extends StatefulWidget {
   CustomerViewPresenter presenter;
@@ -47,59 +48,12 @@ class _CustomerViewScreenState extends State<CustomerViewScreen> {
                         flex: 1,
                         child: ListView(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.network(
-                                    "https://source.boringavatars.com/beam",
-                                    width: 120,
-                                  )
-                                ],
-                              ),
-                            ),
-                            ListTile(
-                              leading: const CircleAvatar(
-                                  child: Icon(FluentIcons.person_20_regular)),
-                              title: const Text("Name"),
-                              subtitle: Text(snapshot.data!.name),
-                            ),
-                            ListTile(
-                              leading: const CircleAvatar(
-                                child: Icon(
-                                  FluentIcons.organization_20_regular,
-                                ),
-                              ),
-                              title: const Text("Enrollment"),
-                              subtitle: Text(snapshot.data!.enrollment),
-                            ),
-                            ListTile(
-                              leading: const CircleAvatar(
-                                child: Icon(FluentIcons.mail_20_regular),
-                              ),
-                              title: const Text("E-mail"),
-                              subtitle: Text(snapshot.data!.email),
-                            ),
-                            ListTile(
-                              leading: const CircleAvatar(
-                                child:
-                                    Icon(FluentIcons.organization_20_regular),
-                              ),
-                              title: Text("Sector"),
-                              subtitle: Text(snapshot.data!.sector),
-                            ),
+                            CustomerViewPicture(customer: snapshot.data!),
+                            CustomerViewInformation(customer: snapshot.data!)
                           ],
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Delete"),
-                        ),
-                      )
+                      const CustomerViewDelete()
                     ],
                   ),
                 ),
