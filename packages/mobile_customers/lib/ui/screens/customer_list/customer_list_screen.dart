@@ -29,17 +29,12 @@ class _CustomerListScreenState extends State<CustomerListScreen>
 
   @override
   Widget build(BuildContext context) {
+    Get.put<CustomerListPresenter>(widget.presenter);
     return HomeLayout(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
-            onPressed: () => widget.presenter.loadCustomers(),
-          ),
-          IconButton(
-              icon: const Icon(FluentIcons.search_16_regular),
-              onPressed: () {}
-              )
+        actions: const [
+          CustomerListReload(),
+          CustomerListSearch()
         ],
       ),
       body: RefreshIndicator(
@@ -71,12 +66,7 @@ class _CustomerListScreenState extends State<CustomerListScreen>
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        heroTag: "add-user",
-        onPressed: () => Get.toNamed(Routes.createCustomer),
-        icon: const Icon(FluentIcons.add_12_regular),
-        label: const Text("Customer"),
-      ),
+      floatingActionButton: const CustomerListFloatingActionButton()
     );
   }
 }
