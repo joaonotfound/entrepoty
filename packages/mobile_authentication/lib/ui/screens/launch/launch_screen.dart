@@ -9,55 +9,55 @@ class LaunchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const backgroundColor = Color(0xff2b2d42);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
             onPressed: () => Get.toNamed(Routes.settingsBackend),
-            icon: Icon(
+            icon: const Icon(
               FluentIcons.settings_20_regular,
+              color: Colors.white,
             ),
           ),
         ],
       ),
-      backgroundColor: Color(0xff0014cc), //Theme.of(context).colorScheme.,
+      backgroundColor: const Color(0xff2b2d42), //Theme.of(context).colorScheme.,
       body: SafeArea(
-        child: Container(
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: Icon(
-                      FluentIcons.box_20_filled,
-                      size: 140,
-                    ),
-                  ),
-                  //child: Image.asset("lib/ui/assets/launch_image.png"),
-                  flex: 1,
-                ),
-                Container(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        LaunchDescription(),
-                        Column(
-                          children: [
-                            LaunchLoginButton(),
-                            SizedBox(height: 5),
-                            LaunchSignupButton(),
-                          ],
-                        )
-                      ],
-                    ),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              const Expanded(
+                flex: 1,
+                child: Center(
+                  child: Icon(
+                    FluentIcons.box_20_filled,
+                    size: 140,
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      const LaunchDescription(),
+                      Column(
+                        children: const [
+                          LaunchLoginButton(),
+                          SizedBox(height: 5),
+                          LaunchSignupButton(),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

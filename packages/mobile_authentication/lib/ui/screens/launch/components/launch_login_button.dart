@@ -13,10 +13,10 @@ class LaunchLoginButton extends StatelessWidget {
         elevation: 0
       ),
       onPressed: () => Get.toNamed(Routes.login),
-      child: Text(
+      child: const Text(
         "Login",
         style: TextStyle(
-          color: Color(0xff0014cc),
+          color: Colors.black87,
           fontWeight: FontWeight.w400
         ),
       ),
