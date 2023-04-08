@@ -7,7 +7,7 @@ import '../../../../../domain/domain.dart';
 class StockListItem extends StatelessWidget {
   final ProductEntity item;
 
-  StockListItem({
+  const StockListItem({
     super.key,
     required this.item,
   });
@@ -21,19 +21,21 @@ class StockListItem extends StatelessWidget {
       leading: FutureBuilder(
           future: backendProvider.loadResource(item.model.imagePath),
           builder: (context, snapshot) {
-            return CircleAvatar(
-              backgroundImage: NetworkImage(
-                snapshot.data!,
-              ),
-            );
+            return snapshot.data == null
+                ? const CircleAvatar(backgroundColor: Colors.grey)
+                : CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      snapshot.data!,
+                    ),
+                  );
           }),
       title: Text(
         item.model.name,
         style: Theme.of(context).textTheme.headlineSmall,
       ),
       subtitle: Text(
-        item.quantity.toString() + "x Units.",
-        style: TextStyle(fontSize: 15),
+        "${item.quantity}x Units.",
+        style: const TextStyle(fontSize: 15),
       ),
     );
   }

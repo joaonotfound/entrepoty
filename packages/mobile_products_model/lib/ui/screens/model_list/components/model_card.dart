@@ -20,7 +20,7 @@ class ModelListCard extends StatelessWidget {
     final presenter = Provider.of<ModelListPresenter>(context);
     final backend = Get.find<BackendProvider>();
 
-    final border = 5.0;
+    const border = 5.0;
     return InkWell(
       onTap: () => Get.toNamed(Routes.getViewModel(model.id)),
       child: Card(
@@ -35,42 +35,40 @@ class ModelListCard extends StatelessWidget {
                 topRight: Radius.circular(border),
               ),
               child: FutureBuilder<String>(
-                future: backend.loadResource(model.imagePath),
-                initialData: "",
-                builder: (context, snapshot) {
-                  return Image.network(
-                    snapshot.data!,
-                    height: 250,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.fill,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        width: double.infinity,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              FluentIcons.image_16_regular,
-                              size: 50,
-                              color: Theme.of(context).colorScheme.surface,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Missing image",
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.surface),
-                            )
-                          ],
-                        ),
-                        height: 250,
-                      );
-                    },
-                  );
-                }
-              ),
+                  future: backend.loadResource(model.imagePath),
+                  initialData: "",
+                  builder: (context, snapshot) {
+                    return Image.network(
+                      snapshot.data!,
+                      height: 250,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.fill,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: double.infinity,
+                          color: Theme.of(context).colorScheme.onBackground,
+                          height: 250,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                FluentIcons.image_16_regular,
+                                size: 50,
+                                color: Theme.of(context).colorScheme.surface,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                "Missing image",
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.surface),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }),
             ),
             ListTile(
               title: Text(model.name),
@@ -78,7 +76,7 @@ class ModelListCard extends StatelessWidget {
               trailing: PopupMenuButton(
                 itemBuilder: (context) => [
                   PopupMenuItem(
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(FluentIcons.delete_12_regular),
                       title: Text("Delete"),
                     ),

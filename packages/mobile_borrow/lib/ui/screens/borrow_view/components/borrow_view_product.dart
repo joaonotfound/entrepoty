@@ -39,7 +39,7 @@ class BorrowViewProduct extends StatelessWidget {
             subtitle: Text(model.category),
           ),
           ListTile(
-            title: Text("Devolution Date"),
+            title: const Text("Devolution Date"),
             subtitle: Text("${borrow.date.day}/${borrow.date.month}/${borrow.date.year}"),
           )
         ],
