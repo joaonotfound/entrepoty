@@ -34,7 +34,7 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
       (response) => response.statuscode == 200
           ? Either.right(model)
           : response.statuscode == 409
-              ? Either.left(DomainError.accountAlreadyExists)
+              ? Either.left(DomainError.conflict)
               : Either.left(DomainError.unexpected),
     );
   }

@@ -34,7 +34,7 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
         return Either.right(BorrowEntity.fromJson(response.body));
       }
       if (response.statuscode == 409) {
-        return Either.left(DomainError.accountAlreadyExists);
+        return Either.left(DomainError.conflict);
       }
     } catch (e) {
       print(e.toString());

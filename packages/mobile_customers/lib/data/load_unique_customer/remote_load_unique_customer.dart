@@ -21,7 +21,7 @@ class RemoteLoadUniqueCustomer implements LoadUniqueCustomerUsecase {
         return Either.right(CustomerEntity.fromJson(response.body));
       }
       if(response.statuscode == 409){
-        return Either.left(DomainError.accountDoesntExist);
+        return Either.left(DomainError.notFound);
       }
     }catch (e){}
     return Either.left(DomainError.unexpected);

@@ -30,7 +30,7 @@ class RemoteSignup implements SignupUsecase {
         timeout: Duration(seconds: 2),
       );
       if (response.statuscode == 409) {
-        return Right(DomainError.accountAlreadyExists);
+        return Right(DomainError.conflict);
       }
       if (response.statuscode != 200) {
         return Right(DomainError.unexpected);
@@ -39,7 +39,7 @@ class RemoteSignup implements SignupUsecase {
       return Left(Account.fromJson(account));
     } on HttpError catch (e) {
       return Right(e == HttpError.badRequest
-          ? DomainError.invalidCredentials
+          ? DomainError.unauthorized
           : DomainError.unexpected);
     } catch (e) {
       return Right(DomainError.unexpected);

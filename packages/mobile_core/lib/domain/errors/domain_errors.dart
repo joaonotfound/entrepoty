@@ -1,21 +1,21 @@
 enum DomainError {
   unexpected,
-  invalidCredentials,
+  unauthorized,
   serverError,
   networkError,
-  accountAlreadyExists,
-  accountDoesntExist,
+  conflict,
+  notFound,
 }
 
 extension DomainErrorExtension on DomainError {
   String get description {
     switch (this) {
-      case DomainError.invalidCredentials:
-        return "Invalid Credentials";
-      case DomainError.accountDoesntExist:
-        return "Account doesn't exist";
+      case DomainError.unauthorized:
+        return "Unauthorized";
+      case DomainError.notFound:
+        return "Not found";
       default:
-        return "Algo deu errado, tente novamente em breve.";
+        return "Something went wrong, please try again later.";
     }
   }
 }

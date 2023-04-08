@@ -23,7 +23,7 @@ class RemoteDeleteProductModel implements DeleteProductModelUsecase {
         );
       }
       if (response.statuscode == 409) {
-        return Either.left(DomainError.accountDoesntExist);
+        return Either.left(DomainError.notFound);
       }
     } catch (e) {}
 

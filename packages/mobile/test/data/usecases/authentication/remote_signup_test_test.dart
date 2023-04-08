@@ -67,7 +67,7 @@ void main() {
 
       final response = await sut.register(name: "", username: "", password: "");
 
-      expect(response, Right(DomainError.invalidCredentials));
+      expect(response, Right(DomainError.unauthorized));
     });
     test("should return unexpected if http returns other statuscode than 200",
         () async {

@@ -18,6 +18,6 @@ class LocalLogin implements LoginUsecase {
         profilePictureUrl: "https://google.com",
       );
     }
-    throw DomainError.invalidCredentials;
+    throw DomainError.unauthorized;
   }
 }

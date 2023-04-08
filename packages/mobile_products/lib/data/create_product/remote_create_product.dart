@@ -31,7 +31,7 @@ class RemoteCreateProduct implements CreateProductUsecas {
         return Either.right(ProductEntity.fromJson(response.body));
       }
       if (response.statuscode == 409) {
-        return Either.left(DomainError.accountAlreadyExists);
+        return Either.left(DomainError.conflict);
       }
     } catch (e) {}
     return Either.left(DomainError.unexpected);

@@ -28,7 +28,7 @@ class RemoteSaveCustomer implements SaveCustomerUsercase {
       );
 
       if (response.statuscode == 409) {
-        return Either.left(DomainError.accountAlreadyExists);
+        return Either.left(DomainError.conflict);
       }
 
       return Either.right(CustomerEntity.fromJson(response.body));

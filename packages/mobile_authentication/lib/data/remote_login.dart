@@ -25,7 +25,7 @@ class RemoteLogin implements LoginUsecase {
       if (response.statuscode == 404 ||
           response.statuscode == 401 ||
           response.statuscode == 403) {
-        throw DomainError.invalidCredentials;
+        throw DomainError.unauthorized;
       }
       if (response.body != null && response.statuscode == 200) {
         return Account.fromJson(response.body);
@@ -33,7 +33,7 @@ class RemoteLogin implements LoginUsecase {
       throw DomainError.unexpected;
     } on HttpError catch (error) {
       throw error == HttpError.badRequest
-          ? DomainError.invalidCredentials
+          ? DomainError.unauthorized
           : DomainError.unexpected;
     }
   }

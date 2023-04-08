@@ -45,12 +45,12 @@ void main() {
         () async {
       httpClient.mockPostError(HttpError.badRequest);
       var future = sut.authenticate(username: username, password: password);
-      expect(future, throwsA(DomainError.invalidCredentials));
+      expect(future, throwsA(DomainError.unauthorized));
     });
     test("Should throw invalidCredentials if httpclient throws", () async {
       httpClient.mockPostError(HttpError.badRequest);
       var future = sut.authenticate(username: username, password: password);
-      expect(future, throwsA(DomainError.invalidCredentials));
+      expect(future, throwsA(DomainError.unauthorized));
     });
     test("Should throw unexpected if httpclient throws", () async {
       httpClient.mockPostError(HttpError.unexpected);
@@ -67,7 +67,7 @@ void main() {
 
       var response = sut.authenticate(username: username, password: password);
 
-      expect(response, throwsA(DomainError.invalidCredentials));
+      expect(response, throwsA(DomainError.unauthorized));
     });
   });
 }

@@ -12,7 +12,7 @@ class LocalSignup implements SignupUsecase {
   }) async {
     await Future.delayed(Duration(seconds: 2));
     if (username == "ja12345") {
-      return Right(DomainError.invalidCredentials);
+      return Right(DomainError.unauthorized);
     }
     return Left(
       Account(

@@ -4,11 +4,11 @@ import 'errors/errors.dart';
 
 UiError fromDomain(DomainError error) {
   switch (error) {
-    case DomainError.invalidCredentials:
+    case DomainError.unauthorized:
       return UiError.invalidCredentials;
-    case DomainError.accountDoesntExist:
+    case DomainError.notFound:
       return UiError.accountDoesntExist;
-    case DomainError.accountAlreadyExists:
+    case DomainError.conflict:
       return UiError.accountAlreadyExists;
     default:
       return UiError.unexpected;

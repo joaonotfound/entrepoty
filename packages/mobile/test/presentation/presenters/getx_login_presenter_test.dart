@@ -123,7 +123,7 @@ void main() {
     test(
         "should emit correct main error if authenctation throws invalidCredentials",
         () {
-      authentication.mockAuthenticateError(DomainError.invalidCredentials);
+      authentication.mockAuthenticateError(DomainError.unauthorized);
       sut.validateUsername(username);
       sut.validatePassword(password);
 
