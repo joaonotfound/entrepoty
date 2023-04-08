@@ -23,7 +23,7 @@ class ModelViewImage extends StatelessWidget {
         builder: (context, snapshot) {
           return Image.network(
             snapshot.data!,
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
           );
         }
       ),

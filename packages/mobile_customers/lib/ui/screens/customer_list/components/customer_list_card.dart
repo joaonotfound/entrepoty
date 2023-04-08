@@ -25,6 +25,8 @@ class CustomerListCard extends StatelessWidget {
         Routes.getViewCustomer(user.enrollment),
       ),
       child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         tileColor: Theme.of(context).colorScheme.surface,
         dense: true,
         leading: SvgPicture.network(

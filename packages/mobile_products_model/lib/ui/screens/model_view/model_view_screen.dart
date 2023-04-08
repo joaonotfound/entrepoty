@@ -24,7 +24,10 @@ class ModelViewScreen extends StatelessWidget {
           appBar: AppBar(
             leading: IconButton(
               onPressed: () => Get.back(),
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
             ),
             actions: snapshot.data == null
                 ? null
@@ -38,7 +41,10 @@ class ModelViewScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      icon: Icon(Icons.more_vert),
+                      icon: const Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
                     )
                   ],
             backgroundColor: Colors.transparent,

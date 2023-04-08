@@ -5,6 +5,7 @@ import 'package:mobile_core/mobile_core.dart';
 
 class SplashScreen extends StatelessWidget with NavigationManager {
   final SplashPresenter presenter;
+
   const SplashScreen({
     super.key,
     required this.presenter,
@@ -17,7 +18,24 @@ class SplashScreen extends StatelessWidget with NavigationManager {
       backgroundColor: Theme.of(context).primaryColor,
       body: Builder(builder: (context) {
         handleNavigation(context, presenter.navigateToStream);
-        return Loading();
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                color: Colors.white,
+              ),
+              SizedBox(height: 20,),
+              Text(
+                "Loading",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              )
+            ],
+          ),
+        );
       }),
     );
   }
