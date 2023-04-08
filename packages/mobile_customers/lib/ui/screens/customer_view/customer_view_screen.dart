@@ -1,6 +1,4 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:get/get.dart';
 import 'package:mobile_customers/ui/screens/customer_view/components/components.dart';
