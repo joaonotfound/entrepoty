@@ -1,4 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
 import './components/components.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +10,17 @@ class LaunchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () => Get.toNamed(Routes.settingsBackend),
+            icon: Icon(
+              FluentIcons.settings_20_regular,
+            ),
+          ),
+        ],
+      ),
       backgroundColor: Color(0xff0014cc), //Theme.of(context).colorScheme.,
       body: SafeArea(
         child: Container(
@@ -36,7 +49,7 @@ class LaunchScreen extends StatelessWidget {
                           children: [
                             LaunchLoginButton(),
                             SizedBox(height: 5),
-                            LaunchSignupButton()
+                            LaunchSignupButton(),
                           ],
                         )
                       ],

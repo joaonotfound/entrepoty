@@ -1,4 +1,6 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +10,7 @@ import 'login_presenter.dart';
 class LoginScreen extends StatelessWidget
     with LoadingManager, NavigationManager, UiErrorManager {
   final LoginPresenter presenter;
+
   const LoginScreen({
     super.key,
     required this.presenter,
@@ -18,6 +21,14 @@ class LoginScreen extends StatelessWidget
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login"),
+        actions: [
+          IconButton(
+            onPressed: () => Get.toNamed(Routes.settingsBackend),
+            icon: Icon(
+              FluentIcons.settings_20_regular,
+            ),
+          ),
+        ],
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       // appBar: makeLoginAppbarComponent(),
