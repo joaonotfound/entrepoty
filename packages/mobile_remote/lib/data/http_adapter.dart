@@ -48,22 +48,12 @@ class HttpAdapter implements HttpClient {
     Duration? timeout,
   }) async {
     try {
-      final authorization = await getAuthorization();
       final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
-      print(baseUrl + url);
-      final requestHeaders = headers?.cast<String, String>() ??
-          {
-            'content-type': 'application/json',
-            'accept': 'application/json',
-          }
-        ..addAll((authorization == null || authorization.length <= 2)
-            ? {}
-            : {"Authorization": "Bearer " + authorization});
 
       var response = await client
           .get(
             Uri.parse(baseUrl + url),
-            headers: requestHeaders,
+            headers: await _buildHeaders(headers),
           )
           .timeout(timeout ?? const Duration(seconds: 5));
 
@@ -85,22 +75,12 @@ class HttpAdapter implements HttpClient {
     Duration? timeout,
   }) async {
     try {
-      final authorization = await getAuthorization();
       final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
-      print(baseUrl);
-      print(authorization);
+
       var response = await client
           .post(Uri.parse(baseUrl + url),
-              body: jsonEncode(body),
-              headers: headers?.cast<String, String>() ??
-                  {
-                    'content-type': 'application/json',
-                    'accept': 'application/json',
-                  }
-                ..addAll((authorization == null || authorization.length <= 2)
-                    ? {}
-                    : {"Authorization": "Bearer " + authorization}))
-          .timeout(timeout ?? Duration(seconds: 5));
+              body: jsonEncode(body), headers: await _buildHeaders(headers))
+          .timeout(timeout ?? const Duration(seconds: 5));
 
       final responseBody = response.body.length == 0 ? "{}" : response.body;
       debugPrint(response.statusCode.toString());
@@ -159,7 +139,6 @@ class HttpAdapter implements HttpClient {
     try {
       final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
       final request = http.MultipartRequest(method, Uri.parse(baseUrl + url));
-
 
       for (var file in files ?? [] as List<MultipleFile>) {
         final content =
