@@ -37,7 +37,7 @@ class _BorrowListScreenState extends State<BorrowListScreen> {
               stream: widget.presenter.isLoadingStream,
               builder: (context, isLoadingSnapshot) {
                 return isLoadingSnapshot.data == true
-                    ? Center(child: Text("Loading"))
+                    ? const Loading()
                     : borrowsSnapshot.data?.isNotEmpty == true
                         ? ListenableProvider(
                             create: (context) => widget.presenter,

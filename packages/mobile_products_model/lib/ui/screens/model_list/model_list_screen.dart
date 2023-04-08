@@ -57,7 +57,7 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
                 stream: widget.presenter.isLoadingStream,
                 builder: (context, isLoadingSnapshot) {
                   return isLoadingSnapshot.data == true
-                      ? Center(child: Text("Loading"))
+                      ? const Loading()
                       : modelsSnapshot.data?.isNotEmpty == true
                           ? ListenableProvider(
                               create: (context) => widget.presenter,

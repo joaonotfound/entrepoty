@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:get/get.dart';
 import 'package:mobile_customers/ui/screens/customer_view/components/components.dart';
+import 'package:mobile_core/mobile_core.dart';
 
 class CustomerViewScreen extends StatefulWidget {
   CustomerViewPresenter presenter;
@@ -32,9 +33,7 @@ class _CustomerViewScreenState extends State<CustomerViewScreen> {
         ),
         body: SafeArea(
           child: snapshot.data == null
-              ? const Center(
-                  child: Text("Loading"),
-                )
+              ? const Loading()
               : Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 16.0,

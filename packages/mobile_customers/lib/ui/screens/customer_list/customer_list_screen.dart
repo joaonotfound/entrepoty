@@ -18,12 +18,14 @@ class CustomerListScreen extends StatefulWidget {
   State<CustomerListScreen> createState() => _CustomerListScreenState();
 }
 
-class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorManager {
+class _CustomerListScreenState extends State<CustomerListScreen>
+    with UiErrorManager {
   @override
   void initState() {
     widget.presenter.loadCustomers();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
@@ -36,12 +38,12 @@ class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorMan
               onPressed: () => widget.presenter.loadCustomers(),
             ),
             IconButton(
-              icon: const Icon(FluentIcons.search_16_regular),
-              onPressed: () {} // => Get.to(
+                icon: const Icon(FluentIcons.search_16_regular),
+                onPressed: () {} // => Get.to(
                 //const SearchScreen(),
                 // transition: Transition.rightToLeft,
-              //),
-            )
+                //),
+                )
           ],
         ),
         body: RefreshIndicator(
@@ -53,7 +55,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorMan
                 stream: widget.presenter.isLoadingStream,
                 builder: (context, isLoadingSnapshot) {
                   return isLoadingSnapshot.data == true
-                      ? Center(child: Text("Loading"))
+                      ? const Loading()
                       : customersSnapshot.data?.isNotEmpty == true
                           ? ListenableProvider(
                               create: (context) => widget.presenter,
@@ -66,8 +68,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> with UiErrorMan
                                           user:
                                               customersSnapshot.data![index]))),
                             )
-                          : const Center(
-                              child: NoData());
+                          : const Center(child: NoData());
                 },
               );
             },
