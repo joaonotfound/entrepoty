@@ -38,10 +38,7 @@ class _CustomerListScreenState extends State<CustomerListScreen>
           ),
           IconButton(
               icon: const Icon(FluentIcons.search_16_regular),
-              onPressed: () {} // => Get.to(
-              //const SearchScreen(),
-              // transition: Transition.rightToLeft,
-              //),
+              onPressed: () {}
               )
         ],
       ),
@@ -59,13 +56,14 @@ class _CustomerListScreenState extends State<CustomerListScreen>
                         ? ListenableProvider(
                             create: (context) => widget.presenter,
                             child: ListView.separated(
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(height: 10),
-                                itemCount: customersSnapshot.data!.length,
-                                itemBuilder: ((context, index) =>
-                                    CustomerListCard(
-                                        user:
-                                            customersSnapshot.data![index]))),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 10),
+                              itemCount: customersSnapshot.data!.length,
+                              itemBuilder: ((context, index) =>
+                                  CustomerListCard(
+                                    user: customersSnapshot.data![index],
+                                  )),
+                            ),
                           )
                         : const Center(child: NoData());
               },

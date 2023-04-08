@@ -7,7 +7,7 @@ import 'components/components.dart';
 class CustomerCreationScreen extends StatefulWidget {
   final CustomerCreationPresenter presenter;
 
-  CustomerCreationScreen({
+  const CustomerCreationScreen({
     super.key,
     required this.presenter,
   });
@@ -32,7 +32,7 @@ class _CustomerCreationScreenState extends State<CustomerCreationScreen>
       create: (context) => widget.presenter,
       child: FormLayout(
         content: Form(
-          child: ListView(children: [
+          child: ListView(children: const [
             CustomerCreationName(),
             SizedBox(height: 10),
             CustomerCreationEmailField(),
@@ -42,7 +42,7 @@ class _CustomerCreationScreenState extends State<CustomerCreationScreen>
             CustomerCreationSectorField(),
           ]),
         ),
-        action: CustomerCreationSubmit(),
+        action: const CustomerCreationSubmit(),
         title: "Create Customer",
       ),
     );
