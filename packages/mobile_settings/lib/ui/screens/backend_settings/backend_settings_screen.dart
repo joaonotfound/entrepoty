@@ -14,6 +14,7 @@ class BackendSettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12),
         child: SafeArea(
           child: Column(
+
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
