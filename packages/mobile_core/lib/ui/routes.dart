@@ -10,6 +10,8 @@ class Routes {
   static const createStockItem = '/stock/create';
   static const createModel = '/models/create';
 
+  static const settingsBackend = "/settings/backend";
+
   static const viewModel = "/models/view/:id";
   static getViewModel(int id) => "/models/view/$id";
 

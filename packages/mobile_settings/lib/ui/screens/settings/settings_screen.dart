@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:mobile_core/mobile_core.dart';
 import '../../ui.dart';
 import 'components/components.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget with NavigationManager {
   final SettingsPresenter presenter;
+
   SettingsScreen({
     super.key,
     required this.presenter,
@@ -35,11 +37,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20,
-                horizontal: 10,
+                horizontal: 15,
               ),
               child: Column(
-                children: const [
+                children:  const [
                   SettingsDarkToggle(),
+                  SettingsServer(),
                   SettingsLogoutButton(),
                 ],
               ),

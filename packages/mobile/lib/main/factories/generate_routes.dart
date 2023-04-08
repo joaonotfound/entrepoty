@@ -55,6 +55,11 @@ List<GetPage> generateRoutes() {
       transition: Transition.rightToLeft,
     ),
     GetPage(
+      name: Routes.settingsBackend,
+      page: makeBackendSettingsScreen,
+      transition: Transition.rightToLeft
+    ),
+    GetPage(
       name: Routes.createStockItem,
       page: makeStockItemCreationScreen,
       transition: Transition.rightToLeft,
