@@ -57,7 +57,9 @@ class GetxBackendSettingsPresenter extends GetxController
         domain: domainTextController.text,
         port: int.parse(portTextController.text),
       ),
+
     );
     isLoading = false;
+    Get.back();
   }
 }
