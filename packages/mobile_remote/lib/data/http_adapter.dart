@@ -4,21 +4,41 @@ import 'package:fpdart/fpdart.dart';
 import 'package:mobile_core/domain/domain.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:mobile_settings/mobile_settings.dart';
 
 import '../domain/domain.dart';
 
 class HttpAdapter implements HttpClient {
   http.Client client;
   LoadCurrentAccountUsecase currentAccount;
+  LoadCurrentBackendSettings loadBackendSettings;
 
   HttpAdapter({
     required this.client,
     required this.currentAccount,
+    required this.loadBackendSettings,
   });
 
   Future<String?> getAuthorization() async {
     final account = await currentAccount.load();
     return account?.token;
+  }
+
+  String getDomain(String domain) {
+    if (domain.startsWith("https://") || domain.startsWith("http://")) {
+      return domain;
+    }
+    return "http://${domain}";
+  }
+
+  Future<Either<DomainError, String>> loadBaseUrl() async {
+    final backendSettings =
+        await loadBackendSettings.loadCurrentBackendSettings();
+    return backendSettings.fold(
+      (error) => Either.left(DomainError.unexpected),
+      (settings) =>
+          Either.right("${getDomain(settings.domain)}:${settings.port}"),
+    );
   }
 
   @override
@@ -29,6 +49,8 @@ class HttpAdapter implements HttpClient {
   }) async {
     try {
       final authorization = await getAuthorization();
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+      print(baseUrl + url);
       final requestHeaders = headers?.cast<String, String>() ??
           {
             'content-type': 'application/json',
@@ -40,7 +62,7 @@ class HttpAdapter implements HttpClient {
 
       var response = await client
           .get(
-            Uri.parse(url),
+            Uri.parse(baseUrl + url),
             headers: requestHeaders,
           )
           .timeout(timeout ?? const Duration(seconds: 5));
@@ -64,9 +86,11 @@ class HttpAdapter implements HttpClient {
   }) async {
     try {
       final authorization = await getAuthorization();
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+      print(baseUrl);
       print(authorization);
       var response = await client
-          .post(Uri.parse(url),
+          .post(Uri.parse(baseUrl + url),
               body: jsonEncode(body),
               headers: headers?.cast<String, String>() ??
                   {
@@ -109,8 +133,9 @@ class HttpAdapter implements HttpClient {
     Duration? timeout,
   }) async {
     try {
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
       var response = await client
-          .delete(Uri.parse(url),
+          .delete(Uri.parse(baseUrl + url),
               body: jsonEncode(body), headers: await _buildHeaders(headers))
           .timeout(timeout ?? const Duration(seconds: 5));
 
@@ -132,7 +157,9 @@ class HttpAdapter implements HttpClient {
     List<MultipleFile>? files,
   }) async {
     try {
-      final request = http.MultipartRequest(method, Uri.parse(url));
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+      final request = http.MultipartRequest(method, Uri.parse(baseUrl + url));
+
 
       for (var file in files ?? [] as List<MultipleFile>) {
         final content =

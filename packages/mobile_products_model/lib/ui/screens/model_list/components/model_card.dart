@@ -21,7 +21,6 @@ class ModelListCard extends StatelessWidget {
     final backend = Get.find<BackendProvider>();
 
     final border = 5.0;
-    print(backend.loadResource(model.imagePath));
     return InkWell(
       onTap: () => Get.toNamed(Routes.getViewModel(model.id)),
       child: Card(
@@ -35,36 +34,42 @@ class ModelListCard extends StatelessWidget {
                 topLeft: Radius.circular(border),
                 topRight: Radius.circular(border),
               ),
-              child: Image.network(
-                backend.loadResource(model.imagePath),
-                height: 250,
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.fill,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    width: double.infinity,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FluentIcons.image_16_regular,
-                          size: 50,
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Missing image",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.surface),
-                        )
-                      ],
-                    ),
+              child: FutureBuilder<String>(
+                future: backend.loadResource(model.imagePath),
+                initialData: "",
+                builder: (context, snapshot) {
+                  return Image.network(
+                    snapshot.data!,
                     height: 250,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fill,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        width: double.infinity,
+                        color: Theme.of(context).colorScheme.onBackground,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              FluentIcons.image_16_regular,
+                              size: 50,
+                              color: Theme.of(context).colorScheme.surface,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Missing image",
+                              style: TextStyle(
+                                  color: Theme.of(context).colorScheme.surface),
+                            )
+                          ],
+                        ),
+                        height: 250,
+                      );
+                    },
                   );
-                },
+                }
               ),
             ),
             ListTile(

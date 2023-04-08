@@ -18,11 +18,15 @@ class StockListItem extends StatelessWidget {
 
     return ListTile(
       tileColor: Theme.of(context).colorScheme.surface,
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(
-          backendProvider.loadResource(item.model.imagePath),
-        ),
-      ),
+      leading: FutureBuilder(
+          future: backendProvider.loadResource(item.model.imagePath),
+          builder: (context, snapshot) {
+            return CircleAvatar(
+              backgroundImage: NetworkImage(
+                snapshot.data!,
+              ),
+            );
+          }),
       title: Text(
         item.model.name,
         style: Theme.of(context).textTheme.headlineSmall,

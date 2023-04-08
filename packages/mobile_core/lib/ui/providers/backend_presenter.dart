@@ -1,5 +1,5 @@
 
 
 abstract class BackendPresenter {
-  String getResource(String resource);
+  Future<String> getResource(String resource);
 }

@@ -14,6 +14,8 @@ dependencies:
   fpdart:
   fluentui_system_icons:
   image_picker:
+  mobile_settings:
+    path: ../mobile_settings
   get:
 
 dev_dependencies:

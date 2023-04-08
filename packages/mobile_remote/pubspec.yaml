@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   fpdart:
   http:
+  mobile_settings:
+    path: ../mobile_settings
   mobile_core:
     path: ../mobile_core
 

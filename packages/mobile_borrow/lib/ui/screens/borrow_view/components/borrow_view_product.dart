@@ -21,11 +21,17 @@ class BorrowViewProduct extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            child: Image.network(
-              backendProvider.loadResource(model.imagePath),
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
+            child: FutureBuilder(
+              initialData: "",
+              future: backendProvider.loadResource(model.imagePath),
+              builder: (context, snapshot) {
+                return Image.network(
+                  snapshot.data!,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                );
+              }
             ),
           ),
           ListTile(

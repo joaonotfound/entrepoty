@@ -17,9 +17,15 @@ class ModelViewImage extends StatelessWidget {
     final backend = Get.find<BackendProvider>();
     return Expanded(
       flex: 1,
-      child: Image.network(
-        fit: BoxFit.fill,
-        backend.loadResource(model.imagePath),
+      child: FutureBuilder(
+        initialData: "",
+        future: backend.loadResource(model.imagePath),
+        builder: (context, snapshot) {
+          return Image.network(
+            snapshot.data!,
+            fit: BoxFit.fill,
+          );
+        }
       ),
     );
   }
