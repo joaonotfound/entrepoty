@@ -8,6 +8,7 @@ import com.entrepoty.Entrepoty.data.repositories.ProductRepository
 import com.entrepoty.Entrepoty.domain.entities.BorrowEntity
 import com.entrepoty.Entrepoty.domain.entities.CreateBorrowModel
 import com.entrepoty.Entrepoty.domain.entities.DomainError
+import com.entrepoty.Entrepoty.domain.entities.User
 import com.entrepoty.Entrepoty.domain.usecase.BorrowRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -21,7 +22,7 @@ class BorrowService {
     lateinit var productRepository: ProductRepository
     @Autowired
     lateinit var customersRepository: CustomersRepository
-    fun createBorrow(creation: CreateBorrowModel): Either<DomainError, BorrowEntity> {
+    fun createBorrow(creation: CreateBorrowModel, createdBy: User): Either<DomainError, BorrowEntity> {
         var possibleProduct = productRepository.findById(creation.product)
         if(possibleProduct.isEmpty){
             return Either.Left(DomainError.notFound)
@@ -30,7 +31,7 @@ class BorrowService {
         if(possibleCustomer.isEmpty){
             return Either.Left(DomainError.notFound)
         }
-        return Either.Right(borrowRepository.save(BorrowEntity(possibleCustomer.get(), possibleProduct.get(), creation.date)));
+        return Either.Right(borrowRepository.save(BorrowEntity(possibleCustomer.get(), possibleProduct.get(), creation.date, createdBy)));
     }
     fun loadById(id: Long): Either<DomainError, BorrowEntity> {
         var response = borrowRepository.findById(id)

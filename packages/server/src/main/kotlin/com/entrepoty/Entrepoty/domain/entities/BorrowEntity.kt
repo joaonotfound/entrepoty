@@ -23,13 +23,18 @@ class BorrowEntity {
     @field:OnDelete(action = OnDeleteAction.CASCADE)
     lateinit var product: ProductEntity
 
+    @field:ManyToOne
+    @field:OnDelete(action = OnDeleteAction.NO_ACTION)
+    lateinit var createdBy: User
+
     @field:NotNull
     @field:Temporal(TemporalType.DATE)
     lateinit var datetime: java.sql.Date
 
-    constructor(customer: Customer, product: ProductEntity, datetime: java.sql.Date){
+    constructor(customer: Customer, product: ProductEntity, datetime: java.sql.Date, createdBy: User){
         this.customer = customer
         this.product = product
         this.datetime = datetime
+        this.createdBy = createdBy
     };
 }
