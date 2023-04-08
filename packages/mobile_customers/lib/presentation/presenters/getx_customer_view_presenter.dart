@@ -21,6 +21,7 @@ class GetxCustomerViewPresenter extends GetxController
     isLoading = true;
     final response = await removeCustomerUsecase.deleteCustomer(enrollment);
     isLoading = false;
+    Get.back();
   }
 
   @override

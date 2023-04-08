@@ -25,6 +25,7 @@ class _CustomerViewScreenState extends State<CustomerViewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put<CustomerViewPresenter>(widget.presenter);
     return StreamBuilder<CustomerEntity?>(
       stream: widget.presenter.customerStream,
       builder: (context, snapshot) => Scaffold(
@@ -50,7 +51,7 @@ class _CustomerViewScreenState extends State<CustomerViewScreen> {
                           ],
                         ),
                       ),
-                      const CustomerViewDelete()
+                      CustomerViewDelete(customer: snapshot.data!,)
                     ],
                   ),
                 ),
