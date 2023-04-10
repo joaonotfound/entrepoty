@@ -25,38 +25,27 @@ class CustomerListCard extends StatelessWidget {
         Routes.getViewCustomer(user.enrollment),
       ),
       child: ListTile(
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         tileColor: Theme.of(context).colorScheme.surface,
         dense: true,
         leading: SvgPicture.network(
           "https://source.boringavatars.com/beam",
         ),
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              user.name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(width: 10),
-            Text("@${user.enrollment}",
-                style: Theme.of(context).textTheme.bodyMedium)
-          ],
+        title: Text(
+          user.name,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         subtitle: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(FluentIcons.organization_12_regular, size: 15),
-            SizedBox(width: 5),
+            const Icon(FluentIcons.organization_12_regular, size: 15),
+            const SizedBox(width: 5),
             Text(user.sector),
           ],
         ),
         trailing: PopupMenuButton(
           itemBuilder: (context) => [
             PopupMenuItem(
-              child: ListTile(
+              child: const ListTile(
                 visualDensity: VisualDensity.compact,
                 leading: Icon(FluentIcons.delete_12_regular),
                 title: Text("Delete"),
