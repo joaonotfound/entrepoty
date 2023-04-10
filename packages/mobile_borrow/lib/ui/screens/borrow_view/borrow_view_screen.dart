@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../domain/domain.dart';
 import '../../ui.dart';
 import 'components/components.dart';
-import 'package:mobile_core/mobile_core.dart';
+import "package:mobile_core/mobile_core.dart";
 import 'package:get/get.dart';
 
 class BorrowViewScreen extends StatelessWidget {
@@ -21,7 +21,7 @@ class BorrowViewScreen extends StatelessWidget {
       stream: presenter.modelStream,
       builder: (context, snapshot) => Scaffold(
         appBar: AppBar(
-          title: Text("Borrow"),
+          title: const Text("Borrow"),
         ),
         body: SafeArea(
           child: snapshot.data == null
@@ -34,6 +34,7 @@ class BorrowViewScreen extends StatelessWidget {
                         children: [
                           BorrowViewProduct(borrow: snapshot.data!),
                           BorrowViewCustomer(borrow: snapshot.data!),
+                          BorrowViewEmployer(borrow: snapshot.data!)
                         ],
                       ),
                     ),

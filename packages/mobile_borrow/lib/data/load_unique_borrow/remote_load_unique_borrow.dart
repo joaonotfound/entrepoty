@@ -17,7 +17,6 @@ class RemoteLoadUniqueBorrow implements LoadUniqueBorrowUsecase {
     try {
       final response = await client.get(url: "$url/$id");
       if (response.statuscode == 200) {
-        print(response.body);
         return Either.right(BorrowEntity.fromJson(response.body));
       }
     } catch (e) {}
