@@ -1,3 +1,7 @@
+import 'package:mobile_products/domain/domain.dart';
 
+abstract class StockViewProductPresenter {
+  Stream<UniqueProductEntity?> get productStream;
 
-abstract class StockViewProductPresenter {}
+  Future<void> loadProduct(int id);
+}
