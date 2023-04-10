@@ -10,7 +10,7 @@ class LocalThemeLoader implements ThemeLoader {
 
   loadIsDark() async {
     var local = await storage.loadSecure(key: "is-dark");
-    return local == "true" ? true : false;
+    return local == "false" ? false : true;
   }
 
   setIsDark(bool value) async {
