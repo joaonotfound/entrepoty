@@ -6,6 +6,7 @@ import '../domain.dart';
 abstract class CreateProductModelUsecase {
   Future<Either<DomainError, ProductModelEntity>> createModel(
     ProductModelEntity model,
+    int quantity,
     String image,
   );
 }

@@ -36,6 +36,7 @@ class _ModelCreationScreenState extends State<ModelCreationScreen>
           child: ListView(children: [
             ModelCreationNameField(),
             ModelCreationCategories(),
+            ModelCreationQuantities(),
             ModelCreationImagePicker()
           ]),
         ),

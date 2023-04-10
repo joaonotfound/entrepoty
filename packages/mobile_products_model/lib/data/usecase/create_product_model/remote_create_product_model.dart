@@ -15,6 +15,7 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
 
   Future<Either<DomainError, ProductModelEntity>> createModel(
     ProductModelEntity model,
+    int quantity,
     String image,
   ) async {
     final rawResponse = await client.multiples(
@@ -23,7 +24,8 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
       files: [MultipleFile(name: "image", filePath: image)],
       data: [
         MultipleData(name: "name", content: model.name),
-        MultipleData(name: "category", content: model.category)
+        MultipleData(name: "category", content: model.category),
+        MultipleData(name: "quantity", content: quantity.toString())
       ],
     );
 

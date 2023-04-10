@@ -8,9 +8,13 @@ abstract class ModelCreationPresenter implements Listenable {
   Stream<bool> get isFormValidStream;
   Stream<bool> get isLoadingStream;
   Stream<UiError?> get mainErrorStream;
+  Stream<String?> get qtdErrorStream;
+
 
   void validateCategory(String category);
   void validateName(String name);
+  void validateQtd(int value);
+
   Future<void> createModel();
 
   Future<void> pickImage();

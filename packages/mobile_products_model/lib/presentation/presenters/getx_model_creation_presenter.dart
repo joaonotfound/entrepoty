@@ -34,6 +34,12 @@ class GetxModelCreationPresenter extends GetxController
 
   Stream<bool> get hasImageStream => _hasImage.stream;
 
+  int _qtd = 0;
+  final qtdError = RxString('');
+
+  @override
+  Stream<String?> get qtdErrorStream => qtdError.stream;
+
   @override
   void validateName(String name) {
     _name = name;
@@ -43,7 +49,14 @@ class GetxModelCreationPresenter extends GetxController
   }
   
   void _validateForm() {
-    isFormValid = _name != '' && _nameError.value == "" && _image != '' && _category != "";
+    isFormValid = _name != '' && _nameError.value == "" && _image != '' && _category != "" && _qtd != 0 && qtdError == "";
+  }
+
+  @override
+  void validateQtd(int value) {
+    qtdError.value = value <= 0 ? "Invalid number." : "";
+    _qtd = value;
+    _validateForm();
   }
 
   Future<void> deletePhoto() async {
@@ -66,6 +79,7 @@ class GetxModelCreationPresenter extends GetxController
     isLoading = true;
     final response = await usecase.createModel(
       ProductModelEntity(name: _name, category: _category),
+      _qtd,
       _image
     );
     response.fold((error) {
