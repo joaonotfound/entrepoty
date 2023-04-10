@@ -1,5 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_products/domain/dto/create_product_response.dart';
 import 'package:mobile_remote/mobile_remote.dart';
 
 import '../../domain/domain.dart';
@@ -13,7 +14,7 @@ class RemoteCreateProduct implements CreateProductUsecas {
     required this.url,
   });
 
-  Future<Either<DomainError, ProductEntity>> createProduct({
+  Future<Either<DomainError, CreateProductResponse>> createProduct({
     required int model,
     required int quantity,
     required String receiptPath,
@@ -28,12 +29,15 @@ class RemoteCreateProduct implements CreateProductUsecas {
       );
 
       if (response.statuscode == 200) {
-        return Either.right(ProductEntity.fromJson(response.body));
+        print("response: " + response.body.toString());
+        return Either.right(CreateProductResponse.fromJson(response.body));
       }
       if (response.statuscode == 409) {
         return Either.left(DomainError.conflict);
       }
-    } catch (e) {}
+    } catch (e) {
+      print(e.toString());
+    }
     return Either.left(DomainError.unexpected);
   }
 }

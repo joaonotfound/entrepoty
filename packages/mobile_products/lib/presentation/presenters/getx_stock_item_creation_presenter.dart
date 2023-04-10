@@ -30,6 +30,7 @@ class GetxStockItemCreationPresenter extends GetxController
   int _model = 0;
 
   Rx<List<ProductModelEntity>> _models = Rx([]);
+
   Stream<List<ProductModelEntity>> get modelsStream => _models.stream;
 
   @override
@@ -40,6 +41,7 @@ class GetxStockItemCreationPresenter extends GetxController
 
   @override
   Future<void> saveItem() async {
+    print("created");
     isLoading = true;
     final response = await createProduct.createProduct(
       model: _model,
@@ -48,9 +50,15 @@ class GetxStockItemCreationPresenter extends GetxController
     );
     isLoading = false;
     response.fold((error) {
+      print("error: " + error.toString());
       mainError = fromDomain(error);
     }, (r) {
+      print("created");
       Get.back();
+      Get.to(
+        ProductCreationResultScreen(equities: r.details),
+        transition: Transition.rightToLeftWithFade,
+      );
     });
   }
 
