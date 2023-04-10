@@ -32,9 +32,15 @@ class _CustomerListScreenState extends State<CustomerListScreen>
     Get.put<CustomerListPresenter>(widget.presenter);
     return HomeLayout(
       appBar: AppBar(
-        actions: const [
-          CustomerListReload(),
-          CustomerListSearch()
+        actions:  [
+        IconButton(
+          icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
+          onPressed: () {
+            debugPrint("reloading...");
+            widget.presenter.loadCustomers();
+          },
+        ),
+        const CustomerListSearch()
         ],
       ),
       body: RefreshIndicator(
