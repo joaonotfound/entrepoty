@@ -1,3 +1,5 @@
+import 'package:mobile_core/mobile_core.dart';
+
 import './components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,9 +28,7 @@ class _StockListItemsViewState extends State<StockListItemsView> {
           );
         } else {
           return const SliverToBoxAdapter(
-            child: Center(
-              child: Text("There's no product on stock"),
-            ),
+            child: NoData(),
           );
         }
       }),
