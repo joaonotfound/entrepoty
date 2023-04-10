@@ -33,8 +33,8 @@ class ProductController {
         );
     }
     @GetMapping("{product}")
-    fun loadUniqueProduct(@PathVariable("product") product: Long): ResponseEntity<LoadUniqueProductResponse>{
-        return utils.fromEither(service.loadUnique(product))
+    fun loadUniqueProduct(@PathVariable("product") product: String): ResponseEntity<LoadUniqueProductResponse>{
+        return utils.fromEither(service.loadUnique(product.toLong()))
     }
 
     @PostMapping

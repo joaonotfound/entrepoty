@@ -20,7 +20,7 @@ class ProductDetailEntity {
 
     @field:GeneratedValue(strategy = GenerationType.UUID)
     @field:NotNull
-    lateinit var equity: String
+    var equity: String = ""
 
     @field:OnDelete(action = OnDeleteAction.CASCADE)
     @field:ManyToOne
