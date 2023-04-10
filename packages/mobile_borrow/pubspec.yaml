@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   fpdart:
   intl:
+  fluentui_system_icons:
   mobile_customers:
     path: ../mobile_customers
   mobile_products:
