@@ -18,22 +18,18 @@ class _StockListItemsViewState extends State<StockListItemsView> {
     return StreamBuilder(
       stream: presenter.itemsStream,
       builder: ((context, snapshot) {
-        print(snapshot.data);
         if (snapshot.data?.isNotEmpty == true && snapshot.data != null) {
-          return Container(
-            height: 600,
-            child: ListView.separated(
-              separatorBuilder: ((context, index) => SizedBox(
-                    height: 10,
-                  )),
-              shrinkWrap: true,
-              itemCount: snapshot.data!.length,
-              itemBuilder: ((context, index) =>
-                  StockListItem(item: snapshot.data![index])),
-            ),
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+                (context, index) => StockListItem(item: snapshot.data![index]),
+                childCount: snapshot.data!.length),
           );
         } else {
-          return Center(child: Text("There's no product on stock"));
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: Text("There's no product on stock"),
+            ),
+          );
         }
       }),
     );

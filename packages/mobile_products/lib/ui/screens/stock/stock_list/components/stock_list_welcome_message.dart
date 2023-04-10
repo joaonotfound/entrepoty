@@ -15,30 +15,7 @@ class StockListWelcomeMessage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Hello, name!",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-            ),
-            Text(
-              "Welcome to your storage.",
-              style: TextStyle(fontWeight: FontWeight.w300),
-            ),
-          ],
-        ),
-        Row(
-          
-          children: [
-            IconButton(
-                icon: Icon(FluentIcons.arrow_clockwise_16_regular),
-                onPressed: () => presenter.loadScreen()),
-            IconButton(
-                icon: Icon(FluentIcons.settings_20_regular),
-                onPressed: () => Get.toNamed(Routes.settings))
-          ],
-        )
+
       ],
     );
   }

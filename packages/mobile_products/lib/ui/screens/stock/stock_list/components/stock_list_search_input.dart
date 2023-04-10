@@ -7,10 +7,11 @@ class StockListSearchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, bottom: 10),
+      padding: EdgeInsets.only(bottom: 10),
       child: TextField(
         decoration: InputDecoration(
-            prefixIcon: Icon(FluentIcons.search_16_regular), hintText: "Search for product"),
+            prefixIcon: Icon(FluentIcons.search_16_regular),
+            hintText: "Search for product"),
       ),
     );
   }

@@ -16,13 +16,15 @@ class StockListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final backendProvider = Get.find<BackendProvider>();
 
-    return InkWell(
-      onTap: () => Get.toNamed(
-        Routes.getViewProduct(item.id),
-      ),
-      child: ListTile(
-        tileColor: Theme.of(context).colorScheme.surface,
-        leading: FutureBuilder(
+    return Padding(
+      padding: const EdgeInsets.all(2),
+      child: InkWell(
+        onTap: () => Get.toNamed(
+          Routes.getViewProduct(item.id),
+        ),
+        child: ListTile(
+          tileColor: Theme.of(context).colorScheme.surface,
+          leading: FutureBuilder(
             future: backendProvider.loadResource(item.model.imagePath),
             builder: (context, snapshot) {
               return snapshot.data == null
@@ -32,14 +34,16 @@ class StockListItem extends StatelessWidget {
                         snapshot.data!,
                       ),
                     );
-            }),
-        title: Text(
-          item.model.name,
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-        subtitle: Text(
-          "${item.quantity}x Units.",
-          style: const TextStyle(fontSize: 15),
+            },
+          ),
+          title: Text(
+            item.model.name,
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          subtitle: Text(
+            "${item.quantity}x Units.",
+            style: const TextStyle(fontSize: 15),
+          ),
         ),
       ),
     );
