@@ -38,7 +38,7 @@ class ProductController {
     }
 
     @PostMapping
-    fun createProduct(@RequestBody product: CreateProductModel): ResponseEntity<ProductEntity> {
+    fun createProduct(@RequestBody product: CreateProductModel): ResponseEntity<LoadUniqueProductResponse> {
         var response = service.createProduct(product);
         return response.fold(
             { error -> utils.fromDomain(error) },

@@ -23,7 +23,7 @@ class ProductService {
     @Autowired
     lateinit var productDetailRepository: ProductDetailRepository;
 
-    fun createProduct(product: CreateProductModel): Either<DomainError, ProductEntity> {
+    fun createProduct(product: CreateProductModel): Either<DomainError, LoadUniqueProductResponse> {
         val possibleModel = modelsRepository.findById(product.model)
         if (possibleModel.isEmpty) {
             return Either.Left(DomainError.notFound)
@@ -33,7 +33,8 @@ class ProductService {
         val details = Array(product.quantity.toInt()) { _ -> generateDetail(createdProduct) };
         productDetailRepository.saveAll(details.toList());
 
-        return Either.Right(createdProduct);
+
+        return Either.Right(LoadUniqueProductResponse(createdProduct, details.toList()));
     }
     private fun generateDetail(product: ProductEntity): ProductDetailEntity {
         val response = ProductDetailEntity();
