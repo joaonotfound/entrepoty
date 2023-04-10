@@ -32,28 +32,50 @@ class _StockViewProductScreenState extends State<StockViewProductScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Product"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(FluentIcons.search_20_regular),
+          )
+        ],
       ),
       body: StreamBuilder<UniqueProductEntity?>(
           stream: widget.presenter.productStream,
           builder: (context, snapshot) {
             return snapshot.data == null
                 ? const Loading()
-                : NotificationListener<ScrollUpdateNotification>(
-                    onNotification: (notification) {
-                      setState(() {
-                        _scrollOffset = notification.metrics.pixels;
-                      });
-                      return true;
-                    },
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverToBoxAdapter(
-                          child:
-                              StockViewProductDetail(product: snapshot.data!),
+                : Column(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: NotificationListener<ScrollUpdateNotification>(
+                          onNotification: (notification) {
+                            setState(() {
+                              _scrollOffset = notification.metrics.pixels;
+                            });
+                            return true;
+                          },
+                          child: CustomScrollView(
+                            slivers: [
+                              SliverToBoxAdapter(
+                                child: StockViewProductDetail(
+                                    product: snapshot.data!),
+                              ),
+                              StockViewProductListEquities(
+                                  products: snapshot.data!.details)
+                            ],
+                          ),
                         ),
-                        StockViewProductListEquities(products: snapshot.data!.details)
-                      ],
-                    ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(FluentIcons.document_20_regular),
+                          label: const Text("Download Receipt"),
+                        ),
+                      )
+                    ],
                   );
           }),
     );

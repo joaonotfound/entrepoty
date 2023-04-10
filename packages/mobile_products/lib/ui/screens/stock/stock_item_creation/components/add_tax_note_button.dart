@@ -10,16 +10,16 @@ class AddTaxNoteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton.icon(
       style: TextButton.styleFrom(
-        minimumSize: Size(double.infinity, 0),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        backgroundColor: Color(0xffc92a2a),
+        minimumSize: const Size(double.infinity, 0),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        backgroundColor: const Color(0xffc92a2a),
       ),
       onPressed: () {},
-      icon: Icon(
-        FluentIcons.arrow_upload_20_regular,
+      icon: const Icon(
+        FluentIcons.document_add_24_regular,
         color: Colors.white,
       ),
-      label: Text(
+      label: const Text(
         "Add receipt",
         style: TextStyle(
           color: Colors.white,

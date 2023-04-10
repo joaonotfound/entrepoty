@@ -35,10 +35,10 @@ class _StockItemCreationScreenState extends State<StockItemCreationScreen>
           child: Column(
             children: [
               ProductModelField(),
-              SizedBox(height: 10),
-              ProductQuantityField(),
-              SizedBox(height: 10),
-              AddTaxNoteButton(),
+              const SizedBox(height: 10),
+              const ProductQuantityField(),
+              const SizedBox(height: 10),
+              const AddTaxNoteButton(),
             ],
           ),
         ),
