@@ -24,4 +24,8 @@ class ProductDetailEntity {
     @field:OnDelete(action = OnDeleteAction.CASCADE)
     @field:OneToOne
     lateinit var product: ProductEntity
+
+    constructor(product: ProductEntity){
+        this.product = product
+    }
 }
