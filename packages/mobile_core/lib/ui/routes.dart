@@ -18,6 +18,9 @@ class Routes {
   static const viewBorrow = "/borrow/view/:id";
   static getViewBorrow(int id) => "/borrow/view/$id";
 
+  static const viewProduct = "/stock/view/:id";
+  static getViewProduct(int id) => "/stock/view/$id";
+
   static const viewCustomer = '/customers/view/:enrollment';
   static getViewCustomer(String enrollment) => "/customers/view/$enrollment";
 
