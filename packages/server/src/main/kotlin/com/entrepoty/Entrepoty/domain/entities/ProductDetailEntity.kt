@@ -1,15 +1,10 @@
 package com.entrepoty.Entrepoty.domain.entities
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToOne
-import jakarta.persistence.OneToOne
-import jakarta.persistence.Table
+import jakarta.persistence.*
+import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
-import org.jetbrains.annotations.NotNull
+import java.util.*
 
 @Entity
 @Table(name = "product_detail")
@@ -18,15 +13,12 @@ class ProductDetailEntity {
     @field:GeneratedValue(strategy = GenerationType.AUTO)
     var id:Long = 0
 
-    @field:GeneratedValue(strategy = GenerationType.UUID)
-    @field:NotNull
-    var equity: String = ""
+    @field:GeneratedValue(generator = "uuid2")
+    @field:GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @field:Column(unique = true)
+    var equity = UUID.randomUUID();
 
     @field:OnDelete(action = OnDeleteAction.CASCADE)
     @field:ManyToOne
     lateinit var product: ProductEntity
-
-    constructor(product: ProductEntity){
-        this.product = product
-    }
 }
