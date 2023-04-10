@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  get:
+  fluentui_system_icons:
   mobile_core:
     path: ../mobile_core
   mobile_remote:

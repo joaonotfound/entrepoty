@@ -3,5 +3,5 @@ class ProductDetailEntity {
 
   ProductDetailEntity({required this.equity});
 
-  factory ProductDetailEntity.fromJson(Map json) => ProductDetailEntity(equity: json['equity'] ?? "");
+  factory ProductDetailEntity.fromJson(Map json) => ProductDetailEntity(equity: json['equity'] ?? "0");
 }

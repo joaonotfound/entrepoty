@@ -5,5 +5,5 @@ import com.entrepoty.Entrepoty.domain.entities.ProductEntity
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProductDetailRepository : JpaRepository<ProductDetailEntity, Long> {
-    fun findByProduct(productEntity: ProductEntity): List<ProductDetailEntity>;
+    fun findByProduct(product: ProductEntity): List<ProductDetailEntity>;
 }

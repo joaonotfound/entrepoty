@@ -7,8 +7,12 @@ class UniqueProductEntity {
 
   UniqueProductEntity({required this.product, required this.details});
 
-  factory UniqueProductEntity.fromJson(Map json) => UniqueProductEntity(
+  factory UniqueProductEntity.fromJson(Map json) {
+    final List<dynamic> details = json['details'];
+    return UniqueProductEntity(
         product: ProductEntity.fromJson(json['product']),
-        details: [],
-      );
+        details: details.map(
+          (detail) => ProductDetailEntity.fromJson(detail),
+        ).toList(),
+      ); }
 }

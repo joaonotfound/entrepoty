@@ -15,11 +15,14 @@ class RemoteLoadUniqueProduct implements LoadUniqueProductUsecase {
   @override
   Future<Either<DomainError, UniqueProductEntity>> loadUniqueProduct(int id) async {
     try {
-      final response = await client.get(url: "$url/id");
+      final response = await client.get(url: "$url/$id");
       if(response.statuscode == 200){
+        print(response.body.toString());
         return Either.right(UniqueProductEntity.fromJson(response.body));
       }
-    } catch(e){}
+    } catch(e){
+      print(e.toString());
+    }
     return Either.left(DomainError.unexpected);
   }
 
