@@ -4,6 +4,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToOne
 import jakarta.persistence.Table
 import org.hibernate.annotations.OnDelete
@@ -22,7 +23,7 @@ class ProductDetailEntity {
     lateinit var equity: String
 
     @field:OnDelete(action = OnDeleteAction.CASCADE)
-    @field:OneToOne
+    @field:ManyToOne
     lateinit var product: ProductEntity
 
     constructor(product: ProductEntity){
