@@ -24,6 +24,8 @@ class StockViewProductDetail extends StatelessWidget {
             height: 250,
             fit: BoxFit.cover,
             width: MediaQuery.of(context).size.width,
+            errorBuilder: (_, __, ___) => Text("No image"),
+
           ),
         ),
         ListTile(
