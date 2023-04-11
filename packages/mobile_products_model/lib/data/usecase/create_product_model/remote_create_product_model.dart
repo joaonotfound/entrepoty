@@ -1,3 +1,4 @@
+
 import 'package:fpdart/fpdart.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_remote/mobile_remote.dart';
@@ -13,7 +14,7 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
     required this.url,
   });
 
-  Future<Either<DomainError, ProductModelEntity>> createModel(
+  Future<Either<DomainError, UniqueProductEntity>> createModel(
     ProductModelEntity model,
     int quantity,
     String image,
@@ -32,7 +33,7 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
     return rawResponse.fold(
       (error) => Either.left(error),
       (response) => response.statuscode == 200
-          ? Either.right(model)
+          ? Either.right(UniqueProductEntity.fromJson(response.body))
           : response.statuscode == 409
               ? Either.left(DomainError.conflict)
               : Either.left(DomainError.unexpected),

@@ -4,7 +4,7 @@ import 'package:mobile_core/mobile_core.dart';
 import '../domain.dart';
 
 abstract class CreateProductModelUsecase {
-  Future<Either<DomainError, ProductModelEntity>> createModel(
+  Future<Either<DomainError, UniqueProductEntity>> createModel(
     ProductModelEntity model,
     int quantity,
     String image,
