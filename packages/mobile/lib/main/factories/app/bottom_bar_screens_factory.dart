@@ -9,14 +9,9 @@ import 'package:mobile_products/mobile_products.dart';
 List<BottomBarScreen> makeBottomBarScreens() {
   return [
     BottomBarScreen(
-      widget: () => makeStockListScreen(),
-      icon: Icon(FluentIcons.box_20_filled),
-      label: "Stock",
-    ),
-    BottomBarScreen(
       widget: () => makeModelListScreen(),
       icon: Icon(FluentIcons.box_edit_20_filled),
-      label: "Models",
+      label: "Products",
     ),
     BottomBarScreen(
       widget: () => makeBorrowScreen(),

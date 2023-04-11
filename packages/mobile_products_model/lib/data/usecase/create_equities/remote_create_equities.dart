@@ -1,6 +1,5 @@
 import 'package:fpdart/src/either.dart';
 import 'package:mobile_core/domain/errors/domain_errors.dart';
-import 'package:mobile_products/domain/entities/ProductDetailEntity.dart';
 import 'package:mobile_products_model/domain/domain.dart';
 import 'package:mobile_remote/domain/domain.dart';
 

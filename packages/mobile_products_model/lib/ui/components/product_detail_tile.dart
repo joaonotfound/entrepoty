@@ -1,6 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_products/domain/domain.dart';
+
+import '../../domain/domain.dart';
 
 class ProductDetailTile extends StatelessWidget {
   ProductDetailEntity detail;

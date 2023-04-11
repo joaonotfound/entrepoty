@@ -1,9 +1,9 @@
 import 'package:mobile_products/domain/domain.dart';
 import 'package:mobile_products/domain/entities/ProductDetailEntity.dart';
-import 'package:mobile_products_model/domain/domain.dart';
+import 'package:mobile_products_model/domain/domain.dart' as models;
 
 class UniqueProductEntity {
-  ProductModelEntity product;
+  models.ProductModelEntity product;
   List<ProductDetailEntity> details;
 
   UniqueProductEntity({required this.product, required this.details});
@@ -11,9 +11,12 @@ class UniqueProductEntity {
   factory UniqueProductEntity.fromJson(Map json) {
     final List<dynamic> details = json['details'];
     return UniqueProductEntity(
-        product: ProductModelEntity.fromJson(json['product']),
-        details: details.map(
-              (detail) => ProductDetailEntity.fromJson(detail),
-        ).toList(),
-      ); }
+      product: models.ProductModelEntity.fromJson(json['product']),
+      details: details
+          .map(
+            (detail) => ProductDetailEntity.fromJson(detail),
+          )
+          .toList(),
+    );
+  }
 }

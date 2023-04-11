@@ -1,4 +1,3 @@
-import 'package:mobile_products/domain/domain.dart';
 import 'package:mobile_products_model/domain/domain.dart';
 
 class ProductModelAndDetails {

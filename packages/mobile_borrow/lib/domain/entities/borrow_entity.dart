@@ -1,5 +1,5 @@
 import 'package:mobile_customers/mobile_customers.dart';
-import 'package:mobile_products/mobile_products.dart';
+import 'package:mobile_products/domain/domain.dart';
 
 import 'employer_entity.dart';
 

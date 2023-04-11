@@ -1,0 +1,1 @@
+export 'model_equities_view_with_generate_screen.dart';

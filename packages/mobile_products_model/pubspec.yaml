@@ -15,8 +15,6 @@ dependencies:
   get:
   fluentui_system_icons:
   dropdown_search:
-  mobile_products:
-    path: ../mobile_products
   mobile_core:
     path: ../mobile_core
   mobile_remote:

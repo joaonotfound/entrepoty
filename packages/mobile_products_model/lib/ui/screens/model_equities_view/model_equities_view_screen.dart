@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_products/domain/domain.dart';
 import 'package:mobile_products_model/mobile_products_model.dart';
 
 class ModelEquitiesView extends StatelessWidget {

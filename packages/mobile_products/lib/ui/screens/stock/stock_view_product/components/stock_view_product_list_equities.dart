@@ -2,12 +2,12 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_products/ui/components/equity_list_tile.dart';
-import 'package:mobile_products_model/mobile_products_model.dart';
+import 'package:mobile_products_model/mobile_products_model.dart' as models;
 
 import '../../../../../domain/domain.dart';
 
 class StockViewProductListEquities extends StatelessWidget {
-  final ProductModelEntity product;
+  final models.ProductModelEntity product;
   final List<ProductDetailEntity> details;
 
   StockViewProductListEquities({
@@ -39,7 +39,7 @@ class StockViewProductListEquities extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10),
         child: ElevatedButton.icon(
-          onPressed: () => Get.to(ModelCreationEquitiesScreen(product: product),),
+          onPressed: () => Get.to(models.ModelCreationEquitiesScreen(product: product),),
           icon: const Icon(FluentIcons.box_20_regular),
           label: const Text("Generate Equity"),
         ),

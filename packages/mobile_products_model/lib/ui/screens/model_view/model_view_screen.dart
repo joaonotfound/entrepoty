@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
-import 'package:mobile_products/ui/screens/stock/stock_view_product/components/components.dart';
+import 'package:mobile_products_model/mobile_products_model.dart';
 import '../../../domain/domain.dart';
 import 'components/components.dart';
 import 'model_view_presenter.dart';
@@ -62,7 +62,7 @@ class ModelViewScreen extends StatelessWidget {
                         ModelViewDescription(model: snapshot.data!.product),
                         ElevatedButton(
                           onPressed: () => Get.to(
-                              StockViewProductListEquities(
+                              ModelEquitiesViewWithGenerate(
                                 details: snapshot.data!.details,
                                 product: snapshot.data!.product,
                               ),
