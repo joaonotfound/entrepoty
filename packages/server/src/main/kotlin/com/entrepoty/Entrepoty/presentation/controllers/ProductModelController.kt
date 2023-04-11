@@ -52,6 +52,11 @@ class ProductModelController {
         return ResponseEntity.ok(details.toList());
     }
 
+    @GetMapping("/details")
+    fun loadDetails(): ResponseEntity<List<ProductDetailEntity>> {
+        return ResponseEntity.ok(productDetailRepository.findAll())
+    }
+
     @PostMapping
     fun createModel(
         @RequestPart("name") name: String,
