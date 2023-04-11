@@ -1,7 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_products_model/domain/domain.dart';
+import 'package:mobile_products/mobile_products.dart';
 import 'package:provider/provider.dart';
 
 import '../../../ui.dart';

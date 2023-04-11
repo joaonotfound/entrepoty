@@ -50,8 +50,8 @@ dependencies:
     path: ../mobile_settings
   mobile_borrow:
     path: ../mobile_borrow
-  mobile_products_model:
-    path: ../mobile_products_model
+  mobile_products:
+    path: ../mobile_products
   mobile_customers:
     path: ../mobile_customers
   mobile_core:

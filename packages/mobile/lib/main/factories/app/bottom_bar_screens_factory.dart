@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_borrow/mobile_borrow.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
-import 'package:mobile_products_model/mobile_products_model.dart';
+import 'package:mobile_products/mobile_products.dart';
 
 List<BottomBarScreen> makeBottomBarScreens() {
   return [

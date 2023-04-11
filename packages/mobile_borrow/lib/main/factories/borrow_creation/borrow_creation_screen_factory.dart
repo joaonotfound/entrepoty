@@ -1,5 +1,5 @@
 import 'package:mobile_customers/mobile_customers.dart';
-import 'package:mobile_products_model/main/factories/factories.dart';
+import 'package:mobile_products/mobile_products.dart';
 
 import '../../../presentation/presentation.dart';
 import '../../../ui/screens/screens.dart';
