@@ -1,7 +1,7 @@
 import '../../../domain/domain.dart';
 
 abstract class ModelViewPresenter {
-  Stream<ProductModelAndDetails?> get modelStream;
+  Stream<UniqueProductEntity?> get modelStream;
 
   Future<void> loadModel(int id);
 

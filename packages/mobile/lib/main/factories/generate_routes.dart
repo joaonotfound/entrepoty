@@ -4,7 +4,6 @@ import 'package:mobile_borrow/mobile_borrow.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_authentication/mobile_authentication.dart';
 import 'package:mobile_customers/mobile_customers.dart';
-import 'package:mobile_products/mobile_products.dart';
 import 'package:mobile_products_model/mobile_products_model.dart';
 import 'package:mobile_settings/mobile_settings.dart';
 import 'factories.dart';
@@ -57,16 +56,6 @@ List<GetPage> generateRoutes() {
     GetPage(
       name: Routes.settingsBackend,
       page: makeBackendSettingsScreen,
-      transition: Transition.rightToLeft,
-    ),
-    GetPage(
-      name: Routes.viewProduct,
-      page: makeStockViewProductScreen,
-      transition: Transition.rightToLeft,
-    ),
-    GetPage(
-      name: Routes.createStockItem,
-      page: makeStockItemCreationScreen,
       transition: Transition.rightToLeft,
     ),
     GetPage(

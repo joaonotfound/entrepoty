@@ -18,7 +18,7 @@ class ModelViewScreen extends StatelessWidget {
     final id = int.parse(Get.parameters['id'] ?? '0');
     presenter.loadModel(id);
 
-    return StreamBuilder<ProductModelAndDetails?>(
+    return StreamBuilder<UniqueProductEntity?>(
       stream: presenter.modelStream,
       builder: (context, snapshot) {
         return Scaffold(

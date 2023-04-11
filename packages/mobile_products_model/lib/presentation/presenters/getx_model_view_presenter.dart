@@ -13,9 +13,9 @@ class GetxModelViewPresenter extends GetxController
   RemoteLoadUniqueProductModel loadUniqueProductModel;
   RemoteDeleteProductModel remoteDeleteProductModel;
 
-  final _model = Rx<ProductModelAndDetails?>(null);
+  final _model = Rx<UniqueProductEntity?>(null);
 
-  Stream<ProductModelAndDetails?> get modelStream => _model.stream;
+  Stream<UniqueProductEntity?> get modelStream => _model.stream;
 
   GetxModelViewPresenter({
     required this.remoteCreateEquities,
