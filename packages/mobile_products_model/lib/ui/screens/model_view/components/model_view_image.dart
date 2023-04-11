@@ -23,7 +23,8 @@ class ModelViewImage extends StatelessWidget {
         builder: (context, snapshot) {
           return Image.network(
             snapshot.data!,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
+            width: MediaQuery.of(context).size.width,
           );
         }
       ),

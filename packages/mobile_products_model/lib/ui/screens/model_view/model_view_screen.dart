@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_products/ui/screens/stock/stock_view_product/components/components.dart';
 import '../../../domain/domain.dart';
 import 'components/components.dart';
 import 'model_view_presenter.dart';
@@ -17,7 +18,7 @@ class ModelViewScreen extends StatelessWidget {
     final id = int.parse(Get.parameters['id'] ?? '0');
     presenter.loadModel(id);
 
-    return StreamBuilder<ProductModelEntity?>(
+    return StreamBuilder<ProductModelAndDetails?>(
       stream: presenter.modelStream,
       builder: (context, snapshot) {
         return Scaffold(
@@ -37,7 +38,7 @@ class ModelViewScreen extends StatelessWidget {
                         showModalBottomSheet(
                           context: context,
                           builder: (context) => ModelViewBottomSheet(
-                            model: snapshot.data!,
+                            model: snapshot.data!.product,
                           ),
                         );
                       },
@@ -57,8 +58,17 @@ class ModelViewScreen extends StatelessWidget {
                     color: Colors.transparent,
                     child: Column(
                       children: [
-                        ModelViewImage(model: snapshot.data!),
-                        ModelViewDescription(model: snapshot.data!)
+                        ModelViewImage(model: snapshot.data!.product),
+                        ModelViewDescription(model: snapshot.data!.product),
+                        ElevatedButton(
+                          onPressed: () => Get.to(
+                              StockViewProductListEquities(
+                                products: snapshot.data!.details,
+                              ),
+                              transition: Transition.downToUp
+                          ),
+                          child: const Text("Show equities"),
+                        )
                       ],
                     ),
                   ),

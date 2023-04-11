@@ -1,3 +1,5 @@
+import 'package:mobile_products_model/domain/domain.dart';
+
 import '../../data/data.dart';
 import '../../domain/entities/product_model_entity.dart';
 import 'package:get/get.dart';
@@ -11,9 +13,9 @@ class GetxModelViewPresenter extends GetxController
   RemoteLoadUniqueProductModel loadUniqueProductModel;
   RemoteDeleteProductModel remoteDeleteProductModel;
 
-  final _model = Rx<ProductModelEntity?>(null);
+  final _model = Rx<ProductModelAndDetails?>(null);
 
-  Stream<ProductModelEntity?> get modelStream => _model.stream;
+  Stream<ProductModelAndDetails?> get modelStream => _model.stream;
 
   GetxModelViewPresenter({
     required this.loadUniqueProductModel,
@@ -35,7 +37,7 @@ class GetxModelViewPresenter extends GetxController
     response.fold((error) {
       print("an error ocurred while loading unique model" + error.toString());
     }, (_response) {
-      _model.value = _response.product;
+      _model.value = _response;
     });
     isLoading = false;
   }

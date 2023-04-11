@@ -154,15 +154,17 @@ class HttpAdapter implements HttpClient {
 
       final response = await request.send();
       final body = json.decode(await response.stream.bytesToString());
-
       return Either.right(
         HttpResponse(
           statuscode: response.statusCode,
           body: body,
         ),
       );
-    } catch (e) {}
+    } catch (e) {
+      print("error on http_adapter: " + e.toString());
+    }
 
     return Either.left(DomainError.unexpected);
   }
 }
+
