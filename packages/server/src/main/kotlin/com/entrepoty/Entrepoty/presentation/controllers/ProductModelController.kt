@@ -2,6 +2,7 @@ package com.entrepoty.Entrepoty.presentation.controllers
 
 import arrow.core.getOrElse
 import com.entrepoty.Entrepoty.data.repositories.ProductDetailRepository
+import com.entrepoty.Entrepoty.data.repositories.ProductModelRepository
 import com.entrepoty.Entrepoty.data.usecase.FileService
 import com.entrepoty.Entrepoty.data.usecase.ProductModelService
 import com.entrepoty.Entrepoty.domain.entities.*
@@ -36,6 +37,20 @@ class ProductModelController {
 
     @Autowired
     lateinit var productDetailRepository: ProductDetailRepository
+
+    @Autowired
+    lateinit var productModelRepository: ProductModelRepository
+
+    @PostMapping("/details")
+    fun createDetails(@RequestBody body: CreateDetailsRequest): ResponseEntity<List<ProductDetailEntity>> {
+        var model = productModelRepository.findById(body.product)
+        if(model.isEmpty){
+            return ResponseEntity.notFound().build()
+        }
+        val details = Array(body.quantity) { _ -> generateDetail(model.get()) }
+        productDetailRepository.saveAll(details.toList())
+        return ResponseEntity.ok(details.toList());
+    }
 
     @PostMapping
     fun createModel(
