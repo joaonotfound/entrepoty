@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
-import 'package:mobile_products/mobile_products.dart';
 import 'package:mobile_products_model/mobile_products_model.dart';
 import '../../domain/domain.dart';
 import '../../ui/ui.dart';
@@ -16,13 +15,11 @@ class GetxBorrowCreationPresenter extends GetxController
 
   LoadAllEquitiesUsecase loadAllEquitiesUsecase;
   LoadCustomersUsecase loadCustomersUsecase;
-  LoadProductsUsecase loadProductsUsecase;
   CreateBorrowUsecase createBorrowUsecase;
 
   GetxBorrowCreationPresenter({
     required this.loadAllEquitiesUsecase,
     required this.loadCustomersUsecase,
-    required this.loadProductsUsecase,
     required this.createBorrowUsecase,
   });
 
@@ -39,7 +36,7 @@ class GetxBorrowCreationPresenter extends GetxController
   Future<void> create() async {
     isLoading = true;
     final response = await createBorrowUsecase.create(
-      product: _product!.product.id,
+      equity: _product!.equity,
       customer: int.parse(_customer!.id),
       date: _date!,
     );

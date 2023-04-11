@@ -15,7 +15,7 @@ class BorrowViewProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backendProvider = Get.find<BackendProvider>();
-    final model = borrow.product.model;
+    final model = borrow.productDetail;
 
     return Container(
       child: Column(
@@ -23,7 +23,7 @@ class BorrowViewProduct extends StatelessWidget {
           ClipRRect(
             child: FutureBuilder(
               initialData: "",
-              future: backendProvider.loadResource(model.imagePath),
+              future: backendProvider.loadResource(borrow.product.imagePath),
               builder: (context, snapshot) {
                 return Image.network(
                   snapshot.data!,
@@ -35,8 +35,8 @@ class BorrowViewProduct extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text(model.name),
-            subtitle: Text(model.category),
+            title: Text(borrow.product.name),
+            subtitle: Text(borrow.product.category),
           ),
           ListTile(
             title: const Text("Devolution Date"),

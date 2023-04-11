@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
-import 'package:mobile_products/mobile_products.dart';
 import 'package:mobile_products_model/domain/domain.dart';
 
 abstract class BorrowCreationPresenter implements Listenable {

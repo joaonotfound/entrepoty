@@ -15,14 +15,14 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
   });
 
   Future<Either<DomainError, BorrowEntity>> create({
-    required int product,
+    required String equity,
     required int customer,
     required DateTime date,
   }) async {
     try {
       final dateformat = DateFormat("yyyy-MM-dd");
       final body = {
-        "product": product,
+        "equity": equity,
         "customer": customer,
         "date": dateformat.format(date).toString()
       };
@@ -30,7 +30,7 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
       final response = await client.post(url: url, body: body);
       print("status-code: " + response.statuscode.toString());
       if (response.statuscode == 200) {
-        print("returning...");
+        print("returning..." + response.body.toString());
         return Either.right(BorrowEntity.fromJson(response.body));
       }
       if (response.statuscode == 409) {

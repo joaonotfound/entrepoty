@@ -24,7 +24,7 @@ class BorrowListCard extends StatelessWidget {
         leading: CircleAvatar(
           child: Icon(FluentIcons.person_12_regular),
         ),
-        title: Text(borrow.product.model.name,
+        title: Text(borrow.product.name,
             style: Theme.of(context).textTheme.headlineSmall),
         subtitle: Text(
           borrow.customer.name,

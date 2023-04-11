@@ -5,7 +5,7 @@ import '../domain.dart';
 
 abstract class CreateBorrowUsecase {
   Future<Either<DomainError, BorrowEntity>> create({
-    required int product,
+    required String equity,
     required int customer,
     required DateTime date,
   });
