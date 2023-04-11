@@ -1,7 +1,7 @@
+import 'package:mobile_products/ui/screens/stock/stock_view_product/components/components.dart';
 import 'package:mobile_products_model/domain/domain.dart';
 
 import '../../data/data.dart';
-import '../../domain/entities/product_model_entity.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 
@@ -10,6 +10,7 @@ import '../../ui/ui.dart';
 class GetxModelViewPresenter extends GetxController
     with GetxLoadingManager
     implements ModelViewPresenter {
+  RemoteCreateEquities remoteCreateEquities;
   RemoteLoadUniqueProductModel loadUniqueProductModel;
   RemoteDeleteProductModel remoteDeleteProductModel;
 
@@ -18,6 +19,7 @@ class GetxModelViewPresenter extends GetxController
   Stream<ProductModelAndDetails?> get modelStream => _model.stream;
 
   GetxModelViewPresenter({
+    required this.remoteCreateEquities,
     required this.loadUniqueProductModel,
     required this.remoteDeleteProductModel,
   });
@@ -40,5 +42,16 @@ class GetxModelViewPresenter extends GetxController
       _model.value = _response;
     });
     isLoading = false;
+  }
+
+  @override
+  Future<void> generateDetail(ProductModelEntity product, int quantity) async {
+    final response =
+        await remoteCreateEquities.createEquities(quantity, product);
+    response.fold((error) => [], (entities) {
+      Get.to(
+        StockViewProductListEquities(products: entities),
+      );
+    });
   }
 }
