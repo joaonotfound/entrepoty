@@ -1,10 +1,10 @@
 package com.entrepoty.Entrepoty.presentation.controllers
 
 import arrow.core.getOrElse
+import com.entrepoty.Entrepoty.data.repositories.ProductDetailRepository
 import com.entrepoty.Entrepoty.data.usecase.FileService
 import com.entrepoty.Entrepoty.data.usecase.ProductModelService
-import com.entrepoty.Entrepoty.domain.entities.ProductModelEntity
-import com.entrepoty.Entrepoty.domain.entities.RemoveProductModelEntity
+import com.entrepoty.Entrepoty.domain.entities.*
 import com.entrepoty.Entrepoty.presentation.helpers.ResponseUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -34,12 +34,16 @@ class ProductModelController {
     @Autowired
     lateinit var fileService: FileService
 
+    @Autowired
+    lateinit var productDetailRepository: ProductDetailRepository
+
     @PostMapping
     fun createModel(
         @RequestPart("name") name: String,
         @RequestPart("category") category: String,
-        @RequestPart("image") image: MultipartFile
-    ): ResponseEntity<ProductModelEntity> {
+        @RequestPart("image") image: MultipartFile,
+        @RequestPart("quantity") quantity: String
+    ): ResponseEntity<LoadUniqueProductModelResponse> {
         var savedFile = fileService.saveFile(image, ".jpg")
         return savedFile.fold({ domainError -> utils.fromDomain(domainError) },
             { createdFile ->
@@ -50,10 +54,20 @@ class ProductModelController {
 
                 return service.createModel(creation).fold(
                     { error -> utils.fromDomain(error) },
-                    { model -> ResponseEntity.ok(model) }
+                    { model ->
+                        val details = Array(quantity.toInt()) { _ -> generateDetail(creation) }
+                        productDetailRepository.saveAll(details.toList())
+                        return ResponseEntity.ok(LoadUniqueProductModelResponse(model, details.toList()))
+                    }
                 )
             }
         )
+    }
+
+    private fun generateDetail(product: ProductModelEntity): ProductDetailEntity {
+        val response = ProductDetailEntity();
+        response.product = product
+        return response;
     }
 
     @GetMapping
@@ -65,7 +79,7 @@ class ProductModelController {
     }
 
     @GetMapping("{model}")
-    fun loadProduct(@PathVariable("model") id: Long): ResponseEntity<ProductModelEntity> {
+    fun loadProduct(@PathVariable("model") id: Long): ResponseEntity<LoadUniqueProductModelResponse> {
         return service.findProduct(id).fold(
             { error -> utils.fromDomain(error) },
             { product -> ResponseEntity.ok(product) }

@@ -12,7 +12,7 @@ class UniqueProductEntity {
     return UniqueProductEntity(
         product: ProductEntity.fromJson(json['product']),
         details: details.map(
-          (detail) => ProductDetailEntity.fromJson(detail),
+              (detail) => ProductDetailEntity.fromJson(detail),
         ).toList(),
       ); }
 }

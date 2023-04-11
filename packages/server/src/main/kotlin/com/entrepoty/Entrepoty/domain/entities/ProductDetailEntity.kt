@@ -20,5 +20,5 @@ class ProductDetailEntity {
 
     @field:OnDelete(action = OnDeleteAction.CASCADE)
     @field:ManyToOne
-    lateinit var product: ProductEntity
+    lateinit var product: ProductModelEntity
 }

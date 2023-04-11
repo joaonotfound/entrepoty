@@ -23,7 +23,7 @@ class GetxModelViewPresenter extends GetxController
   Future<void> deleteModel(int id) async {
     isLoading = true;
     final response = await remoteDeleteProductModel.deleteModel(id);
-    response.fold((l){}, (account) {
+    response.fold((l) {}, (account) {
       Get.back();
     });
     isLoading = false;
@@ -34,7 +34,9 @@ class GetxModelViewPresenter extends GetxController
     final response = await loadUniqueProductModel.loadModelById(id);
     response.fold((error) {
       print("an error ocurred while loading unique model" + error.toString());
-    }, (_response) => _model.value = _response);
+    }, (_response) {
+      _model.value = _response.product;
+    });
     isLoading = false;
   }
 }

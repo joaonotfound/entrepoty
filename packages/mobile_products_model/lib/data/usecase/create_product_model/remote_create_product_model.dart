@@ -29,8 +29,6 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
       ],
     );
 
-    print("image: " + image);
-
     return rawResponse.fold(
       (error) => Either.left(error),
       (response) => response.statuscode == 200
