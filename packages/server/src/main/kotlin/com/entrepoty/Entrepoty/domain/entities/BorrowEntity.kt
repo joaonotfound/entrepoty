@@ -21,7 +21,7 @@ class BorrowEntity {
     @field:NotNull
     @field:OneToOne
     @field:OnDelete(action = OnDeleteAction.CASCADE)
-    lateinit var product: ProductEntity
+    lateinit var product: ProductDetailEntity
 
     @field:ManyToOne
     @field:OnDelete(action = OnDeleteAction.NO_ACTION)
@@ -31,7 +31,7 @@ class BorrowEntity {
     @field:Temporal(TemporalType.DATE)
     lateinit var datetime: java.sql.Date
 
-    constructor(customer: Customer, product: ProductEntity, datetime: java.sql.Date, createdBy: User){
+    constructor(customer: Customer, product: ProductDetailEntity, datetime: java.sql.Date, createdBy: User){
         this.customer = customer
         this.product = product
         this.datetime = datetime

@@ -4,11 +4,9 @@ import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import com.entrepoty.Entrepoty.data.repositories.CustomersRepository
+import com.entrepoty.Entrepoty.data.repositories.ProductDetailRepository
 import com.entrepoty.Entrepoty.data.repositories.ProductRepository
-import com.entrepoty.Entrepoty.domain.entities.BorrowEntity
-import com.entrepoty.Entrepoty.domain.entities.CreateBorrowModel
-import com.entrepoty.Entrepoty.domain.entities.DomainError
-import com.entrepoty.Entrepoty.domain.entities.User
+import com.entrepoty.Entrepoty.domain.entities.*
 import com.entrepoty.Entrepoty.domain.usecase.BorrowRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -19,11 +17,11 @@ class BorrowService {
     @Autowired
     lateinit var borrowRepository: BorrowRepository
     @Autowired
-    lateinit var productRepository: ProductRepository
-    @Autowired
     lateinit var customersRepository: CustomersRepository
+    @Autowired
+    lateinit var productDetailRepository: ProductDetailRepository
     fun createBorrow(creation: CreateBorrowModel, createdBy: User): Either<DomainError, BorrowEntity> {
-        var possibleProduct = productRepository.findById(creation.product)
+        var possibleProduct = productDetailRepository.findById(creation.product)
         if(possibleProduct.isEmpty){
             return Either.Left(DomainError.notFound)
         }
