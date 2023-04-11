@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_products/mobile_products.dart';
+import 'package:mobile_products_model/domain/domain.dart';
 import 'package:provider/provider.dart';
 
 import '../../../ui.dart';
@@ -13,23 +14,24 @@ class BorrowCreationProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = Provider.of<BorrowCreationPresenter>(context);
     presenter.loadProducts();
-    return StreamBuilder<List<ProductEntity>>(
+    return StreamBuilder<List<ProductDetailWithProduct>>(
       stream: presenter.productsStream,
-      builder: (context, snapshot) => DropdownSearch<ProductEntity>(
+      builder: (context, snapshot) => DropdownSearch<ProductDetailWithProduct>(
         dropdownBuilder: (context, selectedItem) =>
-            Text(selectedItem?.model.name ?? "Select one product"),
+            Text(selectedItem?.equity ?? "Select one product"),
         filterFn: (item, filter) =>
-            item.model.name.toLowerCase().contains(filter.toLowerCase()),
+            item.product.name.toLowerCase().contains(filter.toLowerCase()),
         onChanged: (value) => presenter.validateProduct(value!),
         popupProps: PopupProps.dialog(
             showSearchBox: true,
             isFilterOnline: true,
             searchDelay: Duration.zero,
             itemBuilder: (context, item, isSelected) => ListTile(
-                  leading: Icon(FluentIcons.storage_20_regular),
-                  title: Text(item.model.name),
+                  leading: const Icon(FluentIcons.storage_20_regular),
+                  title: Text(item.product.name),
+                  subtitle: Text(item.equity),
                 ),
-            searchFieldProps: TextFieldProps(
+            searchFieldProps: const TextFieldProps(
               decoration: InputDecoration(hintText: "Search product"),
             )),
         items: snapshot.data ?? [],

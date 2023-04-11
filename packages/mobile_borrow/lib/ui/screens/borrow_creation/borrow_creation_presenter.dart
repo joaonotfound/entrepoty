@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:mobile_products/mobile_products.dart';
+import 'package:mobile_products_model/domain/domain.dart';
 
 abstract class BorrowCreationPresenter implements Listenable {
   Stream<String?> get navigateToStream;
@@ -10,9 +11,9 @@ abstract class BorrowCreationPresenter implements Listenable {
   Stream<UiError?> get mainErrorStream;
 
   Stream<List<CustomerEntity>> get customersStream;
-  Stream<List<ProductEntity>> get productsStream;
+  Stream<List<ProductDetailWithProduct>> get productsStream;
 
-  void validateProduct(ProductEntity product);
+  void validateProduct(ProductDetailWithProduct product);
   void validateCustomer(CustomerEntity customer);
   void validateDate(DateTime date);
 

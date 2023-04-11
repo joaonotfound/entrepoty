@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:mobile_products/mobile_products.dart';
-
+import 'package:mobile_products_model/mobile_products_model.dart';
 import '../../domain/domain.dart';
 import '../../ui/ui.dart';
 
@@ -13,30 +13,33 @@ class GetxBorrowCreationPresenter extends GetxController
         GetxFormManager,
         GetxNavigatorManager
     implements BorrowCreationPresenter {
+
+  LoadAllEquitiesUsecase loadAllEquitiesUsecase;
   LoadCustomersUsecase loadCustomersUsecase;
   LoadProductsUsecase loadProductsUsecase;
   CreateBorrowUsecase createBorrowUsecase;
 
   GetxBorrowCreationPresenter({
+    required this.loadAllEquitiesUsecase,
     required this.loadCustomersUsecase,
     required this.loadProductsUsecase,
     required this.createBorrowUsecase,
   });
 
   CustomerEntity? _customer;
-  ProductEntity? _product;
+  ProductDetailWithProduct? _product;
   DateTime? _date;
 
   final _customers = Rx<List<CustomerEntity>>([]);
   Stream<List<CustomerEntity>> get customersStream => _customers.stream;
 
-  final _products = Rx<List<ProductEntity>>([]);
-  Stream<List<ProductEntity>> get productsStream => _products.stream;
+  final _products = Rx<List<ProductDetailWithProduct>>([]);
+  get productsStream => _products.stream;
 
   Future<void> create() async {
     isLoading = true;
     final response = await createBorrowUsecase.create(
-      product: _product!.id,
+      product: _product!.product.id,
       customer: int.parse(_customer!.id),
       date: _date!,
     );
@@ -67,7 +70,7 @@ class GetxBorrowCreationPresenter extends GetxController
     _validateForm();
   }
 
-  void validateProduct(ProductEntity product) {
+  void validateProduct(ProductDetailWithProduct product) {
     _product = product;
     _validateForm();
   }
@@ -79,7 +82,7 @@ class GetxBorrowCreationPresenter extends GetxController
 
   @override
   Future<void> loadProducts() async {
-    final response = await loadProductsUsecase.loadProducts();
+    final response = await loadAllEquitiesUsecase.load();
     response.fold((l) {}, (products) {
       _products.value = products;
     });
