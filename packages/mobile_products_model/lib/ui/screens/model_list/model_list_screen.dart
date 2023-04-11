@@ -40,10 +40,6 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
               icon: const Icon(FluentIcons.search_16_regular),
               onPressed: () {
                 Get.put(widget.presenter);
-                // Get.to(
-                //   const SearchScreen(),
-                //   transition: Transition.rightToLeft,
-                // );
               })
         ],
       ),
@@ -61,12 +57,12 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
                         ? ListenableProvider(
                             create: (context) => widget.presenter,
                             child: ListView.separated(
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(height: 10),
-                                itemCount: modelsSnapshot.data!.length,
-                                itemBuilder: ((context, index) =>
-                                    ModelListCard(
-                                        model: modelsSnapshot.data![index]))),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 10),
+                              itemCount: modelsSnapshot.data!.length,
+                              itemBuilder: ((context, index) => ModelListCard(
+                                  model: modelsSnapshot.data![index])),
+                            ),
                           )
                         : NoData();
               },

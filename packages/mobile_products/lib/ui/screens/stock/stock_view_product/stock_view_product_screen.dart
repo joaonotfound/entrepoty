@@ -62,7 +62,8 @@ class _StockViewProductScreenState extends State<StockViewProductScreen> {
                                     product: snapshot.data!),
                               ),
                               StockViewProductListEquities(
-                                  products: snapshot.data!.details)
+                                product: snapshot.data!.product,
+                                  details: snapshot.data!.details,)
                             ],
                           ),
                         ),

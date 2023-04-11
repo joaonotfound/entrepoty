@@ -63,7 +63,8 @@ class ModelViewScreen extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () => Get.to(
                               StockViewProductListEquities(
-                                products: snapshot.data!.details,
+                                details: snapshot.data!.details,
+                                product: snapshot.data!.product,
                               ),
                               transition: Transition.downToUp
                           ),

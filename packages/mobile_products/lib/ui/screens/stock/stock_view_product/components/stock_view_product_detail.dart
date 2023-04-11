@@ -18,7 +18,7 @@ class StockViewProductDetail extends StatelessWidget {
       children: [
         FutureBuilder<String?>(
           future: backendProvider
-              .loadResource(product.product.model.imagePath),
+              .loadResource(product.product.imagePath),
           builder: (context, snapshot) => Image.network(
             snapshot.data ?? "",
             height: 250,
@@ -30,11 +30,11 @@ class StockViewProductDetail extends StatelessWidget {
         ),
         ListTile(
           title: const Text("Product"),
-          subtitle: Text(product.product.model.name),
+          subtitle: Text(product.product.name),
         ),
         ListTile(
           title: const Text("Category"),
-          subtitle: Text(product.product.model.category),
+          subtitle: Text(product.product.category),
         ),
       ],
     );

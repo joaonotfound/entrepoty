@@ -49,9 +49,8 @@ class GetxModelViewPresenter extends GetxController
     final response =
         await remoteCreateEquities.createEquities(quantity, product);
     response.fold((error) => [], (entities) {
-      Get.to(
-        StockViewProductListEquities(products: entities),
-      );
+      Get.back();
+      Get.to(ModelEquitiesView(details: entities));
     });
   }
 }
