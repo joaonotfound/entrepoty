@@ -42,9 +42,6 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
               Get.put(widget.presenter);
             },
           ),
-          IconButton(
-              icon: const Icon(FluentIcons.settings_20_regular),
-              onPressed: () => Get.toNamed(Routes.settings))
         ],
       ),
       body: RefreshIndicator(

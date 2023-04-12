@@ -23,33 +23,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
     widget.handleNavigation(context, widget.presenter.navigateToStream);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     Get.put(widget.presenter);
     // debugPrint(themeProvider.isDark.toString());
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => Get.back(),
-        ),
-        title: const Text("Settings & Privacy"),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 15,
-          ),
-          child: Column(
-            children:  const [
-              SettingsDarkToggle(),
-              SettingsServer(),
-              SettingsLogoutButton(),
-            ],
-          ),
-        ),
-      ),
-    );
+    return HomeLayout(
+        body: Column(
+      children: const [
+        SettingsDarkToggle(),
+        SettingsServer(),
+        SettingsLogoutButton(),
+      ],
+    ));
   }
 }

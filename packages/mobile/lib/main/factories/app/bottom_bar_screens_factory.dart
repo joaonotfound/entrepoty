@@ -4,6 +4,7 @@ import 'package:mobile_borrow/mobile_borrow.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_customers/mobile_customers.dart';
 import 'package:mobile_products/mobile_products.dart';
+import 'package:mobile_settings/mobile_settings.dart';
 
 List<BottomBarScreen> makeBottomBarScreens() {
   return [
@@ -21,6 +22,11 @@ List<BottomBarScreen> makeBottomBarScreens() {
       widget: () => makeCustomerListScreen(),
       icon: Icon(FluentIcons.person_board_20_filled),
       label: "Customers",
-    )
+    ),
+    BottomBarScreen(
+      widget: () => makeSettingsScreen(),
+      icon: Icon(FluentIcons.settings_24_regular),
+      label: "Settings",
+    ),
   ];
 }
