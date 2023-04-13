@@ -20,13 +20,21 @@ The app's user management functionalities help teams keep track of employee borr
 track down missing items and reducing the likelihood of misplacing inventory.
 
 # App Overview
-Some gifts to briefly show the design and features available to the application. 
-## Configure your backend
-You can easily set the backend host you're going to use.
+We've included a few GIFs to provide a brief showcase of the design and features that are available on the application. Please note that the design and layout of the application may change over time, so the GIFs may not represent the latest version or the current layout of the app.
 
-![backend settings page](./documentation/assets/backend_settings.gif)
+### Configure your backend
+Deploying the application is straightforward as it is intended to be self-hosted. To use the application, simply deploy your own backend and configure the application to use it. All that's required is the IP and port number of the backend on which it is running.
 
-## Change between theme
-You can switch the theme of the entire application between light and dark mode. It  improve usability, accessibility, and aesthetics, and can enhance the overall user experience. 
+Please note that at this time, the project does not provide a valid default backend. Therefore, deploying your own backend is currently the only option available. 
 
-![backend settings page](./documentation/assets/theme.gif)
+<div align="center">
+<img src="./documentation/assets/backend_settings.gif" alt="backend settings page" height="600" />
+</div>
+
+
+### Change between theme
+The application provides a convenient option to switch between light and dark mode themes. This feature offers a range of benefits including improved usability, accessibility, and aesthetics, resulting in an enhanced user experience.
+<div align="center">
+<img src="./documentation/assets/theme.gif" alt="themes features" height="600" />
+</div>
+
