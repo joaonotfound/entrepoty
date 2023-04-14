@@ -6,7 +6,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../domain/domain.dart';
 
 class RemoteCreateBorrow implements CreateBorrowUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteCreateBorrow({
@@ -19,26 +19,19 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
     required int customer,
     required DateTime date,
   }) async {
-    try {
-      final dateformat = DateFormat("yyyy-MM-dd");
-      final body = {
-        "equity": equity,
-        "customer": customer,
-        "date": dateformat.format(date).toString()
-      };
-      print(body);
-      final response = await client.post(url: url, body: body);
-      print("status-code: " + response.statuscode.toString());
-      if (response.statuscode == 200) {
-        print("returning..." + response.body.toString());
-        return Either.right(BorrowEntity.fromJson(response.body));
-      }
-      if (response.statuscode == 409) {
-        return Either.left(DomainError.conflict);
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-    return Either.left(DomainError.unexpected);
+    final dateformat = DateFormat("yyyy-MM-dd");
+
+    final body = {
+      "equity": equity,
+      "customer": customer,
+      "date": dateformat.format(date).toString()
+    };
+
+    final responseEither = await client.post(url: url, body: body);
+    return responseEither.fold(
+        (error) => Either.left(error.asDomainError),
+        (response) => Either.right(
+              BorrowEntity.fromJson(response.body),
+            ));
   }
 }

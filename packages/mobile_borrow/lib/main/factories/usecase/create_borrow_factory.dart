@@ -5,7 +5,7 @@ import '../../../data/data.dart';
 
 RemoteCreateBorrow makeRemoteCreateBorrow() {
   return RemoteCreateBorrow(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.borrows,
   );
 }
