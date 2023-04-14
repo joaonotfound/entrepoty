@@ -10,6 +10,8 @@ UiError fromDomain(DomainError error) {
       return UiError.accountDoesntExist;
     case DomainError.conflict:
       return UiError.accountAlreadyExists;
+    case DomainError.networkError:
+      return UiError.connectionError;
     default:
       return UiError.unexpected;
   }

@@ -5,7 +5,8 @@ enum UiError {
   unexpected,
   emailInUse,
   accountAlreadyExists,
-  accountDoesntExist
+  accountDoesntExist,
+  connectionError
 }
 
 extension UiErrorExtension on UiError {
@@ -25,6 +26,8 @@ extension UiErrorExtension on UiError {
         return "Account doesn't exist.";
       case UiError.accountAlreadyExists:
         return "Account already exist.";
+      case UiError.connectionError:
+        return "Failed to connect to server.";
       default:
         return UiError.unexpected.description;
     }
