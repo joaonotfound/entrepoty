@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_core/mobile_core.dart';
 
 void main() {
-  late UsernameFieldValidator sut;
+  late UsernameFormFieldValidator sut;
   setUp(() {
-    sut = const UsernameFieldValidator(field: "any_field");
+    sut = const UsernameFormFieldValidator(field: "any_field");
   });
   group("IdValidator", () {
     test("should return null if value is null", () {

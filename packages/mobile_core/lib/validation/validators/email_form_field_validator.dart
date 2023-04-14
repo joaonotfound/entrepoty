@@ -1,9 +1,9 @@
 import '../validation.dart';
 
-class EmailFieldValidator implements FormFieldValidator {
+class EmailFormFieldValidator implements FormFieldValidator {
   String field;
 
-  EmailFieldValidator({
+  EmailFormFieldValidator({
     required this.field,
   });
 

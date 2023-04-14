@@ -1,9 +1,9 @@
 import '../validation.dart';
 
-class UserEnrollmentFieldValidator implements FormFieldValidator {
+class UserEnrollmentFormFieldValidator implements FormFieldValidator {
   String field;
 
-  UserEnrollmentFieldValidator({
+  UserEnrollmentFormFieldValidator({
     required this.field,
   });
 

@@ -4,8 +4,10 @@ import 'package:fpdart/fpdart.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile_core/mobile_core.dart';
 
-class ImagePickerImpl implements TakeImageUsecase {
+class ImagePickerTakeImage implements TakeImageUsecase {
   final imagePicker = ImagePicker();
+
+  @override
   Future<Either<DomainError, String>> takeImage() async {
     try {
       final image = await imagePicker.pickImage(source: ImageSource.camera, imageQuality: 12);

@@ -10,9 +10,9 @@ ModelCreationScreen makeModelsCreationScreen() {
   return ModelCreationScreen(
     presenter: GetxModelCreationPresenter(
       validation: ValidationComposite(validators: [
-        RequiredFieldValidator(field: "model-name"),
+        RequiredFormFieldValidator(field: "model-name"),
       ]),
-      takeImage: ImagePickerImpl(),
+      takeImage: ImagePickerTakeImage(),
       usecase: RemoteCreateProductModel(
         client: makeFunctionalHttpAdapter(),
         url: BackendUrls.models,

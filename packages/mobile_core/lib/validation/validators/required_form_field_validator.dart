@@ -1,9 +1,9 @@
 import '../../validation/validation.dart';
 
-class RequiredFieldValidator implements FormFieldValidator {
+class RequiredFormFieldValidator implements FormFieldValidator {
   @override
   final String field;
-  const RequiredFieldValidator({
+  const RequiredFormFieldValidator({
     required this.field,
   });
 

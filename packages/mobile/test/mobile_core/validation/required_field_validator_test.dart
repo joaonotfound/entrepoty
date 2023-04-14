@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_core/mobile_core.dart';
 
 void main() {
-  late RequiredFieldValidator sut;
+  late RequiredFormFieldValidator sut;
   setUp(() {
-    sut = const RequiredFieldValidator(field: 'any_field');
+    sut = const RequiredFormFieldValidator(field: 'any_field');
   });
   group("RequiredFieldValidator", () {
     test("should return error if value is null", () {
