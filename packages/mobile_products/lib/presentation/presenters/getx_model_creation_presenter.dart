@@ -73,11 +73,14 @@ class GetxModelCreationPresenter extends GetxController
 
   Future<void> pickImage() async {
     final response = await takeImage.takeImage();
-    response.fold((l) {}, (path) {
-      _hasImage.value = true;
-      _image = path;
-      _validateForm();
-    });
+    response.fold(
+      (error) => mainError = fromDomain(error),
+      (path) {
+        _hasImage.value = true;
+        _image = path;
+        _validateForm();
+      },
+    );
   }
 
   @override
@@ -86,7 +89,6 @@ class GetxModelCreationPresenter extends GetxController
     final response = await usecase.createModel(
         ProductModelEntity(name: _name, category: _category), _qtd, _image);
     response.fold((error) {
-      debugPrint("error: " + error.toString());
       mainError = fromDomain(error);
     }, (model) {
       Get.back();

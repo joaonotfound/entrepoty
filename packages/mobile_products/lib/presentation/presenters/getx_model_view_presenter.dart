@@ -1,5 +1,3 @@
-
-
 import '../../data/data.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
@@ -27,9 +25,12 @@ class GetxModelViewPresenter extends GetxController
   Future<void> deleteModel(int id) async {
     isLoading = true;
     final response = await remoteDeleteProductModel.deleteModel(id);
-    response.fold((l) {}, (account) {
-      Get.back();
-    });
+    response.fold(
+      (_) {},
+      (account) {
+        Get.back();
+      },
+    );
     isLoading = false;
   }
 

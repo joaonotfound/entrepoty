@@ -12,7 +12,6 @@ class GetxBorrowCreationPresenter extends GetxController
         GetxFormManager,
         GetxNavigatorManager
     implements BorrowCreationPresenter {
-
   LoadAllEquitiesUsecase loadAllEquitiesUsecase;
   LoadCustomersUsecase loadCustomersUsecase;
   CreateBorrowUsecase createBorrowUsecase;
@@ -28,9 +27,11 @@ class GetxBorrowCreationPresenter extends GetxController
   DateTime? _date;
 
   final _customers = Rx<List<CustomerEntity>>([]);
+
   Stream<List<CustomerEntity>> get customersStream => _customers.stream;
 
   final _products = Rx<List<ProductDetailWithProduct>>([]);
+
   get productsStream => _products.stream;
 
   Future<void> create() async {
@@ -41,19 +42,15 @@ class GetxBorrowCreationPresenter extends GetxController
       date: _date!,
     );
     isLoading = false;
-    response.fold((l) {
-      print(l);
-    }, (borrow) {
-      print("created");
-      Get.back();
-    });
+    response.fold(
+      (error) => mainError = fromDomain(error),
+      (borrow) {
+        Get.back();
+      },
+    );
   }
 
   void _validateForm() {
-    print(_customer);
-    print(_product);
-    print(_date);
-
     isFormValid = _customer != null && _product != null && _date != null;
   }
 
@@ -80,8 +77,11 @@ class GetxBorrowCreationPresenter extends GetxController
   @override
   Future<void> loadProducts() async {
     final response = await loadAllEquitiesUsecase.load();
-    response.fold((l) {}, (products) {
-      _products.value = products;
-    });
+    response.fold(
+      (error) => mainError = fromDomain(error),
+      (products) {
+        _products.value = products;
+      },
+    );
   }
 }

@@ -18,19 +18,19 @@ class GetxBorrowListPresenter extends GetxController
   });
 
   final _borrows = Rx<List<BorrowEntity>>([]);
+
   Stream<List<BorrowEntity>?> get borrowsStream => _borrows.stream;
 
   @override
   Future<void> loadBorrows() async {
-    try {
-      isLoading = true;
-      final response = await usecase.loadAll();
-      response.fold((l) {}, (borrows) {
+    isLoading = true;
+    final response = await usecase.loadAll();
+    response.fold(
+      (error) => mainError = fromDomain(error),
+      (borrows) {
         _borrows.value = borrows;
-      });
-    } catch (_) {
-      mainError = UiError.unexpected;
-    }
+      },
+    );
 
     isLoading = false;
   }
