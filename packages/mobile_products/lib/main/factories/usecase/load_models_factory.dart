@@ -4,7 +4,7 @@ import '../../../data/data.dart';
 
 RemoteLoadProductModels makeRemoteLoadProductModels() {
   return RemoteLoadProductModels(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.models,
   );
 }
