@@ -13,6 +13,23 @@ dependencies:
 
 dev_dependencies:
   mocktail:
+  faker:
+  entrepoty:
+    path: ../mobile
+  mobile_settings:
+    path: ../mobile_settings
+  mobile_borrow:
+    path: ../mobile_borrow
+  mobile_products:
+    path: ../mobile_products
+  mobile_customers:
+    path: ../mobile_customers
+  mobile_core:
+    path: ../mobile_core
+  mobile_remote:
+    path: ../mobile_remote
+  mobile_authentication:
+    path: ../mobile_authentication
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0

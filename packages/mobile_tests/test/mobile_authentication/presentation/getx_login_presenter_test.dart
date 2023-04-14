@@ -5,7 +5,7 @@ import 'package:mobile_core/mobile_core.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../mobile_core/mobile_core.dart';
-import '../domain/mocks/mocks.dart';
+import '../domain/domain.dart';
 
 void main() {
   late GetxLoginPresenter sut;
@@ -112,7 +112,7 @@ void main() {
       sut.validatePassword(password);
 
       sut.navigateToStream
-          .listen(expectAsync1((page) => expect(page, Routes.stock)));
+          .listen(expectAsync1((page) => expect(page, Routes.home)));
 
       sut.authenticate();
     });
