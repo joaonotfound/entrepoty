@@ -14,7 +14,7 @@ ModelCreationScreen makeModelsCreationScreen() {
       ]),
       takeImage: ImagePickerImpl(),
       usecase: RemoteCreateProductModel(
-        client: makeHttpAdapter(),
+        client: makeFunctionalHttpAdapter(),
         url: BackendUrls.models,
       ),
     ),
