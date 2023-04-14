@@ -7,7 +7,7 @@ import '../../../mobile_customers.dart';
 GetxCustomerListPresenter makeGetxUserListPresenter() {
   return GetxCustomerListPresenter(
     loadCustomersUsecase: RemoteLoadCustomers(
-      client: makeHttpAdapter(),
+      client: makeFunctionalHttpAdapter(),
       url: BackendUrls.customers,
     ),
     removeCustomer: makeRemoteRemoveCustomer(),

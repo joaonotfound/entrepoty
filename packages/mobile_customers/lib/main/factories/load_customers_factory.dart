@@ -10,7 +10,7 @@ MockedLoadCustomers makeMockedLoadCustomers() {
 
 RemoteLoadCustomers makeRemoteLoadCustomers() {
   return RemoteLoadCustomers(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.customers,
   );
 }

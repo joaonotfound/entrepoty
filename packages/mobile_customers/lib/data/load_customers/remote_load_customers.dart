@@ -3,7 +3,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../domain/domain.dart';
 
 class RemoteLoadCustomers implements LoadCustomersUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteLoadCustomers({
@@ -12,14 +12,13 @@ class RemoteLoadCustomers implements LoadCustomersUsecase {
   });
 
   Future<List<CustomerEntity>> loadCustomers() async {
-    try {
-      final httpResponse = await client.get<List<dynamic>>(url: url);
-      List<CustomerEntity> response = [];
-      for (var json in httpResponse.body ?? []) {
-        response.add(CustomerEntity.fromJson(json));
-      }
-      return response;
-    } catch (e) {}
-    return [];
+      final eitherResponse = await client.get<List<dynamic>>(url: url);
+      return eitherResponse.fold((_) => [], (httpResponse){
+        List<CustomerEntity> response = [];
+        for (var json in httpResponse.body ?? []) {
+          response.add(CustomerEntity.fromJson(json));
+        }
+        return response;
+      });
   }
 }
