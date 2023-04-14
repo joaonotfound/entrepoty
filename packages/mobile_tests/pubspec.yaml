@@ -13,6 +13,7 @@ dependencies:
 
 dev_dependencies:
   mocktail:
+  fpdart:
   faker:
   entrepoty:
     path: ../mobile
