@@ -11,6 +11,6 @@ LoginUsecase makeLocalAuthentication() {
 LoginUsecase makeRemoteAuthentication() {
   return RemoteLogin(
     url: BackendUrls.login,
-    httpClient: makeHttpAdapter(),
+    httpClient: makeFunctionalHttpAdapter(),
   );
 }
