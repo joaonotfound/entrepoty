@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mobile_authentication/mobile_authentication.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mocktail/mocktail.dart';
@@ -24,11 +25,11 @@ void main() {
     validator = MockValidation();
 
     saveCurrentAccount = MockLocalSaveCurrentAccount();
-    saveCurrentAccount.mockSave(null);
+    saveCurrentAccount.mockSave(Either.right(null));
 
     validator = MockValidation();
     authentication = MockAuthentication();
-    authentication.mockAuthenticate(validAccount);
+    authentication.mockAuthenticate(Either.right(validAccount));
 
     sut = GetxLoginPresenter(
       validator: validator,
@@ -140,15 +141,14 @@ void main() {
 
       sut.authenticate();
     });
-    test(
-        "should emit correct main error if saveCurrentAccount throws unexpected",
-        () {
-      saveCurrentAccount.mockSaveError(Exception());
+    test("should return domain error", () {
+      saveCurrentAccount.mockSaveError(DomainError.unexpected);
+
       sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.mainErrorStream
-          .listen(expectAsync1((error) => expect(error, UiError.unexpected)));
+          .listen(expectAsync1((error) => expect(error, fromDomain(DomainError.unexpected))));
 
       sut.authenticate();
     });

@@ -7,6 +7,7 @@ enum HttpErrorEnum {
   unauthorized,
   forbidden,
   conflict,
+  notfound,
 
   // Server Errors
   serverError,
@@ -17,6 +18,8 @@ enum HttpErrorEnum {
 extension HttpErrorEnumExtension on HttpErrorEnum {
   Either<DomainError, T> asDomainErrorEither<T>() => Either.left(asDomainError);
   Either<T, DomainError> asDomainErrorEitherOnRight<T>() => Either.right(asDomainError);
+
+  Either<HttpErrorEnum, T> toLeft<T>() => Either.left(this);
 
   DomainError get asDomainError {
     switch(this){
@@ -35,6 +38,7 @@ extension HttpErrorEnumExtension on HttpErrorEnum {
     }
   }
 }
+
 class HttpError {
   HttpErrorEnum error;
   int statuscode;

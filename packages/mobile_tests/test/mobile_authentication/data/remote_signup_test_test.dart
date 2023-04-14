@@ -9,16 +9,16 @@ import '../../mobile_remote/mobile_remote.dart';
 
 void main() {
   late RemoteSignup sut;
-  late MockHttpClient http;
-  final url = "/api/v1/auth/signup";
+  late MockFunctionalHttpClient http;
+  const url = "/api/v1/auth/signup";
   setUp(() {
-    http = MockHttpClient();
-    http.mockPost(HttpResponse(statuscode: 200));
+    http = MockFunctionalHttpClient();
+    http.mockPost(const HttpResponse(statuscode: 200, body: {}).toRight());
     sut = RemoteSignup(http: http, url: url);
   });
   group("RemoteSignup", () {
     test("should call http with correct values", () async {
-      sut.register(
+      await sut.register(
         name: "any-name",
         username: "any-username",
         password: "any-password",
@@ -32,18 +32,21 @@ void main() {
             "username": "any-username",
             "password": "any-password"
           },
-          timeout: Duration(seconds: 2),
+          timeout: const Duration(seconds: 2),
         ),
       ).called(1);
     });
     test("should return account with correct values", () async {
-      final response = HttpResponse(statuscode: 200, body: {
-        "accessToken": "random-token",
-        "username": "random-username",
-        "name": "random-name",
-        "profile_url": "random_profile_url",
-      });
-      http.mockPost(response);
+      const response = HttpResponse(
+        statuscode: 200,
+        body: {
+          "accessToken": "random-token",
+          "username": "random-username",
+          "name": "random-name",
+          "profile_url": "random_profile_url",
+        },
+      );
+      http.mockPost(response.toRight());
 
       final registerResponse = await sut.register(
         name: "random-name",
@@ -54,27 +57,13 @@ void main() {
       expect(account?.username, "random-username");
       expect(account?.token, "random-token");
     });
-    test("should return unexpected if client throws", () async {
-      http.mockPostError(HttpError.serverError);
+    test("should return domain error on http errors", () async {
+      const error = HttpErrorEnum.serverError;
+      http.mockPostError(error);
 
       final response = await sut.register(name: "", username: "", password: "");
 
-      expect(response, Right(DomainError.unexpected));
-    });
-    test("should return invalid credentials on bad request", () async {
-      http.mockPostError(HttpError.badRequest);
-
-      final response = await sut.register(name: "", username: "", password: "");
-
-      expect(response, Right(DomainError.unauthorized));
-    });
-    test("should return unexpected if http returns other statuscode than 200",
-        () async {
-      http.mockPost(HttpResponse(statuscode: 500));
-
-      final response = await sut.register(name: "", username: "", password: "");
-
-      expect(response, Right(DomainError.unexpected));
+      expect(response, Either.right(error.asDomainError));
     });
   });
 }

@@ -1,3 +1,5 @@
+import 'package:fpdart/fpdart.dart';
+
 enum DomainError {
   unexpected,
   unauthorized,
@@ -8,6 +10,8 @@ enum DomainError {
 }
 
 extension DomainErrorExtension on DomainError {
+  Either<DomainError, T> toLeft<T>() => Either.left(this);
+
   String get description {
     switch (this) {
       case DomainError.unauthorized:

@@ -1,3 +1,4 @@
+import 'package:fpdart/fpdart.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:mobile_remote/mobile_remote.dart';
 
@@ -13,7 +14,7 @@ class RemoteLogin implements LoginUsecase {
   });
 
   @override
-  Future<Account> authenticate({
+  Future<Either<DomainError, Account>> authenticate({
     required String username,
     required String password,
   }) async {
@@ -23,8 +24,8 @@ class RemoteLogin implements LoginUsecase {
       timeout: const Duration(seconds: 2),
     );
     return eitherResponse.fold(
-      (error) => throw DomainError,
-      (response) => Account.fromJson(response.body),
+      (error) => error.asDomainErrorEither(),
+      (response) => Either.right(Account.fromJson(response.body)),
     );
   }
 }

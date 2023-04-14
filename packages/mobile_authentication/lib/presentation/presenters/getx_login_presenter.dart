@@ -15,6 +15,7 @@ class GetxLoginPresenter extends GetxController
   final Validation validator;
   final LoginUsecase authentication;
   final SaveCurrentAccountUsecase saveCurrentAccount;
+
   GetxLoginPresenter({
     required this.validator,
     required this.authentication,
@@ -59,20 +60,19 @@ class GetxLoginPresenter extends GetxController
   @override
   Future<void> authenticate() async {
     isLoading = true;
-    try {
-      final account = await authentication.authenticate(
-          username: _username, password: _password);
-      if(account != null){
-        await saveCurrentAccount.saveAccount(account: account);
-      }
+    final response = await authentication.authenticate(
+      username: _username,
+      password: _password,
+    );
 
-      navigateTo = Routes.home;
-    } on DomainError catch (error) {
-      mainError = fromDomain(error);
-    } catch (error) {
-      mainError = UiError.unexpected;
-      debugPrint("error: " + error.toString());
-    }
+    response.fold(
+      (error) => mainError = fromDomain(error),
+      (account) async {
+        await saveCurrentAccount.saveAccount(account: account);
+        navigateTo = Routes.home;
+      },
+    );
+
     isLoading = false;
   }
 }

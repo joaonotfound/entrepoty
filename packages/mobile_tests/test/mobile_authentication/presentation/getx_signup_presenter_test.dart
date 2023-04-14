@@ -18,7 +18,7 @@ void main() {
     usecase = SignupUsecaseMock();
     usecase.mockSignup(Left(dummyAccount));
     saveCurrentAccount = MockLocalSaveCurrentAccount();
-    saveCurrentAccount.mockSave(null);
+    saveCurrentAccount.mockSave(Either.right(null));
     sut = GetxSignupPresenter(validation: validator, usecase: usecase, saveAccount: saveCurrentAccount);
   });
   setUpAll(() {
@@ -110,7 +110,7 @@ void main() {
     test("should call save current account on success", () async {
       final account = Account(token: "any-token", username: "any-username", name: "any-name", profilePictureUrl: "any-pf-url");
       usecase.mockSignup(Left(account));
-      saveCurrentAccount.mockSave(null);
+      saveCurrentAccount.mockSave(Either.right(null));
 
       await sut.signup();
 

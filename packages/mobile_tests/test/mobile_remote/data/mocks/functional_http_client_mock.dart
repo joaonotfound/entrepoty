@@ -20,5 +20,5 @@ class MockFunctionalHttpClient extends Mock implements FunctionalHttpClientUseca
   void mockPost(Either<HttpErrorEnum, HttpResponse> response) =>
       // ignore: prefer_const_constructors
   _mockPostCall().thenAnswer((_) async => response);
-  void mockPostError(HttpError error) => _mockPostCall().thenThrow(error);
+  void mockPostError(HttpErrorEnum error) => mockPost(error.toLeft());
 }
