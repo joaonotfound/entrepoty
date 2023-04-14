@@ -4,7 +4,7 @@ import '../../../data/data.dart';
 
 RemoteDeleteProductModel makeRemoteDeleteProductModel() {
   return RemoteDeleteProductModel(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.models,
   );
 }

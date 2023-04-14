@@ -10,7 +10,7 @@ ModelListScreen makeModelListScreen() {
   return ModelListScreen(
     presenter: GetxLoadModelsPresenter(
       deleteUescase: RemoteDeleteProductModel(
-        client: makeHttpAdapter(),
+        client: makeFunctionalHttpAdapter(),
         url: BackendUrls.models,
       ),
       loadModelsUsecase: makeRemoteLoadProductModels(),
