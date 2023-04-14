@@ -4,7 +4,7 @@ import 'package:mobile_customers/domain/domain.dart';
 import 'package:mobile_remote/domain/domain.dart';
 
 class RemoteLoadUniqueCustomer implements LoadUniqueCustomerUsecase {
-  HttpClient httpClient;
+  FunctionalHttpClientUsecase httpClient;
   String url;
 
   RemoteLoadUniqueCustomer({
@@ -15,15 +15,12 @@ class RemoteLoadUniqueCustomer implements LoadUniqueCustomerUsecase {
   Future<Either<DomainError, CustomerEntity>> loadUniqueCustomer(
     String enrollment,
   ) async {
-    try {
-      final response = await httpClient.get(url: "$url/$enrollment");
-      if(response.statuscode == 200){
-        return Either.right(CustomerEntity.fromJson(response.body));
-      }
-      if(response.statuscode == 409){
-        return Either.left(DomainError.notFound);
-      }
-    }catch (e){}
-    return Either.left(DomainError.unexpected);
+    final eitherResponse = await httpClient.get(url: "$url/$enrollment");
+    return eitherResponse.fold(
+      (error) => error.asDomainErrorEither(),
+      (response) => Either.right(
+        CustomerEntity.fromJson(response.body),
+      ),
+    );
   }
 }
