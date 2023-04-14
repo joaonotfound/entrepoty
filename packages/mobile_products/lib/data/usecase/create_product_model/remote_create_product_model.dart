@@ -6,7 +6,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../../domain/domain.dart';
 
 class RemoteCreateProductModel implements CreateProductModelUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteCreateProductModel({
@@ -31,7 +31,7 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
     );
 
     return rawResponse.fold(
-      (error) => Either.left(error),
+      (error) => error.asDomainErrorEither(),
       (response) => response.statuscode == 200
           ? Either.right(UniqueProductEntity.fromJson(response.body))
           : response.statuscode == 409
