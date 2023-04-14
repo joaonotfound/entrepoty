@@ -8,7 +8,7 @@ import 'package:mobile_settings/mobile_settings.dart';
 
 import '../domain/domain.dart';
 
-class HttpAdapter implements HttpClient {
+class HttpAdapter { //implements HttpClient {
   http.Client client;
   LoadCurrentAccountUsecase currentAccount;
   LoadCurrentBackendSettings loadBackendSettings;

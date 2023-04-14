@@ -5,7 +5,7 @@ import 'package:mobile_settings/main/factories/factories.dart';
 import '../data/data.dart';
 import '../domain/domain.dart';
 
-HttpClient makeHttpAdapter() {
+HttpAdapter makeHttpAdapter() {
   return HttpAdapter(
     client: Client(),
     currentAccount: makeLocalLoadCurrentAccount(),
