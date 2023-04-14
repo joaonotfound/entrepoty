@@ -57,6 +57,9 @@ class HttpAdapter implements HttpClient {
           )
           .timeout(timeout ?? const Duration(seconds: 5));
 
+      print("body: " + response.statusCode.toString());
+      print("statuscode: " + response.statusCode.toString());
+
       return HttpResponse(
         statuscode: response.statusCode,
         body: response.body.runtimeType == String
@@ -90,7 +93,7 @@ class HttpAdapter implements HttpClient {
       );
     } catch (e) {
       debugPrint("error-something: " + e.toString());
-      return HttpResponse(statuscode: 500);
+      return const HttpResponse(statuscode: 500);
     }
   }
 

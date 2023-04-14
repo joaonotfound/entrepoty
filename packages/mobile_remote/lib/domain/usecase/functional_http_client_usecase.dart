@@ -2,27 +2,27 @@ import 'package:fpdart/fpdart.dart';
 import 'package:mobile_remote/domain/domain.dart';
 
 abstract class FunctionalHttpClientUsecase {
-  Future<Either<HttpError, HttpResponse<R>>> delete<R>({
+  Future<Either<HttpErrorEnum, HttpResponse<R>>> delete<R>({
     required String url,
     Map? body,
     Map? headers,
     Duration? timeout,
   });
 
-  Future<Either<HttpError, HttpResponse<R>>> get<R>({
+  Future<Either<HttpErrorEnum, HttpResponse<R>>> get<R>({
     required String url,
     Map? headers,
     Duration? timeout,
   });
 
-  Future<Either<HttpError, HttpResponse<R>>> post<R>({
+  Future<Either<HttpErrorEnum, HttpResponse<R>>> post<R>({
     required String url,
     Map? body,
     Map? headers,
     Duration? timeout,
   });
 
-  Future<Either<HttpError, HttpResponse<T>>> multiples<T>({
+  Future<Either<HttpErrorEnum, HttpResponse<T>>> multiples<T>({
     required String method,
     required String url,
     List<MultipleData>? data,
