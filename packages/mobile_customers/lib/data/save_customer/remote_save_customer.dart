@@ -5,7 +5,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../domain/domain.dart';
 
 class RemoteSaveCustomer implements SaveCustomerUsercase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteSaveCustomer({
@@ -16,24 +16,20 @@ class RemoteSaveCustomer implements SaveCustomerUsercase {
   Future<Either<DomainError, CustomerEntity>> saveCustomer(
     CustomerEntity account,
   ) async {
-    try {
-      final response = await client.post(
-        url: url,
-        body: {
-          "enrollment": account.enrollment,
-          "name": account.name,
-          "email": account.email,
-          "sector": account.sector
-        },
-      );
-
-      if (response.statuscode == 409) {
-        return Either.left(DomainError.conflict);
-      }
-
-      return Either.right(CustomerEntity.fromJson(response.body));
-    } catch (e) {
-      return Either.left(DomainError.unexpected);
-    }
+    final eitherResponse = await client.post(
+      url: url,
+      body: {
+        "enrollment": account.enrollment,
+        "name": account.name,
+        "email": account.email,
+        "sector": account.sector
+      },
+    );
+    return eitherResponse.fold(
+      (error) => error.asDomainErrorEither(),
+      (response) => Either.right(
+        CustomerEntity.fromJson(response.body),
+      ),
+    );
   }
 }

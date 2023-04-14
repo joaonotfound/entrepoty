@@ -5,7 +5,7 @@ import '../../data/data.dart';
 
 RemoteSaveCustomer makeRemoteSaveCustomer() {
   return RemoteSaveCustomer(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.customers,
   );
 }
