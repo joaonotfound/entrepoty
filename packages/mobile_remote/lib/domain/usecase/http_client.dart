@@ -3,6 +3,7 @@ import 'package:mobile_core/mobile_core.dart';
 
 import '../domain.dart';
 
+@Deprecated("You should use FunctionalHttpClient instead.")
 abstract class HttpClient {
   Future<HttpResponse<T>> delete<T>({
     required String url,
