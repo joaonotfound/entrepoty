@@ -29,9 +29,10 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
 
     final responseEither = await client.post(url: url, body: body);
     return responseEither.fold(
-        (error) => Either.left(error.asDomainError),
-        (response) => Either.right(
-              BorrowEntity.fromJson(response.body),
-            ));
+      (error) => error.asDomainErrorEither(),
+      (response) => Either.right(
+        BorrowEntity.fromJson(response.body),
+      ),
+    );
   }
 }
