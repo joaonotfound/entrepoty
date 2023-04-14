@@ -5,7 +5,7 @@ import 'package:mobile_remote/domain/domain.dart';
 import '../../../domain/domain.dart';
 
 class RemoteCreateEquities extends CreateEquitiesUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteCreateEquities({
@@ -17,18 +17,15 @@ class RemoteCreateEquities extends CreateEquitiesUsecase {
   Future<Either<DomainError, List<ProductDetailEntity>>> createEquities(
       int quantity,
       ProductModelEntity product,) async {
-    try {
-      final response = await client.post(url: url, body: {
+      final eitherResponse = await client.post(url: url, body: {
         "product": product.id,
         "quantity": quantity,
       });
-
-      final details = response.body as List<dynamic>? ?? [];
-      return Either.right(details.map(
-            (detail) => ProductDetailEntity.fromJson(detail),
-      ).toList(),);
-    } catch (e) {}
-
-    return Either.left(DomainError.unexpected);
+      return eitherResponse.fold((error) => error.asDomainErrorEither() , (response) {
+        final details = response.body as List<dynamic>? ?? [];
+        return Either.right(details.map(
+              (detail) => ProductDetailEntity.fromJson(detail),
+        ).toList(),);
+      });
   }
 }
