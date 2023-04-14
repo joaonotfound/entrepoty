@@ -32,7 +32,7 @@ class RemoteLogin implements LoginUsecase {
       }
       throw DomainError.unexpected;
     } on HttpError catch (error) {
-      throw error == HttpError.badRequest
+      throw error == HttpErrorEnum.badRequest
           ? DomainError.unauthorized
           : DomainError.unexpected;
     }

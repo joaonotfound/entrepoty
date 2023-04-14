@@ -38,7 +38,7 @@ class RemoteSignup implements SignupUsecase {
       final account = response.body ?? {};
       return Left(Account.fromJson(account));
     } on HttpError catch (e) {
-      return Right(e == HttpError.badRequest
+      return Right(e == HttpErrorEnum.badRequest
           ? DomainError.unauthorized
           : DomainError.unexpected);
     } catch (e) {
