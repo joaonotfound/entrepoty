@@ -13,7 +13,7 @@ SignupScreen makeSignupScreen() {
     presenter: GetxSignupPresenter(
       validation: makeSignupValidationComposite(),
       usecase: RemoteSignup(
-        http: makeHttpAdapter(),
+        http: makeFunctionalHttpAdapter(),
         url: BackendUrls.signup,
       ),
       saveAccount: makeLocalSaveCurrentAccount(),

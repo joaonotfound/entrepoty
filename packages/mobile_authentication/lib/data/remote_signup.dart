@@ -5,7 +5,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../domain/domain.dart';
 
 class RemoteSignup implements SignupUsecase {
-  HttpClient http;
+  FunctionalHttpClientUsecase http;
   final String url;
 
   RemoteSignup({
@@ -19,30 +19,19 @@ class RemoteSignup implements SignupUsecase {
     required String username,
     required String password,
   }) async {
-    try {
-      final response = await http.post(
-        url: url,
-        body: {
-          "name": name,
-          "username": username,
-          "password": password,
-        },
-        timeout: Duration(seconds: 2),
-      );
-      if (response.statuscode == 409) {
-        return Right(DomainError.conflict);
-      }
-      if (response.statuscode != 200) {
-        return Right(DomainError.unexpected);
-      }
-      final account = response.body ?? {};
-      return Left(Account.fromJson(account));
-    } on HttpError catch (e) {
-      return Right(e == HttpErrorEnum.badRequest
-          ? DomainError.unauthorized
-          : DomainError.unexpected);
-    } catch (e) {
-      return Right(DomainError.unexpected);
-    }
+    final eitherResponse = await http.post(
+      url: url,
+      body: {
+        "name": name,
+        "username": username,
+        "password": password,
+      },
+      timeout: const Duration(seconds: 2),
+    );
+    return eitherResponse.fold(
+      (error) => error.asDomainErrorEitherOnRight(),
+      (response) => Either.left(Account.fromJson(response.body)),
+    );
+    //return Left(Account.fromJson(account));
   }
 }
