@@ -5,7 +5,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../domain/domain.dart';
 
 class RemoteLoadUniqueBorrow implements LoadUniqueBorrowUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteLoadUniqueBorrow({
@@ -13,14 +13,14 @@ class RemoteLoadUniqueBorrow implements LoadUniqueBorrowUsecase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, BorrowEntity>> loadBorrowById(int id) async {
-    try {
-      final response = await client.get(url: "$url/$id");
-      if (response.statuscode == 200) {
-        return Either.right(BorrowEntity.fromJson(response.body));
-      }
-    } catch (e) {}
-
-    return Either.left(DomainError.unexpected);
+    final eitherResponse = await client.get(url: "$url/$id");
+    return eitherResponse.fold(
+      (error) => error.asDomainErrorEither(),
+      (response) => Either.right(
+        BorrowEntity.fromJson(response.body),
+      ),
+    );
   }
 }

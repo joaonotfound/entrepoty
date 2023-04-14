@@ -5,7 +5,7 @@ import '../../../data/data.dart';
 
 RemoteLoadUniqueBorrow makeRemoteLoadUniqueBorrow() {
   return RemoteLoadUniqueBorrow(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.borrows,
   );
 }
