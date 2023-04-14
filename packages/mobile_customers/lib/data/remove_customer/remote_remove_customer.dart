@@ -5,7 +5,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../domain/domain.dart';
 
 class RemoteRemoveCustomer implements RemoveCustomerUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteRemoveCustomer({
@@ -15,11 +15,14 @@ class RemoteRemoveCustomer implements RemoveCustomerUsecase {
 
   @override
   Future<Either<DomainError, dynamic>> deleteCustomer(String enrollment) async {
-    final response =
-        await client.delete(url: url, body: {"enrollment": enrollment});
-    if (response.statuscode != 200) {
-      return Either.left(DomainError.unexpected);
-    }
-    return Either.right(null);
+    final eitherResponse = await client.delete(
+      url: url,
+      body: {"enrollment": enrollment},
+    );
+
+    return eitherResponse.fold(
+      (error) => error.asDomainErrorEither(),
+      (_) => Either.right(null),
+    );
   }
 }

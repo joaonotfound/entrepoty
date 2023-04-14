@@ -5,7 +5,7 @@ import '../../data/data.dart';
 
 RemoteRemoveCustomer makeRemoteRemoveCustomer(){
   return RemoteRemoveCustomer(
-    client: makeHttpAdapter(),
+    client: makeFunctionalHttpAdapter(),
     url: BackendUrls.customers,
   );
 }
