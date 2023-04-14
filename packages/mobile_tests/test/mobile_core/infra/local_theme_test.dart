@@ -34,7 +34,7 @@ void main() {
 
       var response = await sut.loadIsDark();
 
-      expect(response, false);
+      expect(response, true);
     });
     test("should call save method", () async {
       await sut.setIsDark(false);

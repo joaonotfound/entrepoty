@@ -141,14 +141,14 @@ void main() {
 
       sut.authenticate();
     });
-    test("should return domain error", () {
-      saveCurrentAccount.mockSaveError(DomainError.unexpected);
+    test("should return domain error if save current account fails", () {
+      saveCurrentAccount.mockSave(Either.left(DomainError.unexpected));
 
       sut.validateUsername(username);
       sut.validatePassword(password);
 
-      sut.mainErrorStream
-          .listen(expectAsync1((error) => expect(error, fromDomain(DomainError.unexpected))));
+      sut.mainErrorStream.listen(expectAsync1(
+          (error) => expect(error, fromDomain(DomainError.unexpected))));
 
       sut.authenticate();
     });

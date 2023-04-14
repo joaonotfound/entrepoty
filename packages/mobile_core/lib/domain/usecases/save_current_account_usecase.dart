@@ -1,7 +1,8 @@
 import '../domain.dart';
+import 'package:fpdart/fpdart.dart';
 
 abstract class SaveCurrentAccountUsecase {
-  Future<void> saveAccount({
+  Future<Either<DomainError, dynamic>> saveAccount({
     required Account account,
   });
 }

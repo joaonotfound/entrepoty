@@ -1,6 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../mobile_core.dart';
@@ -30,12 +31,13 @@ void main() {
       verify(() => saveSecureCacheStorage.saveSecure(
           key: "token", value: account.token)).called(1);
     });
-    test("should throw unexpected error if saveSecureCacheStorage throws", () {
+    test("should throw unexpected error if saveSecureCacheStorage throws",
+        () async {
       saveSecureCacheStorage.mockSaveError(Exception());
 
-      var future = sut.saveAccount(account: account);
+      var response = await sut.saveAccount(account: account);
 
-      expectLater(future, throwsA(DomainError.unexpected));
+      expectLater(response, Either.left(DomainError.unexpected));
     });
   });
 }

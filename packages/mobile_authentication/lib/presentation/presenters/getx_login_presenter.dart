@@ -68,8 +68,12 @@ class GetxLoginPresenter extends GetxController
     response.fold(
       (error) => mainError = fromDomain(error),
       (account) async {
-        await saveCurrentAccount.saveAccount(account: account);
-        navigateTo = Routes.home;
+        final savedAccountResponse =
+            await saveCurrentAccount.saveAccount(account: account);
+        savedAccountResponse.fold((error) => mainError = fromDomain(error),
+            (_) {
+          navigateTo = Routes.home;
+        });
       },
     );
 
