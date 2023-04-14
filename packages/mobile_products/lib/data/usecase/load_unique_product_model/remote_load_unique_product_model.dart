@@ -5,7 +5,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../../domain/domain.dart';
 
 class RemoteLoadUniqueProductModel implements LoadUniqueProductModelUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
 
   RemoteLoadUniqueProductModel({
@@ -15,17 +15,12 @@ class RemoteLoadUniqueProductModel implements LoadUniqueProductModelUsecase {
 
   @override
   Future<Either<DomainError, UniqueProductEntity>> loadModelById(int id) async {
-    try {
-      print(url);
-      final response = await client.get(url: "$url/$id");
-      if(response.statuscode == 200){
-        print(response.body);
-        return Either.right(UniqueProductEntity.fromJson(response.body));
-      }
-    }catch(e){
-      print("error " + e.toString());
-    }
-
-    return Either.left(DomainError.unexpected);
+    final eitherReponse = await client.get(url: "$url/$id");
+    return eitherReponse.fold(
+      (error) => error.asDomainErrorEither(),
+      (response) => Either.right(
+        UniqueProductEntity.fromJson(response.body),
+      ),
+    );
   }
 }
