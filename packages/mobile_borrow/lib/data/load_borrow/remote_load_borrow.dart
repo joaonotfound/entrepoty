@@ -5,7 +5,7 @@ import 'package:mobile_remote/mobile_remote.dart';
 import '../../domain/domain.dart';
 
 class RemoteLoadBorrow implements LoadBorrowUsecase {
-  HttpClient client;
+  FunctionalHttpClientUsecase client;
   String url;
   RemoteLoadBorrow({
     required this.client,
@@ -13,16 +13,14 @@ class RemoteLoadBorrow implements LoadBorrowUsecase {
   });
 
   Future<Either<DomainError, List<BorrowEntity>>> loadAll() async {
-    try {
-      final httpResponse = await client.get<List<dynamic>>(url: url);
+      final eitherResponse = await client.get<List<dynamic>>(url: url);
 
-      List<BorrowEntity> response = [];
-      for (var json in httpResponse.body ?? []) {
-        response.add(BorrowEntity.fromJson(json));
-      }
-      return Either.right(response);
-    } catch (e) {
-      return Either.left(DomainError.unexpected);
-    }
+      List<BorrowEntity> functionResponse = [];
+      return eitherResponse.fold((error) => error.asDomainErrorEither() , (response) {
+        for (var json in response.body ?? []) {
+          functionResponse.add(BorrowEntity.fromJson(json));
+        }
+        return Either.right(functionResponse);
+      });
   }
 }
