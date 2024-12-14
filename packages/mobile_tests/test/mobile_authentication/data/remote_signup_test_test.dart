@@ -1,8 +1,8 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mobile_authentication/mobile_authentication.dart';
 import 'package:mobile_remote/mobile_remote.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
 
 import '../../mobile_remote/mobile_remote.dart';
 

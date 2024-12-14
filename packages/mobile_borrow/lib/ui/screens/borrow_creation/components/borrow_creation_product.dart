@@ -23,9 +23,8 @@ class BorrowCreationProduct extends StatelessWidget {
         onChanged: (value) => presenter.validateProduct(value!),
         popupProps: PopupProps.dialog(
             showSearchBox: true,
-            isFilterOnline: true,
             searchDelay: Duration.zero,
-            itemBuilder: (context, item, isSelected) => ListTile(
+            itemBuilder: (context, item, isDisabled, isSelected) => ListTile(
                   leading: const Icon(FluentIcons.storage_20_regular),
                   title: Text(item.product.name),
                   subtitle: Text(item.equity),
@@ -33,7 +32,7 @@ class BorrowCreationProduct extends StatelessWidget {
             searchFieldProps: const TextFieldProps(
               decoration: InputDecoration(hintText: 'Search product'),
             ),),
-        items: snapshot.data ?? [],
+        items: (_, __) => snapshot.data ?? [],
       ),
     );
   }

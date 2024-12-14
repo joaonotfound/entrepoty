@@ -25,16 +25,15 @@ class BorrowCreationUser extends StatelessWidget {
         onChanged: (value) => presenter.validateCustomer(value!),
         popupProps: PopupProps.dialog(
             showSearchBox: true,
-            isFilterOnline: true,
             searchDelay: Duration.zero,
-            itemBuilder: (context, customer, isSelected) => ListTile(
+            itemBuilder: (context, customer, isDisabled, isSelected) => ListTile(
                   leading: const Icon(FluentIcons.person_12_regular),
                   title: Text(customer.name),
                 ),
             searchFieldProps: const TextFieldProps(
               decoration: InputDecoration(hintText: 'Search user'),
             ),),
-        items: snapshot.data ?? [],
+        items: (_, __) => snapshot.data ?? [],
       ),
     );
   }

@@ -27,7 +27,7 @@ class _ModelCreationCategoriesState extends State<ModelCreationCategories> {
         dropdownBuilder: (context, selectedItem) =>
             Text(selectedItem ?? 'Select one category'),
         onChanged: (value) => presenter.validateCategory(value ?? ''),
-        items: [
+        items: (filter, infiniteScrollProps) => [
           ...categories.map(
             (e) => e,
           ),
