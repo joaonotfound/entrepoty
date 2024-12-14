@@ -9,8 +9,7 @@ class ModelViewBottomSheet extends StatelessWidget {
   final ProductModelEntity model;
 
   const ModelViewBottomSheet({
-    Key? key,
-    required this.model,
+    required this.model, Key? key,
   }) : super(key: key);
 
   @override
@@ -21,7 +20,7 @@ class ModelViewBottomSheet extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
       child: ElevatedButton.icon(
         icon: const Icon(FluentIcons.delete_12_regular),
-        label: const Text("Delete"),
+        label: const Text('Delete'),
         onPressed: () async {
           await presenter.deleteModel(model.id);
           Get.back();

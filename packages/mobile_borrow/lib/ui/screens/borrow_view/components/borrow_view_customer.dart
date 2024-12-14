@@ -7,8 +7,7 @@ class BorrowViewCustomer extends StatelessWidget {
   BorrowEntity borrow;
 
   BorrowViewCustomer({
-    Key? key,
-    required this.borrow,
+    required this.borrow, Key? key,
   }) : super(key: key);
 
   @override
@@ -19,7 +18,7 @@ class BorrowViewCustomer extends StatelessWidget {
       onTap: () => Get.toNamed(Routes.getViewCustomer(borrow.customer.enrollment)),
       child: ListTile(
         leading: const CircleAvatar(child: Icon(Icons.person),),
-        title: const Text("Customer"),
+        title: const Text('Customer'),
         subtitle: Text(customer.name),
       ),
     );

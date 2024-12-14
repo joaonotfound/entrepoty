@@ -18,7 +18,7 @@ class BorrowEntity {
         required this.product,
       required this.productDetail,
       required this.date,
-      required this.createdBy});
+      required this.createdBy,});
 
   factory BorrowEntity.fromJson(Map json) => BorrowEntity(
       id: json['id'] ?? 0,
@@ -28,5 +28,5 @@ class BorrowEntity {
       date: DateTime.parse(
         json['datetime'],
       ),
-      createdBy: Employer.fromJson(json['createdBy']));
+      createdBy: Employer.fromJson(json['createdBy']),);
 }

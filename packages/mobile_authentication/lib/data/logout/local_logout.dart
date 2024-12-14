@@ -10,6 +10,6 @@ class LocalLogout implements LogoutUsecase {
 
   @override
   Future<void> logout() async {
-    await storage.saveSecure(key: "token", value: "");
+    await storage.saveSecure(key: 'token', value: '');
   }
 }

@@ -10,8 +10,7 @@ import 'components/components.dart';
 class BorrowListScreen extends StatefulWidget {
   final BorrowListPresenter presenter;
   const BorrowListScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -47,7 +46,7 @@ class _BorrowListScreenState extends State<BorrowListScreen> {
                                 itemCount: borrowsSnapshot.data!.length,
                                 itemBuilder: ((context, index) =>
                                     BorrowListCard(
-                                        borrow: borrowsSnapshot.data![index]))),
+                                        borrow: borrowsSnapshot.data![index],)),),
                           )
                         : const NoData();
               },
@@ -59,13 +58,13 @@ class _BorrowListScreenState extends State<BorrowListScreen> {
         IconButton(
           onPressed: () => widget.presenter.loadBorrows(),
           icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
-        )
-      ]),
+        ),
+      ],),
       floatingActionButton: FloatingActionButton.extended(
-        heroTag: "create-borrow",
+        heroTag: 'create-borrow',
         onPressed: () => Get.toNamed(Routes.createBorrow),
         icon: const Icon(FluentIcons.add_12_regular),
-        label: const Text("Borrow"),
+        label: const Text('Borrow'),
       ),
     );
   }

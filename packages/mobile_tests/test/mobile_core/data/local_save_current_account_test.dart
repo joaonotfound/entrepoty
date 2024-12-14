@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_core/mobile_core.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:mobile_core/mobile_core.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../mobile_core.dart';
@@ -12,8 +12,8 @@ void main() {
 
   final account = Account(
     token: faker.guid.guid(),
-    username: "random-username",
-    name: "random-name",
+    username: 'random-username',
+    name: 'random-name',
     profilePictureUrl: faker.internet.httpUrl(),
   );
 
@@ -24,18 +24,18 @@ void main() {
       saveSecureCacheStorage: saveSecureCacheStorage,
     );
   });
-  group("LocalSaveCurrentAccount", () {
-    test("should call saveSecureCacheStorage with correct values", () {
+  group('LocalSaveCurrentAccount', () {
+    test('should call saveSecureCacheStorage with correct values', () {
       sut.saveAccount(account: account);
 
       verify(() => saveSecureCacheStorage.saveSecure(
-          key: "token", value: account.token)).called(1);
+          key: 'token', value: account.token,),).called(1);
     });
-    test("should throw unexpected error if saveSecureCacheStorage throws",
+    test('should throw unexpected error if saveSecureCacheStorage throws',
         () async {
       saveSecureCacheStorage.mockSaveError(Exception());
 
-      var response = await sut.saveAccount(account: account);
+      final response = await sut.saveAccount(account: account);
 
       expectLater(response, Either.left(DomainError.unexpected));
     });

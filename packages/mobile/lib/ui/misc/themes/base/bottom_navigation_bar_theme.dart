@@ -1,7 +1,7 @@
 import 'package:entrepoty/ui/misc/themes/app_color_scheme.dart';
 import 'package:flutter/material.dart';
 
-getBottomNavigationTheme(AppColorScheme scheme) {
+BottomNavigationBarThemeData getBottomNavigationTheme(AppColorScheme scheme) {
   return BottomNavigationBarThemeData(
     showUnselectedLabels: false,
     backgroundColor: scheme.backgroundColor,

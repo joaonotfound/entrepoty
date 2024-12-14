@@ -7,7 +7,7 @@ class BorrowViewWriteOff extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12),
-      child: ElevatedButton.icon(onPressed: (){}, label: const Text("Write off"), icon: const Icon(Icons.refresh),),
+      child: ElevatedButton.icon(onPressed: (){}, label: const Text('Write off'), icon: const Icon(Icons.refresh),),
     );
   }
 }

@@ -23,8 +23,8 @@ class _SignupPasswordFieldState extends State<SignupPasswordField> {
         decoration: InputDecoration(
           prefixIcon: const Icon(FluentIcons.lock_closed_16_regular),
           errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-          hintText: "Your most secure password",
-          label: const Text("Password"),
+          hintText: 'Your most secure password',
+          label: const Text('Password'),
         ),
       ),
     );

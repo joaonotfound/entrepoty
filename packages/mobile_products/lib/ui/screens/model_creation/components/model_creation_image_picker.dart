@@ -19,10 +19,10 @@ class ModelCreationImagePicker extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () =>
                   photo ? presenter.deletePhoto() : presenter.pickImage(),
-              label: Text(photo ? "Remove Picture" : "Add picture"),
+              label: Text(photo ? 'Remove Picture' : 'Add picture'),
               icon: Icon(photo ? Icons.close : FluentIcons.camera_add_20_regular),
             ),
           );
-        });
+        },);
   }
 }

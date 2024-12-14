@@ -16,12 +16,12 @@ class CustomerCreationSectorField extends StatelessWidget {
           return TextFormField(
             onChanged: presenter.validateSector,
             decoration: InputDecoration(
-              hintText: "Human Resources",
-              labelText: "Sector",
+              hintText: 'Human Resources',
+              labelText: 'Sector',
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: const Icon(FluentIcons.organization_16_regular),
             ),
           );
-        });
+        },);
   }
 }

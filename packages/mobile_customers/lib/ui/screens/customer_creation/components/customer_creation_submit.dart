@@ -15,8 +15,8 @@ class CustomerCreationSubmit extends StatelessWidget {
             onPressed: snapshot.data == true
                 ? () => presenter.authenticate(context)
                 : null,
-            child: const Text("Create"),
+            child: const Text('Create'),
           );
-        });
+        },);
   }
 }

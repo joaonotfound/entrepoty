@@ -6,8 +6,7 @@ class CustomerViewInformation extends StatelessWidget {
   CustomerEntity customer;
 
   CustomerViewInformation({
-    Key? key,
-    required this.customer,
+    required this.customer, Key? key,
   }) : super(key: key);
 
   @override
@@ -17,7 +16,7 @@ class CustomerViewInformation extends StatelessWidget {
         ListTile(
           leading:
               const CircleAvatar(child: Icon(FluentIcons.person_20_regular)),
-          title: const Text("Name"),
+          title: const Text('Name'),
           subtitle: Text(customer.name),
         ),
         ListTile(
@@ -26,23 +25,23 @@ class CustomerViewInformation extends StatelessWidget {
               FluentIcons.organization_20_regular,
             ),
           ),
-          title: const Text("Enrollment"),
+          title: const Text('Enrollment'),
           subtitle: Text(customer.enrollment),
         ),
         ListTile(
           leading: const CircleAvatar(
             child: Icon(FluentIcons.mail_20_regular),
           ),
-          title: const Text("E-mail"),
+          title: const Text('E-mail'),
           subtitle: Text(customer.email),
         ),
         ListTile(
           leading: const CircleAvatar(
             child: Icon(FluentIcons.organization_20_regular),
           ),
-          title: const Text("Sector"),
+          title: const Text('Sector'),
           subtitle: Text(customer.sector),
-        )
+        ),
       ],
     );
   }

@@ -1,7 +1,7 @@
 
 String ensureValidDomain(String domain){
-  if (domain.startsWith("https://") || domain.startsWith("http://")) {
+  if (domain.startsWith('https://') || domain.startsWith('http://')) {
     return domain;
   }
-  return "http://$domain";
+  return 'http://$domain';
 }

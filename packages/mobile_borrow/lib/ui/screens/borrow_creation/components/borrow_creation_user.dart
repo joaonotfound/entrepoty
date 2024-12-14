@@ -21,7 +21,7 @@ class BorrowCreationUser extends StatelessWidget {
         filterFn: (item, filter) =>
             item.name.toLowerCase().contains(filter.toLowerCase()),
         dropdownBuilder: (context, selectedItem) =>
-            Text(selectedItem?.name ?? "Select one user"),
+            Text(selectedItem?.name ?? 'Select one user'),
         onChanged: (value) => presenter.validateCustomer(value!),
         popupProps: PopupProps.dialog(
             showSearchBox: true,
@@ -32,8 +32,8 @@ class BorrowCreationUser extends StatelessWidget {
                   title: Text(customer.name),
                 ),
             searchFieldProps: const TextFieldProps(
-              decoration: InputDecoration(hintText: "Search user"),
-            )),
+              decoration: InputDecoration(hintText: 'Search user'),
+            ),),
         items: snapshot.data ?? [],
       ),
     );

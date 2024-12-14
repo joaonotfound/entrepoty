@@ -4,5 +4,5 @@ import '../entitites/entities.dart';
 
 abstract class SaveCustomerUsercase {
   Future<Either<DomainError, CustomerEntity>> saveCustomer(
-      CustomerEntity account);
+      CustomerEntity account,);
 }

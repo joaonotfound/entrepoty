@@ -18,9 +18,9 @@ class RemoteCreateEquities extends CreateEquitiesUsecase {
       int quantity,
       ProductModelEntity product,) async {
       final eitherResponse = await client.post(url: url, body: {
-        "product": product.id,
-        "quantity": quantity,
-      });
+        'product': product.id,
+        'quantity': quantity,
+      },);
       return eitherResponse.fold((error) => error.asDomainErrorEither() , (response) {
         final details = response.body as List<dynamic>? ?? [];
         return Either.right(details.map(

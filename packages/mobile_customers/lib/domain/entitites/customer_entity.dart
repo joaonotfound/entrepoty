@@ -14,10 +14,10 @@ class CustomerEntity {
   });
 
   factory CustomerEntity.fromJson(Map json) => CustomerEntity(
-        id: json["id"].toString(),
-        name: json["name"] ?? "",
-        email: json["email"] ?? "",
-        enrollment: json["enrollment"] ?? "",
-        sector: json["sector"] ?? "",
+        id: json['id'].toString(),
+        name: json['name'] ?? '',
+        email: json['email'] ?? '',
+        enrollment: json['enrollment'] ?? '',
+        sector: json['sector'] ?? '',
       );
 }

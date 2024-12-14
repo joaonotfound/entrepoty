@@ -47,6 +47,6 @@ class HttpError {
   HttpError({
     required this.error,
     required this.statuscode,
-    this.body
+    this.body,
   });
 }

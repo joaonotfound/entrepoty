@@ -1,16 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:provider/provider.dart';
 
 import '../../ui.dart';
 import 'components/components.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BorrowCreationScreen extends StatefulWidget
     with UiErrorManager, LoadingManager {
   final BorrowCreationPresenter presenter;
   BorrowCreationScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -35,11 +34,11 @@ class _BorrowCreationScreenState extends State<BorrowCreationScreen> {
             const SizedBox(height: 10),
             BorrowCreationUser(),
             const SizedBox(height: 10),
-            const BorrowCreationDevolution()
-          ]),
+            const BorrowCreationDevolution(),
+          ],),
         ),
         action: const BorrowCreationSubmit(),
-        title: "Create Borrow",
+        title: 'Create Borrow',
       ),
     );
   }

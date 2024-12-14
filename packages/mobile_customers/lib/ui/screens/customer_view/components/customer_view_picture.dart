@@ -6,22 +6,21 @@ class CustomerViewPicture extends StatelessWidget {
   CustomerEntity customer;
 
   CustomerViewPicture({
-    Key? key,
-    required this.customer,
+    required this.customer, Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          vertical: 16, horizontal: 10),
+          vertical: 16, horizontal: 10,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.network(
-            "https://source.boringavatars.com/beam",
+            'https://source.boringavatars.com/beam',
             width: 120,
-          )
+          ),
         ],
       ),
     );

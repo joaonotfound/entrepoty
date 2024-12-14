@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:fpdart/fpdart.dart';
-import 'package:mobile_core/domain/domain.dart';
 
+import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_core/domain/domain.dart';
 import 'package:mobile_remote/helpers/helpers.dart';
 import 'package:mobile_settings/mobile_settings.dart';
 
@@ -33,7 +33,7 @@ class FunctionalHttpAdapter implements FunctionalHttpClientUsecase {
         }
       ..addAll((authorization == null || authorization.length <= 2)
           ? {}
-          : {"Authorization": "Bearer $authorization"});
+          : {'Authorization': 'Bearer $authorization'},);
   }
 
   Future<Either<DomainError, String>> loadBaseUrl() async {
@@ -42,7 +42,7 @@ class FunctionalHttpAdapter implements FunctionalHttpClientUsecase {
     return backendSettings.fold(
       (error) => Either.left(DomainError.unexpected),
       (settings) => Either.right(
-          "${ensureValidDomain(settings.domain)}:${settings.port}"),
+          '${ensureValidDomain(settings.domain)}:${settings.port}',),
     );
   }
 
@@ -53,11 +53,11 @@ class FunctionalHttpAdapter implements FunctionalHttpClientUsecase {
     Duration? timeout,
   }) =>
       handleException(() async {
-        final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+        final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
 
-        var response = await client
+        final response = await client
             .get(Uri.parse(baseUrl + url),
-                headers: await _buildHeaders(headers))
+                headers: await _buildHeaders(headers),)
             .timeout(timeout ?? const Duration(seconds: 5));
 
         return handleResponse(response);
@@ -71,11 +71,11 @@ class FunctionalHttpAdapter implements FunctionalHttpClientUsecase {
     Duration? timeout,
   }) =>
       handleException(() async {
-        final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+        final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
 
-        var response = await client
+        final response = await client
             .post(Uri.parse(baseUrl + url),
-                body: jsonEncode(body), headers: await _buildHeaders(headers))
+                body: jsonEncode(body), headers: await _buildHeaders(headers),)
             .timeout(
               timeout ?? const Duration(seconds: 5),
             );
@@ -91,10 +91,10 @@ class FunctionalHttpAdapter implements FunctionalHttpClientUsecase {
     Duration? timeout,
   }) =>
       handleException(() async {
-        final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
-        var response = await client
+        final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
+        final response = await client
             .delete(Uri.parse(baseUrl + url),
-                body: jsonEncode(body), headers: await _buildHeaders(headers))
+                body: jsonEncode(body), headers: await _buildHeaders(headers),)
             .timeout(timeout ?? const Duration(seconds: 5));
 
         return handleResponse(response);
@@ -108,16 +108,16 @@ class FunctionalHttpAdapter implements FunctionalHttpClientUsecase {
     List<MultipleFile>? files,
   }) =>
       handleException(() async {
-        final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+        final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
         final request = http.MultipartRequest(method, Uri.parse(baseUrl + url));
 
-        for (var file in files ?? [] as List<MultipleFile>) {
+        for (final file in files ?? [] as List<MultipleFile>) {
           final content =
               await http.MultipartFile.fromPath(file.name, file.filePath);
           request.files.add(content);
         }
 
-        for (var data in data ?? [] as List<MultipleData>) {
+        for (final data in data ?? [] as List<MultipleData>) {
           request.fields[data.name] = data.content;
         }
 

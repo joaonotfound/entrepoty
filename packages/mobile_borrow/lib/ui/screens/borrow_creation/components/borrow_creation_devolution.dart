@@ -15,7 +15,7 @@ class _BorrowCreationDevolutionState extends State<BorrowCreationDevolution> {
   DateTime? _date;
 
   void _showDatePicker(
-      BuildContext context, BorrowCreationPresenter presenter) async {
+      BuildContext context, BorrowCreationPresenter presenter,) async {
     final response = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -43,7 +43,7 @@ class _BorrowCreationDevolutionState extends State<BorrowCreationDevolution> {
       label: Text(
         _date != null
             ? '${_date!.day}/${_date!.month}/${_date!.year}'
-            : "Select a date",
+            : 'Select a date',
       ),
       onPressed: () => _showDatePicker(context, presenter),
     );

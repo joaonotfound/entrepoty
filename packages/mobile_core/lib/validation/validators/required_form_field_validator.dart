@@ -10,7 +10,7 @@ class RequiredFormFieldValidator implements FormFieldValidator {
   @override
   String? validate(String? value) {
     return value == null || value.isEmpty == true
-        ? "This field is mandatory"
+        ? 'This field is mandatory'
         : null;
   }
 }

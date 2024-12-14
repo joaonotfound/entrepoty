@@ -15,7 +15,7 @@ class RemoteDeleteProductModel implements DeleteProductModelUsecase {
 
   @override
   Future<Either<DomainError, ProductModelEntity>> deleteModel(int id) async {
-    final eitherResponse = await client.delete(url: url, body: {"id": id});
+    final eitherResponse = await client.delete(url: url, body: {'id': id});
     return eitherResponse.fold(
       (error) => error.asDomainErrorEither(),
       (response) => Either.right(ProductModelEntity.fromJson(response.body)),

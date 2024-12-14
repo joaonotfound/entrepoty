@@ -10,14 +10,14 @@ class LaunchLoginButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
-        elevation: 0
+        elevation: 0,
       ),
       onPressed: () => Get.toNamed(Routes.login),
       child: const Text(
-        "Login",
+        'Login',
         style: TextStyle(
           color: Colors.black87,
-          fontWeight: FontWeight.w400
+          fontWeight: FontWeight.w400,
         ),
       ),
     );

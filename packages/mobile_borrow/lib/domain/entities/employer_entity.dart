@@ -7,5 +7,5 @@ class Employer {
     required this.role,
   });
 
-  factory Employer.fromJson(Map json) => Employer(username: json['username'] ?? "", role: json['username'] ?? '');
+  factory Employer.fromJson(Map json) => Employer(username: json['username'] ?? '', role: json['username'] ?? '');
 }

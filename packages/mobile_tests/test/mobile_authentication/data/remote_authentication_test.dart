@@ -12,17 +12,17 @@ void main() {
   late RemoteLogin sut;
   final String url = faker.internet.httpUrl();
   late MockFunctionalHttpClient httpClient;
-  String username = faker.internet.userName();
-  String password = faker.internet.password();
+  final String username = faker.internet.userName();
+  final String password = faker.internet.password();
 
   void mockPost() => httpClient.mockPost(
         HttpResponse(
           statuscode: 200,
           body: {
-            "token": faker.guid.guid(),
-            "username": faker.internet.userName(),
-            "name": faker.internet.userName(),
-            "profile_url": faker.internet.httpUrl()
+            'token': faker.guid.guid(),
+            'username': faker.internet.userName(),
+            'name': faker.internet.userName(),
+            'profile_url': faker.internet.httpUrl(),
           },
         ).toRight(),
       );
@@ -32,26 +32,26 @@ void main() {
     mockPost();
     sut = RemoteLogin(url: url, httpClient: httpClient);
   });
-  group("RemoteAuthentication", () {
-    test("Should call httpclient with correct values", () async {
+  group('RemoteAuthentication', () {
+    test('Should call httpclient with correct values', () async {
       await sut.authenticate(username: username, password: password);
       verify(() => httpClient.post(
           url: url,
           body: {
-            "username": username,
-            "password": password,
+            'username': username,
+            'password': password,
           },
-          timeout: const Duration(seconds: 2))).called(1);
+          timeout: const Duration(seconds: 2),),).called(1);
     });
-    test("Should return domain error if httpclient returns http error",
+    test('Should return domain error if httpclient returns http error',
         () async {
       const error = HttpErrorEnum.badRequest;
       httpClient.mockPostError(error);
-      var response = await sut.authenticate(username: username, password: password);
+      final response = await sut.authenticate(username: username, password: password);
       expect(response, error.asDomainError.toLeft());
     });
-    test("Should return account on success", () async {
-      var response =
+    test('Should return account on success', () async {
+      final response =
           await sut.authenticate(username: username, password: password);
       expect(response, isInstanceOf<Either<dynamic, Account>>());
     });

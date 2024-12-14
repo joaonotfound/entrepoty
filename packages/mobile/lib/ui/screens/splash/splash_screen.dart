@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-
 import 'package:entrepoty/ui/screens/splash/splash.dart';
+import 'package:flutter/material.dart';
 import 'package:mobile_core/mobile_core.dart';
 
 class SplashScreen extends StatefulWidget {
   final SplashPresenter presenter;
 
   const SplashScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -36,11 +34,11 @@ class _SplashScreenState extends State<SplashScreen> with NavigationManager  {
             ),
             SizedBox(height: 20,),
             Text(
-              "Loading",
+              'Loading',
               style: TextStyle(
                 color: Colors.white,
               ),
-            )
+            ),
           ],
         ),
       ),

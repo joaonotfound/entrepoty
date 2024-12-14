@@ -9,8 +9,7 @@ class BorrowListCard extends StatelessWidget {
   final BorrowEntity borrow;
 
   const BorrowListCard({
-    super.key,
-    required this.borrow,
+    required this.borrow, super.key,
   });
 
   @override
@@ -25,7 +24,7 @@ class BorrowListCard extends StatelessWidget {
           child: Icon(FluentIcons.person_12_regular),
         ),
         title: Text(borrow.product.name,
-            style: Theme.of(context).textTheme.headlineSmall),
+            style: Theme.of(context).textTheme.headlineSmall,),
         subtitle: Text(
           borrow.customer.name,
         ),

@@ -11,13 +11,13 @@ class LocalLogin implements LoginUsecase {
     required String password,
   }) async {
     await Future.delayed(const Duration(seconds: 2));
-    if (username == "ja12345" && password == "123456") {
+    if (username == 'ja12345' && password == '123456') {
       return Either.right(Account(
-        token: "random-token",
+        token: 'random-token',
         username: username,
-        name: "João",
-        profilePictureUrl: "https://google.com",
-      ));
+        name: 'João',
+        profilePictureUrl: 'https://google.com',
+      ),);
     }
     return Either.left(DomainError.unexpected);
 

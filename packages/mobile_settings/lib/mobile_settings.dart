@@ -1,8 +1,7 @@
 library mobile_settings;
 
-export 'ui/ui.dart';
+export 'data/data.dart';
+export 'domain/domain.dart';
 export 'main/main.dart';
 export 'presentation/presentation.dart';
-export 'main/main.dart';
-export 'domain/domain.dart';
-export 'data/data.dart';
+export 'ui/ui.dart';

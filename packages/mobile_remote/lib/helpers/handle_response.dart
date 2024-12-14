@@ -11,7 +11,7 @@ Either<HttpErrorEnum, HttpResponse<R>> handleResponse<R>(Response response) {
       body: response.body.runtimeType == String
           ? json.decode(response.body)
           : response.body,
-    ));
+    ),);
   }
   switch (response.statusCode) {
     case 500:

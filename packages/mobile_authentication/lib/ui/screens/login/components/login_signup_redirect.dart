@@ -11,7 +11,7 @@ class LoginSignupRedirect extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: OutlinedButton(
         onPressed: () => Get.offAndToNamed(Routes.signup),
-        child: const Text("Create an account"),
+        child: const Text('Create an account'),
       ),
     );
   }

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
+
 import '../../../domain/domain.dart';
 import '../../ui.dart';
 import 'components/components.dart';
-import "package:mobile_core/mobile_core.dart";
-import 'package:get/get.dart';
 
 class BorrowViewScreen extends StatelessWidget {
   BorrowViewPresenter presenter;
 
   BorrowViewScreen({
-    Key? key,
-    required this.presenter,
+    required this.presenter, Key? key,
   }) : super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class BorrowViewScreen extends StatelessWidget {
       stream: presenter.modelStream,
       builder: (context, snapshot) => Scaffold(
         appBar: AppBar(
-          title: const Text("Borrow"),
+          title: const Text('Borrow'),
         ),
         body: SafeArea(
           child: snapshot.data == null
@@ -34,7 +34,7 @@ class BorrowViewScreen extends StatelessWidget {
                         children: [
                           BorrowViewProduct(borrow: snapshot.data!),
                           BorrowViewCustomer(borrow: snapshot.data!),
-                          BorrowViewEmployer(borrow: snapshot.data!)
+                          BorrowViewEmployer(borrow: snapshot.data!),
                         ],
                       ),
                     ),

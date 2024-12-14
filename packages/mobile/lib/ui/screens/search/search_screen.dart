@@ -10,7 +10,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
-    var underlineBorder = UnderlineInputBorder(
+    final underlineBorder = UnderlineInputBorder(
       borderSide: BorderSide(
         color: Theme.of(context).colorScheme.onSurface.withAlpha(50),
       ),
@@ -20,7 +20,7 @@ class _SearchScreenState extends State<SearchScreen> {
         title: TextField(
           autofocus: true,
           decoration: InputDecoration(
-            hintText: "Search",
+            hintText: 'Search',
             focusedBorder: underlineBorder,
             border: underlineBorder,
             fillColor: Theme.of(context).colorScheme.surface,
@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: const Padding(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-        child: Text("Search screen."),
+        child: Text('Search screen.'),
       ),
     );
   }

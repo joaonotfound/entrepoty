@@ -1,4 +1,29 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lints/recommended.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    non_constant_identifier_names: false
+    sort_child_properties_last: false
+    always_declare_return_types: true
+    always_put_required_named_parameters_first: true
+    avoid_annotating_with_dynamic: true
+    avoid_bool_literals_in_conditional_expressions: true
+    avoid_multiple_declarations_per_line: true
+    avoid_unnecessary_containers: true
+    directives_ordering: true
+    file_names: true
+    flutter_style_todos: true
+    prefer_const_constructors: true
+    prefer_conditional_assignment: true
+    prefer_const_declarations: true
+    prefer_final_locals: true
+    prefer_final_in_for_each: true
+    prefer_final_fields: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_single_quotes: true
+    prefer_spread_collections: true
+    provide_deprecation_message: true
+    require_trailing_commas: true
+    unnecessary_this: true
+    unnecessary_new: true

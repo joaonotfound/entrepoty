@@ -13,12 +13,12 @@ class SignupWelcomeMessage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Text(
-              "Join Entrepoty",
+              'Join Entrepoty',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           Text(
-            "Create an account to access exclusive features and personalized content! It only takes a minute to sign up.",
+            'Create an account to access exclusive features and personalized content! It only takes a minute to sign up.',
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],

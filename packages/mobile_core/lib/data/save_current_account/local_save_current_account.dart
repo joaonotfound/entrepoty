@@ -9,7 +9,7 @@ class LocalSaveCurrentAccount implements SaveCurrentAccountUsecase {
   @override
   Future<Either<DomainError, dynamic>> saveAccount({required Account account}) async {
     try {
-      saveSecureCacheStorage.saveSecure(key: "token", value: account.token);
+      saveSecureCacheStorage.saveSecure(key: 'token', value: account.token);
       return Either.right(null);
     } catch (_) {
       return DomainError.unexpected.toLeft();

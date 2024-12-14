@@ -1,8 +1,9 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
+
 import './components/components.dart';
-import 'package:flutter/material.dart';
 
 class LaunchScreen extends StatelessWidget {
   const LaunchScreen({super.key});
@@ -52,7 +53,7 @@ class LaunchScreen extends StatelessWidget {
                           SizedBox(height: 5),
                           LaunchSignupButton(),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

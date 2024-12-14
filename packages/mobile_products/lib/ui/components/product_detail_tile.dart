@@ -7,8 +7,7 @@ class ProductDetailTile extends StatelessWidget {
   ProductDetailEntity detail;
 
   ProductDetailTile({
-    Key? key,
-    required this.detail,
+    required this.detail, Key? key,
   }) : super(key: key);
 
   @override
@@ -18,7 +17,7 @@ class ProductDetailTile extends StatelessWidget {
       leading: const CircleAvatar(
         child: Icon(FluentIcons.box_16_regular),
       ),
-      title: const Text("Equity"),
+      title: const Text('Equity'),
       subtitle: Text(detail.equity),
     );
   }

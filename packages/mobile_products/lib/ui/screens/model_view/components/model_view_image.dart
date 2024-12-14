@@ -9,8 +9,7 @@ class ModelViewImage extends StatelessWidget {
   final ProductModelEntity model;
 
   const ModelViewImage({
-    Key? key,
-    required this.model,
+    required this.model, Key? key,
   }) : super(key: key);
 
   @override
@@ -19,7 +18,7 @@ class ModelViewImage extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: FutureBuilder(
-          initialData: "",
+          initialData: '',
           future: backend.loadResource(model.imagePath),
           builder: (context, snapshot) {
             return snapshot.data == null
@@ -38,7 +37,7 @@ class ModelViewImage extends StatelessWidget {
                       child: const Icon(FluentIcons.image_16_regular),
                     ),
                   );
-          }),
+          },),
     );
   }
 }

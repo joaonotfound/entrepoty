@@ -11,7 +11,7 @@ class NoData extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            "lib/ui/assets/no-data.png",
+            'lib/ui/assets/no-data.png',
             width: 250,
           ),
           const Padding(

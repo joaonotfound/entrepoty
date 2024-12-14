@@ -15,32 +15,32 @@ void main() {
     sut = LocalThemeLoader(storage: storage);
   });
 
-  group("LocalThemeLoader", () {
-    test("should call loadSecure", () async {
+  group('LocalThemeLoader', () {
+    test('should call loadSecure', () async {
       await sut.loadIsDark();
 
-      verify(() => storage.loadSecure(key: "is-dark")).called(1);
+      verify(() => storage.loadSecure(key: 'is-dark')).called(1);
     });
 
-    test("should return true", () async {
-      storage.mockLoadSecure("true");
+    test('should return true', () async {
+      storage.mockLoadSecure('true');
 
-      var response = await sut.loadIsDark();
+      final response = await sut.loadIsDark();
 
       expect(response, true);
     });
-    test("should return false", () async {
-      storage.mockLoadSecure("any-other-value");
+    test('should return false', () async {
+      storage.mockLoadSecure('any-other-value');
 
-      var response = await sut.loadIsDark();
+      final response = await sut.loadIsDark();
 
       expect(response, true);
     });
-    test("should call save method", () async {
+    test('should call save method', () async {
       await sut.setIsDark(false);
 
       verify(
-        () => storage.saveSecure(key: "is-dark", value: "false"),
+        () => storage.saveSecure(key: 'is-dark', value: 'false'),
       ).called(1);
     });
   });

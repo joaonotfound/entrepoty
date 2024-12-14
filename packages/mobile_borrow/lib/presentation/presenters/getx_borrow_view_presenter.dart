@@ -24,8 +24,8 @@ class GetxBorrowViewPresenter extends GetxController with GetxLoadingManager imp
     isLoading = true;
     final response = await loadUniqueBorrow.loadBorrowById(id);
     response.fold((error) {
-      print("an error ocurred while loading unique borrow$error");
-    }, (response) => _borrow.value = response);
+      print('an error ocurred while loading unique borrow$error');
+    }, (response) => _borrow.value = response,);
     isLoading = false;
   }
 }

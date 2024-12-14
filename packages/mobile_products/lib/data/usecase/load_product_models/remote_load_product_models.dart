@@ -19,8 +19,8 @@ class RemoteLoadProductModels implements LoadProductModelsUsecase {
     return eitherResponse.fold(
       (error) => error.asDomainErrorEither(),
       (httpResponse) {
-        List<ProductModelEntity> response = [];
-        for (var json in httpResponse.body ?? []) {
+        final List<ProductModelEntity> response = [];
+        for (final json in httpResponse.body ?? []) {
           response.add(ProductModelEntity.fromJson(json));
         }
         return Either.right(response);

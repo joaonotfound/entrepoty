@@ -1,8 +1,8 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
-import 'package:get/get.dart';
 
 import '../model_creation_presenter.dart';
 
@@ -25,7 +25,7 @@ class _ModelCreationCategoriesState extends State<ModelCreationCategories> {
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: DropdownSearch(
         dropdownBuilder: (context, selectedItem) =>
-            Text(selectedItem ?? "Select one category"),
+            Text(selectedItem ?? 'Select one category'),
         onChanged: (value) => presenter.validateCategory(value ?? ''),
         items: [
           ...categories.map(

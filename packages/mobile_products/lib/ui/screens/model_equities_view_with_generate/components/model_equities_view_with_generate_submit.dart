@@ -9,8 +9,7 @@ class ModelEquitiesViewWithGenerateSubmit extends StatelessWidget {
   final ProductModelEntity product;
 
   const ModelEquitiesViewWithGenerateSubmit({
-    Key? key,
-    required this.product,
+    required this.product, Key? key,
   }) : super(key: key);
 
   @override
@@ -22,7 +21,7 @@ class ModelEquitiesViewWithGenerateSubmit extends StatelessWidget {
           ModelCreationEquitiesScreen(product: product),
         ),
         icon: const Icon(FluentIcons.box_20_regular),
-        label: const Text("Generate Equity"),
+        label: const Text('Generate Equity'),
       ),
     );
   }

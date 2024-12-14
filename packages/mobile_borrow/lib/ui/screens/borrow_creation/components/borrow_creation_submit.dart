@@ -14,8 +14,8 @@ class BorrowCreationSubmit extends StatelessWidget {
         builder: (context, snapshot) {
           return ElevatedButton(
             onPressed: snapshot.data == true ? () => presenter.create() : null,
-            child: const Text("Create"),
+            child: const Text('Create'),
           );
-        });
+        },);
   }
 }

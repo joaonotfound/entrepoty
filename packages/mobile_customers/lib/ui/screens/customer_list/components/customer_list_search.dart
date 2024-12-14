@@ -8,7 +8,7 @@ class CustomerListSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         icon: const Icon(FluentIcons.search_16_regular),
-        onPressed: () {}
+        onPressed: () {},
     );
   }
 }

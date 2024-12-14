@@ -14,7 +14,7 @@ class LaunchSignupButton extends StatelessWidget {
         side: const BorderSide(color: Colors.white70, width: 1),
       ),
       onPressed: () => Get.toNamed(Routes.signup),
-      child: const Text("Sign up"),
+      child: const Text('Sign up'),
     );
   }
 }

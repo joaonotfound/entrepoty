@@ -6,7 +6,7 @@ GetxBackendSettingsPresenter makeGetxBackendSettingsPresenter() {
     loadCurrentBackendSettings: makeLocalLoadCurrentBackendSettings(),
     saveCurrentBackendSetings: makeLocalSaveCurrentBackendSettings(),
     validation: ValidationComposite(
-      validators: [const RequiredFormFieldValidator(field: "domain")],
+      validators: [const RequiredFormFieldValidator(field: 'domain')],
     ),
   );
 }

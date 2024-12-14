@@ -22,9 +22,9 @@ class RemoteSignup implements SignupUsecase {
     final eitherResponse = await http.post(
       url: url,
       body: {
-        "name": name,
-        "username": username,
-        "password": password,
+        'name': name,
+        'username': username,
+        'password': password,
       },
       timeout: const Duration(seconds: 2),
     );

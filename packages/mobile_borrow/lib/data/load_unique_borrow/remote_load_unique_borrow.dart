@@ -15,7 +15,7 @@ class RemoteLoadUniqueBorrow implements LoadUniqueBorrowUsecase {
 
   @override
   Future<Either<DomainError, BorrowEntity>> loadBorrowById(int id) async {
-    final eitherResponse = await client.get(url: "$url/$id");
+    final eitherResponse = await client.get(url: '$url/$id');
     return eitherResponse.fold(
       (error) => error.asDomainErrorEither(),
       (response) => Either.right(

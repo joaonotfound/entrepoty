@@ -8,9 +8,9 @@ class UserNameField extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TextField(
       decoration: InputDecoration(
-        label: Text("Name"),
+        label: Text('Name'),
         prefixIcon: Icon(FluentIcons.person_16_regular),
-        hintText: "Name",
+        hintText: 'Name',
       ),
     );
   }

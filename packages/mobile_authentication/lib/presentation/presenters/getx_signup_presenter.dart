@@ -22,19 +22,19 @@ class GetxSignupPresenter extends GetxController
     required this.saveAccount,
   });
 
-  String _name = "";
+  String _name = '';
   final _nameError = RxString('');
 
   @override
   Stream<String?> get nameErrorStream => _nameError.stream;
 
-  String _username = "";
+  String _username = '';
   final _usernameError = RxString('');
 
   @override
   Stream<String?> get usernameErrorStream => _usernameError.stream;
 
-  String _password = "";
+  String _password = '';
   final _passwordError = RxString('');
 
   @override
@@ -45,7 +45,7 @@ class GetxSignupPresenter extends GetxController
     isLoading = true;
     try{
       final response = await usecase.register(
-          name: _name, username: _username, password: _password);
+          name: _name, username: _username, password: _password,);
       response.fold((account) async {
         await saveAccount.saveAccount(account: account);
         navigateTo = Routes.home;
@@ -54,7 +54,7 @@ class GetxSignupPresenter extends GetxController
       });
     } catch (e) {
      mainError = UiError.unexpected;
-     debugPrint("error: $e");
+     debugPrint('error: $e');
     }
     isLoading = false;
   }
@@ -71,7 +71,7 @@ class GetxSignupPresenter extends GetxController
   @override
   void validateName(String name) {
     _name = name;
-    _nameError.value = validation.validate(field: "name", value: name) ?? "";
+    _nameError.value = validation.validate(field: 'name', value: name) ?? '';
     _validateForm();
   }
 
@@ -79,7 +79,7 @@ class GetxSignupPresenter extends GetxController
   void validatePassword(String password) {
     _password = password;
     _passwordError.value =
-        validation.validate(field: "password", value: password) ?? "";
+        validation.validate(field: 'password', value: password) ?? '';
     _validateForm();
   }
 
@@ -87,7 +87,7 @@ class GetxSignupPresenter extends GetxController
   void validateUsername(String username) {
     _username = username;
     _usernameError.value =
-        validation.validate(field: "username", value: username) ?? "";
+        validation.validate(field: 'username', value: username) ?? '';
     _validateForm();
   }
 }

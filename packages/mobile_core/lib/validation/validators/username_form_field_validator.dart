@@ -7,6 +7,6 @@ class UsernameFormFieldValidator implements FormFieldValidator {
   @override
   String? validate(String? value) {
     final usernameRegExp = RegExp(r'^[a-zA-Z0-9_]{4,}$');
-    return usernameRegExp.hasMatch(value ?? '') ? null : "Invalid username.";
+    return usernameRegExp.hasMatch(value ?? '') ? null : 'Invalid username.';
   }
 }

@@ -3,6 +3,6 @@ import '../../../../ui/ui.dart';
 import '../../main.dart';
 
 Widget makeLoginScreen() {
-  var loginPresenter = makeGetxLoginPresenter();
+  final loginPresenter = makeGetxLoginPresenter();
   return LoginScreen(presenter: loginPresenter);
 }

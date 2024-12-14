@@ -26,12 +26,12 @@ class GetxBackendSettingsPresenter extends GetxController
   Stream<String?> get domainErrorStream => domainError.stream;
 
   void _validateForm (){
-    isFormValid = portTextController.text != "" && domainTextController.text != "";
+    isFormValid = portTextController.text != '' && domainTextController.text != '';
   }
 
   @override
   String? validateDomain(String value) {
-    domainError.value = validation.validate(field: "domain", value: value);
+    domainError.value = validation.validate(field: 'domain', value: value);
     _validateForm();
     return null;
   }

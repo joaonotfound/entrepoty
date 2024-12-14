@@ -1,8 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 import 'package:provider/provider.dart';
-import 'package:get/get.dart';
 
 import '../../../../domain/domain.dart';
 import '../model_list_presenter.dart';
@@ -11,8 +11,7 @@ class ModelListCard extends StatelessWidget {
   final ProductModelEntity model;
 
   const ModelListCard({
-    super.key,
-    required this.model,
+    required this.model, super.key,
   });
 
   @override
@@ -36,7 +35,7 @@ class ModelListCard extends StatelessWidget {
               ),
               child: FutureBuilder<String>(
                   future: backend.loadResource(model.imagePath),
-                  initialData: "",
+                  initialData: '',
                   builder: (context, snapshot) {
                     return Image.network(
                       snapshot.data!,
@@ -58,17 +57,17 @@ class ModelListCard extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                "Missing image",
+                                'Missing image',
                                 style: TextStyle(
                                     color:
-                                        Theme.of(context).colorScheme.surface),
-                              )
+                                        Theme.of(context).colorScheme.surface,),
+                              ),
                             ],
                           ),
                         );
                       },
                     );
-                  }),
+                  },),
             ),
             ListTile(
               title: Text(model.name),
@@ -78,13 +77,13 @@ class ModelListCard extends StatelessWidget {
                   PopupMenuItem(
                     child: const ListTile(
                       leading: Icon(FluentIcons.delete_12_regular),
-                      title: Text("Delete"),
+                      title: Text('Delete'),
                     ),
                     onTap: () => presenter.deleteModel(model.id),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

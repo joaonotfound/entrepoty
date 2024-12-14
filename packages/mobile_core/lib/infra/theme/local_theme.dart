@@ -8,14 +8,14 @@ class LocalThemeLoader implements ThemeLoader {
   });
 
   @override
-  loadIsDark() async {
-    var local = await storage.loadSecure(key: "is-dark");
-    return local == "false" ? false : true;
+  Future<bool> loadIsDark() async {
+    final local = await storage.loadSecure(key: 'is-dark');
+    return local == 'false' ? false : true;
   }
 
   @override
-  setIsDark(bool value) async {
-    await storage.saveSecure(key: "is-dark", value: value.toString());
+  Future<void> setIsDark(bool value) async {
+    await storage.saveSecure(key: 'is-dark', value: value.toString());
     return;
   }
 }

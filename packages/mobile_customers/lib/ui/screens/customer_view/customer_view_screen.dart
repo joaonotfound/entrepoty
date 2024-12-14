@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_customers/mobile_customers.dart';
 import 'package:get/get.dart';
-import 'package:mobile_customers/ui/screens/customer_view/components/components.dart';
 import 'package:mobile_core/mobile_core.dart';
+import 'package:mobile_customers/mobile_customers.dart';
+import 'package:mobile_customers/ui/screens/customer_view/components/components.dart';
 
 class CustomerViewScreen extends StatefulWidget {
   CustomerViewPresenter presenter;
 
   CustomerViewScreen({
-    Key? key,
-    required this.presenter,
+    required this.presenter, Key? key,
   }) : super(key: key);
 
   @override
@@ -30,7 +29,7 @@ class _CustomerViewScreenState extends State<CustomerViewScreen> {
       stream: widget.presenter.customerStream,
       builder: (context, snapshot) => Scaffold(
         appBar: AppBar(
-          title: const Text("Customer"),
+          title: const Text('Customer'),
         ),
         body: SafeArea(
           child: snapshot.data == null
@@ -47,11 +46,11 @@ class _CustomerViewScreenState extends State<CustomerViewScreen> {
                         child: ListView(
                           children: [
                             CustomerViewPicture(customer: snapshot.data!),
-                            CustomerViewInformation(customer: snapshot.data!)
+                            CustomerViewInformation(customer: snapshot.data!),
                           ],
                         ),
                       ),
-                      CustomerViewDelete(customer: snapshot.data!,)
+                      CustomerViewDelete(customer: snapshot.data!,),
                     ],
                   ),
                 ),

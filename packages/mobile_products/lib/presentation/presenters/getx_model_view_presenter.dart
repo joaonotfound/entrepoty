@@ -1,7 +1,7 @@
-import '../../data/data.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 
+import '../../data/data.dart';
 import '../../domain/domain.dart';
 import '../../ui/ui.dart';
 
@@ -41,7 +41,7 @@ class GetxModelViewPresenter extends GetxController
     isLoading = true;
     final response = await loadUniqueProductModel.loadModelById(id);
     response.fold((error) {
-      print("an error ocurred while loading unique model$error");
+      print('an error ocurred while loading unique model$error');
     }, (response) {
       _model.value = response;
     });

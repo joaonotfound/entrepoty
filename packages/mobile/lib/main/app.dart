@@ -30,12 +30,12 @@ class App extends StatelessWidget {
         presenter: GetxThemePresenter(theme: makeLocalTheme()),
       ),
       builder: (context, child) {
-        ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+        final ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
         return StreamBuilder(
           stream: themeProvider.isDark.stream,
           builder: (context, snapshot) => GetMaterialApp(
-            title: "Entrepoty",
+            title: 'Entrepoty',
             debugShowCheckedModeBanner: false,
             theme: makeLightTheme(),
             darkTheme: makeDarkTheme(),

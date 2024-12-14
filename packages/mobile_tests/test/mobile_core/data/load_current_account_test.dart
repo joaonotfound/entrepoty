@@ -14,35 +14,35 @@ void main() {
     sut =
         LocalLoadCurrentAccount(loadSecureCacheStorage: loadSecureCacheStorage);
   });
-  group("LocalLoadCurrentAccount", () {
-    test("should call loadSecureCache with correct values", () async {
+  group('LocalLoadCurrentAccount', () {
+    test('should call loadSecureCache with correct values', () async {
       await sut.load();
-      verify(() => loadSecureCacheStorage.loadSecure(key: "token")).called(1);
+      verify(() => loadSecureCacheStorage.loadSecure(key: 'token')).called(1);
     });
-    test("should throw Unexpected if secureCacheStorage throws", () async {
+    test('should throw Unexpected if secureCacheStorage throws', () async {
       loadSecureCacheStorage.mockLoadError(Exception());
 
-      var future = sut.load();
+      final future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
-    test("should return tokenAccount on sucess", () async {
-      var account = await sut.load();
+    test('should return tokenAccount on sucess', () async {
+      final account = await sut.load();
 
       expect(account, isInstanceOf<TokenAccount>());
     });
-    test("should return null if secureCacheStorage returns null", () async {
+    test('should return null if secureCacheStorage returns null', () async {
       loadSecureCacheStorage.mockLoadSecure(null);
 
-      var account = await sut.load();
+      final account = await sut.load();
 
       expect(account, null);
     });
-    test("should return null if secureCacheStorage returns empty string",
+    test('should return null if secureCacheStorage returns empty string',
         () async {
-      loadSecureCacheStorage.mockLoadSecure("");
+      loadSecureCacheStorage.mockLoadSecure('');
 
-      var account = await sut.load();
+      final account = await sut.load();
 
       expect(account, null);
     });

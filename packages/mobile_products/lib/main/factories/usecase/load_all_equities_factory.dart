@@ -6,6 +6,6 @@ import '../../../data/data.dart';
 RemoteLoadAllEquities makeRemoteLoadAllEquities() {
   return RemoteLoadAllEquities(
     client: makeFunctionalHttpAdapter(),
-    url: "${BackendUrls.models}/details",
+    url: '${BackendUrls.models}/details',
   );
 }

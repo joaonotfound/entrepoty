@@ -10,8 +10,7 @@ class CustomerListScreen extends StatefulWidget {
   final CustomerListPresenter presenter;
 
   const CustomerListScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -36,11 +35,11 @@ class _CustomerListScreenState extends State<CustomerListScreen>
         IconButton(
           icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
           onPressed: () {
-            debugPrint("reloading...");
+            debugPrint('reloading...');
             widget.presenter.loadCustomers();
           },
         ),
-        const CustomerListSearch()
+        const CustomerListSearch(),
         ],
       ),
       body: RefreshIndicator(
@@ -72,7 +71,7 @@ class _CustomerListScreenState extends State<CustomerListScreen>
           },
         ),
       ),
-      floatingActionButton: const CustomerListFloatingActionButton()
+      floatingActionButton: const CustomerListFloatingActionButton(),
     );
   }
 }

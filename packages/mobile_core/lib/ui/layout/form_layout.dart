@@ -7,10 +7,7 @@ class FormLayout extends StatelessWidget {
   final Widget action;
   final String title;
   const FormLayout({
-    super.key,
-    required this.content,
-    required this.action,
-    required this.title,
+    required this.content, required this.action, required this.title, super.key,
   });
 
   @override
@@ -29,7 +26,7 @@ class FormLayout extends StatelessWidget {
                 flex: 1,
                 child: content,
               ),
-              Align(child: action)
+              Align(child: action),
             ],
           ),
         ),

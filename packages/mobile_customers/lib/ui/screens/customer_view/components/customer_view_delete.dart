@@ -6,8 +6,7 @@ class CustomerViewDelete extends StatelessWidget {
   CustomerEntity customer;
 
   CustomerViewDelete({
-    Key? key,
-    required this.customer,
+    required this.customer, Key? key,
   }) : super(key: key);
 
   @override
@@ -17,7 +16,7 @@ class CustomerViewDelete extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: ElevatedButton(
         onPressed: () => presenter.deleteCustomer(customer.enrollment),
-        child: const Text("Delete"),
+        child: const Text('Delete'),
       ),
     );
   }

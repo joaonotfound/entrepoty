@@ -10,10 +10,10 @@ class ImplBackendPresenter implements BackendPresenter {
   });
 
   String getDomain(String domain) {
-    if (domain.startsWith("https://") || domain.startsWith("http://")) {
+    if (domain.startsWith('https://') || domain.startsWith('http://')) {
       return domain;
     }
-    return "http://$domain";
+    return 'http://$domain';
   }
 
   Future<Either<DomainError, String>> loadBaseUrl() async {
@@ -22,13 +22,13 @@ class ImplBackendPresenter implements BackendPresenter {
     return backendSettings.fold(
           (error) => Either.left(DomainError.unexpected),
           (settings) =>
-          Either.right("${getDomain(settings.domain)}:${settings.port}"),
+          Either.right('${getDomain(settings.domain)}:${settings.port}'),
     );
   }
 
   @override
   Future<String> getResource(String resource) async {
-    final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+    final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
     return "$baseUrl$resource";
   }
 }

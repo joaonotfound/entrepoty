@@ -12,7 +12,7 @@ void main() {
   late MockValidation validator;
   late SignupUsecaseMock usecase;
   late MockLocalSaveCurrentAccount saveCurrentAccount;
-  const dummyAccount = Account(token: "", username: "", name: "", profilePictureUrl: "");
+  const dummyAccount = Account(token: '', username: '', name: '', profilePictureUrl: '');
   setUp(() {
     validator = MockValidation();
     usecase = SignupUsecaseMock();
@@ -25,90 +25,90 @@ void main() {
     registerFallbackValue(dummyAccount);
   });
   group("GetxSignupPresenter's name field", () {
-    test("should call validator with correct value", () {
-      sut.validateName("any-name");
-      verify(() => validator.validate(field: "name", value: "any-name"));
+    test('should call validator with correct value', () {
+      sut.validateName('any-name');
+      verify(() => validator.validate(field: 'name', value: 'any-name'));
     });
-    test("should emit name error", () {
+    test('should emit name error', () {
       sut.nameErrorStream
-          .listen(expectAsync1((error) => expect(error, "any-error")));
+          .listen(expectAsync1((error) => expect(error, 'any-error')));
 
-      validator.mockValidate("any-error");
+      validator.mockValidate('any-error');
       sut.validateName('any-name');
     });
-    test("should emit empty string if validators returns null", () {
-      sut.nameErrorStream.listen(expectAsync1((error) => expect(error, "")));
+    test('should emit empty string if validators returns null', () {
+      sut.nameErrorStream.listen(expectAsync1((error) => expect(error, '')));
 
       validator.mockValidate(null);
       sut.validateName('any-name');
     });
-    test("should emit invalid when validator fails", () {
+    test('should emit invalid when validator fails', () {
       sut.isFormValidStream
           .listen(expectAsync1((error) => expect(error, false)));
 
-      validator.mockValidate("error");
+      validator.mockValidate('error');
       sut.validateName('any-name');
     });
   });
   group("GetxSignupPresenter's username field", () {
-    test("should call validator with correct value", () {
-      sut.validateUsername("any-username");
+    test('should call validator with correct value', () {
+      sut.validateUsername('any-username');
       verify(
-          () => validator.validate(field: "username", value: "any-username"));
+          () => validator.validate(field: 'username', value: 'any-username'),);
     });
-    test("should emit username error", () {
+    test('should emit username error', () {
       sut.usernameErrorStream
-          .listen(expectAsync1((error) => expect(error, "any-error")));
+          .listen(expectAsync1((error) => expect(error, 'any-error')));
 
-      validator.mockValidate("any-error");
+      validator.mockValidate('any-error');
       sut.validateUsername('any-username');
     });
-    test("should emit empty string if validators returns null", () {
+    test('should emit empty string if validators returns null', () {
       sut.usernameErrorStream
-          .listen(expectAsync1((error) => expect(error, "")));
+          .listen(expectAsync1((error) => expect(error, '')));
 
       validator.mockValidate(null);
       sut.validateUsername('any-username');
     });
-    test("should emit invalid when validator fails", () {
+    test('should emit invalid when validator fails', () {
       sut.isFormValidStream
           .listen(expectAsync1((error) => expect(error, false)));
 
-      validator.mockValidate("error");
+      validator.mockValidate('error');
       sut.validateUsername('any-username');
     });
   });
   group("GetxSignupPresenter's password field", () {
-    test("should call validator with correct value", () {
-      sut.validatePassword("any-password");
+    test('should call validator with correct value', () {
+      sut.validatePassword('any-password');
       verify(
-          () => validator.validate(field: "password", value: "any-password"));
+          () => validator.validate(field: 'password', value: 'any-password'),);
     });
-    test("should emit password error", () {
+    test('should emit password error', () {
       sut.passwordErrorStream
-          .listen(expectAsync1((error) => expect(error, "any-error")));
+          .listen(expectAsync1((error) => expect(error, 'any-error')));
 
-      validator.mockValidate("any-error");
+      validator.mockValidate('any-error');
       sut.validatePassword('any-password');
     });
-    test("should emit empty string if validators returns null", () {
+    test('should emit empty string if validators returns null', () {
       sut.passwordErrorStream
-          .listen(expectAsync1((error) => expect(error, "")));
+          .listen(expectAsync1((error) => expect(error, '')));
 
       validator.mockValidate(null);
       sut.validatePassword('any-password');
     });
-    test("should emit invalid when validator fails", () {
+    test('should emit invalid when validator fails', () {
       sut.isFormValidStream
           .listen(expectAsync1((error) => expect(error, false)));
 
-      validator.mockValidate("error");
+      validator.mockValidate('error');
       sut.validatePassword('any-password');
     });
   });
-  group("GetxSignupPresenter create account", () {
-    test("should call save current account on success", () async {
-      const account = Account(token: "any-token", username: "any-username", name: "any-name", profilePictureUrl: "any-pf-url");
+  group('GetxSignupPresenter create account', () {
+    test('should call save current account on success', () async {
+      const account = Account(token: 'any-token', username: 'any-username', name: 'any-name', profilePictureUrl: 'any-pf-url');
       usecase.mockSignup(const Left(account));
       saveCurrentAccount.mockSave(Either.right(null));
 
@@ -116,13 +116,13 @@ void main() {
 
       verify(() => saveCurrentAccount.saveAccount(account: account)).called(1);
     });
-    test("should redirect to home on success", () async {
+    test('should redirect to home on success', () async {
       sut.navigateToStream.listen(expectAsync1((route) => expect(route, Routes.home)));
 
       await sut.signup();
     });
 
-    test("should emit correct error if signup fails", () async {
+    test('should emit correct error if signup fails', () async {
       usecase.mockSignup(const Right(DomainError.serverError));
       sut.mainErrorStream.listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
@@ -134,7 +134,7 @@ void main() {
 
       await sut.signup();
     });
-    test("should emit unexpected error if anything throws", () async {
+    test('should emit unexpected error if anything throws', () async {
       usecase.mockSignupCall().thenThrow(Error);
 
       sut.mainErrorStream.listen(expectAsync1((error) => expect(error, UiError.unexpected)));

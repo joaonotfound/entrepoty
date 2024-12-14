@@ -28,7 +28,7 @@ ThemeData makeBaseTheme(AppColorScheme scheme) {
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       elevation: 2,
       backgroundColor: scheme.primaryColor,
-      foregroundColor: scheme.onPrimaryColor
+      foregroundColor: scheme.onPrimaryColor,
     ),
 
     elevatedButtonTheme: getElevatedButtonTheme(scheme),

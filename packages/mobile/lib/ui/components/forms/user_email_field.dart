@@ -8,9 +8,9 @@ class UserEmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TextField(
       decoration: InputDecoration(
-        label: Text("Email"),
+        label: Text('Email'),
         prefixIcon: Icon(FluentIcons.mail_16_regular),
-        hintText: "E-mail",
+        hintText: 'E-mail',
       ),
     );
   }

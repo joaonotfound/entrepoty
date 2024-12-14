@@ -6,7 +6,7 @@ import '../../../components/components.dart';
 
 class ModelEquitiesViewWithGenerateList extends StatelessWidget {
   final List<ProductDetailEntity> details;
-  const ModelEquitiesViewWithGenerateList({Key? key, required this.details}) : super(key: key);
+  const ModelEquitiesViewWithGenerateList({required this.details, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ModelEquitiesViewWithGenerateList extends StatelessWidget {
         child: Padding(
             padding:
             const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-            child: ProductDetailTile(detail: details[index])),
+            child: ProductDetailTile(detail: details[index]),),
       ),
       itemCount: details.length,
     );

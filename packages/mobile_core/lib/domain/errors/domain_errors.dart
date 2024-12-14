@@ -15,11 +15,11 @@ extension DomainErrorExtension on DomainError {
   String get description {
     switch (this) {
       case DomainError.unauthorized:
-        return "Unauthorized";
+        return 'Unauthorized';
       case DomainError.notFound:
-        return "Not found";
+        return 'Not found';
       default:
-        return "Something went wrong, please try again later.";
+        return 'Something went wrong, please try again later.';
     }
   }
 }

@@ -17,7 +17,7 @@ class BorrowCreationProduct extends StatelessWidget {
       stream: presenter.productsStream,
       builder: (context, snapshot) => DropdownSearch<ProductDetailWithProduct>(
         dropdownBuilder: (context, selectedItem) =>
-            Text(selectedItem?.equity ?? "Select one product"),
+            Text(selectedItem?.equity ?? 'Select one product'),
         filterFn: (item, filter) =>
             item.product.name.toLowerCase().contains(filter.toLowerCase()),
         onChanged: (value) => presenter.validateProduct(value!),
@@ -31,8 +31,8 @@ class BorrowCreationProduct extends StatelessWidget {
                   subtitle: Text(item.equity),
                 ),
             searchFieldProps: const TextFieldProps(
-              decoration: InputDecoration(hintText: "Search product"),
-            )),
+              decoration: InputDecoration(hintText: 'Search product'),
+            ),),
         items: snapshot.data ?? [],
       ),
     );

@@ -12,8 +12,7 @@ class LoginScreen extends StatefulWidget
   final LoginPresenter presenter;
 
   const LoginScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -32,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> with LoadingManager, Navigati
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text('Login'),
         actions: [
           IconButton(
             onPressed: () => Get.toNamed(Routes.settingsBackend),
@@ -71,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> with LoadingManager, Navigati
                 ),
               ),
             ),
-          ]),
+          ],),
         ),
       ),
     );

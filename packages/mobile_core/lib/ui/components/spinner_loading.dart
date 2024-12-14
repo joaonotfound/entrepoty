@@ -15,12 +15,12 @@ void showLoading(BuildContext context) {
                 height: 10,
               ),
               Text(
-                "Wait one moment...",
+                'Wait one moment...',
                 textAlign: TextAlign.center,
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     ),
     barrierDismissible: false,

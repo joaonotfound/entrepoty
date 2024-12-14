@@ -1,5 +1,5 @@
-import 'package:get/get.dart';
 import 'package:entrepoty/ui/ui.dart';
+import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 
 class GetxSplashPresenter extends GetxController
@@ -15,7 +15,7 @@ class GetxSplashPresenter extends GetxController
   Future<void> checkAccount() async {
     await Future.delayed(const Duration(seconds: 2));
     try {
-      var account = await loadAccount.load();
+      final account = await loadAccount.load();
       navigateTo = account != null ? Routes.home : Routes.launch;
     } catch (_) {
       navigateTo = Routes.launch;

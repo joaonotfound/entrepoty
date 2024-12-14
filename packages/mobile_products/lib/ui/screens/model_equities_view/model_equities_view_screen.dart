@@ -7,8 +7,7 @@ class ModelEquitiesView extends StatelessWidget {
   List<ProductDetailEntity> details;
 
   ModelEquitiesView({
-    Key? key,
-    required this.details,
+    required this.details, Key? key,
   }) : super(key: key);
 
   @override

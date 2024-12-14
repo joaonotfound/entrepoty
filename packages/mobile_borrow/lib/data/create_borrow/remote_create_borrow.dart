@@ -20,12 +20,12 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
     required int customer,
     required DateTime date,
   }) async {
-    final dateformat = DateFormat("yyyy-MM-dd");
+    final dateformat = DateFormat('yyyy-MM-dd');
 
     final body = {
-      "equity": equity,
-      "customer": customer,
-      "date": dateformat.format(date).toString()
+      'equity': equity,
+      'customer': customer,
+      'date': dateformat.format(date).toString(),
     };
 
     final responseEither = await client.post(url: url, body: body);

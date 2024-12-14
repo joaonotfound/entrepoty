@@ -7,6 +7,6 @@ class MockLoadCustomers extends Mock implements LoadCustomersUsecase {
       );
   void mockLoadCustomers(List<CustomerEntity> data) =>
       _mockLoadCustomersCall().thenAnswer((invocation) async => data);
-  void mockLoadCustomersError(dynamic error) =>
+  void mockLoadCustomersError(error) =>
       _mockLoadCustomersCall().thenThrow(error);
 }

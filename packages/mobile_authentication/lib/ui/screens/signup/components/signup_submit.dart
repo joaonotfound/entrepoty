@@ -20,7 +20,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
         stream: provider.isFormValidStream,
         builder: (context, snapshot) => ElevatedButton(
           onPressed: snapshot.data == true ? provider.signup : null,
-          child: const Text("Sign up", style: TextStyle(fontWeight: FontWeight.w400),),
+          child: const Text('Sign up', style: TextStyle(fontWeight: FontWeight.w400),),
         ),
       ),
     );

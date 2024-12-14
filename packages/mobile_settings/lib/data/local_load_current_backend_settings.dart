@@ -14,11 +14,11 @@ class LocalLoadCurrentBackendSettings implements LoadCurrentBackendSettings {
       loadCurrentBackendSettings() async {
     try {
       final String domain =
-          await loadSecureCacheStorage.loadSecure(key: "backend_domain") ??
-              "10.0.2.2";
+          await loadSecureCacheStorage.loadSecure(key: 'backend_domain') ??
+              '10.0.2.2';
       final int port = int.parse(
-          await loadSecureCacheStorage.loadSecure(key: "backend_port") ??
-              "8080");
+          await loadSecureCacheStorage.loadSecure(key: 'backend_port') ??
+              '8080',);
 
       return Either.right(
         BackendSettings(

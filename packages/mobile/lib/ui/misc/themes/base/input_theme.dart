@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../app_color_scheme.dart';
 
 InputDecorationTheme getInputDecorationTheme(AppColorScheme scheme) {
-  double borderRadius = 5;
+  const double borderRadius = 5;
   return InputDecorationTheme(
     filled: true,
     fillColor: scheme.surfaceColor.withAlpha(100),

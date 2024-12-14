@@ -1,15 +1,15 @@
-import 'package:mobile_core/mobile_core.dart';
-import '../../ui.dart';
-import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_core/mobile_core.dart';
+
+import '../../ui.dart';
+import 'components/components.dart';
 
 class SettingsScreen extends StatefulWidget with NavigationManager {
   final SettingsPresenter presenter;
 
   SettingsScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -34,6 +34,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         SettingsServer(),
         SettingsLogoutButton(),
       ],
-    ));
+    ),);
   }
 }

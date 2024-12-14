@@ -15,7 +15,7 @@ class RemoteLoadUniqueProductModel implements LoadUniqueProductModelUsecase {
 
   @override
   Future<Either<DomainError, UniqueProductEntity>> loadModelById(int id) async {
-    final eitherReponse = await client.get(url: "$url/$id");
+    final eitherReponse = await client.get(url: '$url/$id');
     return eitherReponse.fold(
       (error) => error.asDomainErrorEither(),
       (response) => Either.right(

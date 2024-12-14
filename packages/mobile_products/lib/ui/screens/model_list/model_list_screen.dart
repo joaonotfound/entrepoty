@@ -11,8 +11,7 @@ class ModelListScreen extends StatefulWidget {
   final ModelListPresenter presenter;
 
   const ModelListScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -62,7 +61,7 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
                                   const SizedBox(height: 10),
                               itemCount: modelsSnapshot.data!.length,
                               itemBuilder: ((context, index) => ModelListCard(
-                                  model: modelsSnapshot.data![index])),
+                                  model: modelsSnapshot.data![index],)),
                             ),
                           )
                         : const NoData();
@@ -72,10 +71,10 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        heroTag: "create-model",
+        heroTag: 'create-model',
         onPressed: () => Get.toNamed(Routes.createModel),
         icon: const Icon(FluentIcons.add_12_regular),
-        label: const Text("Model"),
+        label: const Text('Model'),
       ),
     );
   }

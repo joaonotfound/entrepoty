@@ -11,7 +11,7 @@ class LocalLoadCurrentAccount implements LoadCurrentAccountUsecase {
   @override
   Future<TokenAccount?> load() async {
     try {
-      var token = await loadSecureCacheStorage.loadSecure(key: "token");
+      final token = await loadSecureCacheStorage.loadSecure(key: 'token');
       if (token == null || token.isEmpty) return null;
 
       return TokenAccount(token: token);

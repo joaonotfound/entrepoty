@@ -18,13 +18,13 @@ class ModelCreationNameField extends StatelessWidget {
             return TextFormField(
               onChanged: presenter.validateName,
               decoration: InputDecoration(
-                hintText: "Logitech Keyboard",
+                hintText: 'Logitech Keyboard',
                 labelText: "Model's name",
                 errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
                 prefixIcon: const Icon(FluentIcons.person_16_regular),
               ),
             );
-          }),
+          },),
     );
   }
 }

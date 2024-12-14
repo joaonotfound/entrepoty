@@ -8,8 +8,7 @@ class CustomerCreationScreen extends StatefulWidget {
   final CustomerCreationPresenter presenter;
 
   const CustomerCreationScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -40,10 +39,10 @@ class _CustomerCreationScreenState extends State<CustomerCreationScreen>
             CustomerCreationEnrollmentField(),
             SizedBox(height: 10),
             CustomerCreationSectorField(),
-          ]),
+          ],),
         ),
         action: const CustomerCreationSubmit(),
-        title: "Create Customer",
+        title: 'Create Customer',
       ),
     );
   }

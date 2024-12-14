@@ -7,8 +7,7 @@ class BackendSettingsScreen extends StatefulWidget {
   BackendSettingsPresenter presenter;
 
   BackendSettingsScreen({
-    Key? key,
-    required this.presenter,
+    required this.presenter, Key? key,
   }) : super(key: key);
 
   @override
@@ -48,8 +47,8 @@ class _BackendSettingsScreenState extends State<BackendSettingsScreen>
                       decoration: const InputDecoration(
                           prefixIcon:
                               Icon(FluentIcons.virtual_network_20_regular),
-                          hintText: "https://yourdomain.com",
-                          label: Text("Backend's domain")),
+                          hintText: 'https://yourdomain.com',
+                          label: Text("Backend's domain"),),
                     ),
                     const SizedBox(
                       height: 10,
@@ -60,8 +59,8 @@ class _BackendSettingsScreenState extends State<BackendSettingsScreen>
                           widget.presenter.validateDomain(value ?? ''),
                       decoration: const InputDecoration(
                           prefixIcon: Icon(FluentIcons.door_20_regular),
-                          hintText: "3000",
-                          label: Text("Backend's port")),
+                          hintText: '3000',
+                          label: Text("Backend's port"),),
                     ),
                   ],
                 ),
@@ -70,9 +69,9 @@ class _BackendSettingsScreenState extends State<BackendSettingsScreen>
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   onPressed: () => widget.presenter.saveCurrentSettings(),
-                  child: const Text("Save"),
+                  child: const Text('Save'),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -15,8 +15,8 @@ class ModelCreationSubmit extends StatelessWidget {
           return ElevatedButton(
             onPressed:
                 snapshot.data == true ? () => presenter.createModel() : null,
-            child: const Text("Create"),
+            child: const Text('Create'),
           );
-        });
+        },);
   }
 }

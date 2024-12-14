@@ -1,2 +1,2 @@
-export 'splash/splash.dart';
 export 'search/search.dart';
+export 'splash/splash.dart';

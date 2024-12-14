@@ -17,8 +17,8 @@ class SignupNameField extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: const Icon(FluentIcons.person_20_regular),
           errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-          hintText: "Your full name",
-          label: const Text("Name"),
+          hintText: 'Your full name',
+          label: const Text('Name'),
         ),
       ),
     );

@@ -23,9 +23,9 @@ class _SignupUsernameFieldState extends State<SignupUsernameField> {
           onChanged: provider.validateUsername,
           decoration: InputDecoration(
             prefixIcon: const Icon(FluentIcons.person_accounts_20_regular),
-            hintText: "Username",
+            hintText: 'Username',
             errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-            label: const Text("Username"),
+            label: const Text('Username'),
           ),
         ),
       ),

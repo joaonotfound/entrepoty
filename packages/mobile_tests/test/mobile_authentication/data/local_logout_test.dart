@@ -14,11 +14,11 @@ void main() {
     sut = LocalLogout(storage: storage);
   });
 
-  group("LocalLogout", () {
-    test("should call saveSecureStorage with correct values", () {
+  group('LocalLogout', () {
+    test('should call saveSecureStorage with correct values', () {
       sut.logout();
 
-      verify(() => storage.saveSecure(key: "token", value: "")).called(1);
+      verify(() => storage.saveSecure(key: 'token', value: '')).called(1);
     });
   });
 }

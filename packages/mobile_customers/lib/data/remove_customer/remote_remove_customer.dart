@@ -17,7 +17,7 @@ class RemoteRemoveCustomer implements RemoveCustomerUsecase {
   Future<Either<DomainError, dynamic>> deleteCustomer(String enrollment) async {
     final eitherResponse = await client.delete(
       url: url,
-      body: {"enrollment": enrollment},
+      body: {'enrollment': enrollment},
     );
 
     return eitherResponse.fold(

@@ -14,10 +14,10 @@ void main() {
   late MockAuthentication authentication;
   late MockLocalSaveCurrentAccount saveCurrentAccount;
 
-  Account validAccount =
-      const Account(token: "", username: "", name: "", profilePictureUrl: "");
-  String username = faker.internet.userName();
-  String password = faker.internet.password();
+  const Account validAccount =
+      Account(token: '', username: '', name: '', profilePictureUrl: '');
+  final String username = faker.internet.userName();
+  final String password = faker.internet.password();
 
   setUp(() {
     registerFallbackValue(validAccount);
@@ -38,50 +38,50 @@ void main() {
     );
   });
 
-  group("GetxLoginPresenter", () {
-    test("should call validate with correct values when validating id", () {
+  group('GetxLoginPresenter', () {
+    test('should call validate with correct values when validating id', () {
       sut.validateUsername(username);
-      verify(() => validator.validate(field: "username", value: username))
+      verify(() => validator.validate(field: 'username', value: username))
           .called(1);
     });
-    test("should call validate with correct values when validating password",
+    test('should call validate with correct values when validating password',
         () {
       sut.validatePassword(password);
-      verify(() => validator.validate(field: "password", value: password))
+      verify(() => validator.validate(field: 'password', value: password))
           .called(1);
     });
-    test("should emit error if id validation fails", () {
-      validator.mockValidate("error");
+    test('should emit error if id validation fails', () {
+      validator.mockValidate('error');
 
-      expectLater(sut.usernameErrorStream, emits("error"));
+      expectLater(sut.usernameErrorStream, emits('error'));
 
       sut.validateUsername(username);
     });
 
-    test("should emit error if password validation fails", () {
-      validator.mockValidate("error");
+    test('should emit error if password validation fails', () {
+      validator.mockValidate('error');
 
-      expectLater(sut.passwordErrorStream, emits("error"));
+      expectLater(sut.passwordErrorStream, emits('error'));
 
       sut.validatePassword(password);
     });
 
-    test("passwordErrorStream should not emit duplicated values", () {
-      validator.mockValidate("error");
+    test('passwordErrorStream should not emit duplicated values', () {
+      validator.mockValidate('error');
 
       sut.passwordErrorStream
-          .listen(expectAsync1((error) => expect(error, "error")));
+          .listen(expectAsync1((error) => expect(error, 'error')));
       sut.isFormValidStream
           .listen(expectAsync1((isValid) => expect(isValid, false)));
 
       sut.validatePassword(password);
       sut.validatePassword(password);
     });
-    test("idErrorStream should not emit duplicated values", () {
-      validator.mockValidate("error");
+    test('idErrorStream should not emit duplicated values', () {
+      validator.mockValidate('error');
 
       sut.usernameErrorStream
-          .listen(expectAsync1((error) => expect(error, "error")));
+          .listen(expectAsync1((error) => expect(error, 'error')));
       sut.isFormValidStream
           .listen(expectAsync1((isValid) => expect(isValid, false)));
 
@@ -119,18 +119,18 @@ void main() {
     });
 
     test(
-        "should emit correct main error if authenctation throws invalidCredentials",
+        'should emit correct main error if authenctation throws invalidCredentials',
         () {
       authentication.mockAuthenticateError(DomainError.unauthorized);
       sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.mainErrorStream.listen(
-          expectAsync1((error) => expect(error, UiError.invalidCredentials)));
+          expectAsync1((error) => expect(error, UiError.invalidCredentials)),);
 
       sut.authenticate();
     });
-    test("should emit correct main error if authentication throws unexpected",
+    test('should emit correct main error if authentication throws unexpected',
         () {
       authentication.mockAuthenticateError(DomainError.unexpected);
       sut.validateUsername(username);
@@ -141,14 +141,14 @@ void main() {
 
       sut.authenticate();
     });
-    test("should return domain error if save current account fails", () {
+    test('should return domain error if save current account fails', () {
       saveCurrentAccount.mockSave(Either.left(DomainError.unexpected));
 
       sut.validateUsername(username);
       sut.validatePassword(password);
 
       sut.mainErrorStream.listen(expectAsync1(
-          (error) => expect(error, fromDomain(DomainError.unexpected))));
+          (error) => expect(error, fromDomain(DomainError.unexpected)),),);
 
       sut.authenticate();
     });

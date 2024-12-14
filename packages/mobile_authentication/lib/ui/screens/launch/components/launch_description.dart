@@ -10,7 +10,7 @@ class LaunchDescription extends StatelessWidget {
       child: const Column(
         children: [
           Text(
-            "Easy Online Management",
+            'Easy Online Management',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -19,7 +19,7 @@ class LaunchDescription extends StatelessWidget {
             ),
           ),
           Text(
-            "Make your experience managing your storage easier.",
+            'Make your experience managing your storage easier.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,

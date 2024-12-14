@@ -8,8 +8,7 @@ class HomeLayout extends StatelessWidget {
   final AppBar? appBar;
 
   const HomeLayout({
-    super.key,
-    required this.body,
+    required this.body, super.key,
     this.floatingActionButton,
     this.appBar,
   });

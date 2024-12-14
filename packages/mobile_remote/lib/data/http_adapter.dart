@@ -1,9 +1,9 @@
 import 'dart:convert';
+
 import 'package:flutter/rendering.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:mobile_core/domain/domain.dart';
-
 import 'package:http/http.dart' as http;
+import 'package:mobile_core/domain/domain.dart';
 import 'package:mobile_settings/mobile_settings.dart';
 
 import '../domain/domain.dart';
@@ -25,10 +25,10 @@ class HttpAdapter { //implements HttpClient {
   }
 
   String getDomain(String domain) {
-    if (domain.startsWith("https://") || domain.startsWith("http://")) {
+    if (domain.startsWith('https://') || domain.startsWith('http://')) {
       return domain;
     }
-    return "http://$domain";
+    return 'http://$domain';
   }
 
   Future<Either<DomainError, String>> loadBaseUrl() async {
@@ -37,7 +37,7 @@ class HttpAdapter { //implements HttpClient {
     return backendSettings.fold(
       (error) => Either.left(DomainError.unexpected),
       (settings) =>
-          Either.right("${getDomain(settings.domain)}:${settings.port}"),
+          Either.right('${getDomain(settings.domain)}:${settings.port}'),
     );
   }
 
@@ -48,17 +48,17 @@ class HttpAdapter { //implements HttpClient {
     Duration? timeout,
   }) async {
     try {
-      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
 
-      var response = await client
+      final response = await client
           .get(
             Uri.parse(baseUrl + url),
             headers: await _buildHeaders(headers),
           )
           .timeout(timeout ?? const Duration(seconds: 5));
 
-      print("body: ${response.statusCode}");
-      print("statuscode: ${response.statusCode}");
+      print('body: ${response.statusCode}');
+      print('statuscode: ${response.statusCode}');
 
       return HttpResponse(
         statuscode: response.statusCode,
@@ -78,21 +78,21 @@ class HttpAdapter { //implements HttpClient {
     Duration? timeout,
   }) async {
     try {
-      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
 
-      var response = await client
+      final response = await client
           .post(Uri.parse(baseUrl + url),
-              body: jsonEncode(body), headers: await _buildHeaders(headers))
+              body: jsonEncode(body), headers: await _buildHeaders(headers),)
           .timeout(timeout ?? const Duration(seconds: 5));
 
-      final responseBody = response.body.isEmpty ? "{}" : response.body;
+      final responseBody = response.body.isEmpty ? '{}' : response.body;
       debugPrint(response.statusCode.toString());
       return HttpResponse(
         statuscode: response.statusCode,
         body: json.decode(responseBody),
       );
     } catch (e) {
-      debugPrint("error-something: $e");
+      debugPrint('error-something: $e');
       return const HttpResponse(statuscode: 500);
     }
   }
@@ -106,7 +106,7 @@ class HttpAdapter { //implements HttpClient {
         }
       ..addAll((authorization == null || authorization.length <= 2)
           ? {}
-          : {"Authorization": "Bearer $authorization"});
+          : {'Authorization': 'Bearer $authorization'},);
   }
 
   Future<HttpResponse<T>> delete<T>({
@@ -116,13 +116,13 @@ class HttpAdapter { //implements HttpClient {
     Duration? timeout,
   }) async {
     try {
-      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
-      var response = await client
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
+      final response = await client
           .delete(Uri.parse(baseUrl + url),
-              body: jsonEncode(body), headers: await _buildHeaders(headers))
+              body: jsonEncode(body), headers: await _buildHeaders(headers),)
           .timeout(timeout ?? const Duration(seconds: 5));
 
-      final responseBody = response.body.isEmpty ? "{}" : response.body;
+      final responseBody = response.body.isEmpty ? '{}' : response.body;
 
       return HttpResponse(
         statuscode: response.statusCode,
@@ -140,16 +140,16 @@ class HttpAdapter { //implements HttpClient {
     List<MultipleFile>? files,
   }) async {
     try {
-      final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
+      final baseUrl = (await loadBaseUrl()).getOrElse((error) => '-1');
       final request = http.MultipartRequest(method, Uri.parse(baseUrl + url));
 
-      for (var file in files ?? [] as List<MultipleFile>) {
+      for (final file in files ?? [] as List<MultipleFile>) {
         final content =
             await http.MultipartFile.fromPath(file.name, file.filePath);
         request.files.add(content);
       }
 
-      for (var data in data ?? [] as List<MultipleData>) {
+      for (final data in data ?? [] as List<MultipleData>) {
         request.fields[data.name] = data.content;
       }
 
@@ -164,7 +164,7 @@ class HttpAdapter { //implements HttpClient {
         ),
       );
     } catch (e) {
-      print("error on http_adapter: $e");
+      print('error on http_adapter: $e');
     }
 
     return Either.left(DomainError.unexpected);

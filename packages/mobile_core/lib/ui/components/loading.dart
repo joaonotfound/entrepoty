@@ -14,7 +14,7 @@ class Loading extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Text("Loading"),
+          Text('Loading'),
         ],
       ),
     );

@@ -18,9 +18,9 @@ class RemoteLogin implements LoginUsecase {
     required String username,
     required String password,
   }) async {
-    var eitherResponse = await httpClient.post(
+    final eitherResponse = await httpClient.post(
       url: url,
-      body: {"username": username, "password": password},
+      body: {'username': username, 'password': password},
       timeout: const Duration(seconds: 2),
     );
     return eitherResponse.fold(

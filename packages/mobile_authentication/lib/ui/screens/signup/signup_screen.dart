@@ -12,8 +12,7 @@ class SignupScreen extends StatefulWidget
   final SignupPresenter presenter;
 
   const SignupScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -58,19 +57,19 @@ class _SignupScreenState extends State<SignupScreen> with LoadingManager, Naviga
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("By signing up, you agree to the "),
+                    Text('By signing up, you agree to the '),
                     Text(
-                      "Terms of Use.",
+                      'Terms of Use.',
                       style: TextStyle(
                         fontStyle: FontStyle.italic,
                         decoration: TextDecoration.underline,
                       ),
-                    )
+                    ),
                   ],
                 ),
-              ]),
+              ],),
             ),
           ),
-        ));
+        ),);
   }
 }

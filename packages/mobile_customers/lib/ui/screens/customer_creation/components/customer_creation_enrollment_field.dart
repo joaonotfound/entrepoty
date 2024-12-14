@@ -17,11 +17,11 @@ class CustomerCreationEnrollmentField extends StatelessWidget {
             onChanged: presenter.validateEnrollment,
             decoration: InputDecoration(
               hintText: "Enrollments's id",
-              labelText: "Enrollment",
+              labelText: 'Enrollment',
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: const Icon(FluentIcons.person_accounts_24_regular),
             ),
           );
-        });
+        },);
   }
 }

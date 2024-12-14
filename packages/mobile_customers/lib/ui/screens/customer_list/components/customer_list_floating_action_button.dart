@@ -17,10 +17,10 @@ class _CustomerListFloatingActionButtonState
   Widget build(BuildContext context) {
 
     return FloatingActionButton.extended(
-      heroTag: "add-user",
+      heroTag: 'add-user',
       onPressed: () => Get.toNamed(Routes.createCustomer),
       icon: const Icon(FluentIcons.add_12_regular),
-      label: const Text("Customer"),
+      label: const Text('Customer'),
     );
   }
 }

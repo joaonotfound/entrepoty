@@ -7,5 +7,5 @@ class MockLoadCurrentAccount extends Mock implements LoadCurrentAccountUsecase {
       );
   void mockLoad(TokenAccount? data) =>
       _mockLoadCall().thenAnswer((invocation) async => data);
-  void mockLoadError(dynamic error) => _mockLoadCall().thenThrow(error);
+  void mockLoadError(error) => _mockLoadCall().thenThrow(error);
 }

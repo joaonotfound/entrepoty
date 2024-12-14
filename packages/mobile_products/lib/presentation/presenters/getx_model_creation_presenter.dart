@@ -21,15 +21,15 @@ class GetxModelCreationPresenter extends GetxController
     required this.takeImage,
   });
 
-  String _category = "";
+  String _category = '';
 
-  String _name = "";
+  String _name = '';
   final _nameError = RxString('');
 
   @override
   Stream<String?> get nameErrorStream => _nameError.stream;
 
-  String _image = "";
+  String _image = '';
   final _hasImage = RxBool(false);
 
   @override
@@ -45,22 +45,22 @@ class GetxModelCreationPresenter extends GetxController
   void validateName(String name) {
     _name = name;
     _nameError.value =
-        validation.validate(field: "model-name", value: name) ?? "";
+        validation.validate(field: 'model-name', value: name) ?? '';
     _validateForm();
   }
 
   void _validateForm() {
     isFormValid = _name != '' &&
-        _nameError.value == "" &&
+        _nameError.value == '' &&
         _image != '' &&
-        _category != "" &&
+        _category != '' &&
         _qtd != 0 &&
-        qtdError == "";
+        qtdError == '';
   }
 
   @override
   void validateQtd(int value) {
-    qtdError.value = value <= 0 ? "Invalid number." : "";
+    qtdError.value = value <= 0 ? 'Invalid number.' : '';
     _qtd = value;
     _validateForm();
   }
@@ -89,7 +89,7 @@ class GetxModelCreationPresenter extends GetxController
   Future<void> createModel() async {
     isLoading = true;
     final response = await usecase.createModel(
-        ProductModelEntity(name: _name, category: _category), _qtd, _image);
+        ProductModelEntity(name: _name, category: _category), _qtd, _image,);
     response.fold((error) {
       mainError = fromDomain(error);
     }, (model) {

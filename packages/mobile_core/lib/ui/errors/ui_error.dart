@@ -13,21 +13,21 @@ extension UiErrorExtension on UiError {
   String get description {
     switch (this) {
       case UiError.emailInUse:
-        return "Email already in use.";
+        return 'Email already in use.';
       case UiError.invalidCredentials:
-        return "Invalid credencials.";
+        return 'Invalid credencials.';
       case UiError.invalidField:
-        return "Invalid field.";
+        return 'Invalid field.';
       case UiError.requiredField:
-        return "Required field.";
+        return 'Required field.';
       case UiError.unexpected:
-        return "Unexpected error.";
+        return 'Unexpected error.';
       case UiError.accountDoesntExist:
         return "Account doesn't exist.";
       case UiError.accountAlreadyExists:
-        return "Account already exist.";
+        return 'Account already exist.';
       case UiError.connectionError:
-        return "Failed to connect to server.";
+        return 'Failed to connect to server.';
       default:
         return UiError.unexpected.description;
     }

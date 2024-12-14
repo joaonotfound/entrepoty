@@ -6,8 +6,7 @@ class ModelCreationEquitiesScreen extends StatelessWidget {
 
   final qtdController = TextEditingController();
   ModelCreationEquitiesScreen({
-    Key? key,
-    required this.product,
+    required this.product, Key? key,
   }) : super(key: key);
 
   @override
@@ -15,7 +14,7 @@ class ModelCreationEquitiesScreen extends StatelessWidget {
     final presenter = Get.find<ModelViewPresenter>();
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text("Generate equities"),),
+        appBar: AppBar(title: const Text('Generate equities'),),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -26,15 +25,15 @@ class ModelCreationEquitiesScreen extends StatelessWidget {
                   child: TextFormField(
                     controller: qtdController,
                     decoration: const InputDecoration(
-                      hintText: "20",
-                      label: Text("Quantity"),
+                      hintText: '20',
+                      label: Text('Quantity'),
                     ),
                   ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () => presenter.generateDetail(product, int.parse(qtdController.value.text)),
-                child: const Text("Generate"),
+                child: const Text('Generate'),
               ),
             ],
           ),

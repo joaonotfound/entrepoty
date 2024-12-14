@@ -15,8 +15,8 @@ class LoginSubmitButton extends StatelessWidget {
         builder: (context, snapshot) {
           return ElevatedButton(
             onPressed: snapshot.data == true ? presenter.authenticate : null,
-            child: const Text("Login"),
+            child: const Text('Login'),
           );
-        });
+        },);
   }
 }

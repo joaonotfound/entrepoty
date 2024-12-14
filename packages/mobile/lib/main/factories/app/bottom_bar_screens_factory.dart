@@ -11,22 +11,22 @@ List<BottomBarScreen> makeBottomBarScreens() {
     BottomBarScreen(
       widget: () => makeModelListScreen(),
       icon: const Icon(FluentIcons.box_edit_20_filled),
-      label: "Products",
+      label: 'Products',
     ),
     BottomBarScreen(
       widget: () => makeBorrowScreen(),
       icon: const Icon(FluentIcons.group_20_filled),
-      label: "Borrows",
+      label: 'Borrows',
     ),
     BottomBarScreen(
       widget: () => makeCustomerListScreen(),
       icon: const Icon(FluentIcons.person_board_20_filled),
-      label: "Customers",
+      label: 'Customers',
     ),
     BottomBarScreen(
       widget: () => makeSettingsScreen(),
       icon: const Icon(FluentIcons.settings_24_regular),
-      label: "Settings",
+      label: 'Settings',
     ),
   ];
 }

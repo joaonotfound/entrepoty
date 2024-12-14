@@ -18,7 +18,7 @@ class _SettingsServerState extends State<SettingsServer> {
       onTap: () => Get.toNamed(Routes.settingsBackend),
       child: const ListTile(
         leading: Icon(FluentIcons.server_multiple_20_regular),
-        title: Text("Configure server"),
+        title: Text('Configure server'),
       ),
     );
   }

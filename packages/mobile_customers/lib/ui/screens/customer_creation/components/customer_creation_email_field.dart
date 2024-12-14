@@ -16,12 +16,12 @@ class CustomerCreationEmailField extends StatelessWidget {
           return TextFormField(
             onChanged: presenter.validateEmail,
             decoration: InputDecoration(
-              hintText: "email@email.com",
-              labelText: "Email",
+              hintText: 'email@email.com',
+              labelText: 'Email',
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: const Icon(FluentIcons.mail_16_regular),
             ),
           );
-        });
+        },);
   }
 }

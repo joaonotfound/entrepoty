@@ -22,7 +22,7 @@ class RemoteLoadAllEquities extends LoadAllEquitiesUsecase {
       (response) {
         final List<dynamic> list = response.body;
         return Either.right(
-            list.map((e) => ProductDetailWithProduct.fromJson(e)).toList());
+            list.map((e) => ProductDetailWithProduct.fromJson(e)).toList(),);
       },
     );
   }

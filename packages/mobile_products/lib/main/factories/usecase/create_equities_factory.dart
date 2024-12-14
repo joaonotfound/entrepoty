@@ -6,6 +6,6 @@ import '../../../data/data.dart';
 RemoteCreateEquities makeRemoteCreateEquities() {
   return RemoteCreateEquities(
     client: makeFunctionalHttpAdapter(),
-    url: "${BackendUrls.models}/details",
+    url: '${BackendUrls.models}/details',
   );
 }

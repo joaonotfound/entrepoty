@@ -16,12 +16,12 @@ class CustomerCreationName extends StatelessWidget {
           return TextFormField(
             onChanged: presenter.validateName,
             decoration: InputDecoration(
-              hintText: "Josh Natael",
-              labelText: "Name",
+              hintText: 'Josh Natael',
+              labelText: 'Name',
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               prefixIcon: const Icon(FluentIcons.person_16_regular),
             ),
           );
-        });
+        },);
   }
 }

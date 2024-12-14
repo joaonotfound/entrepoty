@@ -4,5 +4,5 @@ import 'package:mobile_customers/domain/domain.dart';
 
 abstract class LoadUniqueCustomerUsecase {
   Future<Either<DomainError, CustomerEntity>> loadUniqueCustomer(
-      String enrollment);
+      String enrollment,);
 }

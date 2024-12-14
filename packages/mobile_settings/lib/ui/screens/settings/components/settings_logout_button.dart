@@ -14,17 +14,17 @@ class SettingsLogoutButton extends StatelessWidget {
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Are you sure?"),
+        title: const Text('Are you sure?'),
         content: const SingleChildScrollView(
           child: ListBody(
             children: [
-              Text("You are about to sign out."),
+              Text('You are about to sign out.'),
             ],
           ),
         ),
         actions: [
-          TextButton(onPressed: () => Get.back(), child: const Text("Cancel")),
-          TextButton(onPressed: () => logout.logout(), child: const Text("Ok")),
+          TextButton(onPressed: () => Get.back(), child: const Text('Cancel')),
+          TextButton(onPressed: () => logout.logout(), child: const Text('Ok')),
         ],
       ),
     );
@@ -32,7 +32,7 @@ class SettingsLogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider provider = Provider.of<ThemeProvider>(context);
+    final ThemeProvider provider = Provider.of<ThemeProvider>(context);
 
     return ElevatedButton.icon(
       onPressed: () => _askConfirmation(context),
@@ -46,7 +46,7 @@ class SettingsLogoutButton extends StatelessWidget {
         color: Theme.of(context).colorScheme.onSurface,
       ),
       label: Text(
-        "Logout account",
+        'Logout account',
         style: Theme.of(context).textTheme.bodyLarge,
       ),
     );

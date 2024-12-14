@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../ui.dart';
 
 Widget makeBottomNavigationBar() {
-  List<BottomBarScreen> screens = Get.find();
-  BottomBarController appController = Get.find();
+  final List<BottomBarScreen> screens = Get.find();
+  final BottomBarController appController = Get.find();
   return BottomNavigationBar(
     currentIndex: appController.tabIndex.value,
     onTap: (value) => appController.changeTabIndex(value),

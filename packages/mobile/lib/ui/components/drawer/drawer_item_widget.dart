@@ -5,8 +5,7 @@ import 'drawer_item.dart';
 class DrawerItemWidget extends StatelessWidget {
   final DrawerItem item;
   const DrawerItemWidget({
-    Key? key,
-    required this.item,
+    required this.item, Key? key,
   }) : super(key: key);
 
   @override

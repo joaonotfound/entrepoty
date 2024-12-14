@@ -16,7 +16,7 @@ class RemoteLoadUniqueCustomer implements LoadUniqueCustomerUsecase {
   Future<Either<DomainError, CustomerEntity>> loadUniqueCustomer(
     String enrollment,
   ) async {
-    final eitherResponse = await httpClient.get(url: "$url/$enrollment");
+    final eitherResponse = await httpClient.get(url: '$url/$enrollment');
     return eitherResponse.fold(
       (error) => error.asDomainErrorEither(),
       (response) => Either.right(

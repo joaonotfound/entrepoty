@@ -18,19 +18,19 @@ void main() {
       removeCustomer: removeCustomer,
     );
   });
-  group("GetxCustomersPresenter", () {
-    test("should emit customers when calling loadCustomers", () async {
+  group('GetxCustomersPresenter', () {
+    test('should emit customers when calling loadCustomers', () async {
       sut.customersStream
           .listen(expectAsync1((customers) => expect(customers, [])));
 
       sut.loadCustomers();
     });
-    test("should emit loading when calling loadCustomers", () async {
+    test('should emit loading when calling loadCustomers', () async {
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
 
       sut.loadCustomers();
     });
-    test("should emit error when loadCustomersUsecase throws", () async {
+    test('should emit error when loadCustomersUsecase throws', () async {
       loadCustomers.mockLoadCustomersError(Exception());
       sut.mainErrorStream
           .listen(expectAsync1((error) => expect(error, UiError.unexpected)));

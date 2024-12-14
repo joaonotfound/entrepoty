@@ -20,19 +20,19 @@ class ModelCreationQuantities extends StatelessWidget {
           builder: (context, snapshot) {
             return TextFormField(
               decoration: InputDecoration(
-                hintText: "Quantity",
+                hintText: 'Quantity',
                 prefixIcon: const Icon(FluentIcons.number_symbol_16_regular),
-                label: const Text("Quantity"),
+                label: const Text('Quantity'),
                 errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
               ),
               inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
+                FilteringTextInputFormatter.digitsOnly,
               ],
               onChanged: (value) =>
                   presenter.validateQtd(int.tryParse(value) ?? 0),
               keyboardType: TextInputType.number,
             );
-          }),
+          },),
     );
   }
 }

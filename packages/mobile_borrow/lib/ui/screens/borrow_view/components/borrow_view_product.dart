@@ -8,8 +8,7 @@ class BorrowViewProduct extends StatelessWidget {
   BorrowEntity borrow;
 
   BorrowViewProduct({
-    Key? key,
-    required this.borrow,
+    required this.borrow, Key? key,
   }) : super(key: key);
 
   @override
@@ -22,7 +21,7 @@ class BorrowViewProduct extends StatelessWidget {
         children: [
           ClipRRect(
             child: FutureBuilder(
-              initialData: "",
+              initialData: '',
               future: backendProvider.loadResource(borrow.product.imagePath),
               builder: (context, snapshot) {
                 return Image.network(
@@ -31,7 +30,7 @@ class BorrowViewProduct extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                 );
-              }
+              },
             ),
           ),
           ListTile(
@@ -39,9 +38,9 @@ class BorrowViewProduct extends StatelessWidget {
             subtitle: Text(borrow.product.category),
           ),
           ListTile(
-            title: const Text("Devolution Date"),
-            subtitle: Text("${borrow.date.day}/${borrow.date.month}/${borrow.date.year}"),
-          )
+            title: const Text('Devolution Date'),
+            subtitle: Text('${borrow.date.day}/${borrow.date.month}/${borrow.date.year}'),
+          ),
         ],
       ),
     );

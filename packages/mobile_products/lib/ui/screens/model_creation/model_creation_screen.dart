@@ -9,8 +9,7 @@ class ModelCreationScreen extends StatefulWidget {
   final ModelCreationPresenter presenter;
 
   const ModelCreationScreen({
-    super.key,
-    required this.presenter,
+    required this.presenter, super.key,
   });
 
   @override
@@ -37,11 +36,11 @@ class _ModelCreationScreenState extends State<ModelCreationScreen>
             ModelCreationNameField(),
             ModelCreationQuantities(),
             ModelCreationCategories(),
-            ModelCreationImagePicker()
-          ]),
+            ModelCreationImagePicker(),
+          ],),
         ),
         action: const ModelCreationSubmit(),
-        title: "Create Product Model",
+        title: 'Create Product Model',
       ),
     );
   }

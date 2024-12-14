@@ -8,6 +8,6 @@ HttpAdapter makeHttpAdapter() {
   return HttpAdapter(
     client: Client(),
     currentAccount: makeLocalLoadCurrentAccount(),
-    loadBackendSettings: makeLocalLoadCurrentBackendSettings()
+    loadBackendSettings: makeLocalLoadCurrentBackendSettings(),
   );
 }

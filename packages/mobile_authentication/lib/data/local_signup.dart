@@ -11,15 +11,15 @@ class LocalSignup implements SignupUsecase {
     required String password,
   }) async {
     await Future.delayed(const Duration(seconds: 2));
-    if (username == "ja12345") {
+    if (username == 'ja12345') {
       return const Right(DomainError.unauthorized);
     }
     return Left(
       Account(
-        token: "random-token",
+        token: 'random-token',
         username: username,
-        name: "João",
-        profilePictureUrl: "https://google.com",
+        name: 'João',
+        profilePictureUrl: 'https://google.com',
       ),
     );
   }

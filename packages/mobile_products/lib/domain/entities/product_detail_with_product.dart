@@ -14,6 +14,6 @@ class ProductDetailWithProduct {
   factory ProductDetailWithProduct.fromJson(Map json) =>
       ProductDetailWithProduct(
         product: ProductModelEntity.fromJson(json['product']),
-        equity: json['equity'] ?? "",
+        equity: json['equity'] ?? '',
       );
 }

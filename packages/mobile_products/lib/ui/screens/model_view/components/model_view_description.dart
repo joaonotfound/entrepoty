@@ -7,8 +7,7 @@ class ModelViewDescription extends StatelessWidget {
   final ProductModelEntity model;
 
   const ModelViewDescription({
-    Key? key,
-    required this.model,
+    required this.model, Key? key,
   }) : super(key: key);
 
   @override
@@ -19,12 +18,12 @@ class ModelViewDescription extends StatelessWidget {
         children: [
           ListTile(
             leading: const CircleAvatar(child: Icon(FluentIcons.box_20_regular),),
-            title: const Text("Product"),
+            title: const Text('Product'),
             subtitle: Text(model.name),
           ),
           ListTile(
             leading: const CircleAvatar(child: Icon(FluentIcons.organization_20_regular),),
-            title: const Text("Category"),
+            title: const Text('Category'),
             subtitle: Text(model.category),
           ),
         ],

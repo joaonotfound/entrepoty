@@ -21,13 +21,13 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
     String image,
   ) async {
     final rawResponse = await client.multiples(
-      method: "POST",
+      method: 'POST',
       url: url,
-      files: [MultipleFile(name: "image", filePath: image)],
+      files: [MultipleFile(name: 'image', filePath: image)],
       data: [
-        MultipleData(name: "name", content: model.name),
-        MultipleData(name: "category", content: model.category),
-        MultipleData(name: "quantity", content: quantity.toString())
+        MultipleData(name: 'name', content: model.name),
+        MultipleData(name: 'category', content: model.category),
+        MultipleData(name: 'quantity', content: quantity.toString()),
       ],
     );
 

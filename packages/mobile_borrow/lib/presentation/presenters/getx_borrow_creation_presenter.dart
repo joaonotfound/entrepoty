@@ -34,7 +34,7 @@ class GetxBorrowCreationPresenter extends GetxController
   final _products = Rx<List<ProductDetailWithProduct>>([]);
 
   @override
-  get productsStream => _products.stream;
+  Stream<List<ProductDetailWithProduct>> get productsStream => _products.stream;
 
   @override
   Future<void> create() async {

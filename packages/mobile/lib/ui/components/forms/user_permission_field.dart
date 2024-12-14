@@ -6,16 +6,16 @@ class UserPermissionField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final modelos = [
-      "Employee",
-      "Administrator",
+      'Employee',
+      'Administrator',
     ];
     return DropdownButtonFormField(
-      hint: const Text("Permission"),
+      hint: const Text('Permission'),
       items: modelos
           .map((label) => DropdownMenuItem<String>(
                 value: label,
                 child: Text(label),
-              ))
+              ),)
           .toList(),
       onChanged: (_) {},
     );

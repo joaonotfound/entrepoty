@@ -8,7 +8,7 @@ import 'components/components.dart';
 class ModelViewScreen extends StatelessWidget {
   final ModelViewPresenter presenter;
 
-  const ModelViewScreen({Key? key, required this.presenter}) : super(key: key);
+  const ModelViewScreen({required this.presenter, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class ModelViewScreen extends StatelessWidget {
                         Icons.more_vert,
                         color: Colors.white,
                       ),
-                    )
+                    ),
                   ],
             backgroundColor: Colors.transparent,
           ),
@@ -65,10 +65,10 @@ class ModelViewScreen extends StatelessWidget {
                                 details: snapshot.data!.details,
                                 product: snapshot.data!.product,
                               ),
-                              transition: Transition.downToUp
+                              transition: Transition.downToUp,
                           ),
-                          child: const Text("Show equities"),
-                        )
+                          child: const Text('Show equities'),
+                        ),
                       ],
                     ),
                   ),

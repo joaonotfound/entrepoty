@@ -20,10 +20,10 @@ class RemoteSaveCustomer implements SaveCustomerUsercase {
     final eitherResponse = await client.post(
       url: url,
       body: {
-        "enrollment": account.enrollment,
-        "name": account.name,
-        "email": account.email,
-        "sector": account.sector
+        'enrollment': account.enrollment,
+        'name': account.name,
+        'email': account.email,
+        'sector': account.sector,
       },
     );
     return eitherResponse.fold(

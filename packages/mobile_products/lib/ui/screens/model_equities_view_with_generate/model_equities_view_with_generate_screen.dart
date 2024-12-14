@@ -8,9 +8,7 @@ class ModelEquitiesViewWithGenerate extends StatelessWidget {
   final List<ProductDetailEntity> details;
 
   const ModelEquitiesViewWithGenerate({
-    Key? key,
-    required this.product,
-    required this.details,
+    required this.product, required this.details, Key? key,
   }) : super(key: key);
 
   @override
@@ -18,10 +16,10 @@ class ModelEquitiesViewWithGenerate extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Equities"),
+          title: const Text('Equities'),
         ),
         body: ModelEquitiesViewWithGenerateList(details: details,),
-        bottomNavigationBar: ModelEquitiesViewWithGenerateSubmit(product: product,)
+        bottomNavigationBar: ModelEquitiesViewWithGenerateSubmit(product: product,),
       ),
     );
   }

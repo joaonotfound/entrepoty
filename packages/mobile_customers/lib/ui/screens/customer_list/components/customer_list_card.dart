@@ -10,8 +10,7 @@ import '../customer_list_screen_presenter.dart';
 
 class CustomerListCard extends StatelessWidget {
   const CustomerListCard({
-    super.key,
-    required this.user,
+    required this.user, super.key,
   });
 
   final CustomerEntity user;
@@ -28,7 +27,7 @@ class CustomerListCard extends StatelessWidget {
         tileColor: Theme.of(context).colorScheme.surface,
         dense: true,
         leading: SvgPicture.network(
-          "https://source.boringavatars.com/beam",
+          'https://source.boringavatars.com/beam',
         ),
         title: Text(
           user.name,
@@ -48,10 +47,10 @@ class CustomerListCard extends StatelessWidget {
               child: const ListTile(
                 visualDensity: VisualDensity.compact,
                 leading: Icon(FluentIcons.delete_12_regular),
-                title: Text("Delete"),
+                title: Text('Delete'),
               ),
               onTap: () => provider.deleteCustomer(user.enrollment),
-            )
+            ),
           ],
         ),
       ),
