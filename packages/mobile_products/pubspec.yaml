@@ -14,11 +14,11 @@ dependencies:
   provider:
   get:
   fluentui_system_icons:
-  dropdown_search:
   mobile_core:
     path: ../mobile_core
   mobile_remote:
     path: ../mobile_remote
+  dropdown_search: ^6.0.1
 
 dev_dependencies:
   flutter_test:

@@ -17,9 +17,10 @@ dependencies:
     path: ../mobile_customers
   mobile_products:
     path: ../mobile_products
-
-  mobile_core: any
-  mobile_remote: any
+  mobile_core:
+    path: ../mobile_core
+  mobile_remote:
+    path: ../mobile_remote
   provider: any
   dropdown_search: any
   get: any
