@@ -26,6 +26,7 @@ class _ModelCreationCategoriesState extends State<ModelCreationCategories> {
       child: DropdownSearch(
         dropdownBuilder: (context, selectedItem) =>
             Text(selectedItem ?? 'Select one category'),
+        compareFn: (item1, item2) => item1 == item2,
         onChanged: (value) => presenter.validateCategory(value ?? ''),
         items: (filter, infiniteScrollProps) => [
           ...categories.map(

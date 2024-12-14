@@ -17,12 +17,12 @@ ElevatedButtonThemeData getElevatedButtonTheme(AppColorScheme scheme) {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: scheme.primaryColor,
+      foregroundColor: scheme.onPrimaryColor,
       elevation: 0,
       minimumSize: const Size(double.infinity, 50),
       textStyle: const TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 16,
-        color: Colors.white,
       ),
       disabledBackgroundColor: scheme.primaryColor.withAlpha(100),
       disabledForegroundColor: Colors.white70,

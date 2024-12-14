@@ -40,5 +40,8 @@ ThemeData makeBaseTheme(AppColorScheme scheme) {
         TextSelectionThemeData(cursorColor: scheme.primaryColor),
     bottomNavigationBarTheme: getBottomNavigationTheme(scheme),
     textTheme: getTextTheme(scheme),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStatePropertyAll(scheme.primaryColor),
+    ),
   );
 }

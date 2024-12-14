@@ -20,6 +20,7 @@ class BorrowCreationProduct extends StatelessWidget {
             Text(selectedItem?.equity ?? 'Select one product'),
         filterFn: (item, filter) =>
             item.product.name.toLowerCase().contains(filter.toLowerCase()),
+        compareFn: (item1, item2) => item1.equity == item2.equity,
         onChanged: (value) => presenter.validateProduct(value!),
         popupProps: PopupProps.dialog(
             showSearchBox: true,

@@ -22,6 +22,7 @@ class BorrowCreationUser extends StatelessWidget {
             item.name.toLowerCase().contains(filter.toLowerCase()),
         dropdownBuilder: (context, selectedItem) =>
             Text(selectedItem?.name ?? 'Select one user'),
+        compareFn: (item1, item2) => item1.email == item2.email,
         onChanged: (value) => presenter.validateCustomer(value!),
         popupProps: PopupProps.dialog(
             showSearchBox: true,

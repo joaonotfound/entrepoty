@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_customers/domain/domain.dart';
@@ -6,7 +7,8 @@ class CustomerViewPicture extends StatelessWidget {
   CustomerEntity customer;
 
   CustomerViewPicture({
-    required this.customer, Key? key,
+    required this.customer,
+    Key? key,
   }) : super(key: key);
 
   @override
