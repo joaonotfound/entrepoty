@@ -18,6 +18,11 @@ dependencies:
   mobile_products:
     path: ../mobile_products
 
+  mobile_core: any
+  mobile_remote: any
+  provider: any
+  dropdown_search: any
+  get: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

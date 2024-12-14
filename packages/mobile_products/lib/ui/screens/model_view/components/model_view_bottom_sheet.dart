@@ -8,7 +8,7 @@ import '../../../ui.dart';
 class ModelViewBottomSheet extends StatelessWidget {
   final ProductModelEntity model;
 
-  ModelViewBottomSheet({
+  const ModelViewBottomSheet({
     Key? key,
     required this.model,
   }) : super(key: key);
@@ -28,8 +28,8 @@ class ModelViewBottomSheet extends StatelessWidget {
         },
         style: ButtonStyle(
           alignment: Alignment.centerLeft,
-          foregroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.onSurface),
-          backgroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
+          foregroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.onSurface),
+          backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.surface),
         ),
       ),
     );

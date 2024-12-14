@@ -8,10 +8,10 @@ class LoginSignupRedirect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: OutlinedButton(
         onPressed: () => Get.offAndToNamed(Routes.signup),
-        child: Text("Create an account"),
+        child: const Text("Create an account"),
       ),
     );
   }

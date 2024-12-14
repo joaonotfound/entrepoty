@@ -7,7 +7,7 @@ class HomeLayout extends StatelessWidget {
   final Widget? floatingActionButton;
   final AppBar? appBar;
 
-  HomeLayout({
+  const HomeLayout({
     super.key,
     required this.body,
     this.floatingActionButton,

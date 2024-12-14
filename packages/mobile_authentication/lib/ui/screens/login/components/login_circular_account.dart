@@ -12,7 +12,7 @@ class LoginCircularAccount extends StatelessWidget {
       child: Icon(
         FluentIcons.person_circle_32_filled,
         size: MediaQuery.of(context).size.height * 0.15,
-        color: Theme.of(context).colorScheme.onBackground.withAlpha(180),
+        color: Theme.of(context).colorScheme.onSurface.withAlpha(180),
       ),
     );
   }

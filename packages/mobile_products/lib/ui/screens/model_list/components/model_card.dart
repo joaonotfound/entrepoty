@@ -10,7 +10,7 @@ import '../model_list_presenter.dart';
 class ModelListCard extends StatelessWidget {
   final ProductModelEntity model;
 
-  ModelListCard({
+  const ModelListCard({
     super.key,
     required this.model,
   });
@@ -30,7 +30,7 @@ class ModelListCard extends StatelessWidget {
         child: Column(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(border),
                 topRight: Radius.circular(border),
               ),
@@ -46,7 +46,7 @@ class ModelListCard extends StatelessWidget {
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
                           width: double.infinity,
-                          color: Theme.of(context).colorScheme.onBackground,
+                          color: Theme.of(context).colorScheme.onSurface,
                           height: 250,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

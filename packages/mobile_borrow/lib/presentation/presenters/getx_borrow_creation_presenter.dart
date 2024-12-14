@@ -28,12 +28,15 @@ class GetxBorrowCreationPresenter extends GetxController
 
   final _customers = Rx<List<CustomerEntity>>([]);
 
+  @override
   Stream<List<CustomerEntity>> get customersStream => _customers.stream;
 
   final _products = Rx<List<ProductDetailWithProduct>>([]);
 
+  @override
   get productsStream => _products.stream;
 
+  @override
   Future<void> create() async {
     isLoading = true;
     final response = await createBorrowUsecase.create(
@@ -54,16 +57,19 @@ class GetxBorrowCreationPresenter extends GetxController
     isFormValid = _customer != null && _product != null && _date != null;
   }
 
+  @override
   void validateCustomer(CustomerEntity customer) {
     _customer = customer;
     _validateForm();
   }
 
+  @override
   void validateDate(DateTime date) {
     _date = date;
     _validateForm();
   }
 
+  @override
   void validateProduct(ProductDetailWithProduct product) {
     _product = product;
     _validateForm();

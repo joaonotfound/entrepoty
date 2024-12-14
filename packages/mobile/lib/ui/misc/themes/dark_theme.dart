@@ -5,28 +5,27 @@ import 'base_theme.dart';
 
 ThemeData makeDarkTheme() {
   final scheme = AppColorScheme(
-    backgroundColor: Color(0xff080808),
+    backgroundColor: const Color(0xff080808),
     //Color.fromARGB(255, 6, 12, 18),
     onBackground: Colors.white70,
     //
-    primaryColor: Color(0xff98c1d9),
-    onPrimaryColor: Color(0xff080808),
+    primaryColor: const Color(0xff98c1d9),
+    onPrimaryColor: const Color(0xff080808),
     //
-    secondaryColor: Color(0xffe0fbfc),
+    secondaryColor: const Color(0xffe0fbfc),
     onSecondaryColor: Colors.white70,
 
     textColor: Colors.white70,
     brightness: Brightness.dark,
     //
-    surfaceColor: Color(0xff302e38),
+    surfaceColor: const Color(0xff302e38),
     //Color.fromARGB(255, 7, 18, 29),
     onSurfaceColor: Colors.white70,
   );
   final baseTheme = makeBaseTheme(scheme);
 
   return ThemeData.from(
-    colorScheme: ColorScheme.dark().copyWith(
-      background: scheme.backgroundColor,
+    colorScheme: const ColorScheme.dark().copyWith(
       surface: scheme.surfaceColor,
       onSurface: scheme.onSurfaceColor,
 
@@ -51,7 +50,7 @@ ThemeData makeDarkTheme() {
     textTheme: baseTheme.textTheme,
     outlinedButtonTheme: baseTheme.outlinedButtonTheme,
     iconTheme: IconThemeData(color: scheme.onBackground),
-    snackBarTheme: SnackBarThemeData(
+    snackBarTheme: const SnackBarThemeData(
       contentTextStyle: TextStyle(color: Colors.white),
     ),
   );

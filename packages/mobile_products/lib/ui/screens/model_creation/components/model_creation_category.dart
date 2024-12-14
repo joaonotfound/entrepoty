@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../model_creation_presenter.dart';
 
 class ModelCreationCategories extends StatefulWidget {
-  ModelCreationCategories({Key? key}) : super(key: key);
+  const ModelCreationCategories({Key? key}) : super(key: key);
 
   @override
   State<ModelCreationCategories> createState() =>

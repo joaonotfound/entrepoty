@@ -10,9 +10,9 @@ class LocalSignup implements SignupUsecase {
     required String username,
     required String password,
   }) async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     if (username == "ja12345") {
-      return Right(DomainError.unauthorized);
+      return const Right(DomainError.unauthorized);
     }
     return Left(
       Account(

@@ -14,8 +14,8 @@ class NoData extends StatelessWidget {
             "lib/ui/assets/no-data.png",
             width: 250,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+          const Padding(
+            padding: EdgeInsets.only(left: 8.0),
             child: Text(
               'No data found',
               textAlign: TextAlign.center,

@@ -12,11 +12,11 @@ void main() {
   late MockValidation validator;
   late SignupUsecaseMock usecase;
   late MockLocalSaveCurrentAccount saveCurrentAccount;
-  final dummyAccount = Account(token: "", username: "", name: "", profilePictureUrl: "");
+  const dummyAccount = Account(token: "", username: "", name: "", profilePictureUrl: "");
   setUp(() {
     validator = MockValidation();
     usecase = SignupUsecaseMock();
-    usecase.mockSignup(Left(dummyAccount));
+    usecase.mockSignup(const Left(dummyAccount));
     saveCurrentAccount = MockLocalSaveCurrentAccount();
     saveCurrentAccount.mockSave(Either.right(null));
     sut = GetxSignupPresenter(validation: validator, usecase: usecase, saveAccount: saveCurrentAccount);
@@ -108,8 +108,8 @@ void main() {
   });
   group("GetxSignupPresenter create account", () {
     test("should call save current account on success", () async {
-      final account = Account(token: "any-token", username: "any-username", name: "any-name", profilePictureUrl: "any-pf-url");
-      usecase.mockSignup(Left(account));
+      const account = Account(token: "any-token", username: "any-username", name: "any-name", profilePictureUrl: "any-pf-url");
+      usecase.mockSignup(const Left(account));
       saveCurrentAccount.mockSave(Either.right(null));
 
       await sut.signup();
@@ -123,7 +123,7 @@ void main() {
     });
 
     test("should emit correct error if signup fails", () async {
-      usecase.mockSignup(Right(DomainError.serverError));
+      usecase.mockSignup(const Right(DomainError.serverError));
       sut.mainErrorStream.listen(expectAsync1((error) => expect(error, UiError.unexpected)));
 
       await sut.signup();

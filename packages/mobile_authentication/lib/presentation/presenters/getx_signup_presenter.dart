@@ -25,16 +25,19 @@ class GetxSignupPresenter extends GetxController
   String _name = "";
   final _nameError = RxString('');
 
+  @override
   Stream<String?> get nameErrorStream => _nameError.stream;
 
   String _username = "";
   final _usernameError = RxString('');
 
+  @override
   Stream<String?> get usernameErrorStream => _usernameError.stream;
 
   String _password = "";
   final _passwordError = RxString('');
 
+  @override
   Stream<String?> get passwordErrorStream => _passwordError.stream;
 
   @override
@@ -51,7 +54,7 @@ class GetxSignupPresenter extends GetxController
       });
     } catch (e) {
      mainError = UiError.unexpected;
-     debugPrint("error: " + e.toString());
+     debugPrint("error: $e");
     }
     isLoading = false;
   }

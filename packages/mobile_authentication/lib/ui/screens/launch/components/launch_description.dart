@@ -6,8 +6,8 @@ class LaunchDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
-      child: Column(
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      child: const Column(
         children: [
           Text(
             "Easy Online Management",

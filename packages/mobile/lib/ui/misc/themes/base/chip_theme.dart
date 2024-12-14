@@ -9,7 +9,7 @@ ChipThemeData getChipTheme(AppColorScheme scheme) {
       fontWeight: FontWeight.w400,
       color: scheme.onSurfaceColor,
     ),
-    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
     backgroundColor: scheme.surfaceColor,
   );
 }

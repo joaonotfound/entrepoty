@@ -1,4 +1,3 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:mobile_core/mobile_core.dart';
 import '../../ui.dart';
 import 'components/components.dart';
@@ -28,9 +27,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     Get.put(widget.presenter);
     // debugPrint(themeProvider.isDark.toString());
-    return HomeLayout(
+    return const HomeLayout(
         body: Column(
-      children: const [
+      children: [
         SettingsDarkToggle(),
         SettingsServer(),
         SettingsLogoutButton(),

@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../ui.dart';
 
 class BorrowCreationProduct extends StatelessWidget {
-  BorrowCreationProduct({super.key});
+  const BorrowCreationProduct({super.key});
 
   @override
   Widget build(BuildContext context) {

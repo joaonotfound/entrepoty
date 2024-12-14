@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> with LoadingManager, Navigati
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       // appBar: makeLoginAppbarComponent(),
       body: SafeArea(
         child: Padding(
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> with LoadingManager, Navigati
             vertical: 10,
           ),
           child: Column(children: [
-            Expanded(
+            const Expanded(
               flex: 40,
               child: LoginCircularAccount(),
             ),
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> with LoadingManager, Navigati
                 child: ListenableProvider(
                   create: (_) => widget.presenter,
                   child: ListView(
-                    children: [
+                    children: const [
                       LoginUsernameField(),
                       UserPasswordField(),
                       LoginSubmitButton(),

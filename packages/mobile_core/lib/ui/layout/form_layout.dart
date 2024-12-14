@@ -6,7 +6,7 @@ class FormLayout extends StatelessWidget {
   final Widget content;
   final Widget action;
   final String title;
-  FormLayout({
+  const FormLayout({
     super.key,
     required this.content,
     required this.action,
@@ -22,12 +22,12 @@ class FormLayout extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          padding: EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 35),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 35),
           child: Column(
             children: [
               Expanded(
-                child: content,
                 flex: 1,
+                child: content,
               ),
               Align(child: action)
             ],

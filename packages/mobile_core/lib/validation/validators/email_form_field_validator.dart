@@ -1,6 +1,7 @@
 import '../validation.dart';
 
 class EmailFormFieldValidator implements FormFieldValidator {
+  @override
   String field;
 
   EmailFormFieldValidator({

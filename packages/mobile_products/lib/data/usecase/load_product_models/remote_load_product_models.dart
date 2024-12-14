@@ -13,6 +13,7 @@ class RemoteLoadProductModels implements LoadProductModelsUsecase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, List<ProductModelEntity>>> loadModels() async {
     final eitherResponse = await client.get<List<dynamic>>(url: url);
     return eitherResponse.fold(

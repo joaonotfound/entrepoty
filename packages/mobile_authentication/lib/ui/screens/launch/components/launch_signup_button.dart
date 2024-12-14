@@ -11,10 +11,10 @@ class LaunchSignupButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
         elevation: 0,
-        side: BorderSide(color: Colors.white70, width: 1),
+        side: const BorderSide(color: Colors.white70, width: 1),
       ),
       onPressed: () => Get.toNamed(Routes.signup),
-      child: Text("Sign up"),
+      child: const Text("Sign up"),
     );
   }
 }

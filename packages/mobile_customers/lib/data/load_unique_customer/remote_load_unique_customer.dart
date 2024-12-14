@@ -12,6 +12,7 @@ class RemoteLoadUniqueCustomer implements LoadUniqueCustomerUsecase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, CustomerEntity>> loadUniqueCustomer(
     String enrollment,
   ) async {

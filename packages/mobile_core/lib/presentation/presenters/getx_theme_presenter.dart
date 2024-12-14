@@ -4,6 +4,7 @@ import '../../ui/ui.dart';
 import '../presentation.dart';
 
 class GetxThemePresenter implements ThemePresenter {
+  @override
   RxBool isDark = false.obs;
   ThemeLoader theme;
   GetxThemePresenter({required this.theme}) {
@@ -13,6 +14,7 @@ class GetxThemePresenter implements ThemePresenter {
     isDark.value = await theme.loadIsDark();
   }
 
+  @override
   void setIsDark(bool value) {
     isDark.value = value;
     theme.setIsDark(value);

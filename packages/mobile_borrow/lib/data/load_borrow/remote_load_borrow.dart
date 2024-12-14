@@ -12,6 +12,7 @@ class RemoteLoadBorrow implements LoadBorrowUsecase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, List<BorrowEntity>>> loadAll() async {
       final eitherResponse = await client.get<List<dynamic>>(url: url);
 

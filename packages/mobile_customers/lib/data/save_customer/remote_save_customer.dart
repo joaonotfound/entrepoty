@@ -13,6 +13,7 @@ class RemoteSaveCustomer implements SaveCustomerUsercase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, CustomerEntity>> saveCustomer(
     CustomerEntity account,
   ) async {

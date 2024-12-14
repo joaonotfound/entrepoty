@@ -38,7 +38,7 @@ class BorrowViewScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    BorrowViewWriteOff(),
+                    const BorrowViewWriteOff(),
                   ],
                 ),
         ),

@@ -19,6 +19,7 @@ class GetxBorrowListPresenter extends GetxController
 
   final _borrows = Rx<List<BorrowEntity>>([]);
 
+  @override
   Stream<List<BorrowEntity>?> get borrowsStream => _borrows.stream;
 
   @override

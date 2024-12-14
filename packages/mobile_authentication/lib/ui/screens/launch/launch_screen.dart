@@ -24,12 +24,12 @@ class LaunchScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: const Color(0xff2b2d42), //Theme.of(context).colorScheme.,
-      body: SafeArea(
+      body: const SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           child: Column(
             children: [
-              const Expanded(
+              Expanded(
                 flex: 1,
                 child: Center(
                   child: Icon(
@@ -42,12 +42,12 @@ class LaunchScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      const LaunchDescription(),
+                      LaunchDescription(),
                       Column(
-                        children: const [
+                        children: [
                           LaunchLoginButton(),
                           SizedBox(height: 5),
                           LaunchSignupButton(),

@@ -9,7 +9,7 @@ import 'components/components.dart';
 
 class BorrowListScreen extends StatefulWidget {
   final BorrowListPresenter presenter;
-  BorrowListScreen({
+  const BorrowListScreen({
     super.key,
     required this.presenter,
   });
@@ -49,7 +49,7 @@ class _BorrowListScreenState extends State<BorrowListScreen> {
                                     BorrowListCard(
                                         borrow: borrowsSnapshot.data![index]))),
                           )
-                        : NoData();
+                        : const NoData();
               },
             );
           },
@@ -58,7 +58,7 @@ class _BorrowListScreenState extends State<BorrowListScreen> {
       appBar: AppBar(actions: [
         IconButton(
           onPressed: () => widget.presenter.loadBorrows(),
-          icon: Icon(FluentIcons.arrow_clockwise_16_regular),
+          icon: const Icon(FluentIcons.arrow_clockwise_16_regular),
         )
       ]),
       floatingActionButton: FloatingActionButton.extended(

@@ -1,6 +1,5 @@
 import 'package:mobile_core/mobile_core.dart';
 
-import '../../presentation/protocols/theme_loader.dart';
 
 class LocalThemeLoader implements ThemeLoader {
   SecureCacheStorage storage;
@@ -8,11 +7,13 @@ class LocalThemeLoader implements ThemeLoader {
     required this.storage,
   });
 
+  @override
   loadIsDark() async {
     var local = await storage.loadSecure(key: "is-dark");
     return local == "false" ? false : true;
   }
 
+  @override
   setIsDark(bool value) async {
     await storage.saveSecure(key: "is-dark", value: value.toString());
     return;

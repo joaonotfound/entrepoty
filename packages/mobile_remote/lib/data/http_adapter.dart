@@ -28,7 +28,7 @@ class HttpAdapter { //implements HttpClient {
     if (domain.startsWith("https://") || domain.startsWith("http://")) {
       return domain;
     }
-    return "http://${domain}";
+    return "http://$domain";
   }
 
   Future<Either<DomainError, String>> loadBaseUrl() async {
@@ -57,8 +57,8 @@ class HttpAdapter { //implements HttpClient {
           )
           .timeout(timeout ?? const Duration(seconds: 5));
 
-      print("body: " + response.statusCode.toString());
-      print("statuscode: " + response.statusCode.toString());
+      print("body: ${response.statusCode}");
+      print("statuscode: ${response.statusCode}");
 
       return HttpResponse(
         statuscode: response.statusCode,
@@ -85,14 +85,14 @@ class HttpAdapter { //implements HttpClient {
               body: jsonEncode(body), headers: await _buildHeaders(headers))
           .timeout(timeout ?? const Duration(seconds: 5));
 
-      final responseBody = response.body.length == 0 ? "{}" : response.body;
+      final responseBody = response.body.isEmpty ? "{}" : response.body;
       debugPrint(response.statusCode.toString());
       return HttpResponse(
         statuscode: response.statusCode,
         body: json.decode(responseBody),
       );
     } catch (e) {
-      debugPrint("error-something: " + e.toString());
+      debugPrint("error-something: $e");
       return const HttpResponse(statuscode: 500);
     }
   }
@@ -106,7 +106,7 @@ class HttpAdapter { //implements HttpClient {
         }
       ..addAll((authorization == null || authorization.length <= 2)
           ? {}
-          : {"Authorization": "Bearer " + authorization});
+          : {"Authorization": "Bearer $authorization"});
   }
 
   Future<HttpResponse<T>> delete<T>({
@@ -122,7 +122,7 @@ class HttpAdapter { //implements HttpClient {
               body: jsonEncode(body), headers: await _buildHeaders(headers))
           .timeout(timeout ?? const Duration(seconds: 5));
 
-      final responseBody = response.body.length == 0 ? "{}" : response.body;
+      final responseBody = response.body.isEmpty ? "{}" : response.body;
 
       return HttpResponse(
         statuscode: response.statusCode,
@@ -164,7 +164,7 @@ class HttpAdapter { //implements HttpClient {
         ),
       );
     } catch (e) {
-      print("error on http_adapter: " + e.toString());
+      print("error on http_adapter: $e");
     }
 
     return Either.left(DomainError.unexpected);

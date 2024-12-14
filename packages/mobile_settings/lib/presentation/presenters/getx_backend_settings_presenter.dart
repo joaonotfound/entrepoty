@@ -16,10 +16,13 @@ class GetxBackendSettingsPresenter extends GetxController
     required this.validation,
   });
 
+  @override
   final portTextController = TextEditingController();
+  @override
   final domainTextController = TextEditingController();
 
   final domainError = Rx<String?>('');
+  @override
   Stream<String?> get domainErrorStream => domainError.stream;
 
   void _validateForm (){
@@ -30,11 +33,13 @@ class GetxBackendSettingsPresenter extends GetxController
   String? validateDomain(String value) {
     domainError.value = validation.validate(field: "domain", value: value);
     _validateForm();
+    return null;
   }
 
   @override
   String? validatePort(int value) {
     _validateForm();
+    return null;
   }
   
   @override

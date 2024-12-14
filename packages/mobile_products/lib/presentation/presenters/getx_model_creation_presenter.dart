@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 
@@ -28,11 +26,13 @@ class GetxModelCreationPresenter extends GetxController
   String _name = "";
   final _nameError = RxString('');
 
+  @override
   Stream<String?> get nameErrorStream => _nameError.stream;
 
   String _image = "";
   final _hasImage = RxBool(false);
 
+  @override
   Stream<bool> get hasImageStream => _hasImage.stream;
 
   int _qtd = 0;
@@ -65,12 +65,14 @@ class GetxModelCreationPresenter extends GetxController
     _validateForm();
   }
 
+  @override
   Future<void> deletePhoto() async {
     _image = '';
     _hasImage.value = false;
     _validateForm();
   }
 
+  @override
   Future<void> pickImage() async {
     final response = await takeImage.takeImage();
     response.fold(
@@ -97,6 +99,7 @@ class GetxModelCreationPresenter extends GetxController
     isLoading = false;
   }
 
+  @override
   void validateCategory(String category) {
     _category = category;
     _validateForm();

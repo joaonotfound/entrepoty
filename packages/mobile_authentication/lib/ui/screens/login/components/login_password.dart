@@ -11,7 +11,7 @@ class UserPasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = Provider.of<LoginPresenter>(context);
     return Padding(
-      padding: EdgeInsets.only(top: 16, bottom: 30),
+      padding: const EdgeInsets.only(top: 16, bottom: 30),
       child: StreamBuilder<String?>(
         stream: presenter.passwordErrorStream,
         builder: (context, snapshot) {
@@ -20,7 +20,7 @@ class UserPasswordField extends StatelessWidget {
             decoration: InputDecoration(
               labelText: "Password",
               errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 FluentIcons.lock_closed_16_regular,
                 // color: Colors.black54,
               ),

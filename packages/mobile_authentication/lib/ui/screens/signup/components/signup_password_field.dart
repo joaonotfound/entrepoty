@@ -21,10 +21,10 @@ class _SignupPasswordFieldState extends State<SignupPasswordField> {
         onChanged: presenter.validatePassword,
         obscureText: true,
         decoration: InputDecoration(
-          prefixIcon: Icon(FluentIcons.lock_closed_16_regular),
+          prefixIcon: const Icon(FluentIcons.lock_closed_16_regular),
           errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
           hintText: "Your most secure password",
-          label: Text("Password"),
+          label: const Text("Password"),
         ),
       ),
     );

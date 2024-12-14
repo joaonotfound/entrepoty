@@ -28,7 +28,7 @@ void main() {
     client.mockGet(http.Response("{}", 200));
     client.mockPost(http.Response("{}", 200));
     currentAccount = MockLoadCurrentAccount();
-    currentAccount.mockLoad(TokenAccount(token: ""));
+    currentAccount.mockLoad(const TokenAccount(token: ""));
     loadBackendSettings = MockLoadBackendSettings();
     loadBackendSettings.mockLoad(
       Either.right(

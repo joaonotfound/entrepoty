@@ -10,7 +10,7 @@ import 'factories.dart';
 
 List<GetPage> generateRoutes() {
   return [
-    GetPage(name: Routes.launch, page: () => LaunchScreen()),
+    GetPage(name: Routes.launch, page: () => const LaunchScreen()),
     GetPage(name: Routes.splash, page: makeSplashScreen),
     GetPage(
       name: Routes.login,

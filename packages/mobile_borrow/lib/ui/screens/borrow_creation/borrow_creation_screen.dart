@@ -31,14 +31,14 @@ class _BorrowCreationScreenState extends State<BorrowCreationScreen> {
       child: FormLayout(
         content: Form(
           child: ListView(children: [
-            BorrowCreationProduct(),
-            SizedBox(height: 10),
+            const BorrowCreationProduct(),
+            const SizedBox(height: 10),
             BorrowCreationUser(),
-            SizedBox(height: 10),
-            BorrowCreationDevolution()
+            const SizedBox(height: 10),
+            const BorrowCreationDevolution()
           ]),
         ),
-        action: BorrowCreationSubmit(),
+        action: const BorrowCreationSubmit(),
         title: "Create Borrow",
       ),
     );

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:mobile_core/mobile_core.dart';
 

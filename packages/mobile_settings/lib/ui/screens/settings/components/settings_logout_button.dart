@@ -15,9 +15,9 @@ class SettingsLogoutButton extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Are you sure?"),
-        content: SingleChildScrollView(
+        content: const SingleChildScrollView(
           child: ListBody(
-            children: const [
+            children: [
               Text("You are about to sign out."),
             ],
           ),
@@ -37,9 +37,9 @@ class SettingsLogoutButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: () => _askConfirmation(context),
       style: ButtonStyle(
-        elevation: MaterialStatePropertyAll(0),
+        elevation: const WidgetStatePropertyAll(0),
         backgroundColor:
-            MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
+            WidgetStatePropertyAll(Theme.of(context).colorScheme.surface),
       ),
       icon: Icon(
         FluentIcons.sign_out_20_regular,

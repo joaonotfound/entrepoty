@@ -8,7 +8,7 @@ import '../../../../domain/domain.dart';
 class BorrowListCard extends StatelessWidget {
   final BorrowEntity borrow;
 
-  BorrowListCard({
+  const BorrowListCard({
     super.key,
     required this.borrow,
   });
@@ -21,7 +21,7 @@ class BorrowListCard extends StatelessWidget {
       ),
       child: ListTile(
         tileColor: Theme.of(context).colorScheme.surface,
-        leading: CircleAvatar(
+        leading: const CircleAvatar(
           child: Icon(FluentIcons.person_12_regular),
         ),
         title: Text(borrow.product.name,

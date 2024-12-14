@@ -13,9 +13,6 @@ ThemeData makeBaseTheme(AppColorScheme scheme) {
       secondary: scheme.secondaryColor,
       onSecondary: scheme.onSecondaryColor,
       //
-      background: scheme.backgroundColor,
-      onBackground: scheme.onBackground,
-      //
       surface: scheme.surfaceColor,
       onSurface: scheme.onSurfaceColor,
       //

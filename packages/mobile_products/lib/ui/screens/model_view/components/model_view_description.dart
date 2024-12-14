@@ -6,7 +6,7 @@ import '../../../../domain/domain.dart';
 class ModelViewDescription extends StatelessWidget {
   final ProductModelEntity model;
 
-  ModelViewDescription({
+  const ModelViewDescription({
     Key? key,
     required this.model,
   }) : super(key: key);

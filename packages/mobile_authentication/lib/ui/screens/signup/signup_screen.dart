@@ -11,7 +11,7 @@ class SignupScreen extends StatefulWidget
     {
   final SignupPresenter presenter;
 
-  SignupScreen({
+  const SignupScreen({
     super.key,
     required this.presenter,
   });
@@ -49,7 +49,7 @@ class _SignupScreenState extends State<SignupScreen> with LoadingManager, Naviga
           child: ListenableProvider(
             create: (_) => widget.presenter,
             child: Form(
-              child: ListView(children: [
+              child: ListView(children: const [
                 SignupWelcomeMessage(),
                 SignupNameField(),
                 SignupUsernameField(),

@@ -4,12 +4,11 @@ import 'package:mobile_core/mobile_core.dart';
 import '../../../domain/domain.dart';
 import '../../ui.dart';
 import 'components/components.dart';
-import 'model_view_presenter.dart';
 
 class ModelViewScreen extends StatelessWidget {
   final ModelViewPresenter presenter;
 
-  ModelViewScreen({Key? key, required this.presenter}) : super(key: key);
+  const ModelViewScreen({Key? key, required this.presenter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

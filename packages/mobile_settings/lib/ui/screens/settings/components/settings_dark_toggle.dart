@@ -14,7 +14,7 @@ class _SettingsDarkToggleState extends State<SettingsDarkToggle> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return SwitchListTile(
-      title: Text("Dark mode"),
+      title: const Text("Dark mode"),
       value: themeProvider.isDark.value,
       onChanged: (_) => setState(
         () => themeProvider.setIsDark(!themeProvider.isDark.value),

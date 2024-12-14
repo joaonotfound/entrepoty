@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'package:flutter/rendering.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mobile_core/domain/domain.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:mobile_remote/helpers/ensure_valid_domain.dart';
-import 'package:mobile_remote/helpers/handle_exception.dart';
 import 'package:mobile_remote/helpers/helpers.dart';
 import 'package:mobile_settings/mobile_settings.dart';
 

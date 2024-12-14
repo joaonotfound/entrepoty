@@ -8,7 +8,7 @@ import '../../../../domain/domain.dart';
 class ModelViewImage extends StatelessWidget {
   final ProductModelEntity model;
 
-  ModelViewImage({
+  const ModelViewImage({
     Key? key,
     required this.model,
   }) : super(key: key);

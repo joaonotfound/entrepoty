@@ -12,7 +12,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     var underlineBorder = UnderlineInputBorder(
       borderSide: BorderSide(
-        color: Theme.of(context).colorScheme.onBackground.withAlpha(50),
+        color: Theme.of(context).colorScheme.onSurface.withAlpha(50),
       ),
     );
     return Scaffold(
@@ -23,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
             hintText: "Search",
             focusedBorder: underlineBorder,
             border: underlineBorder,
-            fillColor: Theme.of(context).colorScheme.background,
+            fillColor: Theme.of(context).colorScheme.surface,
           ),
         ),
       ),

@@ -16,6 +16,7 @@ class GetxLoadModelsPresenter extends GetxController
   });
 
   final models = Rx<List<ProductModelEntity>>([]);
+  @override
   Stream<List<ProductModelEntity>?> get modelsEntity => models.stream;
 
   @override

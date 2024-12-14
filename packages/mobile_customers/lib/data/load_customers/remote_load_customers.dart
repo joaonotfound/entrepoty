@@ -11,6 +11,7 @@ class RemoteLoadCustomers implements LoadCustomersUsecase {
     required this.url,
   });
 
+  @override
   Future<List<CustomerEntity>> loadCustomers() async {
       final eitherResponse = await client.get<List<dynamic>>(url: url);
       return eitherResponse.fold((_) => [], (httpResponse){

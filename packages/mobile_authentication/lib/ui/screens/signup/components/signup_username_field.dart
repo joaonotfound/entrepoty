@@ -22,10 +22,10 @@ class _SignupUsernameFieldState extends State<SignupUsernameField> {
         builder: (context, snapshot) => TextFormField(
           onChanged: provider.validateUsername,
           decoration: InputDecoration(
-            prefixIcon: Icon(FluentIcons.person_accounts_20_regular),
+            prefixIcon: const Icon(FluentIcons.person_accounts_20_regular),
             hintText: "Username",
             errorText: snapshot.data?.isEmpty == true ? null : snapshot.data,
-            label: Text("Username"),
+            label: const Text("Username"),
           ),
         ),
       ),

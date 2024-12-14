@@ -14,6 +14,7 @@ class RemoteCreateBorrow implements CreateBorrowUsecase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, BorrowEntity>> create({
     required String equity,
     required int customer,

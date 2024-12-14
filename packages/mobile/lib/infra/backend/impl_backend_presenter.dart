@@ -13,7 +13,7 @@ class ImplBackendPresenter implements BackendPresenter {
     if (domain.startsWith("https://") || domain.startsWith("http://")) {
       return domain;
     }
-    return "http://${domain}";
+    return "http://$domain";
   }
 
   Future<Either<DomainError, String>> loadBaseUrl() async {
@@ -26,8 +26,9 @@ class ImplBackendPresenter implements BackendPresenter {
     );
   }
 
+  @override
   Future<String> getResource(String resource) async {
     final baseUrl = (await loadBaseUrl()).getOrElse((error) => "-1");
-    return "$baseUrl${resource}";
+    return "$baseUrl$resource";
   }
 }

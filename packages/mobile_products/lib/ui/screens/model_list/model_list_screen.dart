@@ -10,7 +10,7 @@ import 'model_list_presenter.dart';
 class ModelListScreen extends StatefulWidget {
   final ModelListPresenter presenter;
 
-  ModelListScreen({
+  const ModelListScreen({
     super.key,
     required this.presenter,
   });
@@ -65,7 +65,7 @@ class _ModelListScreenState extends State<ModelListScreen> with UiErrorManager {
                                   model: modelsSnapshot.data![index])),
                             ),
                           )
-                        : NoData();
+                        : const NoData();
               },
             );
           },

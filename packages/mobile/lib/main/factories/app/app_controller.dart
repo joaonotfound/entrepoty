@@ -13,8 +13,8 @@ Obx makeAppController() {
 
   return Obx(
     () => IndexedStack(
-      children: getPages(),
       index: appController.tabIndex.value,
+      children: getPages(),
     ),
   );
 }

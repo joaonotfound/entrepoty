@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 class MockHttpClient extends Mock implements HttpClient {
   // ignore: unnecessary_this
   When _mockGetCall() => when(
-      () => this.get(url: any(named: "url"), timeout: any(named: "timeout")));
+      () => get(url: any(named: "url"), timeout: any(named: "timeout")));
   void mockGet(HttpResponse response) =>
       // ignore: prefer_const_constructors
       _mockGetCall().thenAnswer((_) async => response);

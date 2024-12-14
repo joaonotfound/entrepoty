@@ -6,7 +6,7 @@ class UserNameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return const TextField(
       decoration: InputDecoration(
         label: Text("Name"),
         prefixIcon: Icon(FluentIcons.person_16_regular),

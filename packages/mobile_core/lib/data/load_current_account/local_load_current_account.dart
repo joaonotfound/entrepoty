@@ -1,6 +1,5 @@
 import 'package:mobile_core/mobile_core.dart';
 
-import '../data.dart';
 
 class LocalLoadCurrentAccount implements LoadCurrentAccountUsecase {
   final LoadSecureCacheStorage loadSecureCacheStorage;
@@ -13,7 +12,7 @@ class LocalLoadCurrentAccount implements LoadCurrentAccountUsecase {
   Future<TokenAccount?> load() async {
     try {
       var token = await loadSecureCacheStorage.loadSecure(key: "token");
-      if (token == null || token.length == 0) return null;
+      if (token == null || token.isEmpty) return null;
 
       return TokenAccount(token: token);
     } catch (_) {

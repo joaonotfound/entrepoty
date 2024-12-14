@@ -9,7 +9,7 @@ import '../../../../../domain/domain.dart';
 import '../customer_list_screen_presenter.dart';
 
 class CustomerListCard extends StatelessWidget {
-  CustomerListCard({
+  const CustomerListCard({
     super.key,
     required this.user,
   });

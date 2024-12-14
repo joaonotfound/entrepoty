@@ -8,7 +8,7 @@ import 'model_creation_presenter.dart';
 class ModelCreationScreen extends StatefulWidget {
   final ModelCreationPresenter presenter;
 
-  ModelCreationScreen({
+  const ModelCreationScreen({
     super.key,
     required this.presenter,
   });
@@ -33,14 +33,14 @@ class _ModelCreationScreenState extends State<ModelCreationScreen>
       create: (context) => widget.presenter,
       child: FormLayout(
         content: Form(
-          child: ListView(children: [
-            const ModelCreationNameField(),
-            const ModelCreationQuantities(),
+          child: ListView(children: const [
+            ModelCreationNameField(),
+            ModelCreationQuantities(),
             ModelCreationCategories(),
-            const ModelCreationImagePicker()
+            ModelCreationImagePicker()
           ]),
         ),
-        action: ModelCreationSubmit(),
+        action: const ModelCreationSubmit(),
         title: "Create Product Model",
       ),
     );

@@ -14,6 +14,7 @@ class GetxModelViewPresenter extends GetxController
 
   final _model = Rx<UniqueProductEntity?>(null);
 
+  @override
   Stream<UniqueProductEntity?> get modelStream => _model.stream;
 
   GetxModelViewPresenter({
@@ -22,6 +23,7 @@ class GetxModelViewPresenter extends GetxController
     required this.remoteDeleteProductModel,
   });
 
+  @override
   Future<void> deleteModel(int id) async {
     isLoading = true;
     final response = await remoteDeleteProductModel.deleteModel(id);
@@ -34,13 +36,14 @@ class GetxModelViewPresenter extends GetxController
     isLoading = false;
   }
 
+  @override
   Future<void> loadModel(int id) async {
     isLoading = true;
     final response = await loadUniqueProductModel.loadModelById(id);
     response.fold((error) {
-      print("an error ocurred while loading unique model" + error.toString());
-    }, (_response) {
-      _model.value = _response;
+      print("an error ocurred while loading unique model$error");
+    }, (response) {
+      _model.value = response;
     });
     isLoading = false;
   }

@@ -14,6 +14,7 @@ class RemoteCreateProductModel implements CreateProductModelUsecase {
     required this.url,
   });
 
+  @override
   Future<Either<DomainError, UniqueProductEntity>> createModel(
     ProductModelEntity model,
     int quantity,

@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 
 import 'package:mobile_core/mobile_core.dart';
 
-import '../../domain/domain.dart';
 import '../../mobile_customers.dart';
 
 class GetxCustomerListPresenter extends GetxController

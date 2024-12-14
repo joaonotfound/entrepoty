@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../app_color_scheme.dart';
 
 TextTheme getTextTheme(AppColorScheme scheme) {
-  return TextTheme(
+  return const TextTheme(
     headlineMedium: TextStyle(
       // color: Colors.black87,
       fontSize: 30,

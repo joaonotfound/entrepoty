@@ -28,10 +28,10 @@ class BorrowCreationUser extends StatelessWidget {
             isFilterOnline: true,
             searchDelay: Duration.zero,
             itemBuilder: (context, customer, isSelected) => ListTile(
-                  leading: Icon(FluentIcons.person_12_regular),
+                  leading: const Icon(FluentIcons.person_12_regular),
                   title: Text(customer.name),
                 ),
-            searchFieldProps: TextFieldProps(
+            searchFieldProps: const TextFieldProps(
               decoration: InputDecoration(hintText: "Search user"),
             )),
         items: snapshot.data ?? [],

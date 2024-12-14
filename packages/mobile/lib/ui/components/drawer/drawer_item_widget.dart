@@ -15,7 +15,7 @@ class DrawerItemWidget extends StatelessWidget {
       child: ListTile(
         title: Container(
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: TextButton.icon(
             icon: Icon(
               item.icon,

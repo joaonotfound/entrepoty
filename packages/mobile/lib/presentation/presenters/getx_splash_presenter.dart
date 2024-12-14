@@ -13,7 +13,7 @@ class GetxSplashPresenter extends GetxController
 
   @override
   Future<void> checkAccount() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     try {
       var account = await loadAccount.load();
       navigateTo = account != null ? Routes.home : Routes.launch;

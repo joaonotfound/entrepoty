@@ -8,8 +8,9 @@ class GetxCustomerViewPresenter extends GetxController
   LoadUniqueCustomerUsecase loadUniqueCustomerUsecase;
   RemoveCustomerUsecase removeCustomerUsecase;
 
-  Rx<CustomerEntity?> _customer = Rx(null);
+  final Rx<CustomerEntity?> _customer = Rx(null);
 
+  @override
   Stream<CustomerEntity?> get customerStream => _customer.stream;
 
   GetxCustomerViewPresenter({
@@ -17,6 +18,7 @@ class GetxCustomerViewPresenter extends GetxController
     required this.removeCustomerUsecase,
   });
 
+  @override
   Future<void> deleteCustomer(String enrollment) async {
     isLoading = true;
     final response = await removeCustomerUsecase.deleteCustomer(enrollment);

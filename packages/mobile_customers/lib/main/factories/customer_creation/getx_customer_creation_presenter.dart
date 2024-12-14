@@ -6,12 +6,12 @@ import '../../main.dart';
 GetxCustomerPresenter makeGetxCustomerPresenter() {
   return GetxCustomerPresenter(
     validation: ValidationComposite(validators: [
-      RequiredFormFieldValidator(field: "email"),
+      const RequiredFormFieldValidator(field: "email"),
       EmailFormFieldValidator(field: "email"),
-      RequiredFormFieldValidator(field: "name"),
-      RequiredFormFieldValidator(field: "enrollment"),
+      const RequiredFormFieldValidator(field: "name"),
+      const RequiredFormFieldValidator(field: "enrollment"),
       UserEnrollmentFormFieldValidator(field: "enrollment"),
-      RequiredFormFieldValidator(field: "sector"),
+      const RequiredFormFieldValidator(field: "sector"),
     ]),
     usecase: makeRemoteSaveCustomer(),
   );

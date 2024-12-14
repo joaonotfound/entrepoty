@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 void showLoading(BuildContext context) {
   showDialog(
     context: context,
-    builder: (context) => SimpleDialog(
+    builder: (context) => const SimpleDialog(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               CircularProgressIndicator(),
               SizedBox(
                 height: 10,

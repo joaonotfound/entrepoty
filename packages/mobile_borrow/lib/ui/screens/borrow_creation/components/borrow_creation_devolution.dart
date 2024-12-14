@@ -34,11 +34,11 @@ class _BorrowCreationDevolutionState extends State<BorrowCreationDevolution> {
   Widget build(BuildContext context) {
     final presenter = Provider.of<BorrowCreationPresenter>(context);
     return ElevatedButton.icon(
-      icon: Icon(Icons.today),
+      icon: const Icon(Icons.today),
       style: ButtonStyle(
         alignment: Alignment.centerLeft,
         backgroundColor:
-            MaterialStatePropertyAll(Theme.of(context).colorScheme.surface),
+            WidgetStatePropertyAll(Theme.of(context).colorScheme.surface),
       ),
       label: Text(
         _date != null

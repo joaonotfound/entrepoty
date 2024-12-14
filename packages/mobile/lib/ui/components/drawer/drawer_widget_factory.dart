@@ -15,7 +15,7 @@ Drawer makeDrawer(BuildContext context) {
     child: SafeArea(
       child: ListView(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           ...options.map(

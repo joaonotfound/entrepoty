@@ -6,11 +6,11 @@ AppBar makeFormAppbar(String title) {
   return AppBar(
     title: Text(
       title,
-      style: TextStyle(fontWeight: FontWeight.w400),
+      style: const TextStyle(fontWeight: FontWeight.w400),
     ),
     leading: IconButton(
       onPressed: () => Get.back(),
-      icon: Icon(FluentIcons.dismiss_20_regular),
+      icon: const Icon(FluentIcons.dismiss_20_regular),
     ),
   );
 }

@@ -18,6 +18,7 @@ dependencies:
   mobile_authentication:
     path: ../mobile_authentication
 
+  provider: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
